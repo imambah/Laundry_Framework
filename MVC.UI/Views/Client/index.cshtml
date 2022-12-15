@@ -8,7 +8,7 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Parameter</h1>
+    <h1>Data Client</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Parameter</li>
@@ -49,23 +49,23 @@
                             No Telp
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
-                        <th>
-                            Is Konsumen
+                        <th style="text-align:center">
+                            Customer
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
-                        <th>
-                            Is Supplier
+                        <th style="text-align:center">
+                            Supplier
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
 
-                        <th></th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td >
+                            <td>
                                 @Html.DisplayFor(modelItem => item.id)
                             </td>
                             <td>
@@ -80,9 +80,29 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.no_telp)
                             </td>
+                            <td style="text-align:center">
+                                @if (string.Equals(item.is_customer, true))
+                                {
+                                    <i class="fa fa-check"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-remove"></i>
+                                }
+                            </td>
+                            <td style="text-align:center">
+                                @if (string.Equals(item.is_supplier, true))
+                                {
+                                    <i class="fa fa-check"></i>
+                                }
+                                else
+                                {
+                                    <i class="fa fa-remove"></i>
+                                }
+                            </td>
 
                             <td>
-                                <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                <a class="text-success" href="@Url.Action("Edit", new { client_kode=item.kode_klien })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                 @*<a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;*@
                                 <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
                             </td>

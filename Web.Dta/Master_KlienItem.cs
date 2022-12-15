@@ -23,7 +23,7 @@ namespace Web.Dta
 
         //public static Master_Klien GetById(int id)
         //{
-            
+
         //    IDBHelper context = new DBHelper();
         //    context.CommandType = CommandType.StoredProcedure;
         //    context.CommandText = "sp_parameter_GetById";
@@ -36,42 +36,49 @@ namespace Web.Dta
         /// <summary>
         /// Execute Insert to TABLE [tbl_log]
         /// </summary>        
-        //public static Master_Klien Insert(Master_Klien obj)
-        //{
-        //    IDBHelper context = new DBHelper();
-        //    string sqlQuery = "sp_parameter_Insert";
-        //    context.AddParameter("@nama_tabel", obj.nama_tabel);
-        //    context.AddParameter("@kode_tabel", obj.kode_tabel);
-        //    context.AddParameter("@nama_panjang", obj.nama_panjang);
-        //    context.AddParameter("@nama_pendek", obj.nama_pendek);
-        //    context.AddParameter("@nilai", obj.nilai);
-        //    context.AddParameter("@create_date", DateTime.Now);
-        //    context.AddParameter("@create_by", "user_system");
-        //    context.AddParameter("@update_date", DateTime.Now);
-        //    context.AddParameter("@update_by", "user_system");
-        //    context.CommandText = sqlQuery;
-        //    context.CommandType = CommandType.StoredProcedure;
-        //   return DBUtil.ExecuteMapper<tbl_parameter>(context, new tbl_parameter()).FirstOrDefault();
-        //}
+        public static Master_Klien Insert(Master_Klien obj)
+        {
+            Random rdm = new Random();
+            int NoRdm = rdm.Next(1, 1000);
 
-        //public static tbl_parameter Update(tbl_parameter obj) {
+            string Client_id = "C" + NoRdm;
 
-        //    IDBHelper context = new DBHelper();
-        //    context.AddParameter("@id", obj.id);
-        //    context.AddParameter("@nama_tabel", obj.nama_tabel);
-        //    context.AddParameter("@kode_tabel", obj.kode_tabel);
-        //    context.AddParameter("@nama_panjang", obj.nama_panjang);
-        //    context.AddParameter("@nama_pendek", obj.nama_pendek);
-        //    context.AddParameter("@nilai", obj.nilai);
-        //    context.AddParameter("@update_date", DateTime.Now);
-        //    context.AddParameter("@update_by", "user_system_update"); ;
-        //    string sqlQuery = "sp_parameter_Update";
-        //    context.CommandText = sqlQuery;
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    return DBUtil.ExecuteMapper<tbl_parameter>(context, new tbl_parameter()).FirstOrDefault();
-        //}
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_master_client_Insert";
+            context.AddParameter("@kode_klien", Client_id);
+            context.AddParameter("@nama_klien", obj.nama_klien);
+            context.AddParameter("@alamat", obj.alamat);
+            context.AddParameter("@no_telp", obj.no_telp);
+            context.AddParameter("@is_supplier", obj.is_supplier);
+            context.AddParameter("@is_customer", obj.is_customer);
+            context.AddParameter("@create_date", DateTime.Now);
+            context.AddParameter("@create_by", "user_system");
+            context.AddParameter("@update_date", DateTime.Now);
+            context.AddParameter("@update_by", "user_system");
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
+        }
 
-      
+        public static Master_Klien Update(Master_Klien obj)
+        {
+
+            IDBHelper context = new DBHelper(); 
+            context.AddParameter("@kode_klien", obj.kode_klien);
+            context.AddParameter("@nama_klien", obj.nama_klien);
+            context.AddParameter("@alamat", obj.alamat);
+            context.AddParameter("@no_telp", obj.no_telp);
+            context.AddParameter("@is_supplier", obj.is_supplier);
+            context.AddParameter("@is_customer", obj.is_customer);
+            context.AddParameter("@update_date", DateTime.Now);
+            context.AddParameter("@update_by", "user_system_update"); ;
+            string sqlQuery = "sp_master_client_Update";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
+        }
+
+
         #endregion
 
     }

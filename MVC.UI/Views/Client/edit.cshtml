@@ -1,5 +1,5 @@
 ﻿
-@model Web.Dto.tbl_parameter
+@model Web.Dto.Master_Klien
 
 @{
     ViewBag.Title = "Edit";
@@ -7,10 +7,10 @@
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Parameter</h1>
+    <h1>Data Claint</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Parameter</li>
+        <li class="active">Client</li>
     </ol>
 </section>
 
@@ -19,7 +19,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Ubah Data Parameter</h3>
+            <h3 class="box-title">Ubah Data Client</h3>
         </div>
         <div class="box-body">
 
@@ -30,42 +30,53 @@
                 @*@Html.HiddenFor(model => model.id)*@
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Tabel</div>
+                    <div class="col-sm-2 control-label">id</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_tabel, new { @class = "form-control", placeholder = "Nama Tabel" })
-                        @Html.ValidationMessageFor(model => model.nama_tabel)
+                        @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "ID" })
+                        @Html.ValidationMessageFor(model => model.id)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Kode Tabel</div>
+                    <div class="col-sm-2 control-label">kode klien</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.kode_tabel, new { @class = "form-control", placeholder = "Kode Tabel" })
-                        @Html.ValidationMessageFor(model => model.kode_tabel)
+                        @Html.TextBoxFor(model => model.kode_klien, new { @class = "form-control", placeholder = "Kode Klien" })
+                        @Html.ValidationMessageFor(model => model.kode_klien)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Panjang</div>
+                    <div class="col-sm-2 control-label">Nama Klien</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_panjang, new { @class = "form-control", placeholder = "Nama Panjang" })
-                        @Html.ValidationMessageFor(model => model.nama_panjang)
+                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Klien" })
+                        @Html.ValidationMessageFor(model => model.nama_klien)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Pendek</div>
+                    <div class="col-sm-2 control-label">Alamat</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_pendek, new { @class = "form-control", placeholder = "Nama Pendek" })
-                        @Html.ValidationMessageFor(model => model.nama_pendek)
+                        @Html.TextBoxFor(model => model.alamat, new { @class = "form-control", placeholder = "Alamat" })
+                        @Html.ValidationMessageFor(model => model.alamat)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nilai</div>
+                    <div class="col-sm-2 control-label">No Telp</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nilai, new { @class = "form-control", placeholder = "Nilai" })
-                        @Html.ValidationMessageFor(model => model.nilai)
+                        @Html.TextBoxFor(model => model.no_telp, new { @class = "form-control", placeholder = "No Telp" })
+                        @Html.ValidationMessageFor(model => model.no_telp)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Sebagai</div>
+                    <div class="col-sm-2">
+
+                        @Html.CheckBoxFor(model => model.is_customer)  Konsumen
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.CheckBoxFor(model => model.is_supplier)  Suplier
                     </div>
                 </div>
 

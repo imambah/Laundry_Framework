@@ -12,7 +12,7 @@ namespace Web.Dto
         public string alamat { get; set; }
         public string no_telp { get; set; }
         public bool is_supplier { get; set; }
-        public bool is_consumer { get; set; }
+        public bool is_customer { get; set; }
         public DateTime ? create_date{ get; set; }
 		public string create_by { get; set; }
 		public DateTime ? update_date { get; set; }
@@ -27,7 +27,7 @@ namespace Web.Dto
             obj.alamat = reader["alamat"].ToString();
             obj.no_telp = reader["no_telp"].ToString();
             obj.is_supplier = Convert.ToBoolean(reader["is_supplier"]);
-            obj.is_consumer = Convert.ToBoolean(reader["is_consumer"]); 
+            obj.is_customer = Convert.ToBoolean(reader["is_customer"]); 
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);

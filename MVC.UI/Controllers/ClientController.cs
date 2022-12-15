@@ -33,12 +33,12 @@ namespace MVC.UI.Controllers
 
         // POST: Client/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Master_Klien Coll)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                Master_KlienItem.Insert(Coll);
                 return RedirectToAction("Index");
             }
             catch
@@ -55,17 +55,25 @@ namespace MVC.UI.Controllers
 
         // POST: Client/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string client_code, Master_Klien coll)
         {
             try
             {
-                // TODO: Add update logic here
+                Master_Klien tblParam = new Master_Klien();
+                tblParam.id = coll.id;
+                tblParam.kode_klien = client_code;
+                tblParam.nama_klien= coll.nama_klien;
+                tblParam.alamat = coll.alamat;
+                tblParam.no_telp = coll.no_telp;
+                tblParam.is_supplier = coll.is_supplier;
+                tblParam.is_customer = coll.is_customer;
 
+                Master_Klien result = Master_KlienItem.Update(tblParam);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(coll);
             }
         }
 
