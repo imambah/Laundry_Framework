@@ -33,12 +33,12 @@ namespace MVC.UI.Controllers
 
         // POST: Client/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Master_Klien Coll)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                Master_KlienItem.Insert(Coll);
                 return RedirectToAction("Index");
             }
             catch

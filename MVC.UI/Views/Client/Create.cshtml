@@ -54,9 +54,12 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Sebagai</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.is_consumer, new { @class = "form-control",  })
-                        @Html.ValidationMessageFor(model => model.is_consumer)
+                    <div class="col-sm-2">
+
+                        @Html.CheckBoxFor(model => model.is_consumer)  Konsumen
+                    </div>
+                    <div class="col-sm-2">
+                        @Html.CheckBoxFor(model => model.is_supplier)  Suplier
                     </div>
                 </div>
 
