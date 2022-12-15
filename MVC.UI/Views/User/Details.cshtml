@@ -1,0 +1,141 @@
+﻿@model Web.Dto.tbl_user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Pengguna</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Pengguna</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Data Pengguna</h3>
+        </div>
+        <div class="box-body">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Username)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastLogin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastLogin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsLogin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsLogin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IPAddress)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IPAddress)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MachineName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MachineName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.is_deleted)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.is_deleted)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FullName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.created)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.created)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.creator)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.creator)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.edited)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.edited)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.editor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.editor)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsActive)
+                </dd>
+
+            </dl>
+
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->
