@@ -42,7 +42,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.LastLogin)
                         </th>
-
+                        <th>
+                            @Html.DisplayNameFor(model => model.BranchCode)
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -61,7 +63,10 @@
                                 @Html.DisplayFor(modelItem => item.Password)
                             </td>
                             <td>
-                             @Web.Logic.Utilities.FullDateFormat( item.LastLogin)
+                                @Web.Logic.Utilities.FullDateFormat(item.LastLogin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BranchCode)
                             </td>
 
                             <td>

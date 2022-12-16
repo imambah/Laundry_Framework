@@ -30,9 +30,26 @@ namespace MVC.UI.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
+
+            //CompanyDbo branch = 
+            //ViewBag.BranchSelectList = new List<SelectListItem>GetCompanies();  //Master_CompanyItem//Selectlist(GetCompanies(), "id", "Tittle"); 
+            // tadinya ane bikin get data dulu dari sp , sudah dapat tapi gagal , ane remark pake data dumy dibawah., tpi langsung pake
+            // 
+            List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
+            List<SelectListItem> ListBranch = new List<SelectListItem>();
+            MCI.ForEach(t =>
+            {
+                ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
+            });
+            // Retrieve departments and build SelectList
+            ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             return View();
         }
-
+        /// <summary>
+        ///  nah udah bisa
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Create(tbl_user item)
         {
@@ -186,4 +203,5 @@ namespace MVC.UI.Controllers
             return RedirectToAction("Login");
         }
     }
+
 }

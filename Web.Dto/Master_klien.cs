@@ -10,7 +10,21 @@ namespace Web.Dto
         public string kode_klien { get; set; }
         public string nama_klien { get; set; }
         public string alamat { get; set; }
+        public string alamat2 { get; set; }
+        public string kota { get; set; }
+        public string area { get; set; }
+        public string negara { get; set; }
+        public string kodepos { get; set; }
         public string no_telp { get; set; }
+        public string email { get; set; }
+        public string PIC { get; set; }
+        public string tax_id { get; set; }
+        public string tax_name { get; set; }
+        public string tax_address { get; set; }
+        public string bank_account { get; set; }
+        public string bank_name { get; set; }
+        public string bank_branch { get; set; }
+        public string credit_limit { get; set; }
         public bool is_supplier { get; set; }
         public bool is_customer { get; set; }
         public DateTime ? create_date{ get; set; }

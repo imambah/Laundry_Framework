@@ -21,15 +21,15 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new Master_Klien());
         }
 
-        //public static Master_Klien GetById(int id)
-        //{
+        public static Master_Klien GetByClient_Code(string client_code)
+        {
 
-        //    IDBHelper context = new DBHelper();
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    context.CommandText = "sp_parameter_GetById";
-        //    context.AddParameter("@id", id);
-        //    return DBUtil.ExecuteMapper<tbl_parameter>(context, new Master_Klien()).FirstOrDefault();
-        //}
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "sp_master_client_GetByClientCode";
+            context.AddParameter("@client_code", client_code);
+            return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
+        }
 
         #region Data Access
 
@@ -71,14 +71,22 @@ namespace Web.Dta
             context.AddParameter("@is_supplier", obj.is_supplier);
             context.AddParameter("@is_customer", obj.is_customer);
             context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system_update"); ;
+            context.AddParameter("@update_by", "user_system_update");
             string sqlQuery = "sp_master_client_Update";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
         }
 
-
+        public static Master_Klien Delete(string client_code) {
+            IDBHelper context = new DBHelper();
+            context.AddParameter("@kode_klien", client_code);
+            string sqlQuery = "sp_master_client_Delete";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            //return DBUtil.ExecuteNonQuery(context);
+            return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
+        }
         #endregion
 
     }

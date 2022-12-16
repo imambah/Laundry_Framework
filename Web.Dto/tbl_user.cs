@@ -25,6 +25,7 @@ namespace Web.Dto
 
         [Display(Name = "Name")]
         public string FullName { get; set; }
+        public string BranchCode{ get; set; }
         public DateTime? created { get; set; }
         public string creator { get; set; }
         public DateTime? edited { get; set; }
@@ -42,6 +43,7 @@ namespace Web.Dto
             obj.MachineName = reader["MachineName"] == DBNull.Value ? null : reader["MachineName"].ToString();
             obj.is_deleted = reader["is_deleted"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["is_deleted"]);
             obj.FullName = reader["FullName"] == DBNull.Value ? null : reader["FullName"].ToString();
+            obj.BranchCode = reader["BranchCode"] == DBNull.Value ? null : reader["BranchCode"].ToString();
             obj.created = reader["created"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["created"]);
             obj.creator = reader["creator"] == DBNull.Value ? null : reader["creator"].ToString();
             obj.edited = reader["edited"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["edited"]);

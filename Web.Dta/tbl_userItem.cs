@@ -35,6 +35,7 @@ namespace Web.Dta
              context.AddParameter("@edited", obj.edited);
              context.AddParameter("@editor", obj.editor);
              context.AddParameter("@IsActive", obj.IsActive);
+             context.AddParameter("@BranchCode", obj.BranchCode);
              context.CommandText = sqlQuery;
              context.CommandType = CommandType.StoredProcedure;
              return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
@@ -135,6 +136,7 @@ namespace Web.Dta
             context.AddParameter("@Username", Username);
             return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
         }
+
 
         #endregion
 

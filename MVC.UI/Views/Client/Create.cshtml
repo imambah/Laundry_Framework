@@ -51,6 +51,87 @@
                         @Html.ValidationMessageFor(model => model.no_telp)
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Area</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.area, new { @class = "form-control", placeholder = "Area" })
+                        @Html.ValidationMessageFor(model => model.area)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Negara</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.negara, new { @class = "form-control", placeholder = "Negara" })
+                        @Html.ValidationMessageFor(model => model.negara)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kode Pos</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.kodepos, new { @class = "form-control", placeholder = "Kode Pos" })
+                        @Html.ValidationMessageFor(model => model.kodepos)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Email</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(model => model.email)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">PIC</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.PIC, new { @class = "form-control", placeholder = "PIC" })
+                        @Html.ValidationMessageFor(model => model.PIC)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">ID Pajak</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.tax_id, new { @class = "form-control", placeholder = "ID Pajak" })
+                        @Html.ValidationMessageFor(model => model.tax_id)
+                    </div>
+                    <div class="col-sm-1 control-label">Nama Pajak </div>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(model => model.tax_name, new { @class = "form-control", placeholder = "Nama Pajak" })
+                        @Html.ValidationMessageFor(model => model.tax_name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Alamat Pajak </div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.tax_address, new { @class = "form-control", placeholder = "Alamat Pajak" })
+                        @Html.ValidationMessageFor(model => model.tax_address)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Akun Bank</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.bank_account, new { @class = "form-control", placeholder = "Akun Bank" })
+                        @Html.ValidationMessageFor(model => model.bank_account)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Nama Bank</div>
+                    <div class="col-sm-5">
+                        @Html.TextBoxFor(model => model.bank_name, new { @class = "form-control", placeholder = "Nama Bank" })
+                        @Html.ValidationMessageFor(model => model.bank_name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"> Cabang </div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.bank_branch, new { @class = "form-control", placeholder = "Cabang" })
+                        @Html.ValidationMessageFor(model => model.bank_branch)
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Sebagai</div>

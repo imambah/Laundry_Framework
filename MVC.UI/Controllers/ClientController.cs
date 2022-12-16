@@ -20,9 +20,10 @@ namespace MVC.UI.Controllers
         }
 
         // GET: Client/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string client_code)
         {
-            return View();
+            Master_Klien existing = Master_KlienItem.GetByClient_Code(client_code);
+            return View(existing);
         }
 
         // GET: Client/Create
@@ -48,9 +49,10 @@ namespace MVC.UI.Controllers
         }
 
         // GET: Client/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string client_code)
         {
-            return View();
+            Master_Klien existing = Master_KlienItem.GetByClient_Code(client_code);
+            return View(existing);
         }
 
         // POST: Client/Edit/5
@@ -61,7 +63,7 @@ namespace MVC.UI.Controllers
             {
                 Master_Klien tblParam = new Master_Klien();
                 tblParam.id = coll.id;
-                tblParam.kode_klien = client_code;
+                tblParam.kode_klien = coll.kode_klien;
                 tblParam.nama_klien= coll.nama_klien;
                 tblParam.alamat = coll.alamat;
                 tblParam.no_telp = coll.no_telp;
@@ -78,9 +80,15 @@ namespace MVC.UI.Controllers
         }
 
         // GET: Client/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string client_code)
         {
-            return View();
+
+            Master_Klien existing = Master_KlienItem.GetByClient_Code(client_code);
+            if (existing != null)
+            {
+                Master_KlienItem.Delete(client_code);
+            }
+            return RedirectToAction("Index");
         }
 
         // POST: Client/Delete/5

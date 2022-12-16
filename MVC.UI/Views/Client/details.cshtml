@@ -1,8 +1,9 @@
 ﻿
+
 @model Web.Dto.Master_Klien
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!-- Content Header (Page header) -->
@@ -19,7 +20,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Ubah Data Client</h3>
+            <h3 class="box-title">Details Data Client</h3>
         </div>
         <div class="box-body">
 
@@ -32,7 +33,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">id</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "ID" , disabled="disabled"})
+                        @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "ID", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.id)
                     </div>
                 </div>
@@ -48,7 +49,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Klien</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Klien" })
+                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Klien", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.nama_klien)
                     </div>
                 </div>
@@ -56,7 +57,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Alamat</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.alamat, new { @class = "form-control", placeholder = "Alamat" })
+                        @Html.TextBoxFor(model => model.alamat, new { @class = "form-control", placeholder = "Alamat", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.alamat)
                     </div>
                 </div>
@@ -64,7 +65,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">No Telp</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.no_telp, new { @class = "form-control", placeholder = "No Telp" })
+                        @Html.TextBoxFor(model => model.no_telp, new { @class = "form-control", placeholder = "No Telp", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.no_telp)
                     </div>
                 </div>
@@ -72,18 +73,17 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Sebagai</div>
                     <div class="col-sm-2">
-
-                        @Html.CheckBoxFor(model => model.is_customer)  Konsumen
+                        @Html.CheckBoxFor(model => model.is_customer, new {disabled = "disabled" })  Konsumen
                     </div>
                     <div class="col-sm-2">
-                        @Html.CheckBoxFor(model => model.is_supplier)  Suplier
+                        @Html.CheckBoxFor(model => model.is_supplier, new { disabled = "disabled" })  Suplier
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
+                       
                     </div>
                 </div>
             }
