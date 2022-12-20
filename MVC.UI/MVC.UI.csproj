@@ -204,6 +204,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\ParameterController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -297,6 +298,9 @@
     <Content Include="Views\Client\Create.cshtml" />
     <Content Include="Views\Client\edit.cshtml" />
     <Content Include="Views\Client\details.cshtml" />
+    <Content Include="Views\Bank\index.cshtml" />
+    <Content Include="Views\Bank\Create.cshtml" />
+    <Content Include="Views\Bank\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

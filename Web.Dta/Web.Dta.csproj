@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Master_CompanyItem.cs" />
+    <Compile Include="Master_BankItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Master_KlienItem.cs" />
     <Compile Include="tbl_parameterItem.cs" />

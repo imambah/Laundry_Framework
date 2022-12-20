@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="CompanyDbo.cs" />
+    <Compile Include="Master_BankDbo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Master_klien.cs" />
     <Compile Include="tbl_parameter.cs" />

@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<Web.Dto.tbl_parameter>
+@model IEnumerable<Web.Dto.Master_BankDbo>
 
 @{
     ViewBag.Title = "Index";
@@ -8,10 +8,10 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Parameter</h1>
+    <h1>Data Bank</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Parameter</li>
+        <li class="active">Bank</li>
     </ol>
 </section>
 
@@ -20,7 +20,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Data Parameter</h3>
+            <h3 class="box-title">Data Bank</h3>
         </div>
         <div class="box-body">
             <p>
@@ -33,27 +33,23 @@
                             ID
                         </th>
                         <th>
-                            Nama Tabel
+                            Bank ID
                             @*@Html.DisplayNameFor(model => model.Username)*@
                         </th>
 
                         <th>
-                            Kode Tabel
+                            Nama Bank
                             @*@Html.DisplayNameFor(model => model.FullName)*@
                         </th>
                         <th>
-                            Nama Panjang
+                            Cabang 
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
                         <th>
-                            Nama Pendek
+                            No Rekening
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
 
-                        <th>
-                            Nilai
-                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
-                        </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -65,21 +61,18 @@
                                 @Html.DisplayFor(modelItem => item.id)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.nama_tabel)
+                                @Html.DisplayFor(modelItem => item.BankID)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.kode_tabel)
+                                @Html.DisplayFor(modelItem => item.Description)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.nama_panjang)
+                                @Html.DisplayFor(modelItem => item.Area)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.nama_pendek)
+                                @Html.DisplayFor(modelItem => item.Account)
                             </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.nilai)
-                            </td>
                             <td>
                                 <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
                                 <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
