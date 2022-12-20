@@ -30,11 +30,7 @@ namespace MVC.UI.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
-
-            //CompanyDbo branch = 
-            //ViewBag.BranchSelectList = new List<SelectListItem>GetCompanies();  //Master_CompanyItem//Selectlist(GetCompanies(), "id", "Tittle"); 
-            // tadinya ane bikin get data dulu dari sp , sudah dapat tapi gagal , ane remark pake data dumy dibawah., tpi langsung pake
-            // 
+ 
             List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
             List<SelectListItem> ListBranch = new List<SelectListItem>();
             MCI.ForEach(t =>
@@ -46,7 +42,7 @@ namespace MVC.UI.Controllers
             return View();
         }
         /// <summary>
-        ///  nah udah bisa
+
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
