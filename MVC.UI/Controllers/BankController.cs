@@ -19,11 +19,12 @@ namespace MVC.UI.Controllers
             return View(list);
         }
 
-        //// GET: Parameter/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
+        // GET: Parameter/Details/5
+        public ActionResult Details(int id)
+        {
+            Master_BankDbo existing = Master_BankItem.GetById(id);
+            return View(existing);
+        }
 
         // GET: Parameter/Create
         public ActionResult Create()
@@ -100,3 +101,5 @@ namespace MVC.UI.Controllers
         //}
     }
 }
+
+

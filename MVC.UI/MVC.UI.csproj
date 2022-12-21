@@ -301,6 +301,7 @@
     <Content Include="Views\Bank\index.cshtml" />
     <Content Include="Views\Bank\Create.cshtml" />
     <Content Include="Views\Bank\edit.cshtml" />
+    <Content Include="Views\Bank\details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
