@@ -71,14 +71,14 @@
                                     <img src="@Url.Content("~/Content/dist/img/avatar5.png")" class="img-circle" alt="User Image">
 
                                     <p>
-                                        @string.Format("{0}", Session["Name"]) - @string.Format("{0}", Session["RoleName"])
+                                        @string.Format("{0}", Session["Username"]) - @string.Format("{0}", Session["Fullname"])
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left">
+                                    @*<div class="pull-left">
                                         <a href="#" class="btn btn-default btn-flat">Profil</a>
-                                    </div>
+                                    </div>*@
                                     <div class="pull-right">
                                         <a href="@Url.Action("Logout", "User")" class="btn btn-default btn-flat">Logout</a>
                                     </div>

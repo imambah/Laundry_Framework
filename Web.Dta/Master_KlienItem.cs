@@ -48,7 +48,25 @@ namespace Web.Dta
             context.AddParameter("@kode_klien", Client_id);
             context.AddParameter("@nama_klien", obj.nama_klien);
             context.AddParameter("@alamat", obj.alamat);
+            context.AddParameter("@alamat2", obj.alamat2);
+            context.AddParameter("@kota", obj.kota);
+            context.AddParameter("@area", obj.area);
+            context.AddParameter("@negara", obj.negara);
+            context.AddParameter("@kodepos", obj.kodepos);
             context.AddParameter("@no_telp", obj.no_telp);
+            context.AddParameter("@email", obj.email);
+            context.AddParameter("@PIC", obj.PIC);
+            context.AddParameter("@tax_id", obj.tax_id);
+            context.AddParameter("@tax_name", obj.tax_name);
+            context.AddParameter("@tax_address", obj.tax_address);
+            context.AddParameter("@bank_account", obj.bank_account);
+            context.AddParameter("@bank_name", obj.bank_name);
+            context.AddParameter("@bank_branch", obj.bank_branch);
+            context.AddParameter("@credit_limit", obj.credit_limit);
+            context.AddParameter("@status", obj.status);
+            context.AddParameter("@COA", obj.COA);
+            context.AddParameter("@TOP", obj.TOP);
+            context.AddParameter("@profit_share", obj.profit_share);
             context.AddParameter("@is_supplier", obj.is_supplier);
             context.AddParameter("@is_customer", obj.is_customer);
             context.AddParameter("@create_date", DateTime.Now);
@@ -63,11 +81,29 @@ namespace Web.Dta
         public static Master_Klien Update(Master_Klien obj)
         {
 
-            IDBHelper context = new DBHelper(); 
+            IDBHelper context = new DBHelper();
             context.AddParameter("@kode_klien", obj.kode_klien);
             context.AddParameter("@nama_klien", obj.nama_klien);
             context.AddParameter("@alamat", obj.alamat);
+            context.AddParameter("@alamat2", obj.alamat2);
+            context.AddParameter("@kota", obj.kota);
+            context.AddParameter("@area", obj.area);
+            context.AddParameter("@negara", obj.negara);
+            context.AddParameter("@kodepos", obj.kodepos);
             context.AddParameter("@no_telp", obj.no_telp);
+            context.AddParameter("@email", obj.email);
+            context.AddParameter("@PIC", obj.PIC);
+            context.AddParameter("@tax_id", obj.tax_id);
+            context.AddParameter("@tax_name", obj.tax_name);
+            context.AddParameter("@tax_address", obj.tax_address);
+            context.AddParameter("@bank_account", obj.bank_account);
+            context.AddParameter("@bank_name", obj.bank_name);
+            context.AddParameter("@bank_branch", obj.bank_branch);
+            context.AddParameter("@credit_limit", obj.credit_limit);
+            context.AddParameter("@status", obj.status);
+            context.AddParameter("@COA", obj.COA);
+            context.AddParameter("@TOP", obj.TOP);
+            context.AddParameter("@profit_share", obj.profit_share);
             context.AddParameter("@is_supplier", obj.is_supplier);
             context.AddParameter("@is_customer", obj.is_customer);
             context.AddParameter("@update_date", DateTime.Now);

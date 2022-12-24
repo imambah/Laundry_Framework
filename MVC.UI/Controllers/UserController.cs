@@ -165,6 +165,7 @@ namespace MVC.UI.Controllers
                     {
                         //FormsAuthentication.SetAuthCookie(item.Username, true);
                         Session["Username"] = item.Username;
+                        Session["Fullname"] = item.FullName;
                         item.IsLogin = 1;
                         item.LastLogin = DateTime.Now;
                         item.IPAddress = Utilities.GetIpAddress();

@@ -29,6 +29,14 @@ namespace MVC.UI.Controllers
         // GET: Client/Create
         public ActionResult Create()
         {
+            List<Master_NegaraDbo> MN = Master_NegaraItem.GetNegara();
+            List<SelectListItem> ListNegara = new List<SelectListItem>();
+            MN.ForEach(t =>
+            {
+                ListNegara.Add(new SelectListItem() { Value = t.id.ToString(), Text = t.nation_name });
+            });
+            // Retrieve departments and build SelectList
+            ViewBag.NegaraList = new SelectList(ListNegara, "Value", "Text");
             return View();
         }
 
@@ -61,16 +69,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                Master_Klien tblParam = new Master_Klien();
-                tblParam.id = coll.id;
-                tblParam.kode_klien = coll.kode_klien;
-                tblParam.nama_klien= coll.nama_klien;
-                tblParam.alamat = coll.alamat;
-                tblParam.no_telp = coll.no_telp;
-                tblParam.is_supplier = coll.is_supplier;
-                tblParam.is_customer = coll.is_customer;
-
-                Master_Klien result = Master_KlienItem.Update(tblParam);
+                Master_KlienItem.Update(coll);
                 return RedirectToAction("Index");
             }
             catch

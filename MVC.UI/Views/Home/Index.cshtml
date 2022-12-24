@@ -3,7 +3,24 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div class="jumbotron">
-    <h1>Selamat Datang Di Aplikasi Web toBiWos </h1>
-    <p class="lead">Aplikasi terintegrasi POS , Inventory , Keuangan dan Akuntansi </p>
+    <h2>
+        &nbsp; Selamat Datang
+
+        @{
+            if (Session["UserName"] != null)
+            {
+                <text>@Session["Fullname"].ToString().ToUpper() </text>
+            }
+        }
+        di Aplikasi Web toBiWos
+    </h2>
+    <p class="lead">&nbsp;Aplikasi terintegrasi POS , Inventory , Keuangan dan Akuntansi </p>
+    
+    <div style="margin: auto; width: 30%; padding: 10px; ">
+        <img src="~/Images/logo_laundry.jpeg" />
+    </div>
+
 </div>
+
+
 

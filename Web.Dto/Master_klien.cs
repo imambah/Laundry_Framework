@@ -32,6 +32,11 @@ namespace Web.Dto
 		public DateTime ? update_date { get; set; }
 		public string update_by { get; set; }
 
+        public string status { get; set; }
+        public string COA { get; set; }
+        public string TOP { get; set; }
+        public double profit_share { get; set; }
+
         public Master_Klien Map(System.Data.IDataReader reader)
         {
             Master_Klien obj = new Master_Klien();
@@ -39,7 +44,25 @@ namespace Web.Dto
             obj.kode_klien = reader["kode_klien"].ToString();
             obj.nama_klien = reader["nama_klien"].ToString();
             obj.alamat = reader["alamat"].ToString();
+            obj.alamat2 = reader["alamat2"].ToString();
+            obj.kota = reader["kota"].ToString();
+            obj.area = reader["area"].ToString();
+            obj.negara = reader["negara"].ToString();
+            obj.kodepos = reader["kodepos"].ToString();
             obj.no_telp = reader["no_telp"].ToString();
+            obj.email = reader["email"].ToString();
+            obj.PIC = reader["pic"].ToString();
+            obj.tax_id = reader["tax_id"].ToString();
+            obj.tax_name = reader["tax_name"].ToString();
+            obj.tax_address = reader["tax_address"].ToString();
+            obj.bank_account = reader["bank_account"].ToString();
+            obj.bank_name = reader["bank_name"].ToString();
+            obj.bank_branch = reader["bank_branch"].ToString();
+            obj.credit_limit = reader["credit_limit"].ToString();
+            obj.status = reader["status"].ToString();
+            obj.COA = reader["COA"].ToString();
+            obj.TOP = reader["TOP"].ToString();
+            obj.profit_share = reader["profit_share"] == DBNull.Value  ? 0: Convert.ToDouble(reader["profit_share"]);
             obj.is_supplier = Convert.ToBoolean(reader["is_supplier"]);
             obj.is_customer = Convert.ToBoolean(reader["is_customer"]); 
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
