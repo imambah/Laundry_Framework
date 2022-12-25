@@ -201,6 +201,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -302,6 +303,8 @@
     <Content Include="Views\Bank\Create.cshtml" />
     <Content Include="Views\Bank\edit.cshtml" />
     <Content Include="Views\Bank\details.cshtml" />
+    <Content Include="Views\Barang\index.cshtml" />
+    <Content Include="Views\Barang\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

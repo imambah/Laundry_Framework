@@ -21,11 +21,11 @@ namespace Web.Dto
         public string Conversion { get; set; }
         public string Batch_No { get; set; }
         public string Warehouse_ID { get; set; }
+        public string Group_Code { get; set; }
         public DateTime? create_date { get; set; }
         public string create_by { get; set; }
         public DateTime? update_date { get; set; }
         public string update_by { get; set; }
-
 
         public Master_BarangDbo Map(System.Data.IDataReader reader)
         {
@@ -46,6 +46,7 @@ namespace Web.Dto
             obj.Conversion = reader["Conversion"].ToString();
             obj.Batch_No = reader["Batch_No"].ToString();
             obj.Warehouse_ID = reader["Warehouse_ID"].ToString();
+            obj.Group_Code = reader["Group_Code"].ToString();
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);

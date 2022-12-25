@@ -1,0 +1,172 @@
+﻿
+@model IEnumerable<Web.Dto.Master_BarangDbo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Item / Barang</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Bank</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Data Item / Barang</h3>
+        </div>
+        <div class="box-body">
+            <p>
+                <a class="text-success" href="@Url.Action("Create")"><i class="fa fa-plus"></i> Tambah</a>
+            </p>
+            <table id="mydatatable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Nama Barang
+                            @*@Html.DisplayNameFor(model => model.Username)*@
+                        </th>
+                        <th>
+                            Kode Barang
+                            @*@Html.DisplayNameFor(model => model.FullName)*@
+                        </th>
+                        <th>
+                            ID Kategori
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            UoM
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Price Purchase
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Price Inventory
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Stock
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Buffer Stock
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Company Persentage
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            VAT Flag
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Conversion
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Batch No
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Warehouse ID
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+                        <th>
+                            Kode Grup
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ItemDesc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ItemCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UoM)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price_Purchase)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price_Inventory)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stock)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Buffer_Stock)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Company_Persentage)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Vat_Flag)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Conversion)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Batch_No)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Warehouse_ID)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Group_Code)
+                            </td>
+
+                        
+
+                            <td>
+                                <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
+                                <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

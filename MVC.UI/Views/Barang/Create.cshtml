@@ -1,0 +1,159 @@
+﻿@model Web.Dto.Master_BarangDbo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Item / Barang</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Item / Barang</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Tambah Item / Barang</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Barang</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.ItemDesc, new { @class = "form-control", placeholder = "Nama Barang" })
+                        @Html.ValidationMessageFor(model => model.ItemDesc)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Barcode</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Barcode, new { @class = "form-control", placeholder = "Barcode" })
+                        @Html.ValidationMessageFor(model => model.Barcode)
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kategori</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.CategoryID, new { @class = "form-control", placeholder = "Kategory ID" })
+                        @Html.ValidationMessageFor(model => model.CategoryID)
+                    </div>
+
+                    <div class="col-sm-1 control-label">UoM</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM" })
+                        @Html.ValidationMessageFor(model => model.UoM)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Harga Permintaan</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Price_Purchase, new { @class = "form-control", placeholder = "Price Purchase" })
+                        @Html.ValidationMessageFor(model => model.Price_Purchase)
+                    </div>
+                    <div class="col-sm-1 control-label">Harga Inventory</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Price_Inventory, new { @class = "form-control", placeholder = "Harga Inventory" })
+                        @Html.ValidationMessageFor(model => model.Price_Inventory)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Stock</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", placeholder = "Stock" })
+                        @Html.ValidationMessageFor(model => model.Stock)
+                    </div>
+                    <div class="col-sm-1 control-label">Buffer Stock</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "Buffer Stock" })
+                        @Html.ValidationMessageFor(model => model.Buffer_Stock)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Company Persentage</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Company_Persentage, new { @class = "form-control", placeholder = "Company Persentage" })
+                        @Html.ValidationMessageFor(model => model.Company_Persentage)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Vendor Persentage</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Vendor_Persentage, new { @class = "form-control", placeholder = "Vendor Persentage" })
+                        @Html.ValidationMessageFor(model => model.Vendor_Persentage)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-sm-2 control-label">Vat Flag </div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Vat_Flag, new { @class = "form-control", placeholder = "Vat Flag" })
+                        @Html.ValidationMessageFor(model => model.Vat_Flag)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Conversion</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Conversion, new { @class = "form-control", placeholder = "Conversion" })
+                        @Html.ValidationMessageFor(model => model.Conversion)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Batch_No</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Batch_No, new { @class = "form-control", placeholder = "Batch No" })
+                        @Html.ValidationMessageFor(model => model.Batch_No)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Warehouse Name</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Warehouse_ID, new { @class = "form-control", placeholder = "Warehouse ID" })
+                        @Html.ValidationMessageFor(model => model.Warehouse_ID)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"> Group Name </div>
+
+                        <div class="col-sm-3">
+                            @Html.DropDownListFor(model => model.Group_Code, ViewBag.GroupList as SelectList, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                    </div>
+                </div>
+            }
+
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

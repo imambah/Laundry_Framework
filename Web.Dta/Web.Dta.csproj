@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Master_BarangItem.cs" />
+    <Compile Include="Master_ItemGroupItem.cs" />
     <Compile Include="Master_NegaraItem.cs" />
     <Compile Include="Master_CompanyItem.cs" />
     <Compile Include="Master_BankItem.cs" />

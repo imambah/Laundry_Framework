@@ -1,0 +1,32 @@
+
+using DataAccessLayer;
+using System;
+namespace Web.Dto
+{
+    public class ItemGroupDbo : IDataMapper<ItemGroupDbo>
+    {
+        public int id { get; set; }
+        public string nama_tabel { get; set; }
+        public string kode_tabel { get; set; }
+        public string nama_panjang { get; set; }
+   
+
+        public ItemGroupDbo Map(System.Data.IDataReader reader)
+        {
+            ItemGroupDbo obj = new ItemGroupDbo();
+            obj.id = Convert.ToInt32(reader["id"]);
+            obj.nama_tabel = reader["nama_tabel"].ToString();
+            obj.kode_tabel = reader["kode_tabel"].ToString();
+            obj.nama_panjang = reader["nama_panjang"].ToString();
+          
+            return obj;
+        }
+    }
+
+
+
+
+}
+
+
+
