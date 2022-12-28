@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\CompanyProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\BankController.cs" />
@@ -305,6 +306,9 @@
     <Content Include="Views\Bank\details.cshtml" />
     <Content Include="Views\Barang\index.cshtml" />
     <Content Include="Views\Barang\Create.cshtml" />
+    <Content Include="Views\Barang\details.cshtml" />
+    <Content Include="Views\Barang\edit.cshtml" />
+    <Content Include="Views\CompanyProfile\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

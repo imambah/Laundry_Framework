@@ -37,7 +37,6 @@ namespace MVC.UI.Controllers
             {
                 ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
             });
-            // Retrieve departments and build SelectList
             ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             return View();
         }
@@ -53,6 +52,13 @@ namespace MVC.UI.Controllers
             tbl_user existing = tbl_userItem.GetByPK(item.Username);
             if (existing != null)
             {
+                List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
+                List<SelectListItem> ListBranch = new List<SelectListItem>();
+                MCI.ForEach(t =>
+                {
+                    ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
+                });
+                ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
                 ModelState.AddModelError("", "Username sudah ada.");
                 return View(item);
             }
@@ -83,6 +89,14 @@ namespace MVC.UI.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(string Username)
         {
+            List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
+            List<SelectListItem> ListBranch = new List<SelectListItem>();
+            MCI.ForEach(t =>
+            {
+                ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
+            });
+            // Retrieve departments and build SelectList
+            ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             tbl_user existing = tbl_userItem.GetByPK(Username);
             return View(existing);
         }
@@ -101,12 +115,12 @@ namespace MVC.UI.Controllers
                 }
                 if (!string.IsNullOrEmpty(item.Password))
                     existing.Password = Web.Logic.Security.MD5Hash(item.Password);
-                existing.FullName = item.FullName;
-                existing.edited = DateTime.Now;
-                existing.editor = Utilities.Username;
-                existing.MachineName = Utilities.GetComputerName();
-                existing.IPAddress = Utilities.GetIpAddress();
-                existing.IsActive = 0;
+                    existing.FullName = item.FullName;
+                    existing.edited = DateTime.Now;
+                    existing.editor = Utilities.Username;
+                    existing.MachineName = Utilities.GetComputerName();
+                    existing.IPAddress = Utilities.GetIpAddress();
+                    existing.IsActive = 0;
                 // TODO: Add update logic here
                 tbl_user result = tbl_userItem.Update(existing);
                 return RedirectToAction("Index");
