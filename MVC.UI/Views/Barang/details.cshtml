@@ -31,13 +31,13 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Barang</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.ItemDesc, new { @class = "form-control", placeholder = "Nama Barang" })
+                        @Html.TextBoxFor(model => model.ItemDesc, new { @class = "form-control", placeholder = "Nama Barang", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.ItemDesc)
                     </div>
 
                     <div class="col-sm-1 control-label">Barcode</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Barcode, new { @class = "form-control", placeholder = "Barcode" })
+                        @Html.TextBoxFor(model => model.Barcode, new { @class = "form-control", placeholder = "Barcode", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Barcode)
                     </div>
 
@@ -46,12 +46,12 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kategori</div>
                     <div class="col-sm-3">
-                        @Html.DropDownListFor(model => model.Group_Code, ViewBag.GroupList as SelectList, new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.Group_Code, ViewBag.GroupList as SelectList, new { @class = "form-control" , disabled = "disabled" })
                     </div>
 
                     <div class="col-sm-1 control-label">UoM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM" })
+                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.UoM)
                     </div>
                 </div>
@@ -60,12 +60,12 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Harga Permintaan</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Price_Purchase, new { @class = "form-control", placeholder = "Harga Pembelian" })
+                        @Html.TextBoxFor(model => model.Price_Purchase, new { @class = "form-control", placeholder = "Harga Pembelian", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Price_Purchase)
                     </div>
                     <div class="col-sm-1 control-label">Harga Inventory</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Price_Inventory, new { @class = "form-control", placeholder = "Harga Inventory" })
+                        @Html.TextBoxFor(model => model.Price_Inventory, new { @class = "form-control", placeholder = "Harga Inventory", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Price_Inventory)
                     </div>
                 </div>
@@ -73,12 +73,12 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Stok</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", placeholder = "Stok" })
+                        @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", placeholder = "Stok", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Stock)
                     </div>
                     <div class="col-sm-1 control-label">Minimum Stock </div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "Buffer Stok" })
+                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "Buffer Stok", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Buffer_Stock)
                     </div>
                 </div>
@@ -87,13 +87,13 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Persentasi Perusahaan</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Company_Persentage, new { @class = "form-control", placeholder = "Company Persentage" })
+                        @Html.TextBoxFor(model => model.Company_Persentage, new { @class = "form-control", placeholder = "Company Persentage", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Company_Persentage)
                     </div>
 
                     <div class="col-sm-1 control-label">Vat Flag </div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Vat_Flag, new { @class = "form-control", placeholder = "Vat Flag" })
+                        @Html.TextBoxFor(model => model.Vat_Flag, new { @class = "form-control", placeholder = "Vat Flag", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Vat_Flag)
                     </div>
                 </div>
@@ -104,23 +104,17 @@
 
                     <div class="col-sm-2 control-label">Konversi</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Conversion, new { @class = "form-control", placeholder = "Conversion" })
+                        @Html.TextBoxFor(model => model.Conversion, new { @class = "form-control", placeholder = "Conversion", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Conversion)
                     </div>
 
                     <div class="col-sm-1 control-label">Batch No</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Batch_No, new { @class = "form-control", placeholder = "Batch No" })
-                        @Html.ValidationMessageFor(model => model.Batch_No)
+                        @Html.TextBoxFor(model => model.BatchNo, new { @class = "form-control", placeholder = "Batch No", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.BatchNo)
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-10">
-                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-                    </div>
-                </div>
             }
 
             <div>

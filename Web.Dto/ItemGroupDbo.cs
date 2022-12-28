@@ -9,7 +9,8 @@ namespace Web.Dto
         public string nama_tabel { get; set; }
         public string kode_tabel { get; set; }
         public string nama_panjang { get; set; }
-   
+
+        public string nama_pendek { get; set; }
 
         public ItemGroupDbo Map(System.Data.IDataReader reader)
         {
@@ -18,7 +19,8 @@ namespace Web.Dto
             obj.nama_tabel = reader["nama_tabel"].ToString();
             obj.kode_tabel = reader["kode_tabel"].ToString();
             obj.nama_panjang = reader["nama_panjang"].ToString();
-          
+            obj.nama_pendek = reader["nama_pendek"].ToString();
+
             return obj;
         }
     }

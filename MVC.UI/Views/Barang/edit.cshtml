@@ -1,15 +1,16 @@
-﻿@model Web.Dto.Master_BarangDbo
+﻿
+@model Web.Dto.Master_BarangDbo
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Item / Barang</h1>
+    <h1>Data Klien</h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Item / Barang</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Client</li>
     </ol>
 </section>
 
@@ -18,7 +19,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Tambah Item / Barang</h3>
+            <h3 class="box-title">Ubah Data Client</h3>
         </div>
         <div class="box-body">
 
@@ -26,7 +27,7 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
-
+                @Html.HiddenFor(model => model.id)
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Barang</div>
@@ -51,7 +52,7 @@
 
                     <div class="col-sm-1 control-label">UoM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM" })
+                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM"})
                         @Html.ValidationMessageFor(model => model.UoM)
                     </div>
                 </div>
@@ -60,12 +61,12 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Harga Permintaan</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Price_Purchase, new { @class = "form-control", placeholder = "Harga Pembelian" })
+                        @Html.TextBoxFor(model => model.Price_Purchase, new { @class = "form-control", placeholder = "Harga Pembelian"})
                         @Html.ValidationMessageFor(model => model.Price_Purchase)
                     </div>
                     <div class="col-sm-1 control-label">Harga Inventory</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Price_Inventory, new { @class = "form-control", placeholder = "Harga Inventory" })
+                        @Html.TextBoxFor(model => model.Price_Inventory, new { @class = "form-control", placeholder = "Harga Inventory"})
                         @Html.ValidationMessageFor(model => model.Price_Inventory)
                     </div>
                 </div>
@@ -73,12 +74,12 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Stok</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", placeholder = "Stok" })
+                        @Html.TextBoxFor(model => model.Stock, new { @class = "form-control", placeholder = "Stok"})
                         @Html.ValidationMessageFor(model => model.Stock)
                     </div>
                     <div class="col-sm-1 control-label">Minimum Stock </div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "Buffer Stok" })
+                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "Buffer Stok"})
                         @Html.ValidationMessageFor(model => model.Buffer_Stock)
                     </div>
                 </div>
@@ -87,13 +88,13 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Persentasi Perusahaan</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Company_Persentage, new { @class = "form-control", placeholder = "Company Persentage" })
+                        @Html.TextBoxFor(model => model.Company_Persentage, new { @class = "form-control", placeholder = "Company Persentage"})
                         @Html.ValidationMessageFor(model => model.Company_Persentage)
                     </div>
 
                     <div class="col-sm-1 control-label">Vat Flag </div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Vat_Flag, new { @class = "form-control", placeholder = "Vat Flag" })
+                        @Html.TextBoxFor(model => model.Vat_Flag, new { @class = "form-control", placeholder = "Vat Flag"})
                         @Html.ValidationMessageFor(model => model.Vat_Flag)
                     </div>
                 </div>
@@ -104,21 +105,21 @@
 
                     <div class="col-sm-2 control-label">Konversi</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Conversion, new { @class = "form-control", placeholder = "Conversion" })
+                        @Html.TextBoxFor(model => model.Conversion, new { @class = "form-control", placeholder = "Conversion"})
                         @Html.ValidationMessageFor(model => model.Conversion)
                     </div>
 
                     <div class="col-sm-1 control-label">Batch No</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Batch_No, new { @class = "form-control", placeholder = "Batch No" })
-                        @Html.ValidationMessageFor(model => model.Batch_No)
+                        @Html.TextBoxFor(model => model.BatchNo, new { @class = "form-control", placeholder = "Batch No"})
+                        @Html.ValidationMessageFor(model => model.BatchNo)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
                     </div>
                 </div>
             }

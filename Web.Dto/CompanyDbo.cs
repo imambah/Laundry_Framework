@@ -11,6 +11,7 @@ namespace Web.Dto
         public string nama_panjang { get; set; }
         public string nama_pendek { get; set; }
 
+
         public CompanyDbo Map(System.Data.IDataReader reader)
         {
             CompanyDbo obj = new CompanyDbo();

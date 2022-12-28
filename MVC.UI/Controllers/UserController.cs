@@ -37,7 +37,6 @@ namespace MVC.UI.Controllers
             {
                 ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
             });
-            // Retrieve departments and build SelectList
             ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             return View();
         }
@@ -83,6 +82,14 @@ namespace MVC.UI.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(string Username)
         {
+            List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
+            List<SelectListItem> ListBranch = new List<SelectListItem>();
+            MCI.ForEach(t =>
+            {
+                ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
+            });
+            // Retrieve departments and build SelectList
+            ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             tbl_user existing = tbl_userItem.GetByPK(Username);
             return View(existing);
         }

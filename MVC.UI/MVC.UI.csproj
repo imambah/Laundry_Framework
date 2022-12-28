@@ -305,6 +305,8 @@
     <Content Include="Views\Bank\details.cshtml" />
     <Content Include="Views\Barang\index.cshtml" />
     <Content Include="Views\Barang\Create.cshtml" />
+    <Content Include="Views\Barang\details.cshtml" />
+    <Content Include="Views\Barang\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
