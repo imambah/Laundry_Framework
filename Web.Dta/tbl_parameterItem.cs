@@ -71,7 +71,16 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<tbl_parameter>(context, new tbl_parameter()).FirstOrDefault();
         }
 
-      
+
+        public static List<tbl_parameter> Pricelist_GetTypeAll()
+        {
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "sp_parameter_GetByType";
+            context.AddParameter("@type", "pricelist");
+            return DBUtil.ExecuteMapper(context, new tbl_parameter());
+        }
+
         #endregion
 
     }

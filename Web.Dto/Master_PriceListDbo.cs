@@ -19,7 +19,7 @@ namespace Web.Dto
             obj.type = reader["type"].ToString();
             obj.service= reader["service"].ToString();
             obj.laundry = reader["laundry"] == DBNull.Value ? 0 : Convert.ToDouble(reader["laundry"]);
-            obj.laundry = reader["dry_clean"] == DBNull.Value ? 0 : Convert.ToDouble(reader["dry_clean"]);
+            obj.dry_clean = reader["dry_clean"] == DBNull.Value ? 0 : Convert.ToDouble(reader["dry_clean"]);
             return obj;
         }
     }
