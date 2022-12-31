@@ -1,4 +1,4 @@
-﻿@model Web.Dto.Master_PricelistDbo
+﻿@model Web.Dto.BOMDbo
 
 @{
     ViewBag.Title = "Create";
@@ -6,10 +6,10 @@
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Daftar Harga</h1>
+    <h1>Data Setting BOM</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Daftar Harga</li>
+        <li class="active">BOM</li>
     </ol>
 </section>
 
@@ -18,7 +18,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Tambah Daftar Harga</h3>
+            <h3 class="box-title">Tambah Setting BOM</h3>
         </div>
         <div class="box-body">
 
@@ -28,36 +28,30 @@
                 @Html.ValidationSummary(true)
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Type</div>
+                    <div class = "col-sm-2 control-label">Kode BOM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.type, new { @class = "form-control", placeholder = "Type" })
-                        @Html.ValidationMessageFor(model => model.type)
+                        @Html.TextBoxFor(model => model.kode_BOM, new { @class = "form-control", placeholder = "Kode BOM" })
+                        @Html.ValidationMessageFor(model => model.kode_BOM)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Service</div>
+                    <div class="col-sm-2 control-label">Keterangan BOM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.service, new { @class = "form-control", placeholder = "service" })
-                        @Html.ValidationMessageFor(model => model.service)
+                        @Html.TextBoxFor(model => model.keterangan_BOM, new { @class = "form-control", placeholder = "Keterangan BOM" })
+                        @Html.ValidationMessageFor(model => model.keterangan_BOM)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Laundry</div>
+                    <div class="col-sm-2 control-label">Harga Jual</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.laundry, new { @class = "form-control", placeholder = "Harga Laundry " })
-                        @Html.ValidationMessageFor(model => model.laundry)
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Dry Clean</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.dry_clean, new { @class = "form-control", placeholder = "Harga Dry Clean" })
-                        @Html.ValidationMessageFor(model => model.dry_clean)
+                        @Html.TextBoxFor(model => model.harga_jual, new { @class = "form-control", placeholder = "Harga Jual" })
+                        @Html.ValidationMessageFor(model => model.harga_jual)
                     </div>
                 </div>
 
+              
                 <div class="form-group">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">

@@ -44,8 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Master_PriceListDbo.cs" />
+    <Compile Include="BOMDbo.cs" />
     <Compile Include="Company_ProfileDbo.cs" />
+    <Compile Include="Master_PriceListDbo.cs" />
     <Compile Include="ItemGroupDbo.cs" />
     <Compile Include="Master_BarangDbo.cs" />
     <Compile Include="Master_NegaraDbo.cs" />

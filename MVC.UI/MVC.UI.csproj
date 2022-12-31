@@ -202,6 +202,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
+    <Compile Include="Controllers\BOMController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CompanyProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -313,6 +314,10 @@
     <Content Include="Views\Pricelist\index.cshtml" />
     <Content Include="Views\Pricelist\Create.cshtml" />
     <Content Include="Views\Pricelist\edit.cshtml" />
+    <Content Include="Views\BOM\index.cshtml" />
+    <Content Include="Views\BOM\Create.cshtml" />
+    <Content Include="Views\BOM\details.cshtml" />
+    <Content Include="Views\BOM\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
