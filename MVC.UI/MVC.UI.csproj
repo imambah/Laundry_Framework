@@ -208,6 +208,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\ParameterController.cs" />
+    <Compile Include="Controllers\PricelistController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -309,6 +310,8 @@
     <Content Include="Views\Barang\details.cshtml" />
     <Content Include="Views\Barang\edit.cshtml" />
     <Content Include="Views\CompanyProfile\index.cshtml" />
+    <Content Include="Views\Pricelist\index.cshtml" />
+    <Content Include="Views\Pricelist\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

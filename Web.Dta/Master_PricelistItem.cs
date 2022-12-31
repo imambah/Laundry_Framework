@@ -12,7 +12,7 @@ namespace Web.Dta
     /// </summary>    
     public partial class Master_PricelistItem
     {
-        public static List<Master_PricelistDbo> GetNegara()
+        public static List<Master_PricelistDbo> GetAll()
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_master_pricelist_GetAll";
