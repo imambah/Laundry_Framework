@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\BOMController.cs" />
+    <Compile Include="Controllers\BOM_DetailController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CompanyProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -322,6 +323,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="Views\BOM_Detail\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
