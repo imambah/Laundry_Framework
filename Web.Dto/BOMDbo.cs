@@ -1,6 +1,8 @@
 
 using DataAccessLayer;
 using System;
+using System.Collections.Generic;
+
 namespace Web.Dto
 {
     public class BOMDbo : IDataMapper<BOMDbo>
@@ -9,7 +11,9 @@ namespace Web.Dto
         public string kode_BOM { get; set; }
         public string keterangan_BOM { get; set; }
         public double harga_jual { get; set; }
-        
+
+        public List<BOMDetailDbo> Details { get; set; }
+
         public BOMDbo Map(System.Data.IDataReader reader)
         {
             BOMDbo obj = new BOMDbo();

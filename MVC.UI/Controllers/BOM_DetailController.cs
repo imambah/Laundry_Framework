@@ -3,43 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVC.UI.Models;
-using Web.Dta;
-using Web.Dto;
-using Web.Logic;
 
 namespace MVC.UI.Controllers
 {
-    public class BOMController : Controller
+    public class BOM_DetailController : Controller
     {
-        // GET: BOM
+        // GET: BOM_Detail
         public ActionResult Index()
         {
-            List<BOMDbo> list = BOMItem.GetAll();
-            return View(list);
+            return View();
         }
 
-        // GET: BOM/Details/5
+        // GET: BOM_Detail/Details/5
         public ActionResult Details(int id)
         {
-            BOMDbo existing = BOMItem.GetById(id);
-            return View(existing);
+            return View();
         }
 
-        // GET: BOM/Create
+        // GET: BOM_Detail/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: BOM/Create
+        // POST: BOM_Detail/Create
         [HttpPost]
-        public ActionResult Create(BOMDbo  collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-                BOMItem.Insert(collection);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -48,22 +42,20 @@ namespace MVC.UI.Controllers
             }
         }
 
-        // GET: BOM/Edit/5
+        // GET: BOM_Detail/Edit/5
         public ActionResult Edit(int id)
         {
-            BOMDbo existing = BOMItem.GetById(id);
-            return View(existing);
+            return View();
         }
 
-        // POST: BOM/Edit/5
+        // POST: BOM_Detail/Edit/5
         [HttpPost]
-        public ActionResult Edit(BOMDbo collection)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
 
-                BOMItem.Update(collection);
                 return RedirectToAction("Index");
             }
             catch
@@ -72,13 +64,13 @@ namespace MVC.UI.Controllers
             }
         }
 
-        // GET: BOM/Delete/5
+        // GET: BOM_Detail/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: BOM/Delete/5
+        // POST: BOM_Detail/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -93,12 +85,5 @@ namespace MVC.UI.Controllers
                 return View();
             }
         }
-
-        public ActionResult Viewdetail(string kode_BOM)
-        {
-            var existing = BOMItem.GetMasterDetailByCode(kode_BOM);
-            return View(existing);
-        }
-
     }
 }

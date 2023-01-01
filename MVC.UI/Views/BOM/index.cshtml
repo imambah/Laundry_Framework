@@ -69,7 +69,7 @@
                             <td>
                                 <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
                                 <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                <a class="text-success" href="@Url.Action("ViewDetail", new { id=item.id })" data-toggle="tooltip" title="View Detail"><i class="fa fa-navicon"></i></a>&nbsp;&nbsp;
+                                <a class="text-success" href="@Url.Action("ViewDetail", new { kode_BOM=item.kode_BOM })" data-toggle="tooltip" title="View Detail"><i class="fa fa-navicon"></i></a>&nbsp;&nbsp;
                                 <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
                             </td>
                         </tr>
@@ -77,61 +77,7 @@
                 </tbody>
             </table>
 
-            <div class="box-header with-border">
-                <h3 class="box-title">Data Detail BOM</h3>
-            </div>s
-                <table id="mydatatable" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Kode BOM
-                                @*@Html.DisplayNameFor(model => model.Username)*@
-                            </th>
-
-                            <th>
-                                Kode Barang
-                                @*@Html.DisplayNameFor(model => model.FullName)*@
-                            </th>
-                            <th>
-                                Jumlah
-                                @*@Html.DisplayNameFor(model => model.LastLogin)*@
-                            </th>
-
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.kode_BOM)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.keterangan_BOM)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.harga_jual)
-                                </td>
-
-                                <td>
-                                    <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
-                                    <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                    <a class="text-success" href="@Url.Action("ViewDetail", new { id=item.id })" data-toggle="tooltip" title="View Detail"><i class="fa fa-navicon"></i></a>&nbsp;&nbsp;
-                                    <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-
-            </div>
+           
             <!-- /.box-body -->
         </div>
     <!-- /.box -->

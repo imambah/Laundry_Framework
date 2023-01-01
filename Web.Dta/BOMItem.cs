@@ -38,12 +38,12 @@ namespace Web.Dta
         /// </summary>        
         public static BOMDbo Insert(BOMDbo obj)
         {
-           
+
             IDBHelper context = new DBHelper();
             string sqlQuery = "[sp_BOM_Insert]";
             context.AddParameter("@kode_BOM", obj.kode_BOM);
             context.AddParameter("@keterangan_BOM", obj.keterangan_BOM);
-            context.AddParameter("@harga_jual", obj.harga_jual); 
+            context.AddParameter("@harga_jual", obj.harga_jual);
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", "user_system");
             context.AddParameter("@update_date", DateTime.Now);
@@ -69,16 +69,40 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<BOMDbo>(context, new BOMDbo()).FirstOrDefault();
         }
 
-        //public static Master_BankDbo Delete(string client_code) {
-        //    IDBHelper context = new DBHelper();
-        //    context.AddParameter("@kode_klien", client_code);
-        //    string sqlQuery = "sp_master_client_Delete";
-        //    context.CommandText = sqlQuery;
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    //return DBUtil.ExecuteNonQuery(context);
-        //    return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
-        //}
         #endregion
 
+        #region
+        public static BOMDbo GetMasterDetailByCode(string kode_BOM)
+        {
+            BOMDbo master = null;
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "[sp_BOM_Detail_GetByCode]";
+            context.AddParameter("@kode_BOM", kode_BOM);
+            //return DBUtil.ExecuteMapper<BOMDetailDbo>(context, new BOMDetailDbo()).FirstOrDefault();
+            using (IDataReader reader = DBUtil.ExecuteReader(context))
+            {
+                while (reader.Read())
+                {
+                    master = new BOMDbo().Map(reader);
+                }
+                if (master != null)
+                {
+                    if (reader.NextResult())
+                    {
+                        master.Details = new List<BOMDetailDbo>();
+                        while (reader.Read())
+                        {
+
+                            master.Details.Add(new BOMDetailDbo().Map(reader));
+                        }
+                    }
+                }
+                // dah jalanin coba cak
+            }
+
+            return master;
+        }
+        #endregion
     }
 }
