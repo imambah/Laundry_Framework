@@ -1,15 +1,14 @@
-﻿
-@model Web.Dto.BOMDbo
+﻿@model Web.Dto.BOMDetailDbo
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data BOM</h1>
+    <h1>Data Detail BOM</h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">BOM</li>
     </ol>
 </section>
@@ -19,44 +18,45 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Detail Data BOM</h3>
+            <h3 class="box-title">Tambah Setting BOM</h3>
         </div>
         <div class="box-body">
-            <p>
-                <a class="text-success" href="@Url.Action("Add")"><i class="fa fa-plus"></i> Tambah</a>
-            </p>
+
             @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
-                @Html.HiddenFor(model => model.id)
-
+                @Html.HiddenFor(model => model.kode_BOM)
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode BOM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.kode_BOM, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.kode_BOM)
+                        @Html.TextBoxFor(model => model.kode_BOM, new { @class = "form-control", disabled = "disabled" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Keterangan BOM</div>
+                    <div class="col-sm-2 control-label">Item Code</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.keterangan_BOM, new { @class = "form-control", placeholder = "Keterangan BOM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.keterangan_BOM)
+                        @Html.DropDownListFor(model => model.item_code, ViewBag.BarangList as SelectList, new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Harga Jual</div>
+                    <div class="col-sm-2 control-label">Jumlah</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.harga_jual, new { @class = "form-control", placeholder = "Harga Jual", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.harga_jual)
+                        @Html.TextBoxFor(model => model.jumlah, new { @class = "form-control", placeholder = "Jumlah" })
+                        @Html.ValidationMessageFor(model => model.jumlah)
                     </div>
                 </div>
 
 
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                    </div>
+                </div>
             }
 
             <div>

@@ -320,6 +320,7 @@
     <Content Include="Views\BOM\details.cshtml" />
     <Content Include="Views\BOM\edit.cshtml" />
     <Content Include="Views\BOM\viewdetail.cshtml" />
+    <Content Include="Views\BOM\CreateDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

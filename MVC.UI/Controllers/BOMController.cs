@@ -100,5 +100,50 @@ namespace MVC.UI.Controllers
             return View(existing);
         }
 
+        public ActionResult CreateDetail(string kode_bom)
+        {
+            List<Master_BarangDbo> MasterBarang = Master_BarangItem.GetAll();
+            List<SelectListItem> ListItemBarang = new List<SelectListItem>();
+            MasterBarang.ForEach(t =>
+            {
+                ListItemBarang.Add(new SelectListItem() { Value = t.ItemCode, Text = t.ItemCode +"-"+ t.ItemDesc});
+            });
+            ViewBag.BarangList = new SelectList(ListItemBarang, "Value", "Text");
+
+            BOMDetailDbo bomdetail = new BOMDetailDbo();
+            bomdetail.kode_BOM = kode_bom;
+            return View(bomdetail);
+        }
+
+        [HttpPost]
+        public ActionResult CreateDetail(BOMDetailDbo collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                BOMItem.InsertDetail(collection);
+                return RedirectToAction("Viewdetail", new { kode_BOM = collection.kode_BOM });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        // POST: BOM/Create
+        [HttpPost]
+        public ActionResult Viewdetail(BOMDetailDbo collection)
+        {
+            try
+            {
+                return RedirectToAction("CreateDetail", new { kode_bom = collection.kode_BOM });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        
     }
 }

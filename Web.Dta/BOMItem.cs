@@ -103,6 +103,23 @@ namespace Web.Dta
 
             return master;
         }
+
+        public static BOMDetailDbo InsertDetail(BOMDetailDbo obj)
+        {
+
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_BOM_Detail_Insert]";
+            context.AddParameter("@kode_BOM", obj.kode_BOM);
+            context.AddParameter("@item_code", obj.item_code);
+            context.AddParameter("@jumlah", obj.jumlah);
+            //context.AddParameter("@create_date", DateTime.Now);
+            //context.AddParameter("@create_by", "user_system");
+            //context.AddParameter("@update_date", DateTime.Now);
+            //context.AddParameter("@update_by", "user_system");
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<BOMDetailDbo>(context, new BOMDetailDbo()).FirstOrDefault();
+        }
         #endregion
     }
 }

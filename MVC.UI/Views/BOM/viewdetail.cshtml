@@ -22,12 +22,11 @@
             <h3 class="box-title">Detail Data BOM</h3>
         </div>
         <div class="box-body">
-
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm(null,null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
-                // @Html.HiddenFor(model => model.id_detail)
+
 
 
                 <div class="form-group">
@@ -55,8 +54,12 @@
                 </div>
 
 
+                @Html.HiddenFor(model => model.kode_BOM)
+                <p>
+                    @*<a class="text-success" href="@Url.Action("Add")"><i class="fa fa-plus"></i> Tambah</a>*@
+                    <input type="submit" value="Tambah Data Barang" id="Submit" class="btn btn-success" />
+                </p>
             }
-
 
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
