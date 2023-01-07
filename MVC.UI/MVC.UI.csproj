@@ -322,7 +322,7 @@
     <Content Include="Views\BOM\edit.cshtml" />
     <Content Include="Views\BOM\viewdetail.cshtml" />
     <Content Include="Views\BOM\CreateDetail.cshtml" />
-    <Content Include="Views\Pos\Create.cshtml" />
+    <Content Include="Views\Pos\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
