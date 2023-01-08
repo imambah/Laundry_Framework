@@ -67,8 +67,8 @@ namespace Web.Dta
             context.AddParameter("@COA", obj.COA);
             context.AddParameter("@TOP", obj.TOP);
             context.AddParameter("@profit_share", obj.profit_share);
-            context.AddParameter("@is_supplier", obj.is_supplier);
-            context.AddParameter("@is_customer", obj.is_customer);
+            //context.AddParameter("@is_supplier", obj.is_supplier);
+            //context.AddParameter("@is_customer", obj.is_customer);
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", "user_system");
             context.AddParameter("@update_date", DateTime.Now);
@@ -104,8 +104,8 @@ namespace Web.Dta
             context.AddParameter("@COA", obj.COA);
             context.AddParameter("@TOP", obj.TOP);
             context.AddParameter("@profit_share", obj.profit_share);
-            context.AddParameter("@is_supplier", obj.is_supplier);
-            context.AddParameter("@is_customer", obj.is_customer);
+            //context.AddParameter("@is_supplier", obj.is_supplier);
+            //context.AddParameter("@is_customer", obj.is_customer);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
             string sqlQuery = "sp_master_client_Update";

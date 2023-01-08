@@ -25,8 +25,8 @@ namespace Web.Dto
         public string bank_name { get; set; }
         public string bank_branch { get; set; }
         public string credit_limit { get; set; }
-        public bool is_supplier { get; set; }
-        public bool is_customer { get; set; }
+        //public bool is_supplier { get; set; }
+        //public bool is_customer { get; set; }
         public DateTime ? create_date{ get; set; }
 		public string create_by { get; set; }
 		public DateTime ? update_date { get; set; }
@@ -63,8 +63,8 @@ namespace Web.Dto
             obj.COA = reader["COA"].ToString();
             obj.TOP = reader["TOP"].ToString();
             obj.profit_share = reader["profit_share"] == DBNull.Value  ? 0: Convert.ToDouble(reader["profit_share"]);
-            obj.is_supplier = Convert.ToBoolean(reader["is_supplier"]);
-            obj.is_customer = Convert.ToBoolean(reader["is_customer"]); 
+            //obj.is_supplier = Convert.ToBoolean(reader["is_supplier"]);
+            //obj.is_customer = Convert.ToBoolean(reader["is_customer"]); 
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
