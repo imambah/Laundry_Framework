@@ -46,6 +46,7 @@
     <Compile Include="BOMItem.cs" />
     <Compile Include="Master_BarangItem.cs" />
     <Compile Include="Master_ItemGroupItem.cs" />
+    <Compile Include="Master_SupplierItem.cs" />
     <Compile Include="Master_PricelistItem.cs" />
     <Compile Include="Master_NegaraItem.cs" />
     <Compile Include="Master_CompanyItem.cs" />

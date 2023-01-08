@@ -56,6 +56,49 @@ namespace MVC.UI.Controllers
             //return View();
         }
 
+        // POST: Client/Edit/5
+        [HttpPost]
+        public ActionResult Edit( Master_BankDbo coll)
+        {
+            try
+            {
+                Master_BankItem.Update(coll, "N");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(coll);
+            }
+        }
+
+        // GET: Client/Delete/5
+        public ActionResult Delete(int id)
+        {
+            Master_BankDbo existing = Master_BankItem.GetById(id);
+
+            Master_BankItem.Update(existing, "Y");
+            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+        }
+
+
+        // POST: Parameter/Delete/5
+        [HttpPost]
+        public ActionResult Delete(Master_BankDbo coll)
+        {
+            try
+            {
+                Master_BankItem.Update(coll,"Y");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(coll);
+            }
+        }
+
+
         //// POST: Parameter/Edit/5
         //[HttpPost]
         //public ActionResult Edit(int id, tbl_parameter item)
@@ -84,21 +127,7 @@ namespace MVC.UI.Controllers
         //    return View();
         //}
 
-        //// POST: Parameter/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
 

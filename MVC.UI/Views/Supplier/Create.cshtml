@@ -4,26 +4,6 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-@{
-    List<SelectListItem> listItems = new List<SelectListItem>();
-    listItems.Add(new SelectListItem
-    {
-        Text = "Agent",
-        Value = "Agent"
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Corporate",
-        Value = "Corporate",
-        Selected = true
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Hotel",
-        Value = "Hotel"
-    });
-}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Data Konsumen</h1>
@@ -49,9 +29,9 @@
 
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Konsumen</div>
+                    <div class="col-sm-2 control-label">Nama Klien</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Konsumen" })
+                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Klien" })
                         @Html.ValidationMessageFor(model => model.nama_klien)
                     </div>
                 </div>
@@ -101,13 +81,13 @@
 
 
                 <!--<div class="form-group">-->
-                @*@Html.LabelFor(model => model.BranchCode, new { @class = "col-sm-2 control-label" })*@
-                <!--<div class="col-sm-2 control-label">Negara</div>
-            <div class="col-sm-4">
-                @Html.DropDownListFor(model => model.negara, ViewBag.NegaraList as SelectList, new { @class = "form-control" })
+                    @*@Html.LabelFor(model => model.BranchCode, new { @class = "col-sm-2 control-label" })*@
+                    <!--<div class="col-sm-2 control-label">Negara</div>
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(model => model.negara, ViewBag.NegaraList as SelectList, new { @class = "form-control" })
 
-            </div>
-        </div>-->
+                    </div>
+                </div>-->
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Pos</div>
@@ -177,13 +157,10 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Jenis Konsumen</div>
+                    <div class="col-sm-2 control-label">Status</div>
                     <div class="col-sm-8">
-                        @*@Html.DropDownList(model => model.status, new { @class = "form-control", placeholder = "Jenis Konsumen" })
-                    @Html.ValidationMessageFor(model => model.status)*@
-
-                        @Html.DropDownListFor(model => model.tipe_konsumen, listItems, "-- Select Jenis Konsumen --", new { @class = "form-control", placeholder = "Jenis Konsumen" })
-                        @Html.ValidationMessageFor(model => model.tipe_konsumen)
+                        @Html.TextBoxFor(model => model.status, new { @class = "form-control", placeholder = "Status" })
+                        @Html.ValidationMessageFor(model => model.status)
                     </div>
                 </div>
 
@@ -204,20 +181,24 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Profit Share</div>
+                    <div class="col-sm-2 control-label">profit_share</div>
                     <div class="col-sm-8">
                         @Html.TextBoxFor(model => model.profit_share, new { @class = "form-control", placeholder = "profit_share" })
                         @Html.ValidationMessageFor(model => model.profit_share)
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Kredit Limit</div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.credit_limit, new { @class = "form-control", placeholder = "Kredit Limit" })
-                        @Html.ValidationMessageFor(model => model.credit_limit)
+
+                @*<div class="form-group">
+                    <div class="col-sm-2 control-label">Sebagai</div>
+                    <div class="col-sm-2">
+
+                        @Html.CheckBoxFor(model => model.is_customer)  Konsumen
                     </div>
-                </div>
+                    <div class="col-sm-2">
+                        @Html.CheckBoxFor(model => model.is_supplier)  Suplier
+                    </div>
+                </div>*@
 
 
                 <div class="form-group">

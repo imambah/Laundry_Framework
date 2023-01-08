@@ -59,23 +59,23 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
         }
 
-        //public static Master_BankDbo Update(Master_BankDbo obj)
-        //{
+        public static Master_BankDbo Update(Master_BankDbo obj,string isdelete)
+        {
 
-        //    IDBHelper context = new DBHelper(); 
-        //    //context.AddParameter("@kode_klien", obj.kode_klien);
-        //    //context.AddParameter("@nama_klien", obj.nama_klien);
-        //    //context.AddParameter("@alamat", obj.alamat);
-        //    //context.AddParameter("@no_telp", obj.no_telp);
-        //    //context.AddParameter("@is_supplier", obj.is_supplier);
-        //    //context.AddParameter("@is_customer", obj.is_customer);
-        //    //context.AddParameter("@update_date", DateTime.Now);
-        //    context.AddParameter("@update_by", "user_system_update");
-        //    string sqlQuery = "sp_master_client_Update";
-        //    context.CommandText = sqlQuery;
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
-        //}
+            IDBHelper context = new DBHelper();
+            context.AddParameter("@id", obj.id);
+            context.AddParameter("@BankID", obj.BankID);
+            context.AddParameter("@Description", obj.Description);
+            context.AddParameter("@Area", obj.Area);
+            context.AddParameter("@Account", obj.Account);
+            context.AddParameter("@Balance", obj.Balance);
+            context.AddParameter("@isdelete", isdelete);
+            context.AddParameter("@update_by", "user_system_update");
+            string sqlQuery = "[sp_master_bank_Update]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
+        }
 
         //public static Master_BankDbo Delete(string client_code) {
         //    IDBHelper context = new DBHelper();
