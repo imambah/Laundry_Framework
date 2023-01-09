@@ -77,7 +77,7 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
         }
 
-        public static Master_Klien Update(Master_Klien obj)
+        public static Master_Klien Update(Master_Klien obj,string isdelete)
         {
 
             IDBHelper context = new DBHelper();
@@ -104,6 +104,7 @@ namespace Web.Dta
             context.AddParameter("@profit_share", obj.profit_share);
             context.AddParameter("@credit_limit", obj.credit_limit);
             context.AddParameter("@tipe_konsumen", obj.tipe_konsumen);
+            context.AddParameter("@isdelete", isdelete);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
             string sqlQuery = "sp_master_client_Update";

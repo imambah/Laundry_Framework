@@ -69,7 +69,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                Master_KlienItem.Update(coll);
+                Master_KlienItem.Update(coll, "N");
                 return RedirectToAction("Index");
             }
             catch
@@ -90,20 +90,6 @@ namespace MVC.UI.Controllers
             return RedirectToAction("Index");
         }
 
-        // POST: Client/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }

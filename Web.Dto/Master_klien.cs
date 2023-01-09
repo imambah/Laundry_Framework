@@ -37,6 +37,8 @@ namespace Web.Dto
         public string TOP { get; set; }
         public double profit_share { get; set; }
 
+        public int  is_delete { get; set; }
+
         public Master_Klien Map(System.Data.IDataReader reader)
         {
             Master_Klien obj = new Master_Klien();
@@ -68,6 +70,7 @@ namespace Web.Dto
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
             obj.update_by = reader["update_by"].ToString();
+            obj.is_delete = reader["is_delete"] == DBNull.Value? 0 : Convert.ToInt32(reader["is_delete"]);
             return obj;
         }
     }
