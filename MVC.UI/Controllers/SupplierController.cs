@@ -25,27 +25,35 @@ namespace MVC.UI.Controllers
         //    return View();
         //}
 
-        //// GET: Supplier/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Supplier/Create
+        public ActionResult Create()
+        {
+            List<Master_NegaraDbo> MN = Master_NegaraItem.GetNegara();
+            List<SelectListItem> ListNegara = new List<SelectListItem>();
+            MN.ForEach(t =>
+            {
+                ListNegara.Add(new SelectListItem() { Value = t.id.ToString(), Text = t.nation_name });
+            });
+            // Retrieve departments and build SelectList
+            ViewBag.NegaraList = new SelectList(ListNegara, "Value", "Text");
+            return View();
+        }
 
-        //// POST: Supplier/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        // POST: Client/Create
+        [HttpPost]
+        public ActionResult Create(Master_SupplierDbo Coll)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                Master_SupplierItem.Insert(Coll);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         //// GET: Supplier/Edit/5
         //public ActionResult Edit(int id)

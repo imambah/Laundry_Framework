@@ -1,4 +1,4 @@
-﻿@model Web.Dto.Master_Klien
+﻿@model Web.Dto.Master_SupplierDbo
 
 @{
     ViewBag.Title = "Create";
@@ -6,10 +6,10 @@
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Konsumen</h1>
+    <h1>Data Suplier</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Konsumen</li>
+        <li class="active">Suplier</li>
     </ol>
 </section>
 
@@ -18,7 +18,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Tambah Data Konsumen</h3>
+            <h3 class="box-title">Tambah Data Suplier</h3>
         </div>
         <div class="box-body">
 
@@ -29,10 +29,10 @@
 
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Klien</div>
+                    <div class="col-sm-2 control-label">Nama Suplier</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Klien" })
-                        @Html.ValidationMessageFor(model => model.nama_klien)
+                        @Html.TextBoxFor(model => model.nama_suplier, new { @class = "form-control", placeholder = "Nama Suplier" })
+                        @Html.ValidationMessageFor(model => model.nama_suplier)
                     </div>
                 </div>
 
@@ -181,10 +181,10 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">profit_share</div>
+                    <div class="col-sm-2 control-label">Margin</div>
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.profit_share, new { @class = "form-control", placeholder = "profit_share" })
-                        @Html.ValidationMessageFor(model => model.profit_share)
+                        @Html.TextBoxFor(model => model.margin, new { @class = "form-control", placeholder = "margin" })
+                        @Html.ValidationMessageFor(model => model.margin)
                     </div>
                 </div>
 
