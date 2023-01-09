@@ -81,13 +81,13 @@
 
 
                 <!--<div class="form-group">-->
-                    @*@Html.LabelFor(model => model.BranchCode, new { @class = "col-sm-2 control-label" })*@
-                    <!--<div class="col-sm-2 control-label">Negara</div>
-                    <div class="col-sm-4">
-                        @Html.DropDownListFor(model => model.negara, ViewBag.NegaraList as SelectList, new { @class = "form-control" })
+                @*@Html.LabelFor(model => model.BranchCode, new { @class = "col-sm-2 control-label" })*@
+                <!--<div class="col-sm-2 control-label">Negara</div>
+            <div class="col-sm-4">
+                @Html.DropDownListFor(model => model.negara, ViewBag.NegaraList as SelectList, new { @class = "form-control" })
 
-                    </div>
-                </div>-->
+            </div>
+        </div>-->
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Pos</div>
@@ -119,46 +119,42 @@
                         @Html.TextBoxFor(model => model.tax_id, new { @class = "form-control", placeholder = "ID Pajak" })
                         @Html.ValidationMessageFor(model => model.tax_id)
                     </div>
-                    <div class="col-sm-1 control-label">Nama Pajak </div>
-                    <div class="col-sm-5">
-                        @Html.TextBoxFor(model => model.tax_name, new { @class = "form-control", placeholder = "Nama Pajak" })
-                        @Html.ValidationMessageFor(model => model.tax_name)
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Alamat Pajak </div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.tax_address, new { @class = "form-control", placeholder = "Alamat Pajak" })
-                        @Html.ValidationMessageFor(model => model.tax_address)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Akun Bank</div>
+                    <div class="col-sm-3 control-label">Akun Bank</div>
                     <div class="col-sm-2">
                         @Html.TextBoxFor(model => model.bank_account, new { @class = "form-control", placeholder = "Akun Bank" })
                         @Html.ValidationMessageFor(model => model.bank_account)
                     </div>
+                </div>
 
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Pajak </div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.tax_name, new { @class = "form-control", placeholder = "Nama Pajak" })
+                        @Html.ValidationMessageFor(model => model.tax_name)
+                    </div>
                     <div class="col-sm-1 control-label">Nama Bank</div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.bank_name, new { @class = "form-control", placeholder = "Nama Bank" })
                         @Html.ValidationMessageFor(model => model.bank_name)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label"> Cabang </div>
+                    <div class="col-sm-2 control-label">Alamat Pajak </div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.tax_address, new { @class = "form-control", placeholder = "Alamat Pajak" })
+                        @Html.ValidationMessageFor(model => model.tax_address)
+                    </div>
+                    <div class="col-sm-1 control-label"> Cabang </div>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.bank_branch, new { @class = "form-control", placeholder = "Cabang" })
                         @Html.ValidationMessageFor(model => model.bank_branch)
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Status</div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.status, new { @class = "form-control", placeholder = "Status" })
                         @Html.ValidationMessageFor(model => model.status)
                     </div>
@@ -166,7 +162,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">COA</div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.COA, new { @class = "form-control", placeholder = "COA" })
                         @Html.ValidationMessageFor(model => model.COA)
                     </div>
@@ -174,7 +170,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">TOP</div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.TOP, new { @class = "form-control", placeholder = "TOP" })
                         @Html.ValidationMessageFor(model => model.TOP)
                     </div>
@@ -182,7 +178,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Margin</div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.margin, new { @class = "form-control", placeholder = "margin" })
                         @Html.ValidationMessageFor(model => model.margin)
                     </div>
@@ -190,15 +186,15 @@
 
 
                 @*<div class="form-group">
-                    <div class="col-sm-2 control-label">Sebagai</div>
-                    <div class="col-sm-2">
+                <div class="col-sm-2 control-label">Sebagai</div>
+                <div class="col-sm-2">
 
-                        @Html.CheckBoxFor(model => model.is_customer)  Konsumen
-                    </div>
-                    <div class="col-sm-2">
-                        @Html.CheckBoxFor(model => model.is_supplier)  Suplier
-                    </div>
-                </div>*@
+                    @Html.CheckBoxFor(model => model.is_customer)  Konsumen
+                </div>
+                <div class="col-sm-2">
+                    @Html.CheckBoxFor(model => model.is_supplier)  Suplier
+                </div>
+            </div>*@
 
 
                 <div class="form-group">

@@ -19,11 +19,6 @@ namespace MVC.UI.Controllers
             return View(list);
         }
 
-        // GET: Supplier/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
 
         // GET: Supplier/Create
         public ActionResult Create()
@@ -55,48 +50,36 @@ namespace MVC.UI.Controllers
             }
         }
 
-        //// GET: Supplier/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
+        public ActionResult Edit(string supplier_code)
+        {
+            Master_SupplierDbo existing = Master_SupplierItem.GetBySupplier_Code(supplier_code);
+            return View(existing);
+        }
 
-        //// POST: Supplier/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
+        // POST: Client/Edit/5
+        [HttpPost]
+        public ActionResult Edit( Master_SupplierDbo coll)
+        {
+            try
+            {
+                Master_SupplierItem.Update(coll, "N");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(coll);
+            }
+        }
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        public ActionResult Delete(string supplier_code)
+        {
+            Master_SupplierDbo existing = Master_SupplierItem.GetBySupplier_Code(supplier_code);
 
-        //// GET: Supplier/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+            Master_SupplierItem.Update(existing, "Y");
+            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
 
-        //// POST: Supplier/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
+        }
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }

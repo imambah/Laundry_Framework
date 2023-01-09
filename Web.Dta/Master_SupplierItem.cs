@@ -21,15 +21,15 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new Master_SupplierDbo());
         }
 
-        //public static Master_SupplierDbo GetByClient_Code(string client_code)
-        //{
+        public static Master_SupplierDbo GetBySupplier_Code(string supplier_code)
+        {
 
-        //    IDBHelper context = new DBHelper();
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    context.CommandText = "sp_master_supplier_GetByClientCode";
-        //    context.AddParameter("@client_code", client_code);
-        //    return DBUtil.ExecuteMapper<Master_SupplierDbo>(context, new Master_SupplierDbo()).FirstOrDefault();
-        //}
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "sp_master_supplier_GetBySupplierCode";
+            context.AddParameter("@supplier_code", supplier_code);
+            return DBUtil.ExecuteMapper<Master_SupplierDbo>(context, new Master_SupplierDbo()).FirstOrDefault();
+        }
 
         #region Data Access
 
@@ -75,51 +75,52 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_SupplierDbo>(context, new Master_SupplierDbo()).FirstOrDefault();
         }
 
-        //public static Master_Klien Update(Master_Klien obj)
-        //{
+        public static Master_SupplierDbo Update(Master_SupplierDbo obj, string is_delete)
+        {
 
-        //    IDBHelper context = new DBHelper();
-        //    context.AddParameter("@kode_klien", obj.kode_klien);
-        //    context.AddParameter("@nama_klien", obj.nama_klien);
-        //    context.AddParameter("@alamat", obj.alamat);
-        //    context.AddParameter("@alamat2", obj.alamat2);
-        //    context.AddParameter("@kota", obj.kota);
-        //    context.AddParameter("@area", obj.area);
-        //    context.AddParameter("@negara", obj.negara);
-        //    context.AddParameter("@kodepos", obj.kodepos);
-        //    context.AddParameter("@no_telp", obj.no_telp);
-        //    context.AddParameter("@email", obj.email);
-        //    context.AddParameter("@PIC", obj.PIC);
-        //    context.AddParameter("@tax_id", obj.tax_id);
-        //    context.AddParameter("@tax_name", obj.tax_name);
-        //    context.AddParameter("@tax_address", obj.tax_address);
-        //    context.AddParameter("@bank_account", obj.bank_account);
-        //    context.AddParameter("@bank_name", obj.bank_name);
-        //    context.AddParameter("@bank_branch", obj.bank_branch);
-        //    context.AddParameter("@credit_limit", obj.credit_limit);
-        //    context.AddParameter("@status", obj.status);
-        //    context.AddParameter("@COA", obj.COA);
-        //    context.AddParameter("@TOP", obj.TOP);
-        //    context.AddParameter("@profit_share", obj.profit_share);
-        //    //context.AddParameter("@is_supplier", obj.is_supplier);
-        //    //context.AddParameter("@is_customer", obj.is_customer);
-        //    context.AddParameter("@update_date", DateTime.Now);
-        //    context.AddParameter("@update_by", "user_system_update");
-        //    string sqlQuery = "sp_master_client_Update";
-        //    context.CommandText = sqlQuery;
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
-        //}
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_master_supplier_Update";
+            context.AddParameter("@kode_suplier", obj.kode_suplier);
+            context.AddParameter("@nama_suplier", obj.nama_suplier);
+            context.AddParameter("@alamat", obj.alamat);
+            context.AddParameter("@alamat2", obj.alamat2);
+            context.AddParameter("@kota", obj.kota);
+            context.AddParameter("@area", obj.area);
+            context.AddParameter("@negara", obj.negara);
+            context.AddParameter("@kodepos", obj.kodepos);
+            context.AddParameter("@no_telp", obj.no_telp);
+            context.AddParameter("@email", obj.email);
+            context.AddParameter("@PIC", obj.PIC);
+            context.AddParameter("@tax_id", obj.tax_id);
+            context.AddParameter("@tax_name", obj.tax_name);
+            context.AddParameter("@tax_address", obj.tax_address);
+            context.AddParameter("@bank_account", obj.bank_account);
+            context.AddParameter("@bank_name", obj.bank_name);
+            context.AddParameter("@bank_branch", obj.bank_branch);
+            context.AddParameter("@status", obj.status);
+            context.AddParameter("@COA", obj.COA);
+            context.AddParameter("@TOP", obj.TOP);
+            context.AddParameter("@margin", obj.margin);
+            context.AddParameter("@isdelete", is_delete);
+            context.AddParameter("@update_date", DateTime.Now);
+            context.AddParameter("@update_by", "user_system_update");
+            
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<Master_SupplierDbo>(context, new Master_SupplierDbo()).FirstOrDefault();
+        }
 
-        //public static Master_Klien Delete(string client_code) {
-        //    IDBHelper context = new DBHelper();
-        //    context.AddParameter("@kode_klien", client_code);
-        //    string sqlQuery = "sp_master_client_Delete";
-        //    context.CommandText = sqlQuery;
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    //return DBUtil.ExecuteNonQuery(context);
-        //    return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
-        //}
+        public static Master_SupplierDbo Delete(string supplier_code, string is_delete)
+        {
+            IDBHelper context = new DBHelper();
+            context.AddParameter("@kode_suplier", supplier_code);
+            context.AddParameter("@isdelete", is_delete);
+            string sqlQuery = "sp_master_supplier_Update";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            //return DBUtil.ExecuteNonQuery(context);
+            return DBUtil.ExecuteMapper<Master_SupplierDbo>(context, new Master_SupplierDbo()).FirstOrDefault();
+        }
         #endregion
 
     }
