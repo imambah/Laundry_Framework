@@ -49,7 +49,11 @@
                             No Telp
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
-                       
+                        <th>
+                            Tipe 
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+
 
                         <th>Aksi</th>
                     </tr>
@@ -73,7 +77,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.no_telp)
                             </td>
-                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tipe_konsumen)
+                            </td>
                             <td>
 
                                 <a class="text-primary" href="@Url.Action("Details", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
