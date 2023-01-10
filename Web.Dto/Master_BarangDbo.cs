@@ -10,6 +10,7 @@ namespace Web.Dto
         public string ItemDesc { get; set; }
         public string Barcode { get; set; }
         public string Group_Code { get; set; }
+        public string Group_Desc { get; set; }
         public string UoM { get; set; }
         public double Price_Purchase { get; set; }
         public double Price_Inventory { get; set; }
@@ -34,11 +35,7 @@ namespace Web.Dto
             obj.Barcode = reader["Barcode"].ToString();
             obj.Group_Code = reader["Group_Code"] == DBNull.Value ? null : reader["Group_Code"].ToString();
             obj.UoM = reader["UoM"].ToString();
-            obj.Price_Purchase = Convert.ToDouble(reader["Price_Purchase"]); 
-            obj.Price_Inventory = Convert.ToDouble(reader["Price_Inventory"]);
-            obj.Stock = reader["Stock"].ToString();
             obj.Buffer_Stock = reader["Buffer_Stock"].ToString();
-            obj.Company_Persentage = reader["Company_Persentage"].ToString();
             obj.Vat_Flag = reader["Vat_Flag"].ToString();
             obj.Conversion = reader["Conversion"].ToString();
             obj.BatchNo = reader["BatchNo"].ToString();
@@ -46,6 +43,7 @@ namespace Web.Dto
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
             obj.update_by = reader["update_by"].ToString();
+            obj.Group_Desc = reader["Group_Desc"].ToString();
             return obj;
         }
     }

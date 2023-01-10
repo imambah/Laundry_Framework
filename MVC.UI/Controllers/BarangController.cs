@@ -85,22 +85,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                //Master_BarangDbo tblParam = new Master_BarangDbo();
-                //tblParam.id = id;
-                //tblParam.ItemCode = item.ItemCode.ToString();
-                //tblParam.ItemDesc = item.ItemDesc.ToString();
-                //tblParam.Barcode = item.Barcode.ToString();
-                //tblParam.Group_Code = item.Group_Code.ToString();
-                //tblParam.UoM = item.UoM.ToString();
-                //tblParam.Price_Purchase = item.Price_Purchase;
-                //tblParam.Price_Inventory = item.Price_Inventory;
-                //tblParam.Stock = item.Stock;
-                //tblParam.Buffer_Stock = item.Buffer_Stock;
-                //tblParam.Company_Persentage = item.Company_Persentage;
-                //tblParam.Vat_Flag = item.Vat_Flag;
-                //tblParam.Conversion = item.Conversion;
-                //tblParam.BatchNo = item.BatchNo;
-                Master_BarangItem.Update(item);
+                Master_BarangItem.Update(item,"N");
                 return RedirectToAction("Index");
             }
             catch
@@ -109,27 +94,14 @@ namespace MVC.UI.Controllers
             }
         }
 
-        //// GET: Parameter/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+        public ActionResult Delete(int id)
+        {
+            Master_BarangDbo existing = Master_BarangItem.GetById(id);
+            Master_BarangItem.Update(existing, "Y");
+            return RedirectToAction("Index");
 
-        //// POST: Parameter/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
+        }
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
 

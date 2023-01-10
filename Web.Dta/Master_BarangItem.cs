@@ -49,15 +49,10 @@ namespace Web.Dta
             context.AddParameter("@ItemDesc", obj.ItemDesc);
             context.AddParameter("@Barcode", obj.Barcode);
             context.AddParameter("@UoM", obj.UoM);
-            context.AddParameter("@Price_Purchase", obj.Price_Purchase);
-            context.AddParameter("@Price_Inventory", obj.Price_Inventory);
-            context.AddParameter("@Stock", obj.Stock);
             context.AddParameter("@Buffer_Stock", obj.Buffer_Stock);
-            context.AddParameter("@Company_Persentage", obj.Company_Persentage);
             context.AddParameter("@Vat_Flag", obj.Vat_Flag);
             context.AddParameter("@Conversion", obj.Conversion);
             context.AddParameter("@BatchNo", obj.BatchNo);
-            context.AddParameter("@Group_Code", obj.Group_Code);
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", "user_system");
             context.AddParameter("@update_date", DateTime.Now);
@@ -67,25 +62,20 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_BarangDbo>(context, new Master_BarangDbo()).FirstOrDefault();
         }
 
-        public static Master_BankDbo Update(Master_BarangDbo obj)
+        public static Master_BankDbo Update(Master_BarangDbo obj, string is_delete)
         {
             IDBHelper context = new DBHelper();
             context.AddParameter("@id", obj.id);
-            context.AddParameter("@ItemCode", obj.ItemCode);
             context.AddParameter("@ItemDesc", obj.ItemDesc);
             context.AddParameter("@Barcode", obj.Barcode);
             context.AddParameter("@UoM", obj.UoM);
-            context.AddParameter("@Price_Purchase", obj.Price_Purchase);
-            context.AddParameter("@Price_Inventory", obj.Price_Inventory);
-            context.AddParameter("@Stock", obj.Stock);
             context.AddParameter("@Buffer_Stock", obj.Buffer_Stock);
-            context.AddParameter("@Company_Persentage", obj.Company_Persentage);
             context.AddParameter("@Vat_Flag", obj.Vat_Flag);
             context.AddParameter("@Conversion", obj.Conversion);
             context.AddParameter("@BatchNo", obj.BatchNo);
-            context.AddParameter("@Group_Code", obj.Group_Code);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@isdelete", is_delete); 
             string sqlQuery = "sp_master_barang_Update";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

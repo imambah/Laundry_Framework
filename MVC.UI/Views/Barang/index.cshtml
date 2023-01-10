@@ -41,7 +41,7 @@
                             @*@Html.DisplayNameFor(model => model.FullName)*@
                         </th>
                         <th>
-                            ID Kategori
+                            Kategori
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
                         <th>
@@ -49,10 +49,7 @@
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
                        
-                        <th>
-                            Stock
-                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
-                        </th>
+                      
                         <th>
                             Minimum Stock
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
@@ -72,7 +69,7 @@
                         </th>
                        
 
-                        <th></th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -86,22 +83,15 @@
                                 @Html.DisplayFor(modelItem => item.ItemDesc)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ItemCode)
+                                @Html.DisplayFor(modelItem => item.Barcode)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Group_Code)
+                                @Html.DisplayFor(modelItem => item.Group_Desc)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.UoM)
                             </td>
-
-                           
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Stock)
-                            </td>
-
-                            <td>
+                             <td>
                                 @Html.DisplayFor(modelItem => item.Buffer_Stock)
                             </td>
 
