@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Konsumen</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Konsumen" })
+                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Konsumen", required = "required" })
                         @Html.ValidationMessageFor(model => model.nama_klien)
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Email</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email", required = "required" })
                         @Html.ValidationMessageFor(model => model.email)
                     </div>
                 </div>
