@@ -81,5 +81,17 @@ namespace MVC.UI.Controllers
 
         }
 
+        public ActionResult Active(string supplier_code)
+        {
+            Master_SupplierDbo existing = Master_SupplierItem.GetBySupplier_Code(supplier_code);
+
+            Master_SupplierItem.Update(existing, "A");
+            return RedirectToAction("Index");
+        }
+        public ActionResult Details(string supplier_code)
+        {
+            Master_SupplierDbo existing = Master_SupplierItem.GetBySupplier_Code(supplier_code);
+            return View(existing);
+        }
     }
 }

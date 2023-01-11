@@ -24,7 +24,7 @@ namespace Web.Dto
         public string bank_account { get; set; }
         public string bank_name { get; set; }
         public string bank_branch { get; set; }
-        public Boolean is_delete { get; set; }
+        public int is_delete { get; set; }
         public string status { get; set; }
         public string COA { get; set; }
         public string TOP { get; set; }
@@ -64,6 +64,7 @@ namespace Web.Dto
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
             obj.update_by = reader["update_by"].ToString();
+            obj.is_delete = reader["is_delete"] == DBNull.Value ? 0 : Convert.ToInt32(reader["is_delete"]);
             return obj;
         }
     }

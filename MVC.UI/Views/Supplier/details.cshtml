@@ -1,17 +1,15 @@
-﻿
-
-@model Web.Dto.Master_Klien
+﻿@model Web.Dto.Master_SupplierDbo
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Claint</h1>
+    <h1>Data Suplier</h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-        <li class="active">Client</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Suplier</li>
     </ol>
 </section>
 
@@ -20,72 +18,182 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Details Data Client</h3>
+            <h3 class="box-title">Tambah Data Suplier</h3>
         </div>
         <div class="box-body">
 
             @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
-                @Html.HiddenFor(model => model.kode_klien)
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.kode_suplier)
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">id</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "ID", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.id)
-                    </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">id</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "ID", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.id)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Kode Suplier</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.kode_suplier, new { @class = "form-control", placeholder = "Kode Suplier", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.kode_suplier)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Nama Suplier</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.nama_suplier, new { @class = "form-control", placeholder = "Nama Suplier", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.nama_suplier)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Alamat</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.alamat, new { @class = "form-control", placeholder = "Alamat" , disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.alamat)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">No Telp</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.no_telp, new { @class = "form-control", placeholder = "No Telp" , disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.no_telp)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Kota</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.kota, new { @class = "form-control", placeholder = "Kota", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.kota)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Area</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.area, new { @class = "form-control", placeholder = "Area", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.area)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Negara</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.negara, new { @class = "form-control", placeholder = "Negara", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.negara)
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Kode Pos</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.kodepos, new { @class = "form-control", placeholder = "Kode Pos", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.kodepos)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Email</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">PIC</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.PIC, new { @class = "form-control", placeholder = "PIC", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.PIC)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2 control-label">ID Pajak</div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.tax_id, new { @class = "form-control", placeholder = "ID Pajak", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.tax_id)
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">kode klien</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.kode_klien, new { @class = "form-control", placeholder = "Kode Klien", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.kode_klien)
-                    </div>
+                <div class="col-sm-1 control-label">Akun Bank</div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.bank_account, new { @class = "form-control", placeholder = "Akun Bank", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.bank_account)
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Klien</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Klien", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.nama_klien)
-                    </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Nama Pajak </div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.tax_name, new { @class = "form-control", placeholder = "Nama Pajak", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.tax_name)
                 </div>
+                <div class="col-sm-1 control-label">Nama Bank</div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.bank_name, new { @class = "form-control", placeholder = "Nama Bank", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.bank_name)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Alamat Pajak </div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.tax_address, new { @class = "form-control", placeholder = "Alamat Pajak", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.tax_address)
+                </div>
+                <div class="col-sm-1 control-label"> Cabang </div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => model.bank_branch, new { @class = "form-control", placeholder = "Cabang", disabled = "disabled"  })
+                    @Html.ValidationMessageFor(model => model.bank_branch)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Status</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.status, new { @class = "form-control", placeholder = "Status" , disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.status)
+                </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Alamat</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.alamat, new { @class = "form-control", placeholder = "Alamat", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.alamat)
-                    </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">COA</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.COA, new { @class = "form-control", placeholder = "COA" , disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.COA)
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">No Telp</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.no_telp, new { @class = "form-control", placeholder = "No Telp", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.no_telp)
-                    </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">TOP</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.TOP, new { @class = "form-control", placeholder = "TOP" , disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.TOP)
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Sebagai</div>
-                    <div class="col-sm-2">
-                        @Html.CheckBoxFor(model => model.is_customer, new {disabled = "disabled" })  Konsumen
-                    </div>
-                    <div class="col-sm-2">
-                        @Html.CheckBoxFor(model => model.is_supplier, new { disabled = "disabled" })  Suplier
-                    </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Margin</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.margin, new { @class = "form-control", placeholder = "margin" , disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.margin)
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-10">
-                       
-                    </div>
-                </div>
+
+
             }
 
             <div>
