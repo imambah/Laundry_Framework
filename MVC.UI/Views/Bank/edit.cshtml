@@ -69,6 +69,22 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Pemilik</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Account_Name, new { @class = "form-control", placeholder = "Nama Pemilik" })
+                        @Html.ValidationMessageFor(model => model.Account_Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">COA</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.COA, new { @class = "form-control", placeholder = "COA" })
+                        @Html.ValidationMessageFor(model => model.COA)
+                    </div>
+                </div>
+
 
 
                 <div class="form-group">

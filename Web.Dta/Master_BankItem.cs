@@ -49,7 +49,9 @@ namespace Web.Dta
             context.AddParameter("@Description", obj.Description);
             context.AddParameter("@Area", obj.Area);
             context.AddParameter("@Account", obj.Account);
-            context.AddParameter("@Balance", obj.Balance);     
+            context.AddParameter("@Balance", obj.Balance);
+            context.AddParameter("@account_name", obj.Account_Name);
+            context.AddParameter("@COA", obj.COA);
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", "user_system");
             context.AddParameter("@update_date", DateTime.Now);
@@ -69,6 +71,8 @@ namespace Web.Dta
             context.AddParameter("@Area", obj.Area);
             context.AddParameter("@Account", obj.Account);
             context.AddParameter("@Balance", obj.Balance);
+            context.AddParameter("@account_name", obj.Account_Name);
+            context.AddParameter("@COA", obj.COA);
             context.AddParameter("@isdelete", isdelete);
             context.AddParameter("@update_by", "user_system_update");
             string sqlQuery = "[sp_master_bank_Update]";
@@ -77,15 +81,7 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
         }
 
-        //public static Master_BankDbo Delete(string client_code) {
-        //    IDBHelper context = new DBHelper();
-        //    context.AddParameter("@kode_klien", client_code);
-        //    string sqlQuery = "sp_master_client_Delete";
-        //    context.CommandText = sqlQuery;
-        //    context.CommandType = CommandType.StoredProcedure;
-        //    //return DBUtil.ExecuteNonQuery(context);
-        //    return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
-        //}
+       
         #endregion
 
     }

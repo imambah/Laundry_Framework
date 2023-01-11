@@ -30,12 +30,12 @@
                 @Html.HiddenFor(model => model.id)
 
                 @*<div class="form-group">
-                    <div class="col-sm-2 control-label">id</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "ID", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.id)
-                    </div>
-                </div>*@
+                <div class="col-sm-2 control-label">id</div>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "ID", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.id)
+                </div>
+            </div>*@
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Bank ID</div>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Bank</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control", placeholder = "Nama Bank" , disabled = "disabled" })
+                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control", placeholder = "Nama Bank", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Description)
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Cabang</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Area, new { @class = "form-control", placeholder = "Nama Cabang" , disabled = "disabled" })
+                        @Html.TextBoxFor(model => model.Area, new { @class = "form-control", placeholder = "Nama Cabang", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Area)
                     </div>
                 </div>
@@ -64,14 +64,30 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">No Rekening</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "No Rekening" , disabled = "disabled" })
+                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "No Rekening", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.Account)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Pemilik</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Account_Name, new { @class = "form-control", placeholder = "Nama Pemilik", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Account_Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">COA</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.COA, new { @class = "form-control", placeholder = "COA", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.COA)
                     </div>
                 </div>
 
 
 
-             
+
             }
 
             <div>
