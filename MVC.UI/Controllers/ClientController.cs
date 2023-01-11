@@ -90,6 +90,12 @@ namespace MVC.UI.Controllers
             return RedirectToAction("Index");
         }
 
-      
+        public ActionResult Active(string client_code)
+        {
+            Master_Klien existing = Master_KlienItem.GetByClient_Code(client_code);
+
+            Master_KlienItem.Update(existing, "A");
+            return RedirectToAction("Index");
+        }
     }
 }

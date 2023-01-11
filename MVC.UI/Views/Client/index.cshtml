@@ -34,27 +34,28 @@
                         </th>
                         <th>
                             Kode Klien
-                            @*@Html.DisplayNameFor(model => model.Username)*@
+
                         </th>
 
                         <th>
                             Nama Klien
-                            @*@Html.DisplayNameFor(model => model.FullName)*@
+
                         </th>
                         <th>
                             Alamat
-                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+
                         </th>
                         <th>
                             No Telp
-                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+
                         </th>
                         <th>
-                            Tipe 
-                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                            Tipe
                         </th>
 
-
+                        <th>
+                            Status Record
+                        </th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -81,10 +82,28 @@
                                 @Html.DisplayFor(modelItem => item.tipe_konsumen)
                             </td>
                             <td>
+                                @if (item.is_delete == 0)
+                                {
 
-                                <a class="text-primary" href="@Url.Action("Details", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
-                                <a class="text-success" href="@Url.Action("Edit", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                <a class="text-danger" href="@Url.Action("Delete", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                    @("Aktif") }
+                                else
+                                {
+                                    <p style="color:red">Tidak Aktif</p>
+                                }
+                            </td>
+                            <td>
+                                @if (item.is_delete == 0)
+                                {
+                                    <a class="text-primary" href="@Url.Action("Details", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-success" href="@Url.Action("Edit", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+
+                                }
+                                else
+                                {
+                                    <a class="text-primary" href="@Url.Action("Details", new { client_code=item.kode_klien })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-success" href="@Url.Action("Active", new { client_code=item.kode_klien  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
+                                }
 
                             </td>
                         </tr>
