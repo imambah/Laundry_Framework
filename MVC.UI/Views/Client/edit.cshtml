@@ -28,11 +28,11 @@
         Text = "Counter",
         Value = "Counter"
     });
-    listItems.Add(new SelectListItem
-    {
-        Text = "",
-        Value = ""
-    });
+    //listItems.Add(new SelectListItem
+    //{
+    //    Text = "",
+    //    Value = ""
+    //});
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -97,6 +97,14 @@
                     <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.no_telp, new { @class = "form-control", placeholder = "No Telp" })
                         @Html.ValidationMessageFor(model => model.no_telp)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kota</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.kota, new { @class = "form-control", placeholder = "Kota" })
+                        @Html.ValidationMessageFor(model => model.kota)
                     </div>
                 </div>
 

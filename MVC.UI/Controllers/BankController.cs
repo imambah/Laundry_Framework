@@ -99,33 +99,14 @@ namespace MVC.UI.Controllers
         }
 
 
-        //// POST: Parameter/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, tbl_parameter item)
-        //{
-        //    try
-        //    {
-        //        tbl_parameter tblParam = new tbl_parameter();
-        //        tblParam.id = id;
-        //        tblParam.nama_tabel = item.nama_tabel.ToString();
-        //        tblParam.kode_tabel = item.kode_tabel.ToString();
-        //        tblParam.nama_panjang = item.nama_panjang.ToString();
-        //        tblParam.nama_pendek = item.nama_pendek;
-        //        tblParam.nilai = item.nilai;
-        //        tbl_parameter result = tbl_parameterItem.Update(tblParam);
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View(item);
-        //    }
-        //}
+        public ActionResult Active(int id)
+        {
+            Master_BankDbo existing = Master_BankItem.GetById(id);
+            Master_BankItem.Update(existing, "A");
+            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
 
-        //// GET: Parameter/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+        }
 
 
     }

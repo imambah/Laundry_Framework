@@ -29,7 +29,7 @@
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th >
+                        <th>
                             ID
                         </th>
                         <th>
@@ -42,22 +42,26 @@
                             @*@Html.DisplayNameFor(model => model.FullName)*@
                         </th>
                         <th>
-                            Cabang 
+                            Cabang
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
                         <th>
                             No Rekening
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
+                        <th>
+                            Status Record
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
 
-                        <th></th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td >
+                            <td>
                                 @Html.DisplayFor(modelItem => item.id)
                             </td>
                             <td>
@@ -72,12 +76,30 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Account)
                             </td>
-
                             <td>
-                                <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
-                                <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                @if (item.is_delete == 0)
+                                {
+
+                                    @("Aktif")                                }
+                                else
+                                {
+                                    <p style="color:red">Tidak Aktif</p>
+                                }
                             </td>
+                            <td>
+                                @if (item.is_delete == 0)
+                                {
+                                    <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                }
+                                else
+                                { 
+                                    <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-success" href="@Url.Action("Active", new { id=item.id  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
+                                }
+                            </td>
+                    
                         </tr>
                     }
                 </tbody>
