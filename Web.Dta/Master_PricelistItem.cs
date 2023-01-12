@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using DataAccessLayer;
 using Web.Dto;
 using System.Data;
+
 namespace Web.Dta
 {
     /// <summary>
@@ -53,7 +54,7 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_PricelistDbo>(context, new Master_PricelistDbo()).FirstOrDefault();
         }
 
-        public static Master_PricelistDbo Update(Master_PricelistDbo obj)
+        public static Master_PricelistDbo Update(Master_PricelistDbo obj, string is_delete)
         {
 
             IDBHelper context = new DBHelper();
@@ -64,12 +65,15 @@ namespace Web.Dta
             context.AddParameter("@dry_clean", obj.dry_clean);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@is_delete", is_delete);
             string sqlQuery = "sp_master_pricelist_Update";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Master_PricelistDbo>(context, new Master_PricelistDbo()).FirstOrDefault();
         }
 
+
+        
         #endregion
 
 

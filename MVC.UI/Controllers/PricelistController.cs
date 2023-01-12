@@ -60,16 +60,9 @@ namespace MVC.UI.Controllers
         // GET: Parameter/Edit/5
         public ActionResult Edit(int id)
         {
-            List<tbl_parameter> tblParam = tbl_parameterItem.Pricelist_GetTypeAll();
-            List<SelectListItem> ListParam = new List<SelectListItem>();
-            tblParam.ForEach(t =>
-            {
-                ListParam.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.kode_tabel });
-            });
-            ViewBag.PriceTypeList = new SelectList(ListParam, "Value", "Text");
             Master_PricelistDbo existing = Master_PricelistItem.GetById(id);
             return View(existing);
-            //return View();
+           
         }
 
         [HttpPost]
@@ -77,7 +70,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                Master_PricelistItem.Update(coll);
+                Master_PricelistItem.Update(coll,"N");
                 return RedirectToAction("Index");
             }
             catch
@@ -85,6 +78,30 @@ namespace MVC.UI.Controllers
                 return View(coll);
             }
         }
+
+
+        public ActionResult Details(int id)
+        {
+          
+            Master_PricelistDbo existing = Master_PricelistItem.GetById(id);
+            return View(existing);
+        }
+
+        public ActionResult Delete(int id)
+        {
+           Master_PricelistDbo existing = Master_PricelistItem.GetById(id);
+
+            Master_PricelistItem.Update(existing, "Y");
+            return RedirectToAction("Index");
+        }
+        public ActionResult Active(int id)
+        {
+            Master_PricelistDbo existing = Master_PricelistItem.GetById(id);
+            Master_PricelistItem.Update(existing, "A");
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
 
