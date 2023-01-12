@@ -54,7 +54,7 @@ namespace Web.Dta
            return DBUtil.ExecuteMapper<tbl_parameter>(context, new tbl_parameter()).FirstOrDefault();
         }
 
-        public static tbl_parameter Update(tbl_parameter obj) {
+        public static tbl_parameter Update(tbl_parameter obj, string is_delete) {
 
             IDBHelper context = new DBHelper();
             context.AddParameter("@id", obj.id);
@@ -64,7 +64,8 @@ namespace Web.Dta
             context.AddParameter("@nama_pendek", obj.nama_pendek);
             context.AddParameter("@nilai", obj.nilai);
             context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system_update"); ;
+            context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@is_delete", is_delete);
             string sqlQuery = "sp_parameter_Update";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

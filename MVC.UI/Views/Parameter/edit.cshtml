@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Tabel</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_tabel, new { @class = "form-control", placeholder = "Nama Tabel" })
+                        @Html.TextBoxFor(model => model.nama_tabel, new { @class = "form-control", placeholder = "Nama Tabel", required = "required" })
                         @Html.ValidationMessageFor(model => model.nama_tabel)
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Tabel</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.kode_tabel, new { @class = "form-control", placeholder = "Kode Tabel" })
+                        @Html.TextBoxFor(model => model.kode_tabel, new { @class = "form-control", placeholder = "Kode Tabel", required = "required" })
                         @Html.ValidationMessageFor(model => model.kode_tabel)
                     </div>
                 </div>

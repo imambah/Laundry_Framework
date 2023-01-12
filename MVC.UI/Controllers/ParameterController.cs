@@ -68,7 +68,7 @@ namespace MVC.UI.Controllers
                 tblParam.nama_panjang = item.nama_panjang.ToString();
                 tblParam.nama_pendek = item.nama_pendek;
                 tblParam.nilai = item.nilai;
-                tbl_parameter result = tbl_parameterItem.Update(tblParam);
+                tbl_parameter result = tbl_parameterItem.Update(tblParam,"N");
                 return RedirectToAction("Index");
             }
             catch
@@ -77,26 +77,20 @@ namespace MVC.UI.Controllers
             }
         }
 
-        // GET: Parameter/Delete/5
+
         public ActionResult Delete(int id)
         {
-            return View();
+            tbl_parameter existing = tbl_parameterItem.GetById(id);
+            tbl_parameterItem.Update(existing, "Y");
+            return RedirectToAction("Index");
         }
 
-        // POST: Parameter/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Active(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            tbl_parameter existing = tbl_parameterItem.GetById(id);
+            tbl_parameterItem.Update(existing, "A");
+            return RedirectToAction("Index");
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

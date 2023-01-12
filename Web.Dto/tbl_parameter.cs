@@ -22,6 +22,8 @@ namespace Web.Dto
 		public DateTime ? update_date { get; set; }
 		public string update_by { get; set; }
 
+		public int is_delete { get; set; }
+
 		public tbl_parameter Map(System.Data.IDataReader reader)
 		{
 			tbl_parameter obj = new tbl_parameter();
@@ -35,6 +37,7 @@ namespace Web.Dto
 			obj.create_by = reader["create_by"].ToString();
 			obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
 			obj.update_by = reader["update_by"].ToString();
+			obj.is_delete = reader["is_delete"] == DBNull.Value ? 0 : Convert.ToInt32(reader["is_delete"]);
 			return obj;
 		}
 	}

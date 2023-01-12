@@ -31,20 +31,26 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Suplier</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_suplier, new { @class = "form-control", placeholder = "Nama Suplier" })
+                        @Html.TextBoxFor(model => model.nama_suplier, new { @class = "form-control", placeholder = "Nama Suplier" ,required = "required" })
                         @Html.ValidationMessageFor(model => model.nama_suplier)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Alamat</div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         @Html.TextBoxFor(model => model.alamat, new { @class = "form-control", placeholder = "Alamat" })
                         @Html.ValidationMessageFor(model => model.alamat)
                     </div>
                 </div>
 
-
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Alamat 2</div>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(model => model.alamat2, new { @class = "form-control", placeholder = "Alamat 2" })
+                        @Html.ValidationMessageFor(model => model.alamat2)
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">No Telp</div>
