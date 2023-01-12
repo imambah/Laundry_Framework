@@ -25,7 +25,7 @@ namespace Web.Dto
         public string create_by { get; set; }
         public DateTime? update_date { get; set; }
         public string update_by { get; set; }
-
+        public int is_delete { get; set; }
         public Master_BarangDbo Map(System.Data.IDataReader reader)
         {
             Master_BarangDbo obj = new Master_BarangDbo();
@@ -39,11 +39,13 @@ namespace Web.Dto
             obj.Vat_Flag = reader["Vat_Flag"].ToString();
             obj.Conversion = reader["Conversion"].ToString();
             obj.BatchNo = reader["BatchNo"].ToString();
+            obj.is_delete = reader["is_delete"] == DBNull.Value ? 0 : Convert.ToInt32(reader["is_delete"]);
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
             obj.update_by = reader["update_by"].ToString();
             obj.Group_Desc = reader["Group_Desc"].ToString();
+           
             return obj;
         }
     }

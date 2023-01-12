@@ -102,6 +102,14 @@ namespace MVC.UI.Controllers
 
         }
 
+        public ActionResult Active(int id)
+        {
+            Master_BarangDbo existing = Master_BarangItem.GetById(id);
+            Master_BarangItem.Update(existing, "A");
+            return RedirectToAction("Index");
+
+        }
+
     }
 }
 
