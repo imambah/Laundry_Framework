@@ -23,6 +23,13 @@ namespace MVC.UI.Controllers
         // GET: User/Details/5
         public ActionResult Details(string Username)
         {
+            List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
+            List<SelectListItem> ListBranch = new List<SelectListItem>();
+            MCI.ForEach(t =>
+            {
+                ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
+            });
+            ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             tbl_user existing = tbl_userItem.GetByPK(Username);
             return View(existing);
         }
@@ -35,7 +42,7 @@ namespace MVC.UI.Controllers
             List<SelectListItem> ListBranch = new List<SelectListItem>();
             MCI.ForEach(t =>
             {
-                ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
+                ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
             });
             ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             return View();
@@ -56,7 +63,7 @@ namespace MVC.UI.Controllers
                 List<SelectListItem> ListBranch = new List<SelectListItem>();
                 MCI.ForEach(t =>
                 {
-                    ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
+                    ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
                 });
                 ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
                 ModelState.AddModelError("", "Username sudah ada.");
@@ -70,21 +77,7 @@ namespace MVC.UI.Controllers
             }
         }
 
-        //// POST: User/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+      
 
         // GET: User/Edit/5
         public ActionResult Edit(string Username)
@@ -93,7 +86,7 @@ namespace MVC.UI.Controllers
             List<SelectListItem> ListBranch = new List<SelectListItem>();
             MCI.ForEach(t =>
             {
-                ListBranch.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_tabel });
+                ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
             });
             // Retrieve departments and build SelectList
             ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
@@ -121,40 +114,15 @@ namespace MVC.UI.Controllers
                     existing.MachineName = Utilities.GetComputerName();
                     existing.IPAddress = Utilities.GetIpAddress();
                     existing.IsActive = 0;
+                    existing.Branch = item.Branch;
+                    existing.UserGroup = item.UserGroup;
                 // TODO: Add update logic here
-                tbl_user result = tbl_userItem.Update(existing);
+                tbl_user result = tbl_userItem.Update(existing,"N");
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View(item);
-            }
-        }
-
-        // GET: User/Delete/5
-        public ActionResult Delete(string Username)
-        {
-            tbl_user existing = tbl_userItem.GetByPK(Username);
-            if (existing != null)
-            {
-                tbl_userItem.Delete(existing.Username);
-            }
-            return RedirectToAction("Index");
-        }
-
-        // POST: User/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
             }
         }
 
@@ -184,7 +152,7 @@ namespace MVC.UI.Controllers
                         item.LastLogin = DateTime.Now;
                         item.IPAddress = Utilities.GetIpAddress();
                         item.MachineName = Utilities.GetComputerName();
-                        tbl_userItem.Update(item);
+                        tbl_userItem.Update(item,"N");
                         Log.Info(string.Format("User :{0} logged in", item.Username));
 
                         string test = Utilities.Username;
@@ -212,6 +180,29 @@ namespace MVC.UI.Controllers
             //FormsAuthentication.SignOut();
             System.Web.HttpContext.Current.Session["Username"] = null;
             return RedirectToAction("Login");
+        }
+
+        // GET: User/Delete/5
+        public ActionResult Delete(string Username)
+        {
+            tbl_user existing = tbl_userItem.GetByPK(Username);
+            if (existing != null)
+            {
+                tbl_user result = tbl_userItem.Update(existing, "Y");
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Active(string Username)
+        {
+            tbl_user existing = tbl_userItem.GetByPK(Username);
+            if (existing != null)
+            {
+                tbl_user result = tbl_userItem.Update(existing, "A");
+            }
+            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
         }
     }
 

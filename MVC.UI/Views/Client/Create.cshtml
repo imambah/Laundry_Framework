@@ -224,6 +224,14 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Initial</div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.initial, new { @class = "form-control", placeholder = "Initial" })
+                        @Html.ValidationMessageFor(model => model.initial)
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <div class="col-sm-2"></div>

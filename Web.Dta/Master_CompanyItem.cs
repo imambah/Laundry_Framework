@@ -71,10 +71,27 @@ namespace Web.Dta
 
         public static Company_ProfileDbo Update(Company_ProfileDbo obj)
         {
+           
             IDBHelper context = new DBHelper();
             context.AddParameter("@CompanyName", obj.company_name);
             context.AddParameter("@CompanyAddress", obj.company_address);
+            context.AddParameter("@CompanyAddress2", obj.company_address2);
             context.AddParameter("@TelpNo", obj.telp_no);
+            context.AddParameter("@city", obj.city);
+            context.AddParameter("@area", obj.area);
+            context.AddParameter("@country", obj.country);
+            context.AddParameter("@zip", obj.zip);
+            context.AddParameter("@email", obj.email);
+            context.AddParameter("@PIC", obj.PIC);
+            context.AddParameter("@tax_id", obj.tax_id);
+            context.AddParameter("@tax_name", obj.tax_name);
+            context.AddParameter("@tax_address", obj.tax_address);
+            context.AddParameter("@logo", obj.logo);
+            context.AddParameter("@director", obj.director);
+            context.AddParameter("@finance", obj.finance);
+            context.AddParameter("@website_erp", obj.website_erp);
+            context.AddParameter("@certificate_no", obj.certificate_no);
+            context.AddParameter("@fbackground", obj.fbackground);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
             string sqlQuery = "sp_master_CompanyProfile_Update";

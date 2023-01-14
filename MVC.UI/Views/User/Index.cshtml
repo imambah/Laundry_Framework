@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Data Pengguna</h1>
     <ol class="breadcrumb">
@@ -14,73 +13,77 @@
     </ol>
 </section>
 
-<!-- Main content -->
+
 <section class="content">
-    <!-- Default box -->
+
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Data Pengguna</h3>
         </div>
         <div class="box-body">
             <p>
-                <a class="text-success" href="@Url.Action("Create")"><i class="fa fa-plus"></i> Tambah</a>
+                <a class="btn btn-warning " href="@Url.Action("Create")" role="button" aria-pressed="true"><i class="fa fa-plus"></i> Tambah Data</a>
+
             </p>
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Username)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.FullName)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.Password)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LastLogin)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.BranchCode)
-                        </th>
-                        <th></th>
+                        <th> @Html.DisplayNameFor(model => model.Username)</th>
+                        <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                        <th>Nama Cabang</th>
+                        <th> Group</th>
+                        <th>Kode Perusahaan</th>
+                        <th>Nama Perusahaan</th>
+                        <th>@Html.DisplayNameFor(model => model.LastLogin)</th>
+                        <th>Status Record</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Branch)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UserGroup)</td>
+                            <td>@Html.DisplayFor(modelItem => item.kode_perusahaan)</td>
+                            <td>@Html.DisplayFor(modelItem => item.nama_perusahaan)</td>
+                            <td>@Web.Logic.Utilities.FullDateFormat(item.LastLogin)</td>
+
                             <td>
-                                @Html.DisplayFor(modelItem => item.Username)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.FullName)
+                                @if (item.IsActive == 1)
+                                {
+
+                                    @("Aktif") }
+                                else
+                                {
+                                    <p style="color:red">Tidak Aktif</p>
+                                }
                             </td>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Password)
+                                @if (item.IsActive == 1)
+                                {
+                                    <a class="text-success" href="@Url.Action("Edit", new { Username=item.Username })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                    <a class="text-primary" href="@Url.Action("Details", new { Username=item.Username})" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { Username=item.Username })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="text-primary" href="@Url.Action("Details", new { Username=item.Username })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-success" href="@Url.Action("Active", new { Username=item.Username  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
+                                }
                             </td>
                             <td>
-                                @Web.Logic.Utilities.FullDateFormat(item.LastLogin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.BranchCode)
-                            </td>
-
-                            <td>
-                                <a class="text-success" href="@Url.Action("Edit", new { Username=item.Username })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                <a class="text-primary" href="@Url.Action("Details", new { Username=item.Username})" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
-                                <a class="text-danger" href="@Url.Action("Delete", new { Username=item.Username })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
-        <!-- /.box-body -->
+
     </div>
-    <!-- /.box -->
+
 </section>
-<!-- /.content -->
+

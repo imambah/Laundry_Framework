@@ -20,6 +20,7 @@ namespace Web.Dta
         /// </summary>        
         public static tbl_user Insert(tbl_user obj)
         {
+            //obj.BranchName = "";
              IDBHelper context = new DBHelper();
              string sqlQuery = "Gen_tbl_user_Insert";
              context.AddParameter("@Username", obj.Username);
@@ -28,14 +29,16 @@ namespace Web.Dta
              context.AddParameter("@IsLogin", obj.IsLogin);
              context.AddParameter("@IPAddress", obj.IPAddress);
              context.AddParameter("@MachineName", obj.MachineName);
-             context.AddParameter("@is_deleted", obj.is_deleted);
+      
              context.AddParameter("@FullName", obj.FullName);
              context.AddParameter("@created", obj.created);
              context.AddParameter("@creator", obj.creator);
              context.AddParameter("@edited", obj.edited);
              context.AddParameter("@editor", obj.editor);
              context.AddParameter("@IsActive", obj.IsActive);
-             context.AddParameter("@BranchCode", obj.BranchCode);
+             context.AddParameter("@UserGroup", obj.UserGroup);
+             context.AddParameter("@Branch", obj.Branch);
+            
              context.CommandText = sqlQuery;
              context.CommandType = CommandType.StoredProcedure;
              return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
@@ -44,22 +47,42 @@ namespace Web.Dta
         /// <summary>
         /// Execute Update to TABLE [tbl_user]
         /// </summary>        
-        public static tbl_user Update(tbl_user obj)
+        public static tbl_user Update(tbl_user obj , string is_delete)
         {
-             IDBHelper context = new DBHelper();
+            /*
+              @Username VARCHAR(50) = NULL,
+    @Password VARCHAR(1000) = NULL,
+    @LastLogin DATETIME = NULL,
+    @IsLogin INT = NULL,
+    @IPAddress VARCHAR(15) = NULL,
+    @MachineName VARCHAR(100) = NULL,
+    @FullName VARCHAR(500) = NULL,
+    @created DATETIME = NULL,
+    @creator VARCHAR(50) = NULL,
+    @edited DATETIME = NULL,
+    @editor VARCHAR(50) = NULL,
+    @IsActive NVARCHAR(1)= NULL,
+	@Branch NVARCHAR(30) = NULL,
+	@UserGroup NVARCHAR(30) = NULL,
+	@kode_perusahaan nvarchar(50) = NULL
+             */
+            IDBHelper context = new DBHelper();
+             context.AddParameter("@Username", obj.Username);
              context.AddParameter("@Password", obj.Password);
-            context.AddParameter("@Username", obj.Username);
-            context.AddParameter("@LastLogin", obj.LastLogin);
+             context.AddParameter("@LastLogin", obj.LastLogin);
              context.AddParameter("@IsLogin", obj.IsLogin);
              context.AddParameter("@IPAddress", obj.IPAddress);
              context.AddParameter("@MachineName", obj.MachineName);
-             context.AddParameter("@is_deleted", obj.is_deleted);
              context.AddParameter("@FullName", obj.FullName);
              context.AddParameter("@creator", obj.creator);
              context.AddParameter("@edited", obj.edited);
              context.AddParameter("@editor", obj.editor);
-             context.AddParameter("@IsActive", obj.IsActive);
-             string sqlQuery = "Gen_tbl_user_Update";
+             context.AddParameter("@IsActive", is_delete);
+             context.AddParameter("@UserGroup", obj.UserGroup);
+             context.AddParameter("@Branch", obj.Branch);
+             //context.AddParameter("@kode_perusahaan", obj.kode_perusahaan);
+             //context.AddParameter("@nama_perusahaan", obj.nama_perusahaan);
+            string sqlQuery = "Gen_tbl_user_Update";
              context.CommandText = sqlQuery;
              context.CommandType = CommandType.StoredProcedure;
              return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();

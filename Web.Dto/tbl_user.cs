@@ -21,17 +21,23 @@ namespace Web.Dto
         public Int32? IsLogin { get; set; }
         public string IPAddress { get; set; }
         public string MachineName { get; set; }
-        public Int32? is_deleted { get; set; }
 
         [Display(Name = "Name")]
         public string FullName { get; set; }
-        public string BranchCode{ get; set; }
         public DateTime? created { get; set; }
         public string creator { get; set; }
         public DateTime? edited { get; set; }
         public string editor { get; set; }
         public Int32? IsActive { get; set; }
-        #endregion    
+
+        public string UserGroup { get; set; }
+        public string Branch { get; set; }
+
+        //public string kode_perusahaan { get; set; }
+
+        //public string nama_perusahaan { get; set; }
+
+        #endregion
         public tbl_user Map(System.Data.IDataReader reader)
         {
             tbl_user obj = new tbl_user();   
@@ -41,14 +47,17 @@ namespace Web.Dto
             obj.IsLogin = reader["IsLogin"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["IsLogin"]);
             obj.IPAddress = reader["IPAddress"] == DBNull.Value ? null : reader["IPAddress"].ToString();
             obj.MachineName = reader["MachineName"] == DBNull.Value ? null : reader["MachineName"].ToString();
-            obj.is_deleted = reader["is_deleted"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["is_deleted"]);
             obj.FullName = reader["FullName"] == DBNull.Value ? null : reader["FullName"].ToString();
-            obj.BranchCode = reader["BranchCode"] == DBNull.Value ? null : reader["BranchCode"].ToString();
             obj.created = reader["created"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["created"]);
             obj.creator = reader["creator"] == DBNull.Value ? null : reader["creator"].ToString();
             obj.edited = reader["edited"] == DBNull.Value ? (DateTime?) null : Convert.ToDateTime(reader["edited"]);
             obj.editor = reader["editor"] == DBNull.Value ? null : reader["editor"].ToString();
             obj.IsActive = reader["IsActive"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["IsActive"]);
+            obj.UserGroup = reader["UserGroup"] == DBNull.Value ? null : reader["UserGroup"].ToString();
+            obj.Branch = reader["Branch"] == DBNull.Value ? null : reader["Branch"].ToString();
+            //obj.kode_perusahaan = reader["kode_perusahaan"] == DBNull.Value ? null : reader["kode_perusahaan"].ToString();
+            //obj.nama_perusahaan = reader["nama_perusahaan"] == DBNull.Value ? null : reader["nama_perusahaan"].ToString();
+
             return obj;
         }
     }

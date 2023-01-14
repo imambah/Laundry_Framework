@@ -223,19 +223,11 @@
                     </div>
                 </div>
 
-                @*<div class="form-group">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-10">
-                    <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
-                </div>
-            </div>*@
-
-
-
                 <div class="form-group">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-10">
-
+                    <div class="col-sm-2 control-label">Initial</div>
+                    <div class="col-sm-8">
+                        @Html.TextBoxFor(model => model.initial, new { @class = "form-control", placeholder = "Initial", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.initial)
                     </div>
                 </div>
             }

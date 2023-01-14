@@ -44,38 +44,150 @@
                         @Html.TextAreaFor(model => model.company_address, new { @class = "form-control", placeholder = "Alamat Perusahaan" })
                         @Html.ValidationMessageFor(model => model.company_address)
                     </div>
+
+                   
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">No Telp</div>
+                    <div class="col-sm-2 control-label">Alamat Perusahaan2</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.telp_no, new { @class = "form-control", placeholder = "Telp No" })
-                        @Html.ValidationMessageFor(model => model.telp_no)
+                        @Html.TextAreaFor(model => model.company_address2, new { @class = "form-control", placeholder = "Alamat Perusahaan2" })
+                        @Html.ValidationMessageFor(model => model.company_address2)
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-10">
-                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">No Telp</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.telp_no, new { @class = "form-control", placeholder = "Telp No" })
+                            @Html.ValidationMessageFor(model => model.telp_no)
+                        </div>
                     </div>
-                </div>
-            }
 
-            <div>
-                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
-            </div>
-            @if (ViewBag.Message != null)
-            {
-                <script type="text/javascript">
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">Negara</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.country, new { @class = "form-control", placeholder = "Negara" })
+                            @Html.ValidationMessageFor(model => model.telp_no)
+                        </div>
+
+                        <div class="col-sm-1 control-label">Area</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.area, new { @class = "form-control", placeholder = "Area" })
+                            @Html.ValidationMessageFor(model => model.area)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">City</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.city, new { @class = "form-control", placeholder = "City" })
+                            @Html.ValidationMessageFor(model => model.city)
+                        </div>
+
+                        <div class="col-sm-1 control-label">ZIP</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.zip, new { @class = "form-control", placeholder = "ZIP" })
+                            @Html.ValidationMessageFor(model => model.zip)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">Email</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email" })
+                            @Html.ValidationMessageFor(model => model.email)
+                        </div>
+
+                        <div class="col-sm-1 control-label">PIC</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.PIC, new { @class = "form-control", placeholder = "PIC" })
+                            @Html.ValidationMessageFor(model => model.PIC)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">No. Pajak</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.tax_id, new { @class = "form-control", placeholder = "ID Pajak" })
+                            @Html.ValidationMessageFor(model => model.tax_id)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">Nama Pajak</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.tax_name, new { @class = "form-control", placeholder = "Nama Pajak" })
+                            @Html.ValidationMessageFor(model => model.tax_name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">Alamat Pajak</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.tax_address, new { @class = "form-control", placeholder = "Alamat Pajak" })
+                            @Html.ValidationMessageFor(model => model.tax_address)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">Logo</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.logo, new { @class = "form-control", placeholder = "Logo" })
+                            @Html.ValidationMessageFor(model => model.logo)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">Director</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.director, new { @class = "form-control", placeholder = "Director" })
+                            @Html.ValidationMessageFor(model => model.director)
+                        </div>
+
+                        <div class="col-sm-1 control-label">Finance</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.finance, new { @class = "form-control", placeholder = "Finance" })
+                            @Html.ValidationMessageFor(model => model.finance)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2 control-label">WebSite ERP</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.website_erp, new { @class = "form-control", placeholder = "Website Erp" })
+                            @Html.ValidationMessageFor(model => model.website_erp)
+                        </div>
+
+                        <div class="col-sm-1 control-label">No Sertifikat</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.certificate_no, new { @class = "form-control", placeholder = "No. Sertifikat" })
+                            @Html.ValidationMessageFor(model => model.certificate_no)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
+                        </div>
+                    </div>
+                    }
+
+                    <div>
+                        <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+                    </div>
+                    @if (ViewBag.Message != null)
+                    {
+                        <script type="text/javascript">
                     window.onload = function () {
                         alert("@ViewBag.Message");
                     };
-                </script>
-            }
-        </div>
-        <!-- /.box-body -->
-    </div>
+                        </script>
+                    }
+                </div>
+                <!-- /.box-body -->
+            </div>
     <!-- /.box -->
 </section>
 <!-- /.content -->

@@ -72,6 +72,7 @@ namespace Web.Dta
             context.AddParameter("@create_by", "user_system");
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system");
+            context.AddParameter("@initial", obj.initial);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Master_Klien>(context, new Master_Klien()).FirstOrDefault();
@@ -107,6 +108,7 @@ namespace Web.Dta
             context.AddParameter("@isdelete", isdelete);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@initial", obj.initial);
             string sqlQuery = "sp_master_client_Update";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
