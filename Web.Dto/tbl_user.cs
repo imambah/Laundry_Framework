@@ -55,8 +55,7 @@ namespace Web.Dto
             obj.IsActive = reader["IsActive"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["IsActive"]);
             obj.UserGroup = reader["UserGroup"] == DBNull.Value ? null : reader["UserGroup"].ToString();
             obj.Branch = reader["Branch"] == DBNull.Value ? null : reader["Branch"].ToString();
-            //obj.kode_perusahaan = reader["kode_perusahaan"] == DBNull.Value ? null : reader["kode_perusahaan"].ToString();
-            //obj.nama_perusahaan = reader["nama_perusahaan"] == DBNull.Value ? null : reader["nama_perusahaan"].ToString();
+            //testc tetststetsts
 
             return obj;
         }
