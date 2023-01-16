@@ -50,6 +50,7 @@ namespace Web.Dta
             context.AddParameter("@Barcode", obj.Barcode);
             context.AddParameter("@UoM", obj.UoM);
             context.AddParameter("@Buffer_Stock", obj.Buffer_Stock);
+            context.AddParameter("@group_code", obj.Group_Code);
             context.AddParameter("@Vat_Flag", obj.Vat_Flag);
             context.AddParameter("@Conversion", obj.Conversion);
             context.AddParameter("@BatchNo", obj.BatchNo);
@@ -75,7 +76,8 @@ namespace Web.Dta
             context.AddParameter("@BatchNo", obj.BatchNo);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
-            context.AddParameter("@isdelete", is_delete); 
+            context.AddParameter("@isdelete", is_delete);
+            context.AddParameter("@group_code", obj.Group_Code);
             string sqlQuery = "sp_master_barang_Update";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
