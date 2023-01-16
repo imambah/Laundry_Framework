@@ -12,7 +12,7 @@ namespace Web.Dta
     /// </summary>    
     public partial class Master_CompanyItem
     {
-        public static List<CompanyDbo> GetBranch()
+        public static List<CompanyDbo> GetUserGroup()
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_GetCompany";
@@ -99,5 +99,16 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Company_ProfileDbo>(context, new Company_ProfileDbo()).FirstOrDefault();
         }
+
+        public static List<GroupDbo> GetCabang(string strGroup)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_lookup_group]";
+            context.CommandText = sqlQuery;
+            context.AddParameter("@group", strGroup);
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new GroupDbo());
+        }
+
     }
 }

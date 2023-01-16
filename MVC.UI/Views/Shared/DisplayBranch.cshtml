@@ -1,0 +1,7 @@
+﻿@model Web.Dto.GroupDbo
+  <option value="">-- Pilih Cabang --</option>
+@if (ViewBag.branch_list != null) {
+    foreach (var item in ViewBag.branch_list) { 
+        <option value="@item.Value">@item.Text</option>
+    }
+}

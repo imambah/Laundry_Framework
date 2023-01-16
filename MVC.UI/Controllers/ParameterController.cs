@@ -22,7 +22,10 @@ namespace MVC.UI.Controllers
         // GET: Parameter/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            tbl_parameter existing = tbl_parameterItem.GetById(id);
+            return View(existing);
+            
         }
 
         // GET: Parameter/Create

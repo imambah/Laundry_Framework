@@ -30,10 +30,8 @@
                     <tr>
                         <th> @Html.DisplayNameFor(model => model.Username)</th>
                         <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                        <th> Group User</th>
                         <th>Nama Cabang</th>
-                        <th> Group</th>
-                        <th>Kode Perusahaan</th>
-                        <th>Nama Perusahaan</th>
                         <th>@Html.DisplayNameFor(model => model.LastLogin)</th>
                         <th>Status Record</th>
                         <th>Aksi</th>
@@ -45,8 +43,8 @@
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.Username)</td>
                             <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Branch)</td>
                             <td>@Html.DisplayFor(modelItem => item.UserGroup)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Branch)</td>
                             <td>@Web.Logic.Utilities.FullDateFormat(item.LastLogin)</td>
 
                             <td>

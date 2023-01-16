@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BOMDetailDbo.cs" />
     <Compile Include="BOMDbo.cs" />
+    <Compile Include="GroupDbo.cs" />
     <Compile Include="Master_SupplierDbo.cs" />
     <Compile Include="POSDbo.cs" />
     <Compile Include="Company_ProfileDbo.cs" />

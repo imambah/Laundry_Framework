@@ -23,30 +23,22 @@ namespace MVC.UI.Controllers
         // GET: User/Details/5
         public ActionResult Details(string Username)
         {
-            List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
-            List<SelectListItem> ListBranch = new List<SelectListItem>();
-            MCI.ForEach(t =>
-            {
-                ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
-            });
-            ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
             tbl_user existing = tbl_userItem.GetByPK(Username);
+            ViewBag.UserGroupList = new SelectList(UserGroupList(), "nama_pendek", "nama_pendek");
+            List<GroupDbo> ListCabang = Master_CompanyItem.GetCabang(existing.UserGroup);
+            ViewBag.BranchList = new SelectList(ListCabang, "nama", "nama");
             return View(existing);
         }
 
+        
         // GET: User/Create
         public ActionResult Create()
         {
- 
-            List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
-            List<SelectListItem> ListBranch = new List<SelectListItem>();
-            MCI.ForEach(t =>
-            {
-                ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
-            });
-            ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
+            ViewBag.UserGroupList = new SelectList(UserGroupList(),"nama_pendek","nama_pendek");
             return View();
         }
+        
+        
         /// <summary>
 
         /// </summary>
@@ -59,13 +51,7 @@ namespace MVC.UI.Controllers
             tbl_user existing = tbl_userItem.GetByPK(item.Username);
             if (existing != null)
             {
-                List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
-                List<SelectListItem> ListBranch = new List<SelectListItem>();
-                MCI.ForEach(t =>
-                {
-                    ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
-                });
-                ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
+                ViewBag.UserGroupList = new SelectList(UserGroupList(), "nama_pendek", "nama_pendek");
                 ModelState.AddModelError("", "Username sudah ada.");
                 return View(item);
             }
@@ -82,15 +68,11 @@ namespace MVC.UI.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(string Username)
         {
-            List<CompanyDbo> MCI = Master_CompanyItem.GetBranch();
-            List<SelectListItem> ListBranch = new List<SelectListItem>();
-            MCI.ForEach(t =>
-            {
-                ListBranch.Add(new SelectListItem() { Value = t.nama_pendek, Text = t.nama_pendek });
-            });
-            // Retrieve departments and build SelectList
-            ViewBag.BranchesList = new SelectList(ListBranch, "Value", "Text");
+
             tbl_user existing = tbl_userItem.GetByPK(Username);
+            ViewBag.UserGroupList = new SelectList(UserGroupList(), "nama_pendek", "nama_pendek");
+            List<GroupDbo> ListCabang = Master_CompanyItem.GetCabang(existing.UserGroup);
+            ViewBag.BranchList = new SelectList(ListCabang, "nama", "nama");
             return View(existing);
         }
 
@@ -202,6 +184,21 @@ namespace MVC.UI.Controllers
             }
             return RedirectToAction("Index");
             //return RedirectToAction("Index");
+
+        }
+
+
+        public List<CompanyDbo> UserGroupList()
+        {
+            List<CompanyDbo> ListBranch = Master_CompanyItem.GetUserGroup();
+            return ListBranch;
+        }
+
+        public ActionResult GetCabangList(string strGroup)
+        {
+            List<GroupDbo> ListCabang = Master_CompanyItem.GetCabang(strGroup);
+            ViewBag.branch_list = new SelectList(ListCabang, "nama", "nama");
+            return PartialView("DisplayBranch");
 
         }
     }
