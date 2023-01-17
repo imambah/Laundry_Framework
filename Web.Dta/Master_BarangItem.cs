@@ -49,7 +49,7 @@ namespace Web.Dta
             context.AddParameter("@ItemDesc", obj.ItemDesc);
             context.AddParameter("@Barcode", obj.Barcode);
             context.AddParameter("@UoM", obj.UoM);
-            context.AddParameter("@Buffer_Stock", obj.Buffer_Stock);
+            context.AddParameter("@Buffer_Stock", obj.Buffer_Stock.ToString().Replace(",","."));
             context.AddParameter("@group_code", obj.Group_Code);
             context.AddParameter("@Vat_Flag", obj.Vat_Flag);
             context.AddParameter("@Conversion", obj.Conversion);

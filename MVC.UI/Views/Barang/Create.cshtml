@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Minimum Stock </div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "Minumum Stok" })
+                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "100,000,000.00" })
                         @Html.ValidationMessageFor(model => model.Buffer_Stock)
                     </div>
                     <div class="col-sm-1 control-label">Vat Flag </div>
@@ -106,3 +106,17 @@
     <!-- /.box -->
 </section>
 <!-- /.content -->
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //$("#UserGroup").change
+        $("#Buffer_Stock").on("keyup", null, function () {
+            var $input = $(this),
+                value = $input.val(),
+                num = parseFloat(value).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+            $input.siblings('.Buffer_Stock').text('$' + num);
+        });
+    })
+
+</script>
