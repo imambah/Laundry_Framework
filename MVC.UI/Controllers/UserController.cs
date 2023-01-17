@@ -150,7 +150,7 @@ namespace MVC.UI.Controllers
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError("", "Nama pengguna dan kata sandi salah");
+                    ModelState.AddModelError("", "Login gagal. Periksa koneksi ke Server");
                     return View(login);
                 }
             }
