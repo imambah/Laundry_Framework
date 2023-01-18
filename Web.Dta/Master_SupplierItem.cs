@@ -65,7 +65,7 @@ namespace Web.Dta
             context.AddParameter("@status", obj.status);
             context.AddParameter("@COA", obj.COA);
             context.AddParameter("@TOP", obj.TOP);
-            context.AddParameter("@margin", obj.margin);
+            context.AddParameter("@margin", obj.margin.ToString().Replace(",", "."));
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", "user_system");
             context.AddParameter("@update_date", DateTime.Now);
@@ -100,7 +100,7 @@ namespace Web.Dta
             context.AddParameter("@status", obj.status);
             context.AddParameter("@COA", obj.COA);
             context.AddParameter("@TOP", obj.TOP);
-            context.AddParameter("@margin", obj.margin);
+            context.AddParameter("@margin", obj.margin.ToString().Replace(",", "."));
             context.AddParameter("@isdelete", is_delete);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
