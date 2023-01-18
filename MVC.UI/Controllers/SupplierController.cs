@@ -31,6 +31,7 @@ namespace MVC.UI.Controllers
             });
             // Retrieve departments and build SelectList
             ViewBag.NegaraList = new SelectList(ListNegara, "Value", "Text");
+            ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
             return View();
         }
 
@@ -53,6 +54,7 @@ namespace MVC.UI.Controllers
         public ActionResult Edit(string supplier_code)
         {
             Master_SupplierDbo existing = Master_SupplierItem.GetBySupplier_Code(supplier_code);
+            ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
             return View(existing);
         }
 
@@ -92,6 +94,12 @@ namespace MVC.UI.Controllers
         {
             Master_SupplierDbo existing = Master_SupplierItem.GetBySupplier_Code(supplier_code);
             return View(existing);
+        }
+
+        public List<GroupDbo> TOPList()
+        {
+            List<GroupDbo> TOPList = Master_KlienItem.GetTOP();
+            return TOPList;
         }
     }
 }

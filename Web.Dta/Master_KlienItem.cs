@@ -126,5 +126,15 @@ namespace Web.Dta
         }
         #endregion
 
+
+        //GetTOPList
+        public static List<GroupDbo> GetTOP()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_GetTop]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new GroupDbo());
+        }
     }
 }

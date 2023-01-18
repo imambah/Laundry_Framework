@@ -185,7 +185,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Status</div>
                     <div class="col-sm-8">
-                        @Html.DropDownListFor(model => model.tipe_konsumen, listItems, "-- Select Jenis Konsumen --", new { @class = "form-control", placeholder = "Jenis Konsumen", disabled = "disabled" })
+                        @Html.TextBoxFor(model => model.tipe_konsumen, new { @class = "form-control", placeholder = "TOP", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.tipe_konsumen)
                     </div>
                 </div>

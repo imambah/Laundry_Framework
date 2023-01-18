@@ -104,20 +104,10 @@
                     </div>
                 </div>
 
-
-                <!--<div class="form-group">-->
-                @*@Html.LabelFor(model => model.BranchCode, new { @class = "col-sm-2 control-label" })*@
-                <!--<div class="col-sm-2 control-label">Negara</div>
-            <div class="col-sm-4">
-                @Html.DropDownListFor(model => model.negara, ViewBag.NegaraList as SelectList, new { @class = "form-control" })
-
-            </div>
-        </div>-->
-
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Pos</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.kodepos, new { @class = "form-control", placeholder = "Kode Pos" })
+                        @Html.TextBoxFor(model => model.kodepos, new { @class = "form-control", placeholder = "Kode Pos", onkeydown = "return ValidateNumber(event);" })
                         @Html.ValidationMessageFor(model => model.kodepos)
                     </div>
                 </div>
@@ -185,7 +175,7 @@
                     <div class="col-sm-2 control-label">Jenis Konsumen</div>
                     <div class="col-sm-8">
                         @*@Html.DropDownList(model => model.status, new { @class = "form-control", placeholder = "Jenis Konsumen" })
-                    @Html.ValidationMessageFor(model => model.status)*@
+                            @Html.ValidationMessageFor(model => model.status)*@
 
                         @Html.DropDownListFor(model => model.tipe_konsumen, listItems, "-- Select Jenis Konsumen --", new { @class = "form-control", placeholder = "Jenis Konsumen" })
                         @Html.ValidationMessageFor(model => model.tipe_konsumen)
@@ -203,7 +193,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">TOP</div>
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.TOP, new { @class = "form-control", placeholder = "TOP" })
+                        @Html.DropDownListFor(model => model.TOP, ViewBag.TOPList as SelectList, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.TOP)
                     </div>
                 </div>
@@ -211,7 +201,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Profit Share</div>
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.profit_share, new { @class = "form-control", placeholder = "profit_share" })
+                        @Html.TextBoxFor(model => model.profit_share, new { @class = "form-control", placeholder = "profit_share", onkeydown = "return ValidateNumber(event);" })
                         @Html.ValidationMessageFor(model => model.profit_share)
                     </div>
                 </div>
@@ -219,7 +209,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kredit Limit</div>
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.credit_limit, new { @class = "form-control", placeholder = "Kredit Limit" })
+                        @Html.TextBoxFor(model => model.credit_limit, new { @class = "form-control", placeholder = "Kredit Limit", onkeydown = "return ValidateNumber(event);" })
                         @Html.ValidationMessageFor(model => model.credit_limit)
                     </div>
                 </div>
@@ -227,7 +217,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Initial</div>
                     <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.initial, new { @class = "form-control", placeholder = "Initial" })
+                        @Html.TextBoxFor(model => model.initial, new { @class = "form-control", placeholder = "Initial", maxlength = "3" })
                         @Html.ValidationMessageFor(model => model.initial)
                     </div>
                 </div>
@@ -251,3 +241,27 @@
     <!-- /.box -->
 </section>
 <!-- /.content -->
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    })
+
+     function ValidateNumber(e) {
+         var charCode;
+         if (e.keyCode > 0) {
+             charCode = e.which || e.keyCode;
+         }
+         else if (typeof (e.charCode) != "undefined") {
+             charCode = e.which || e.keyCode;
+         }
+         if (charCode == 46)
+             return true;
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+             return false;
+         return true;
+    };
+
+
+</script>

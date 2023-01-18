@@ -29,15 +29,14 @@ namespace MVC.UI.Controllers
         // GET: Client/Create
         public ActionResult Create()
         {
-            List<Master_NegaraDbo> MN = Master_NegaraItem.GetNegara();
-            List<SelectListItem> ListNegara = new List<SelectListItem>();
-            MN.ForEach(t =>
-            {
-                ListNegara.Add(new SelectListItem() { Value = t.id.ToString(), Text = t.nation_name });
-            });
-            // Retrieve departments and build SelectList
-            ViewBag.NegaraList = new SelectList(ListNegara, "Value", "Text");
+            ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
             return View();
+        }
+
+        public List<GroupDbo> TOPList()
+        {
+            List<GroupDbo> TOPList = Master_KlienItem.GetTOP();
+            return TOPList;
         }
 
         // POST: Client/Create
@@ -60,6 +59,7 @@ namespace MVC.UI.Controllers
         public ActionResult Edit(string client_code)
         {
             Master_Klien existing = Master_KlienItem.GetByClient_Code(client_code);
+            ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
             return View(existing);
         }
 

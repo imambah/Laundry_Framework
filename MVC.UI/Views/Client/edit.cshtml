@@ -205,8 +205,8 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">TOP</div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.TOP, new { @class = "form-control", placeholder = "TOP" })
+                    <div class="col-sm-4">
+                        @Html.DropDownListFor(model => model.TOP, ViewBag.TOPList as SelectList, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.TOP)
                     </div>
                 </div>
