@@ -220,6 +220,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FileuploadModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -233,6 +234,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\corona.jpg" />
+    <Content Include="Images\logo-twitter.jpg" />
+    <Content Include="Images\logo_laundry.jpeg" />
+    <Content Include="Images\logo_laundry_abu.jpeg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -332,10 +337,10 @@
     <Content Include="Views\Pricelist\Details.cshtml" />
     <Content Include="Views\Parameter\Details.cshtml" />
     <Content Include="Views\Shared\DisplayBranch.cshtml" />
+    <Content Include="Views\CompanyProfile\LogoImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
     <Folder Include="Views\BOM_Detail\" />
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,7 @@ using MVC.UI.Models;
 using Web.Dta;
 using Web.Dto;
 using Web.Logic;
+using System.IO;
 namespace MVC.UI.Controllers
 {
     public class CompanyProfileController : Controller
@@ -16,22 +17,31 @@ namespace MVC.UI.Controllers
         public ActionResult Index()
         {
             Company_ProfileDbo existing = Master_CompanyItem.GetAll();
+           // existing.logo = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(existing.logo));
             return View(existing);
         }
         [HttpPost]
-        public ActionResult Index(Company_ProfileDbo Item)
+        public ActionResult Index(Company_ProfileDbo Item, HttpPostedFileBase logo )
+            //, HttpPostedFileBase file
         {
             try
             {
                 // TODO: Add insert logic here
                 //Master_CompanyItem.Insert(Item);
                 //return RedirectToAction("Index");
+                //var fileName = Path.GetFileName(logo.FileName);
 
                 Company_ProfileDbo existing =  Master_CompanyItem.GetCompanyProfileByName(Item.company_name);
                 
                 if (existing != null)
                 {
-                   Master_CompanyItem.Update(Item);
+                    if (logo != null)
+                    {
+                        string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(logo.FileName));
+                        logo.SaveAs(path);
+                    }
+                    Item.logo = logo.FileName;
+                    Master_CompanyItem.Update(Item);
                     ViewBag.Message = string.Format("Data Berhasil di Update ");
                 }
                 else
@@ -40,6 +50,7 @@ namespace MVC.UI.Controllers
                     Master_CompanyItem.Insert(Item);
 
                 }
+
                 return RedirectToAction("Index");
             }
             catch
