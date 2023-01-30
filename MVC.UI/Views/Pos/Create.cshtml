@@ -206,7 +206,7 @@
             $('#customer_address').val(ui.item.value);
         }
     });
-  
+
 
     $("#customer_type").change(function () {
         var customer_type = $(this).val();
@@ -214,7 +214,7 @@
             $("#room").prop('disabled', true);
         } else {
             $("#room").prop('disabled', false);
-        } 
+        }
         $.ajax({
             type: "post",
             url: "/POS/GetItemByType?strType=" + customer_type,
@@ -251,7 +251,7 @@
         //    var row = table.row(index);
         //    var data = row.data();
         //    alert(data);
-        //    var first = $('.fieldname:eq(0)').val() 
+        //    var first = $('.fieldname:eq(0)').val()
         //    // ... do something with data(), or row.node(), etc
         //});
 
@@ -260,23 +260,32 @@
         //        alert(table.rows[r].cells[c].innerHTML);
         //    }
         //}
+        //for (var i = 2; i < sTableName.rows.length; i++) {
+        //    var col1 = sTableName.rows[i].cells[1].innerText;
+        //    var _laundry = sTableName.rows[i].cells[3].firstChild.checked;
+
+        //    //alert(col1);
+        //}
+        var rows = [];
         for (var i = 2; i < sTableName.rows.length; i++) {
-            //var col1 = sTableName.rows[i].cells[1].innerText;
-
+            var _id = sTableName.rows[i].cells[0].innerText;
+            var _name = sTableName.rows[i].cells[1].innerText;
+            var _qty = sTableName.rows[i].cells[2].firstChild.value;
             var _laundry = sTableName.rows[i].cells[3].firstChild.checked;
+            var _dry_cleaning = sTableName.rows[i].cells[4].firstChild.checked;
+            var _remark = sTableName.rows[i].cells[5].firstChild.value;
+            var row = _id + "|" + _name + "|" + _qty + "|" + _laundry + "|" + _dry_cleaning + "|" + _remark;
+            rows.push(row);
 
-            //if ($("input[type=checkbox]").prop(":checked")) {
-            //    alert("Check box in Checked");
-            //} else {
-            //    alert("Check box is Unchecked");
-            //}
-            alert(_laundry);
+            $.post('@Url.Action("Proccess", "POS")', { rows: rows }, function (data) {
+                console.log(data);
+            });
+            //alert(_qty);
         }
 
-           
 
 
-       
+
     }
 </script>
 

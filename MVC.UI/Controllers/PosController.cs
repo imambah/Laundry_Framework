@@ -41,5 +41,20 @@ namespace MVC.UI.Controllers
                         select new { N.nama_klien,N.alamat });
             return Json(Name, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult Proccess(List<string> rows)
+        {
+
+            rows.ForEach(x =>
+            {
+                var row = x.Split('|');
+                var id = row[0];
+                var name = row[1];
+                var family = row[2];
+            });
+
+            return Json(true);
+        }
     }
 }
