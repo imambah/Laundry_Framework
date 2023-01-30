@@ -1,0 +1,409 @@
+﻿@model Web.Dto.POSDbo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "-- Pilih Tipe --",
+        Value = "",
+        Selected = true
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "HK / FB Linen",
+        Value = "Linen",
+
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Guest / Uniform",
+        Value = "Uniform",
+    });
+
+}
+
+<style>
+    .ui-autocomplete {
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    .ui-autocomplete {
+        height: 100px;
+    }
+</style>
+
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Transaksi</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Transaksi</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Tambah Data Transaksi Laundry</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Type</div>
+                    <div class="col-sm-2">
+
+                        @Html.DropDownListFor(model => model.customer_type, listItems, new { @class = "form-control", placeholder = "Jenis Konsumen" })
+                        @Html.ValidationMessageFor(model => model.customer_type)
+                    </div>
+                    <div class="col-sm-1 control-label"> </div>
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-1 control-label">No. Nota</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.transaction_id, new { @class = "form-control", placeholder = "No.Nota", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.transaction_id)
+
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Pelanggan</div>
+                    <div class="col-sm-3">
+                        @*<input id="auto-complete">*@
+                        @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan" } })
+                    </div>
+                    <div class="col-sm-1 control-label">Room </div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.room)
+                    </div>
+                    <div class="col-sm-1 control-label">Terima</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.receiveddate, new { @class = "form-control", placeholder = "Tgl Terima", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.receiveddate)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Alamat Pelanggan</div>
+                    <div class="col-sm-6">
+                        @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan" , disabled ="disabled"})
+                        @Html.ValidationMessageFor(model => model.customer_address)
+                    </div>
+                    <div class="col-sm-1 control-label">Selesai</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.finishdate, new { @class = "form-control", placeholder = "Tgl Selesai", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.finishdate)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"></div>
+                    <div class="col-sm-6">
+
+                    </div>
+                </div>
+                
+
+                    
+                
+                <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
+                    <thead>
+                        <tr class="bg-danger">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 " rowspan="2">
+                                ID
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 " rowspan="2">
+                                Item's
+                            </th>
+
+                            <th class="text-center" rowspan="2" style="vertical-align: middle; padding: 0 ">
+                                QTY
+                            </th>
+                            <th colspan="2" class="text-center">
+                                Service
+                            </th>
+
+                            <th class="text-center" rowspan="2" style="vertical-align: middle; padding: 0 ">
+                                Remark
+                            </th>
+
+                        </tr>
+                        <tr class="bg-danger">
+
+                            <th class="text-center">
+                                Laundry
+                            </th>
+                            <th class="text-center">
+                                Dry Cleaning
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+
+               
+                <div class="form-group">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2 text-right">
+                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                    </div>
+                </div>
+
+            }
+
+        <div>
+            <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            <button onclick="showCell()">Show Cell Value</button>
+        </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->
+
+<script type="text/javascript">
+    $("#customer_name").autocomplete({
+        source: function (request, response) {
+            //var csname = 'Counter';
+            $.ajax({
+                type: "POST",
+                url: "/POS/getName?Prefix=" + $('#customer_name').val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                //data: { Prefix: $('#customer_name').val() },
+                success: function (data) {
+                    var result = $.map(data, function (item) {
+                        return {
+                            label: item.nama_klien,
+                            value: item.alamat
+                        };
+                    });
+                    return response(result);
+                }
+            });
+        },
+        select: function (event, ui) {
+            event.preventDefault();
+            $('#customer_name').val(ui.item.label);
+            $('#customer_address').val(ui.item.value);
+        }
+    });
+  
+
+    $("#customer_type").change(function () {
+        var customer_type = $(this).val();
+        if (customer_type == 'Linen') {
+            $("#room").prop('disabled', true);
+        } else {
+            $("#room").prop('disabled', false);
+        } 
+        $.ajax({
+            type: "post",
+            url: "/POS/GetItemByType?strType=" + customer_type,
+            data: "[]",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var output = data.map(i => "<tr><td>"+ i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='checkbox' id='laundry' name='laundry'></td><td style='text-align:center'><input type='checkbox' id='drycleaning' name='drycleaning'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
+                $("#tableBody").html(output);
+            }
+        })
+    });
+
+    function ValidateNumber(e) {
+        var charCode;
+        if (e.keyCode > 0) {
+            charCode = e.which || e.keyCode;
+        }
+        else if (typeof (e.charCode) != "undefined") {
+            charCode = e.which || e.keyCode;
+        }
+        if (charCode == 46)
+            return true;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    };
+
+    function showCell() {
+        var sTableName = document.getElementById("tabelPaket");
+        //var table = document.getElementById('tabelPaket');
+
+        //table.rows().eq(0).each(function (index) {
+        //    var row = table.row(index);
+        //    var data = row.data();
+        //    alert(data);
+        //    var first = $('.fieldname:eq(0)').val() 
+        //    // ... do something with data(), or row.node(), etc
+        //});
+
+        //for (var r = 2, n = table.rows.length; r < n; r++) {
+        //    for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+        //        alert(table.rows[r].cells[c].innerHTML);
+        //    }
+        //}
+        for (var i = 2; i < sTableName.rows.length; i++) {
+            //var col1 = sTableName.rows[i].cells[1].innerText;
+
+            var _laundry = sTableName.rows[i].cells[3].firstChild.checked;
+
+            //if ($("input[type=checkbox]").prop(":checked")) {
+            //    alert("Check box in Checked");
+            //} else {
+            //    alert("Check box is Unchecked");
+            //}
+            alert(_laundry);
+        }
+
+           
+
+
+       
+    }
+</script>
+
+
+
+
+
+
+
+@*<link href="~/Content/jquery-ui-1.9.0.custom.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.js"></script>*@
+
+
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#customer_type").change(function () {
+            var customer_type = $(this).val();
+            $.ajax({
+                type: "post",
+                url: "/POS/GetItemByType?strType=" + customer_type,
+                data: "[]",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var output = data.map(i => "<tr><td></td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='checkbox' id='laundry' name='laundry'></td><td style='text-align:center'><input type='checkbox' id='drycleaning' name='drycleaning'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
+                    $("#tableBody").html(output);
+                }
+            })
+        });
+        $("#users2").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    type: "post",
+                    url: "/POST/getName",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: { Prefix: $('#users2').val() },
+                    success: function (data) {
+                        var result = $.map(data, function (item) {
+                            return {
+                                label: item.nama_klien,
+                                value: item.nama_klien
+                            };
+                        });
+                        return response(result);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                event.preventDefault();
+                $('#users2').val(ui.item.label);
+                $('#userid2').val(ui.item.value);
+            }
+        });
+    })
+
+    
+</script>*@
+
+@*$("#customer_name").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "/POS/getName",
+                type: "POST",
+                dataType: "json",
+                data: { Prefix: request.term },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: item.Name, value: item.Name };
+                    }))
+
+                }
+            })
+        },
+        messages: {
+            noResults: "", results: ""
+        }
+    });*@
+
+@*$('#users2').keyup(function () {
+        var query = $(this).val();
+        if (query != '') {
+            $.ajax({
+                url: "/POS/getName",
+                dataType: 'json',
+                data: { Prefix: $('#users2').val() },
+                success: function (data) {
+                    var result = $.map(data, function (item) {
+                        return {
+                            label: item.name,
+                            value: item.id
+                        };
+                    });
+                    return response(result);
+                }
+            });
+        }
+    });
+
+    $(document).on('click', 'li', function () {
+        $('#users2').val($(this).text());
+        $('#userid2').fadeOut();
+    });*@
+
+@*$.ajax({
+        type: 'POST',
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        url: "/POS/getName?Prefix=Counter",
+       // data: { Prefix: $('#users2').val() },
+        success: function (data) {
+            //alert("done");
+            var Names = [];
+            Names = getDataInArray(data);
+
+            $("#txtempname").autocomplete({
+                source: Names,
+            });
+        }
+    });
+    //Method to Convert JSON Response into an Array
+    function getDataInArray(array) {
+        var names = [];
+        $.each(array, function (i, d) {
+            names.push(d.nama_klien);
+        });
+        //alert("ArrAy " + names);
+        return names;
+    }*@

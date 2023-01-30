@@ -72,7 +72,15 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_PricelistDbo>(context, new Master_PricelistDbo()).FirstOrDefault();
         }
 
+        public static List<Master_PricelistDbo> GetItemByType(string strType)
+        {
 
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "sp_master_pricelist_GetByType";
+            context.AddParameter("@type", strType);
+            return DBUtil.ExecuteMapper(context, new Master_PricelistDbo());
+        }
         
         #endregion
 

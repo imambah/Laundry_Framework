@@ -1,15 +1,17 @@
-﻿@model Web.Dto.Master_BankDbo
+﻿
+@model IEnumerable<Web.Dto.POSDbo>
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Bank</h1>
+    <h1>Data Transaksi</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Bank</li>
+        <li class="active">Transaksi</li>
     </ol>
 </section>
 
@@ -18,76 +20,73 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Transaksi Laundry</h3>
+            <h3 class="box-title">Data Transaksi Laundry</h3>
         </div>
         <div class="box-body">
+            <p>
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
+                <a class="btn btn-warning " href="@Url.Action("Create")" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Id Transaksi</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control", placeholder = "Nama Bank" })
-                        @Html.ValidationMessageFor(model => model.Description)
-                    </div>
-                </div>
+            </p>
+            <table id="mydatatable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            No.Nota
+                        </th>
+                        <th>
+                            Pelanggan
+                        </th>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Tgl Transaksi</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Area, new { @class = "form-control", placeholder = "Tanggal Transaksi" })
-                        @Html.ValidationMessageFor(model => model.Area)
-                    </div>
-                </div>
+                        <th>
+                            Tgl Terima 
+                        </th>
+                        <th>
+                            Tgl Selesai
+                        </th>
+                        <th>
+                            Jenis
+                        </th>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Konsumen</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "Konsumen" })
-                        @Html.ValidationMessageFor(model => model.Account)
-                    </div>
-                </div>
+                        <th>
+                            Total Item
+                        </th>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">BOM</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "BOM" })
-                        @Html.ValidationMessageFor(model => model.Account)
-                    </div>
-                </div>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.transaction_id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.customer_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.receiveddate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.finishdate)
+                            </td>
+                            <td> 
+                                @Html.DisplayFor(modelItem => item.transaction_type)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.jumlah_item)
+                            </td>
+                            <td>
+                                <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                            </td>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Jumlah</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "Jumlah" })
-                        @Html.ValidationMessageFor(model => model.Account)
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Harga</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control", placeholder = "Harga" })
-                        @Html.ValidationMessageFor(model => model.Account)
-                    </div>
-                </div>
-
-
-
-                <div class="form-group">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-10">
-                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-                    </div>
-                </div>
-            }
-
-            <div>
-                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
-            </div>
-
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
         <!-- /.box-body -->
     </div>

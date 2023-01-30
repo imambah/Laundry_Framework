@@ -230,11 +230,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui-1.2.css" />
+    <Content Include="Content\jquery-ui-1.9.0.custom.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\corona.jpg" />
+    <Content Include="Images\dollar_laundry.png" />
+    <Content Include="Images\icon laundry.png" />
     <Content Include="Images\logo-twitter.jpg" />
     <Content Include="Images\logo_laundry.jpeg" />
     <Content Include="Images\logo_laundry_abu.jpeg" />
@@ -249,6 +254,15 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-ui-1.9.0.js" />
+    <Content Include="Scripts\jquery-ui-1.9.0.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui-1.12.4.js" />
+    <Content Include="Scripts\jquery.autocomplete.js" />
+    <Content Include="Scripts\jquery.autocomplete.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -338,9 +352,11 @@
     <Content Include="Views\Parameter\Details.cshtml" />
     <Content Include="Views\Shared\DisplayBranch.cshtml" />
     <Content Include="Views\CompanyProfile\LogoImage.cshtml" />
+    <Content Include="Views\Pos\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadFiles\" />
     <Folder Include="Views\BOM_Detail\" />
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +380,9 @@
       <Project>{04B27B79-E2B8-4DBE-BA2B-76E7761573C0}</Project>
       <Name>Web.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

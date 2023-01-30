@@ -20,7 +20,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
     <style>
         .skin-purple .main-header .navbar {
             background-color: #ff8c2a;
@@ -33,12 +33,17 @@
             border-bottom: 0 solid transparent;
         }
     </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   
 
 </head>
 <body class="hold-transition skin-purple sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
-
+        @*@Scripts.Render("~/Content/AdminJs")*@
         <header class="main-header">
             <!-- Logo -->
             <a href="@Url.Action("Index", "Welcome")" class="logo">
@@ -77,8 +82,8 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     @*<div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profil</a>
-                                    </div>*@
+                                            <a href="#" class="btn btn-default btn-flat">Profil</a>
+                                        </div>*@
                                     <div class="pull-right">
                                         <a href="@Url.Action("Logout", "User")" class="btn btn-default btn-flat">Logout</a>
                                     </div>
@@ -139,6 +144,7 @@
     <!-- ./wrapper -->
 
     @Scripts.Render("~/Content/AdminJs")
+
     <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()
@@ -156,14 +162,14 @@
                     'searching': true,
                     "paging": false,
                     'columnDefs': [
-                       {
-                           'targets': 0,
-                           'checkboxes': true,
+                        {
+                            'targets': 0,
+                            'checkboxes': true,
 
-                           render: function (data, type, row) {
-                               return '<input class="dt-checkboxes" type="checkbox" name="SelectedPeserta" id="SelectedPeserta" value=' + data + ' />';
-                           }
-                       }
+                            render: function (data, type, row) {
+                                return '<input class="dt-checkboxes" type="checkbox" name="SelectedPeserta" id="SelectedPeserta" value=' + data + ' />';
+                            }
+                        }
                     ],
                     'order': [[1, 'asc']]
                 });
@@ -184,8 +190,11 @@
                 defaultTime: false,
                 showMeridian: false
             });
+
+           
         });
     </script>
+
     @RenderSection("Scripts", false)
 </body>
 </html>

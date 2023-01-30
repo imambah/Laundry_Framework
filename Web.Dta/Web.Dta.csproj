@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOMItem.cs" />
+    <Compile Include="Master_POSItem.cs" />
     <Compile Include="Master_BarangItem.cs" />
     <Compile Include="Master_ItemGroupItem.cs" />
     <Compile Include="Master_SupplierItem.cs" />
