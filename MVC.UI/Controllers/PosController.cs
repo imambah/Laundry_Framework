@@ -38,23 +38,75 @@ namespace MVC.UI.Controllers
             List<Master_Klien> ObjList = Master_KlienItem.GetAll();
             var Name = (from N in ObjList
                         where N.nama_klien.ToUpper().Contains(strValue)
-                        select new { N.nama_klien,N.alamat });
+                        select new { N.nama_klien, N.alamat, N.kode_klien, N.tipe_konsumen });
             return Json(Name, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult Proccess(List<string> rows)
+        public ActionResult ProccessHeader(string header)
         {
+            string[] result = header.Split('|');
+            //string dateWithFormat = DateTime.Now.ToString("ddMMyyyyHHmmss");
+            //string GenNo = "TR-" + dateWithFormat;
+            POSDbo ObjPosHeader = new POSDbo();
+            ObjPosHeader.transaction_type = result[0].Trim();
+            ObjPosHeader.transaction_id = result[1].Trim();
+            ObjPosHeader.customer_name = result[2].Trim();
+            ObjPosHeader.room = result[3].Trim();
+            ObjPosHeader.customer_address = result[4].Trim();
+            ObjPosHeader.customer_type = result[5].Trim();
+            ObjPosHeader.customerid = result[6].Trim();
 
-            rows.ForEach(x =>
+            try
             {
-                var row = x.Split('|');
-                var id = row[0];
-                var name = row[1];
-                var family = row[2];
-            });
+                Master_POSItem.Insert(ObjPosHeader);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            } //return Json(true);
+        }
+        public ActionResult ProccessDetail(List<string> rows, string transactionid)
+        {
+            try
+            {
+                rows.ForEach(x =>
+                {
+                    var row = x.Split('|');
+                    var transaction_id = transactionid;
+                    var id = row[0];
+                    var name = row[1];
+                    var qty = row[2];
+                    var laundry = 0;
+                    if (row[3] == "false")
+                       laundry = 1;
+                   
+                    var drycleaning = 0;
+                    if (row[4] == "false") 
+                        drycleaning = 1;
 
-            return Json(true);
+                    Service_PriceDbo price = Master_POSItem.GetPrice(id);
+
+                    var remark = row[5];
+                    POS_DetailDbo ObjPosDetail = new POS_DetailDbo();
+                    ObjPosDetail.transaction_id = transactionid;
+                    ObjPosDetail.kode_item = id;
+                    ObjPosDetail.nama_item = name;
+                    ObjPosDetail.jumlah_item = Convert.ToInt32(qty);
+                    ObjPosDetail.service_laundry = Convert.ToInt32(laundry);
+                    ObjPosDetail.service_laundry_price = price.service_Laundry_price;
+                    ObjPosDetail.service_drycleaning = Convert.ToInt32(drycleaning);
+                    ObjPosDetail.service_drycleaning_price = price.service_DryCleaning_price;
+                    ObjPosDetail.remarks = remark;
+                    Master_POSItem.InsertDetail(ObjPosDetail);
+                });
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            } 
         }
     }
 }

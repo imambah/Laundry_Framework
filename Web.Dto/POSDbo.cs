@@ -46,14 +46,14 @@ namespace Web.Dto
             obj.customer_type = reader["customer_type"].ToString();
 
             obj.room = reader["room"].ToString();
-            obj.jumlah_item = Convert.ToInt32(reader["jumlah"]);
-            obj.nilai = Convert.ToDecimal(reader["harga"]);
-            obj.disc = Convert.ToDecimal(reader["disc"]);
+            obj.jumlah_item = reader["jumlah"] == DBNull.Value ? 0 : Convert.ToInt32(reader["jumlah"]);
+            obj.nilai = reader["nilai"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["nilai"]); 
+            obj.disc = reader["disc"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["disc"]); 
 
-            obj.sub_total = Convert.ToDecimal(reader["sub_total"]);
-            obj.ppn = Convert.ToDecimal(reader["ppn"]);
-            obj.grand_total = Convert.ToDouble(reader["grand_total"]);
-            obj.invoiced =reader["metode_bayar"].ToString();
+            obj.sub_total = reader["sub_total"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["sub_total"]); 
+            obj.ppn = reader["ppn"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["ppn"]);
+            obj.grand_total = reader["grand_total"] == DBNull.Value ? 0 : Convert.ToDouble(reader["grand_total"]);  
+            obj.invoiced =reader["Invoiced"].ToString();
 
            
             obj.finishdate = reader["finishdate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["finishdate"]);

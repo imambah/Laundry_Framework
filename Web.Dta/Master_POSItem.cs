@@ -21,67 +21,63 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new POSDbo());
         }
 
-        public static Master_BankDbo GetById(int id)
-        {
 
-            IDBHelper context = new DBHelper();
-            context.CommandType = CommandType.StoredProcedure;
-            context.CommandText = "sp_master_bank_GetById";
-            context.AddParameter("@id", id);
-            return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
-        }
 
         #region Data Access
 
         /// <summary>
-        /// Execute Insert to TABLE [tbl_log]
+        /// Execute Insert to TABLE [tabel POS]
         /// </summary>        
-        public static Master_BankDbo Insert(Master_BankDbo obj)
+        public static POSDbo Insert(POSDbo obj)
         {
-            Random rdm = new Random();
-            int NoRdm = rdm.Next(1, 1000);
-
-            string Bank_id = "B" + NoRdm;
-
+            //Random rdm = new Random();
+            //int NoRdm = rdm.Next(1, 1000);
+            //var transId = obj.transaction_id + NoRdm;
             IDBHelper context = new DBHelper();
-            string sqlQuery = "sp_master_bank_Insert";
-            context.AddParameter("@BankID", Bank_id);
-            context.AddParameter("@Description", obj.Description);
-            context.AddParameter("@Area", obj.Area);
-            context.AddParameter("@Account", obj.Account);
-            context.AddParameter("@Balance", obj.Balance);
-            context.AddParameter("@account_name", obj.Account_Name);
-            context.AddParameter("@COA", obj.COA);
+            string sqlQuery = "[sp_POS_Insert_Header]";
+            context.AddParameter("@transaction_id", obj.transaction_id);
+            context.AddParameter("@transaction_type", obj.transaction_type);
+            context.AddParameter("@customer_id", obj.customerid);
+            context.AddParameter("@customer_name", obj.customer_name);
+            context.AddParameter("@customer_address", obj.customer_address);
+            context.AddParameter("@customer_type", obj.customer_type);
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", "user_system");
-            context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system");
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
-            return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<POSDbo>(context, new POSDbo()).FirstOrDefault();
         }
 
-        public static Master_BankDbo Update(Master_BankDbo obj,string isdelete)
+        public static POS_DetailDbo InsertDetail(POS_DetailDbo obj)
         {
-
             IDBHelper context = new DBHelper();
-            context.AddParameter("@id", obj.id);
-            context.AddParameter("@BankID", obj.BankID);
-            context.AddParameter("@Description", obj.Description);
-            context.AddParameter("@Area", obj.Area);
-            context.AddParameter("@Account", obj.Account);
-            context.AddParameter("@Balance", obj.Balance);
-            context.AddParameter("@account_name", obj.Account_Name);
-            context.AddParameter("@COA", obj.COA);
-            context.AddParameter("@isdelete", isdelete);
-            context.AddParameter("@update_by", "user_system_update");
-            string sqlQuery = "[sp_master_bank_Update]";
+            string sqlQuery = "[sp_POS_Insert_Detail]";
+            context.AddParameter("@transaction_id", obj.transaction_id);
+            context.AddParameter("@kode_item", obj.kode_item);
+            context.AddParameter("@nama_item", obj.nama_item);
+            context.AddParameter("@jumlah_item", obj.jumlah_item);
+            context.AddParameter("@service_laundry", obj.service_laundry);
+            context.AddParameter("@service_laundry_price", obj.service_laundry_price);
+            context.AddParameter("@service_drycleaning", obj.service_drycleaning);
+            context.AddParameter("@service_drycleaning_price", obj.service_drycleaning_price);
+            context.AddParameter("@harga", obj.harga);
+            context.AddParameter("@total", obj.total);
+            context.AddParameter("@remarks", obj.remarks);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
-            return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<POS_DetailDbo>(context, new POS_DetailDbo()).FirstOrDefault();
         }
 
-       
+        public static Service_PriceDbo GetPrice(string id)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_POS_GetPrice_ById";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@id", id);
+            return DBUtil.ExecuteMapper<Service_PriceDbo>(context, new Service_PriceDbo()).FirstOrDefault();
+
+        }
         #endregion
 
     }

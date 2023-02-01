@@ -63,58 +63,51 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Type</div>
-                    <div class="col-sm-2">
-
-                        @Html.DropDownListFor(model => model.customer_type, listItems, new { @class = "form-control", placeholder = "Jenis Konsumen" })
-                        @Html.ValidationMessageFor(model => model.customer_type)
-                    </div>
-                    <div class="col-sm-1 control-label"> </div>
-                    <div class="col-sm-3">
-                    </div>
-                    <div class="col-sm-1 control-label">No. Nota</div>
-                    <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.transaction_id, new { @class = "form-control", placeholder = "No.Nota", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.transaction_id)
-
-                    </div>
-
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Type</div>
+                <div class="col-sm-3">
+                    @Html.DropDownListFor(model => model.transaction_type, listItems, new { @class = "form-control", placeholder = "Transaction Type" })
+                    @Html.ValidationMessageFor(model => model.transaction_type)
                 </div>
+                <div class="col-sm-1 control-label">Room </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.room)
+                </div>
+
+
+            </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Pelanggan</div>
                     <div class="col-sm-3">
                         @*<input id="auto-complete">*@
-                        @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan" } })
+                        @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", required = "required" } })
                     </div>
-                    <div class="col-sm-1 control-label">Room </div>
+                    <div class="col-sm-1 control-label">CustID</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.room)
+                        @Html.TextBoxFor(model => model.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.customerid)
+
                     </div>
-                    <div class="col-sm-1 control-label">Terima</div>
+                   
+                    <div class="col-sm-1 control-label">Tipe </div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.receiveddate, new { @class = "form-control", placeholder = "Tgl Terima", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.receiveddate)
+                        @Html.TextBoxFor(model => model.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.customer_type)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Alamat Pelanggan</div>
                     <div class="col-sm-6">
-                        @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan" , disabled ="disabled"})
+                        @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.customer_address)
                     </div>
-                    <div class="col-sm-1 control-label">Selesai</div>
-                    <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.finishdate, new { @class = "form-control", placeholder = "Tgl Selesai", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.finishdate)
-                    </div>
+                   
                 </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label"></div>
                     <div class="col-sm-6">
-
                     </div>
                 </div>
                 
@@ -193,7 +186,9 @@
                     var result = $.map(data, function (item) {
                         return {
                             label: item.nama_klien,
-                            value: item.alamat
+                            value: item.alamat,
+                            customertype: item.tipe_konsumen,
+                            id: item.kode_klien
                         };
                     });
                     return response(result);
@@ -204,20 +199,23 @@
             event.preventDefault();
             $('#customer_name').val(ui.item.label);
             $('#customer_address').val(ui.item.value);
+            $('#customerid').val(ui.item.id);
+            $('#customer_type').val(ui.item.customertype);
+
         }
     });
 
 
-    $("#customer_type").change(function () {
-        var customer_type = $(this).val();
-        if (customer_type == 'Linen') {
+    $("#transaction_type").change(function () {
+        var transaction_type = $(this).val();
+        if (transaction_type == 'Linen') {
             $("#room").prop('disabled', true);
         } else {
             $("#room").prop('disabled', false);
         }
         $.ajax({
             type: "post",
-            url: "/POS/GetItemByType?strType=" + customer_type,
+            url: "/POS/GetItemByType?strType=" + transaction_type,
             data: "[]",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -245,28 +243,26 @@
 
     function showCell() {
         var sTableName = document.getElementById("tabelPaket");
-        //var table = document.getElementById('tabelPaket');
-
-        //table.rows().eq(0).each(function (index) {
-        //    var row = table.row(index);
-        //    var data = row.data();
-        //    alert(data);
-        //    var first = $('.fieldname:eq(0)').val()
-        //    // ... do something with data(), or row.node(), etc
-        //});
-
-        //for (var r = 2, n = table.rows.length; r < n; r++) {
-        //    for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-        //        alert(table.rows[r].cells[c].innerHTML);
-        //    }
-        //}
-        //for (var i = 2; i < sTableName.rows.length; i++) {
-        //    var col1 = sTableName.rows[i].cells[1].innerText;
-        //    var _laundry = sTableName.rows[i].cells[3].firstChild.checked;
-
-        //    //alert(col1);
-        //}
+        var _transactionType = $("#transaction_type").val();
+        var _customer_name = $("#customer_name").val();
+        var _room = $("#room").val();
+        var _receiveddate = $("#receiveddate").val();
+        var _customer_address = $("#customer_address").val();
+        var _customer_type = $("#customer_type").val();
+        var _customer_id = $("#customerid").val();
+        var date = new Date();
+        var dateStr =
+            date.getFullYear() +
+            ("00" + (date.getMonth() + 1)).slice(-2) +
+            ("00" + date.getDate()).slice(-2) +
+            ("00" + date.getHours()).slice(-2) +
+            ("00" + date.getMinutes()).slice(-2) +
+            ("00" + date.getSeconds()).slice(-2);
+        var _transid = 'TR-' + dateStr;//+ time.toString();.
+        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id
         var rows = [];
+        $.post('@Url.Action("ProccessHeader", "POS")', { header : _header}, function (data) {});
+
         for (var i = 2; i < sTableName.rows.length; i++) {
             var _id = sTableName.rows[i].cells[0].innerText;
             var _name = sTableName.rows[i].cells[1].innerText;
@@ -276,17 +272,11 @@
             var _remark = sTableName.rows[i].cells[5].firstChild.value;
             var row = _id + "|" + _name + "|" + _qty + "|" + _laundry + "|" + _dry_cleaning + "|" + _remark;
             rows.push(row);
-
-            $.post('@Url.Action("Proccess", "POS")', { rows: rows }, function (data) {
-                console.log(data);
-            });
-            //alert(_qty);
         }
-
-
-
-
+        $.post('@Url.Action("ProccessDetail", "POS")', { rows: rows, transactionid: _transid }, function (data) {
+            });
     }
+
 </script>
 
 
@@ -295,124 +285,3 @@
 
 
 
-@*<link href="~/Content/jquery-ui-1.9.0.custom.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-1.8.2.js"></script>*@
-
-
-
-@*<script type="text/javascript">
-    $(document).ready(function () {
-        $("#customer_type").change(function () {
-            var customer_type = $(this).val();
-            $.ajax({
-                type: "post",
-                url: "/POS/GetItemByType?strType=" + customer_type,
-                data: "[]",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    var output = data.map(i => "<tr><td></td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='checkbox' id='laundry' name='laundry'></td><td style='text-align:center'><input type='checkbox' id='drycleaning' name='drycleaning'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
-                    $("#tableBody").html(output);
-                }
-            })
-        });
-        $("#users2").autocomplete({
-            source: function (request, response) {
-                $.ajax({
-                    type: "post",
-                    url: "/POST/getName",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: 'json',
-                    data: { Prefix: $('#users2').val() },
-                    success: function (data) {
-                        var result = $.map(data, function (item) {
-                            return {
-                                label: item.nama_klien,
-                                value: item.nama_klien
-                            };
-                        });
-                        return response(result);
-                    }
-                });
-            },
-            select: function (event, ui) {
-                event.preventDefault();
-                $('#users2').val(ui.item.label);
-                $('#userid2').val(ui.item.value);
-            }
-        });
-    })
-
-    
-</script>*@
-
-@*$("#customer_name").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: "/POS/getName",
-                type: "POST",
-                dataType: "json",
-                data: { Prefix: request.term },
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return { label: item.Name, value: item.Name };
-                    }))
-
-                }
-            })
-        },
-        messages: {
-            noResults: "", results: ""
-        }
-    });*@
-
-@*$('#users2').keyup(function () {
-        var query = $(this).val();
-        if (query != '') {
-            $.ajax({
-                url: "/POS/getName",
-                dataType: 'json',
-                data: { Prefix: $('#users2').val() },
-                success: function (data) {
-                    var result = $.map(data, function (item) {
-                        return {
-                            label: item.name,
-                            value: item.id
-                        };
-                    });
-                    return response(result);
-                }
-            });
-        }
-    });
-
-    $(document).on('click', 'li', function () {
-        $('#users2').val($(this).text());
-        $('#userid2').fadeOut();
-    });*@
-
-@*$.ajax({
-        type: 'POST',
-        contentType: "application/json; charset=utf-8",
-        dataType: 'json',
-        url: "/POS/getName?Prefix=Counter",
-       // data: { Prefix: $('#users2').val() },
-        success: function (data) {
-            //alert("done");
-            var Names = [];
-            Names = getDataInArray(data);
-
-            $("#txtempname").autocomplete({
-                source: Names,
-            });
-        }
-    });
-    //Method to Convert JSON Response into an Array
-    function getDataInArray(array) {
-        var names = [];
-        $.each(array, function (i, d) {
-            names.push(d.nama_klien);
-        });
-        //alert("ArrAy " + names);
-        return names;
-    }*@
