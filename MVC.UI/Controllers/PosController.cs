@@ -57,6 +57,7 @@ namespace MVC.UI.Controllers
             ObjPosHeader.customer_type = result[5].Trim();
             ObjPosHeader.customerid = result[6].Trim();
 
+
             try
             {
                 Master_POSItem.Insert(ObjPosHeader);
@@ -77,31 +78,24 @@ namespace MVC.UI.Controllers
                     var transaction_id = transactionid;
                     var id = row[0];
                     var name = row[1];
-                    var qty = row[2];
-                    var laundry = 0;
-                    if (row[3] == "false")
-                       laundry = 1;
-                   
-                    var drycleaning = 0;
-                    if (row[4] == "false") 
-                        drycleaning = 1;
-
+                    var qty_laundry = row[2];
+                    var qty_drycleaning = row[3];
+                    var remark = row[4];
+                    
                     Service_PriceDbo price = Master_POSItem.GetPrice(id);
-
-                    var remark = row[5];
+                                        
                     POS_DetailDbo ObjPosDetail = new POS_DetailDbo();
                     ObjPosDetail.transaction_id = transactionid;
                     ObjPosDetail.kode_item = id;
                     ObjPosDetail.nama_item = name;
-                    ObjPosDetail.jumlah_item = Convert.ToInt32(qty);
-                    ObjPosDetail.service_laundry = Convert.ToInt32(laundry);
+                    ObjPosDetail.service_laundry_qty = Convert.ToInt32(qty_laundry);
                     ObjPosDetail.service_laundry_price = price.service_Laundry_price;
-                    ObjPosDetail.service_drycleaning = Convert.ToInt32(drycleaning);
+                    ObjPosDetail.service_drycleaning_qty = Convert.ToInt32(qty_drycleaning);
                     ObjPosDetail.service_drycleaning_price = price.service_DryCleaning_price;
                     ObjPosDetail.remarks = remark;
                     Master_POSItem.InsertDetail(ObjPosDetail);
                 });
-                return RedirectToAction("Index");
+                return RedirectToAction("index","POS");
             }
             catch
             {

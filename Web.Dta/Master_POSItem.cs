@@ -55,11 +55,12 @@ namespace Web.Dta
             context.AddParameter("@transaction_id", obj.transaction_id);
             context.AddParameter("@kode_item", obj.kode_item);
             context.AddParameter("@nama_item", obj.nama_item);
-            context.AddParameter("@jumlah_item", obj.jumlah_item);
-            context.AddParameter("@service_laundry", obj.service_laundry);
+
+            context.AddParameter("@service_laundry_qty", obj.service_laundry_qty);
             context.AddParameter("@service_laundry_price", obj.service_laundry_price);
-            context.AddParameter("@service_drycleaning", obj.service_drycleaning);
+            context.AddParameter("@service_drycleaning_qty", obj.service_drycleaning_qty);
             context.AddParameter("@service_drycleaning_price", obj.service_drycleaning_price);
+
             context.AddParameter("@harga", obj.harga);
             context.AddParameter("@total", obj.total);
             context.AddParameter("@remarks", obj.remarks);

@@ -68,7 +68,14 @@
                 <div class="col-sm-3">
                     @Html.DropDownListFor(model => model.transaction_type, listItems, new { @class = "form-control", placeholder = "Transaction Type" })
                     @Html.ValidationMessageFor(model => model.transaction_type)
+                   
+                    @*<span>HK / FB Linen : </span> @Html.RadioButton("TeaType", "Linen", true)
+                    <span> | Guest / Uniform: </span> @Html.RadioButton("TeaType", "Uniform", true)*@
+                   
                 </div>
+
+                
+
                 <div class="col-sm-1 control-label">Room </div>
                 <div class="col-sm-2">
                     @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
@@ -117,20 +124,18 @@
                 <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
                     <thead>
                         <tr class="bg-danger">
-                            <th class="text-center" style="vertical-align: middle; padding: 0 " rowspan="2">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 " >
                                 ID
                             </th>
-                            <th class="text-center" style="vertical-align: middle; padding: 0 " rowspan="2">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 " >
                                 Item's
                             </th>
-
-                            <th class="text-center" rowspan="2" style="vertical-align: middle; padding: 0 ">
-                                QTY
+                            <th class="text-center"  style="vertical-align: middle; padding: 0 ">
+                                Qty Laundry
                             </th>
-                            <th colspan="2" class="text-center">
-                                Service
+                            <th class="text-center"  style="vertical-align: middle; padding: 0 ">
+                                Qty Dry Cleaning 
                             </th>
-
                             <th class="text-center" rowspan="2" style="vertical-align: middle; padding: 0 ">
                                 Remark
                             </th>
@@ -138,12 +143,12 @@
                         </tr>
                         <tr class="bg-danger">
 
-                            <th class="text-center">
+                            @*<th class="text-center">
                                 Laundry
-                            </th>
-                            <th class="text-center">
+                            </th>*@
+                            @*<th class="text-center">
                                 Dry Cleaning
-                            </th>
+                            </th>*@
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -154,7 +159,9 @@
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
-                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button class="btn btn-success" onclick="showCell()"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>
+
                     </div>
                 </div>
 
@@ -162,7 +169,7 @@
 
         <div>
             <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
-            <button onclick="showCell()">Show Cell Value</button>
+            @*<button onclick="showCell()">Show Cell Value</button>*@
         </div>
 
         </div>
@@ -220,8 +227,9 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                var output = data.map(i => "<tr><td>"+ i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='checkbox' id='laundry' name='laundry'></td><td style='text-align:center'><input type='checkbox' id='drycleaning' name='drycleaning'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
-                $("#tableBody").html(output);
+                var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty_laundry' name='qty_laundry' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='text' id='qty_drycleaning' name='qty_drycleaning' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
+                //var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><select id='service'><option value='laundry'>Laundry</option><option value='drycleaning'>Dry Cleaning</option></select></td><td style='text-align:center'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
+            $("#tableBody").html(output);
             }
         })
     });
@@ -240,6 +248,24 @@
             return false;
         return true;
     };
+
+    //function showCell() {
+    //    var sTableName = document.getElementById("tabelPaket");
+        
+    //   // alert('oiiy');
+    //   // alert(sTableName.rows.length-1);
+    //    var rows = [];
+    //    for (var i = 2; i < sTableName.rows.length; i++) {
+    //        var _id = sTableName.rows[i].cells[0].innerText;
+    //        var _name = sTableName.rows[i].cells[1].innerText;
+    //        var _qty_laundry = sTableName.rows[i].cells[2].firstChild.value;
+    //        var _qty_drycleaning = sTableName.rows[i].cells[3].firstChild.value;
+    //        var _remark = sTableName.rows[i].cells[4].firstChild.value;
+    //        var row = _id + "|" + _name + "|" + _qty_laundry + "|" + _qty_drycleaning + "|" + _remark;
+    //        rows.push(row);
+    //    }
+    //   // alert(rows);
+    //}
 
     function showCell() {
         var sTableName = document.getElementById("tabelPaket");
@@ -260,23 +286,42 @@
             ("00" + date.getSeconds()).slice(-2);
         var _transid = 'TR-' + dateStr;//+ time.toString();.
         var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id
-        var rows = [];
+        
         $.post('@Url.Action("ProccessHeader", "POS")', { header : _header}, function (data) {});
 
+        var rows = [];
         for (var i = 2; i < sTableName.rows.length; i++) {
             var _id = sTableName.rows[i].cells[0].innerText;
             var _name = sTableName.rows[i].cells[1].innerText;
-            var _qty = sTableName.rows[i].cells[2].firstChild.value;
-            var _laundry = sTableName.rows[i].cells[3].firstChild.checked;
-            var _dry_cleaning = sTableName.rows[i].cells[4].firstChild.checked;
-            var _remark = sTableName.rows[i].cells[5].firstChild.value;
-            var row = _id + "|" + _name + "|" + _qty + "|" + _laundry + "|" + _dry_cleaning + "|" + _remark;
+            var _qty_laundry = sTableName.rows[i].cells[2].firstChild.value;
+            var _qty_drycleaning = sTableName.rows[i].cells[3].firstChild.value;
+            var _remark = sTableName.rows[i].cells[4].firstChild.value;
+            var row = _id + "|" + _name + "|" + _qty_laundry + "|" + _qty_drycleaning + "|" + _remark;
             rows.push(row);
         }
         $.post('@Url.Action("ProccessDetail", "POS")', { rows: rows, transactionid: _transid }, function (data) {
             });
     }
 
+    function settingDryCleaning() {
+        var checkBox = document.getElementById("laundry");
+
+        if (checkBox.checked == true) {
+            document.getElementById("drycleaning").checked = false;
+        } else {
+            document.getElementById("drycleaning").checked = true;
+        }
+    }
+
+    function settingLaundry() {
+        var checkBox = document.getElementById("drycleaning");
+
+        if (checkBox.checked == true) {
+            document.getElementById("laundry").checked = false;
+        } else {
+            document.getElementById("laundry").checked = true;
+        }
+    }
 </script>
 
 

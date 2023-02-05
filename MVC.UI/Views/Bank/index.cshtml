@@ -31,11 +31,9 @@
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+
                         <th>
-                            ID
-                        </th>
-                        <th>
-                            Bank ID                          
+                            Bank ID
                         </th>
 
                         <th>
@@ -61,15 +59,16 @@
                         </th>
 
                         <th>Aksi</th>
+                        <th hidden>
+                            ID
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.id)
-                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.BankID)
                             </td>
@@ -110,6 +109,9 @@
                                     <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
                                     <a class="text-success" href="@Url.Action("Active", new { id=item.id  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
                                 }
+                            </td>
+                            <td>
+                                @Html.HiddenFor(modelItem => item.id)
                             </td>
 
                         </tr>
