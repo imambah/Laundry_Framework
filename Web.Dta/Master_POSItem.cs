@@ -61,8 +61,8 @@ namespace Web.Dta
             context.AddParameter("@service_drycleaning_qty", obj.service_drycleaning_qty);
             context.AddParameter("@service_drycleaning_price", obj.service_drycleaning_price);
 
-            context.AddParameter("@harga", obj.harga);
-            context.AddParameter("@total", obj.total);
+            context.AddParameter("@total_qty", obj.total_qty);
+            context.AddParameter("@total_harga", obj.total_harga);
             context.AddParameter("@remarks", obj.remarks);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

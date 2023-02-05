@@ -13,8 +13,8 @@ namespace Web.Dto
         public decimal service_laundry_price { get; set; }
         public int service_drycleaning_qty { get; set; }
         public decimal service_drycleaning_price { get; set; }
-        public decimal harga { get; set; }
-        public decimal total { get; set; }
+        public int total_qty { get; set; }
+        public decimal total_harga { get; set; }
         public string remarks { get; set; }
        
         public POS_DetailDbo Map(System.Data.IDataReader reader)
@@ -31,8 +31,8 @@ namespace Web.Dto
             obj.service_drycleaning_qty = reader["service_drycleaning_qty"] == DBNull.Value ? 0 : Convert.ToInt32(reader["service_drycleaning_qty"]);
             obj.service_drycleaning_price = reader["service_drycleaning_price"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["service_drycleaning_price"]);
             
-            obj.harga = reader["harga"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["harga"]);
-            obj.total = reader["total"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["total"]);
+            obj.total_qty = reader["total_qty"] == DBNull.Value ? 0 : Convert.ToInt32(reader["total_qty"]);
+            obj.total_harga = reader["total_harga"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["total_harga"]);
             obj.remarks = reader["remarks"].ToString();
             return obj;
         }

@@ -79,19 +79,27 @@ namespace MVC.UI.Controllers
                     var id = row[0];
                     var name = row[1];
                     var qty_laundry = row[2];
+                    //reader["Group_Code"] == DBNull.Value ? null : reader["Group_Code"].ToString();
                     var qty_drycleaning = row[3];
                     var remark = row[4];
                     
+                    var _qty_laundry = qty_laundry == "" ? 0 : Convert.ToInt32(qty_laundry);
+                    var _qty_drycleaning = qty_drycleaning == "" ? 0 : Convert.ToInt32(qty_drycleaning);
+
                     Service_PriceDbo price = Master_POSItem.GetPrice(id);
-                                        
+                    var _laundry_price = price.service_Laundry_price;
+                    var _drycleaning_price = price.service_DryCleaning_price;
+
                     POS_DetailDbo ObjPosDetail = new POS_DetailDbo();
                     ObjPosDetail.transaction_id = transactionid;
                     ObjPosDetail.kode_item = id;
                     ObjPosDetail.nama_item = name;
-                    ObjPosDetail.service_laundry_qty = Convert.ToInt32(qty_laundry);
-                    ObjPosDetail.service_laundry_price = price.service_Laundry_price * Convert.ToInt32(qty_laundry);
-                    ObjPosDetail.service_drycleaning_qty = Convert.ToInt32(qty_drycleaning);
-                    ObjPosDetail.service_drycleaning_price = price.service_DryCleaning_price * Convert.ToInt32(qty_drycleaning);
+                    ObjPosDetail.service_laundry_qty = _qty_laundry;
+                    ObjPosDetail.service_laundry_price = _laundry_price;
+                    ObjPosDetail.service_drycleaning_qty = _qty_drycleaning;
+                    ObjPosDetail.service_drycleaning_price = _drycleaning_price;
+                    ObjPosDetail.total_qty = _qty_laundry + _qty_drycleaning;
+                    ObjPosDetail.total_harga = (_qty_laundry * _laundry_price) + (_qty_drycleaning * _drycleaning_price);
                     ObjPosDetail.remarks = remark;
                     Master_POSItem.InsertDetail(ObjPosDetail);
                 });

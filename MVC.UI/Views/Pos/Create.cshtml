@@ -269,13 +269,7 @@
 
     function showCell() {
         var sTableName = document.getElementById("tabelPaket");
-        var _transactionType = $("#transaction_type").val();
-        var _customer_name = $("#customer_name").val();
-        var _room = $("#room").val();
-        var _receiveddate = $("#receiveddate").val();
-        var _customer_address = $("#customer_address").val();
-        var _customer_type = $("#customer_type").val();
-        var _customer_id = $("#customerid").val();
+        
         var date = new Date();
         var dateStr =
             date.getFullYear() +
@@ -285,10 +279,20 @@
             ("00" + date.getMinutes()).slice(-2) +
             ("00" + date.getSeconds()).slice(-2);
         var _transid = 'TR-' + dateStr;//+ time.toString();.
-        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id
-        
-        $.post('@Url.Action("ProccessHeader", "POS")', { header : _header}, function (data) {});
 
+        //insert to header====================
+        var _transactionType = $("#transaction_type").val();
+        var _customer_name = $("#customer_name").val();
+        var _room = $("#room").val();
+        var _receiveddate = $("#receiveddate").val();
+        var _customer_address = $("#customer_address").val();
+        var _customer_type = $("#customer_type").val();
+        var _customer_id = $("#customerid").val();
+        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id
+        $.post('@Url.Action("ProccessHeader", "POS")', { header : _header}, function (data) {});
+        // header ============================
+
+        //insert detail =============================================
         var rows = [];
         for (var i = 2; i < sTableName.rows.length; i++) {
             var _id = sTableName.rows[i].cells[0].innerText;
@@ -300,7 +304,8 @@
             rows.push(row);
         }
         $.post('@Url.Action("ProccessDetail", "POS")', { rows: rows, transactionid: _transid }, function (data) {
-            });
+        });
+        //detail -====================================================
     }
 
     function settingDryCleaning() {
