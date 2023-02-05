@@ -89,9 +89,9 @@ namespace MVC.UI.Controllers
                     ObjPosDetail.kode_item = id;
                     ObjPosDetail.nama_item = name;
                     ObjPosDetail.service_laundry_qty = Convert.ToInt32(qty_laundry);
-                    ObjPosDetail.service_laundry_price = price.service_Laundry_price;
+                    ObjPosDetail.service_laundry_price = price.service_Laundry_price * Convert.ToInt32(qty_laundry);
                     ObjPosDetail.service_drycleaning_qty = Convert.ToInt32(qty_drycleaning);
-                    ObjPosDetail.service_drycleaning_price = price.service_DryCleaning_price;
+                    ObjPosDetail.service_drycleaning_price = price.service_DryCleaning_price * Convert.ToInt32(qty_drycleaning);
                     ObjPosDetail.remarks = remark;
                     Master_POSItem.InsertDetail(ObjPosDetail);
                 });
