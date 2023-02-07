@@ -43,32 +43,8 @@ namespace MVC.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProccessHeader(string header)
-        {
-            string[] result = header.Split('|');
-            //string dateWithFormat = DateTime.Now.ToString("ddMMyyyyHHmmss");
-            //string GenNo = "TR-" + dateWithFormat;
-            POSDbo ObjPosHeader = new POSDbo();
-            ObjPosHeader.transaction_type = result[0].Trim();
-            ObjPosHeader.transaction_id = result[1].Trim();
-            ObjPosHeader.customer_name = result[2].Trim();
-            ObjPosHeader.room = result[3].Trim();
-            ObjPosHeader.customer_address = result[4].Trim();
-            ObjPosHeader.customer_type = result[5].Trim();
-            ObjPosHeader.customerid = result[6].Trim();
-
-
-            try
-            {
-                Master_POSItem.Insert(ObjPosHeader);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            } //return Json(true);
-        }
-        public ActionResult ProccessDetail(List<string> rows, string transactionid)
+        
+        public ActionResult ProccessDetail(List<string> rows, string transactionid, string header)
         {
             try
             {
@@ -102,7 +78,28 @@ namespace MVC.UI.Controllers
                     ObjPosDetail.total_harga = (_qty_laundry * _laundry_price) + (_qty_drycleaning * _drycleaning_price);
                     ObjPosDetail.remarks = remark;
                     Master_POSItem.InsertDetail(ObjPosDetail);
+
+                    
                 });
+
+                PosDetailPriceDbo detail_price = Master_POSItem.GetPriceDetail(transactionid);
+
+                string[] result = header.Split('|');
+                POSDbo ObjPosHeader = new POSDbo();
+                ObjPosHeader.transaction_type = result[0].Trim();
+                ObjPosHeader.transaction_id = result[1].Trim();
+                ObjPosHeader.customer_name = result[2].Trim();
+                ObjPosHeader.room = result[3].Trim();
+                ObjPosHeader.customer_address = result[4].Trim();
+                ObjPosHeader.customer_type = result[5].Trim();
+                ObjPosHeader.customerid = result[6].Trim();
+                ObjPosHeader.jumlah_item = detail_price.jumlah_qty;
+                ObjPosHeader.nilai = detail_price.jumlah_nilai;
+                ObjPosHeader.disc = detail_price.disc / 100;
+                ObjPosHeader.sub_total = detail_price.jumlah_nilai - (detail_price.jumlah_nilai * (detail_price.disc / 100));
+                //ObjPosHeader.ppn = (detail_price.jumlah_nilai - detail_price.disc ) * (10/100) ;
+
+                Master_POSItem.Insert(ObjPosHeader);
                 return RedirectToAction("index","POS");
             }
             catch

@@ -78,8 +78,18 @@ namespace Web.Dta
             context.AddParameter("@id", id);
             return DBUtil.ExecuteMapper<Service_PriceDbo>(context, new Service_PriceDbo()).FirstOrDefault();
 
+        } 
+        public static PosDetailPriceDbo GetPriceDetail(string transaction_id)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_POS_GetPriceDetail_ByTransactionID";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@transaction_id", transaction_id);
+            return DBUtil.ExecuteMapper<PosDetailPriceDbo>(context, new PosDetailPriceDbo()).FirstOrDefault();
+
         }
-        #endregion
+# endregion
 
     }
 }

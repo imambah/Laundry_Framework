@@ -249,27 +249,9 @@
         return true;
     };
 
-    //function showCell() {
-    //    var sTableName = document.getElementById("tabelPaket");
-        
-    //   // alert('oiiy');
-    //   // alert(sTableName.rows.length-1);
-    //    var rows = [];
-    //    for (var i = 2; i < sTableName.rows.length; i++) {
-    //        var _id = sTableName.rows[i].cells[0].innerText;
-    //        var _name = sTableName.rows[i].cells[1].innerText;
-    //        var _qty_laundry = sTableName.rows[i].cells[2].firstChild.value;
-    //        var _qty_drycleaning = sTableName.rows[i].cells[3].firstChild.value;
-    //        var _remark = sTableName.rows[i].cells[4].firstChild.value;
-    //        var row = _id + "|" + _name + "|" + _qty_laundry + "|" + _qty_drycleaning + "|" + _remark;
-    //        rows.push(row);
-    //    }
-    //   // alert(rows);
-    //}
-
     function showCell() {
         var sTableName = document.getElementById("tabelPaket");
-        
+
         var date = new Date();
         var dateStr =
             date.getFullYear() +
@@ -279,18 +261,6 @@
             ("00" + date.getMinutes()).slice(-2) +
             ("00" + date.getSeconds()).slice(-2);
         var _transid = 'TR-' + dateStr;//+ time.toString();.
-
-        //insert to header====================
-        var _transactionType = $("#transaction_type").val();
-        var _customer_name = $("#customer_name").val();
-        var _room = $("#room").val();
-        var _receiveddate = $("#receiveddate").val();
-        var _customer_address = $("#customer_address").val();
-        var _customer_type = $("#customer_type").val();
-        var _customer_id = $("#customerid").val();
-        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id
-        $.post('@Url.Action("ProccessHeader", "POS")', { header : _header}, function (data) {});
-        // header ============================
 
         //insert detail =============================================
         var rows = [];
@@ -303,9 +273,20 @@
             var row = _id + "|" + _name + "|" + _qty_laundry + "|" + _qty_drycleaning + "|" + _remark;
             rows.push(row);
         }
-        $.post('@Url.Action("ProccessDetail", "POS")', { rows: rows, transactionid: _transid }, function (data) {
-        });
         //detail -====================================================
+        //insert to header====================
+        var _transactionType = $("#transaction_type").val();
+        var _customer_name = $("#customer_name").val();
+        var _room = $("#room").val();
+        var _receiveddate = $("#receiveddate").val();
+        var _customer_address = $("#customer_address").val();
+        var _customer_type = $("#customer_type").val();
+        var _customer_id = $("#customerid").val();
+        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id
+
+        // header ============================
+        $.post('@Url.Action("ProccessDetail", "POS")', { rows: rows, transactionid: _transid, header: _header }, function (data) { });
+
     }
 
     function settingDryCleaning() {

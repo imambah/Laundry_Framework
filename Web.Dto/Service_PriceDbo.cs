@@ -18,10 +18,6 @@ namespace Web.Dto
             return obj;
         }
     }
-
-
-
-
 }
 
 
