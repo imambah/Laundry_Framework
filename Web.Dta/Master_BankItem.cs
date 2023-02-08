@@ -53,9 +53,7 @@ namespace Web.Dta
             context.AddParameter("@account_name", obj.Account_Name);
             context.AddParameter("@COA", obj.COA);
             context.AddParameter("@create_date", DateTime.Now);
-            context.AddParameter("@create_by", "user_system");
-            context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system");
+            context.AddParameter("@create_by", obj.create_by);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
@@ -74,7 +72,7 @@ namespace Web.Dta
             context.AddParameter("@account_name", obj.Account_Name);
             context.AddParameter("@COA", obj.COA);
             context.AddParameter("@isdelete", isdelete);
-            context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@update_by", obj.update_by);
             string sqlQuery = "[sp_master_bank_Update]";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

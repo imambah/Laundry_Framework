@@ -36,9 +36,9 @@ namespace Web.Dta
             context.AddParameter("@laundry", obj.laundry);
             context.AddParameter("@dry_clean", obj.dry_clean);
             context.AddParameter("@create_date", DateTime.Now);
-            context.AddParameter("@create_by", "user_system");
-            context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system");
+            context.AddParameter("@create_by", obj.create_by);
+            context.AddParameter("@update_date","");
+            context.AddParameter("@update_by", "");
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Master_PricelistDbo>(context, new Master_PricelistDbo()).FirstOrDefault();
@@ -64,7 +64,7 @@ namespace Web.Dta
             context.AddParameter("@laundry", obj.laundry);
             context.AddParameter("@dry_clean", obj.dry_clean);
             context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@update_by", obj.create_by);
             context.AddParameter("@is_delete", is_delete);
             string sqlQuery = "sp_master_pricelist_Update";
             context.CommandText = sqlQuery;

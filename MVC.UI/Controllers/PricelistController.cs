@@ -48,6 +48,7 @@ namespace MVC.UI.Controllers
             try
             {
                 // TODO: Add insert logic here
+                item.create_by = Utilities.Username;
                 Master_PricelistItem.Insert(item);
                 return RedirectToAction("Index");
             }

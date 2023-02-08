@@ -31,7 +31,7 @@ namespace MVC.UI.Controllers
             });
             // Retrieve departments and build SelectList
             ViewBag.NegaraList = new SelectList(ListNegara, "Value", "Text");
-            ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
+            ViewBag.TOPList = new SelectList(TOPList(), "id", "nama");
             return View();
         }
 
@@ -42,6 +42,7 @@ namespace MVC.UI.Controllers
             try
             {
                 // TODO: Add insert logic here
+                Coll.create_by = Utilities.Username;
                 Master_SupplierItem.Insert(Coll);
                 return RedirectToAction("Index");
             }
@@ -64,6 +65,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
+                coll.update_by = Utilities.Username;
                 Master_SupplierItem.Update(coll, "N");
                 return RedirectToAction("Index");
             }
@@ -76,7 +78,7 @@ namespace MVC.UI.Controllers
         public ActionResult Delete(string supplier_code)
         {
             Master_SupplierDbo existing = Master_SupplierItem.GetBySupplier_Code(supplier_code);
-
+            existing.update_by = Utilities.Username;
             Master_SupplierItem.Update(existing, "Y");
             return RedirectToAction("Index");
             //return RedirectToAction("Index");

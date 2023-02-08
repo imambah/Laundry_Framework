@@ -26,7 +26,7 @@ namespace MVC.UI.Controllers
             tbl_user existing = tbl_userItem.GetByPK(Username);
             ViewBag.UserGroupList = new SelectList(UserGroupList(), "nama_pendek", "nama_pendek");
             List<GroupDbo> ListCabang = Master_CompanyItem.GetCabang(existing.UserGroup);
-            ViewBag.BranchList = new SelectList(ListCabang, "nama", "nama");
+            ViewBag.BranchList = new SelectList(ListCabang, "id", "nama");
             return View(existing);
         }
 
@@ -72,7 +72,7 @@ namespace MVC.UI.Controllers
             tbl_user existing = tbl_userItem.GetByPK(Username);
             ViewBag.UserGroupList = new SelectList(UserGroupList(), "nama_pendek", "nama_pendek");
             List<GroupDbo> ListCabang = Master_CompanyItem.GetCabang(existing.UserGroup);
-            ViewBag.BranchList = new SelectList(ListCabang, "nama", "nama");
+            ViewBag.BranchList = new SelectList(ListCabang, "id", "nama");
             return View(existing);
         }
 
@@ -138,7 +138,6 @@ namespace MVC.UI.Controllers
                         Log.Info(string.Format("User :{0} logged in", item.Username));
 
                         string test = Utilities.Username;
-
                         return RedirectToAction("Index", "Home");
                     }
                     else
@@ -197,7 +196,7 @@ namespace MVC.UI.Controllers
         public ActionResult GetCabangList(string strGroup)
         {
             List<GroupDbo> ListCabang = Master_CompanyItem.GetCabang(strGroup);
-            ViewBag.branch_list = new SelectList(ListCabang, "nama", "nama");
+            ViewBag.branch_list = new SelectList(ListCabang, "id", "nama");
             return PartialView("DisplayBranch");
 
         }

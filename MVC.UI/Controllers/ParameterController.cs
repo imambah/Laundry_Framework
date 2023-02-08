@@ -41,6 +41,7 @@ namespace MVC.UI.Controllers
             try
             {
                 // TODO: Add insert logic here
+                item.create_by = Utilities.Username;
                 tbl_parameterItem.Insert(item);
                 return RedirectToAction("Index");
             }
@@ -71,6 +72,7 @@ namespace MVC.UI.Controllers
                 tblParam.nama_panjang = item.nama_panjang.ToString();
                 tblParam.nama_pendek = item.nama_pendek;
                 tblParam.nilai = item.nilai;
+                tblParam.update_by = Utilities.Username;
                 tbl_parameter result = tbl_parameterItem.Update(tblParam,"N");
                 return RedirectToAction("Index");
             }

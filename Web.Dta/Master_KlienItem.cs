@@ -69,9 +69,9 @@ namespace Web.Dta
             context.AddParameter("@credit_limit", obj.credit_limit);
             context.AddParameter("@tipe_konsumen", obj.tipe_konsumen);
             context.AddParameter("@create_date", DateTime.Now);
-            context.AddParameter("@create_by", "user_system");
-            context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system");
+            context.AddParameter("@create_by", obj.create_by);
+            context.AddParameter("@update_date", "");
+            context.AddParameter("@update_by", "");
             context.AddParameter("@initial", obj.initial);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
@@ -107,7 +107,7 @@ namespace Web.Dta
             context.AddParameter("@tipe_konsumen", obj.tipe_konsumen);
             context.AddParameter("@isdelete", isdelete);
             context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@update_by", obj.update_by);
             context.AddParameter("@initial", obj.initial);
             string sqlQuery = "sp_master_client_Update";
             context.CommandText = sqlQuery;

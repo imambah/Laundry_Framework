@@ -67,9 +67,9 @@ namespace Web.Dta
             context.AddParameter("@TOP", obj.TOP);
             context.AddParameter("@margin", obj.margin.ToString().Replace(",", "."));
             context.AddParameter("@create_date", DateTime.Now);
-            context.AddParameter("@create_by", "user_system");
-            context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system");
+            context.AddParameter("@create_by", obj.create_by);
+            context.AddParameter("@update_date", "");
+            context.AddParameter("@update_by", "");
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Master_SupplierDbo>(context, new Master_SupplierDbo()).FirstOrDefault();
@@ -103,7 +103,7 @@ namespace Web.Dta
             context.AddParameter("@margin", obj.margin.ToString().Replace(",", "."));
             context.AddParameter("@isdelete", is_delete);
             context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@update_by", obj.update_by);
             
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

@@ -56,6 +56,7 @@ namespace MVC.UI.Controllers
             try
             {
                 // TODO: Add insert logic here
+                item.create_by = Utilities.Username;
                 Master_BarangItem.Insert(item);
                 return RedirectToAction("Index");
             }
@@ -85,6 +86,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
+                item.update_by = Utilities.Username;
                 Master_BarangItem.Update(item,"N");
                 return RedirectToAction("Index");
             }

@@ -45,9 +45,7 @@ namespace Web.Dta
             context.AddParameter("@keterangan_BOM", obj.keterangan_BOM);
             context.AddParameter("@harga_jual", obj.harga_jual);
             context.AddParameter("@create_date", DateTime.Now);
-            context.AddParameter("@create_by", "user_system");
-            context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system");
+            context.AddParameter("@create_by", obj.create_by);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<BOMDbo>(context, new BOMDbo()).FirstOrDefault();
@@ -62,7 +60,7 @@ namespace Web.Dta
             context.AddParameter("@keterangan_BOM", obj.keterangan_BOM);
             context.AddParameter("@harga_jual", obj.harga_jual);
             context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@update_by", obj.update_by);
             string sqlQuery = "[sp_BOM_Update]";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

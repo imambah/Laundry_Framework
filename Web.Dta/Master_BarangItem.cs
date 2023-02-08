@@ -55,9 +55,7 @@ namespace Web.Dta
             context.AddParameter("@Conversion", obj.Conversion);
             context.AddParameter("@BatchNo", obj.BatchNo);
             context.AddParameter("@create_date", DateTime.Now);
-            context.AddParameter("@create_by", "user_system");
-            context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system");
+            context.AddParameter("@create_by", obj.create_by);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<Master_BarangDbo>(context, new Master_BarangDbo()).FirstOrDefault();
@@ -75,7 +73,7 @@ namespace Web.Dta
             context.AddParameter("@Conversion", obj.Conversion);
             context.AddParameter("@BatchNo", obj.BatchNo);
             context.AddParameter("@update_date", DateTime.Now);
-            context.AddParameter("@update_by", "user_system_update");
+            context.AddParameter("@update_by", obj.update_by);
             context.AddParameter("@isdelete", is_delete);
             context.AddParameter("@group_code", obj.Group_Code);
             string sqlQuery = "sp_master_barang_Update";

@@ -46,6 +46,7 @@ namespace MVC.UI.Controllers
             try
             {
                 // TODO: Add insert logic here
+                Coll.create_by = Utilities.Username;
                 Master_KlienItem.Insert(Coll);
                 return RedirectToAction("Index");
             }
@@ -69,6 +70,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
+                coll.update_by = Utilities.Username;
                 Master_KlienItem.Update(coll, "N");
                 return RedirectToAction("Index");
             }

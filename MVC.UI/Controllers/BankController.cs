@@ -38,7 +38,8 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                
+               item.create_by = Utilities.Username;
                 Master_BankItem.Insert(item);
                 return RedirectToAction("Index");
             }
@@ -62,6 +63,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
+                coll.update_by = Utilities.Username;
                 Master_BankItem.Update(coll, "N");
                 return RedirectToAction("Index");
             }
@@ -74,8 +76,9 @@ namespace MVC.UI.Controllers
         // GET: Client/Delete/5
         public ActionResult Delete(int id)
         {
+            
             Master_BankDbo existing = Master_BankItem.GetById(id);
-
+            existing.update_by = Utilities.Username;
             Master_BankItem.Update(existing, "Y");
             return RedirectToAction("Index");
             //return RedirectToAction("Index");

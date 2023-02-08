@@ -39,6 +39,7 @@ namespace MVC.UI.Controllers
             try
             {
                 // TODO: Add insert logic here
+                collection.create_by = Utilities.Username;
                 BOMItem.Insert(collection);
                 return RedirectToAction("Index");
             }
@@ -62,7 +63,7 @@ namespace MVC.UI.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                collection.update_by = Utilities.Username;
                 BOMItem.Update(collection);
                 return RedirectToAction("Index");
             }
