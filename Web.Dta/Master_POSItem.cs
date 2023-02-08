@@ -41,6 +41,12 @@ namespace Web.Dta
             context.AddParameter("@customer_name", obj.customer_name);
             context.AddParameter("@customer_address", obj.customer_address);
             context.AddParameter("@customer_type", obj.customer_type);
+
+            context.AddParameter("@jumlah_item", obj.jumlah_item);
+            context.AddParameter("@Nilai", obj.nilai);
+            context.AddParameter("@disc", obj.disc);
+            context.AddParameter("@sub_total", obj.sub_total);
+
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", "user_system");
             context.CommandText = sqlQuery;
