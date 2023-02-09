@@ -107,5 +107,15 @@ namespace MVC.UI.Controllers
                 return View();
             } 
         }
+        public ActionResult Print()
+        {
+            // return Redirect("~/Report/WebForm2.aspx");
+            return View();
+        }
+        public ActionResult PrintOut()
+        {
+            return Redirect("~/Report/WebForm2.aspx");
+            //return View();
+        }
     }
 }
