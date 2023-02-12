@@ -20,6 +20,15 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new ItemGroupDbo());
         }
+
+        public static List<ItemGroupDbo> GetItemParameterByTable(string tbl)
+        {
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "sp_lookup_parameter";
+            context.AddParameter("@table", tbl);
+            return DBUtil.ExecuteMapper(context, new ItemGroupDbo());
+        }
         #region Data Access
 
         #endregion
