@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+
     <%-- <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">--%>
         <div class='form-vertical'>
        <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -18,17 +18,12 @@
         <rsweb:ReportViewer ID="ReportViewer1"  runat="server" Font-Names="Verdana" 
             Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%">
         </rsweb:ReportViewer>
-                        
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
-            SelectMethod="GetData" 
-            TypeName="ds_EmployeeWiseTableAdapters.sp_Report_Web_EmployeesTableAdapter">
-        </asp:ObjectDataSource>   
+        
     </div>
 
 
 </form> 
    <%-- </asp:Content>--%>
-        </div>
-    </form>
+
 </body>
 </html>
