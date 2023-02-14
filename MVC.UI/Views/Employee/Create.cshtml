@@ -1,4 +1,4 @@
-﻿@model Web.Dto.Master_Klien
+﻿@model Web.Dto.Master_Employee
 
 @{
     ViewBag.Title = "Create";
@@ -9,32 +9,22 @@
     List<SelectListItem> listItems = new List<SelectListItem>();
     listItems.Add(new SelectListItem
     {
-        Text = "Agent",
-        Value = "Agent"
+        Text = "Perempuan",
+        Value = "P"
     });
     listItems.Add(new SelectListItem
     {
-        Text = "Corporate",
-        Value = "Corporate",
+        Text = "Laki-laki",
+        Value = "L",
         Selected = true
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Hotel",
-        Value = "Hotel"
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Counter",
-        Value = "Counter"
     });
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Konsumen</h1>
+    <h1>Data Pegawai</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Konsumen</li>
+        <li class="active">Pegawai</li>
     </ol>
 </section>
 
@@ -43,7 +33,7 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Tambah Data Konsumen</h3>
+            <h3 class="box-title">Tambah Data Pegawai</h3>
         </div>
         <div class="box-body">
 
@@ -52,176 +42,233 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
 
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kode Pegawai</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.EmployeeID, new { @class = "form-control", placeholder = "Kode Pegawai", required = "required" })
+                        @Html.ValidationMessageFor(model => model.EmployeeID)
+                    </div>
+                </div>
+
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Konsumen</div>
+                    <div class="col-sm-2 control-label">Nama Pegawai</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.nama_klien, new { @class = "form-control", placeholder = "Nama Konsumen", required = "required" })
-                        @Html.ValidationMessageFor(model => model.nama_klien)
+                        @Html.TextBoxFor(model => model.EmployeeName, new { @class = "form-control", placeholder = "Nama Pegawai" })
+                        @Html.ValidationMessageFor(model => model.EmployeeName)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Alamat</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.alamat, new { @class = "form-control", placeholder = "Alamat" })
-                        @Html.ValidationMessageFor(model => model.alamat)
+                        @Html.TextBoxFor(model => model.Address1, new { @class = "form-control", placeholder = "Alamat" })
+                        @Html.ValidationMessageFor(model => model.Address1)
                     </div>
-                </div>
-
-
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">No Telp</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.no_telp, new { @class = "form-control", placeholder = "No Telp" })
-                        @Html.ValidationMessageFor(model => model.no_telp)
+                        @Html.TextBoxFor(model => model.Address2, new { @class = "form-control", placeholder = "Alamat" })
+                        @Html.ValidationMessageFor(model => model.Address2)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kota</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "Kota" })
+                        @Html.ValidationMessageFor(model => model.City)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Area</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.kota, new { @class = "form-control", placeholder = "Kota" })
-                        @Html.ValidationMessageFor(model => model.kota)
+                        @Html.TextBoxFor(model => model.Area, new { @class = "form-control", placeholder = "Area" })
+                        @Html.ValidationMessageFor(model => model.Area)
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Area</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.area, new { @class = "form-control", placeholder = "Area" })
-                        @Html.ValidationMessageFor(model => model.area)
-                    </div>
-                </div>
-
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Negara</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Country, new { @class = "form-control", placeholder = "Negara" })
+                        @Html.ValidationMessageFor(model => model.Country)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Kode Pos</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.negara, new { @class = "form-control", placeholder = "Negara" })
-                        @Html.ValidationMessageFor(model => model.negara)
+                        @Html.TextBoxFor(model => model.Zip, new { @class = "form-control", placeholder = "Kode Pos" })
+                        @Html.ValidationMessageFor(model => model.Zip)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Kode Pos</div>
+                    <div class="col-sm-2 control-label">No. Telepon</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "No Telp" })
+                        @Html.ValidationMessageFor(model => model.Phone)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Email</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.kodepos, new { @class = "form-control", placeholder = "Kode Pos", onkeydown = "return ValidateNumber(event);" })
-                        @Html.ValidationMessageFor(model => model.kodepos)
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email" })
+                        @Html.ValidationMessageFor(model => model.Email)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Email</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.email, new { @class = "form-control", placeholder = "Email", required = "required" })
-                        @Html.ValidationMessageFor(model => model.email)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">PIC</div>
-                    <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.PIC, new { @class = "form-control", placeholder = "PIC" })
-                        @Html.ValidationMessageFor(model => model.PIC)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">ID Pajak</div>
+                    <div class="col-sm-2 control-label">Jenis Kelamin</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.tax_id, new { @class = "form-control", placeholder = "ID Pajak" })
-                        @Html.ValidationMessageFor(model => model.tax_id)
+                        @Html.DropDownListFor(model => model.Gender, listItems, new { @class = "form-control", placeholder = "Jenis Kelamin" })
+                        @Html.ValidationMessageFor(model => model.Gender)
                     </div>
-                    <div class="col-sm-1 control-label">Nama Pajak </div>
-                    <div class="col-sm-5">
-                        @Html.TextBoxFor(model => model.tax_name, new { @class = "form-control", placeholder = "Nama Pajak" })
-                        @Html.ValidationMessageFor(model => model.tax_name)
+                    <div class="col-sm-2 control-label">Agama</div>
+                    <div class="col-sm-1">
+                        @Html.DropDownListFor(model => model.Religion, ViewBag.ReligionList as SelectList, new { @class = "form-control" })
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Alamat Pajak </div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.tax_address, new { @class = "form-control", placeholder = "Alamat Pajak" })
-                        @Html.ValidationMessageFor(model => model.tax_address)
+                    <div class="col-sm-2 control-label">Status</div>
+                    <div class="col-sm-1">
+                        @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Akun Bank</div>
+                    <div class="col-sm-2 control-label">Kartu Identitas</div>
+                    <div class="col-sm-2">
+                        @Html.DropDownListFor(model => model.ID_Card, ViewBag.ID_CardList as SelectList, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 control-label">Nomor Kartu Identitas</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.ID_Card_No, new { @class = "form-control", placeholder = "Nomor Kartu Identitas" })
+                        @Html.ValidationMessageFor(model => model.ID_Card_No)
+                    </div>
+                </div>
+
+                <div class="box-header with-border">
+                    <h3 class="box-title"> </h3>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Gaji Pokok</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.Salary, new { @class = "form-control", placeholder = "Gaji Pokok" })
+                        @Html.ValidationMessageFor(model => model.Salary)
+                    </div>
+                </div>
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Tunjangan</h3>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Transportasi</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.Transport_Allowance, new { @class = "form-control", placeholder = "Tunjangan Transportasi" })
+                        @Html.ValidationMessageFor(model => model.Transport_Allowance)
+                    </div>
+
+                    <div class="col-sm-2 control-label">Makan</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.Meal_Allowance, new { @class = "form-control", placeholder = "Tunjangan Makan" })
+                        @Html.ValidationMessageFor(model => model.Meal_Allowance)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Jabatan</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.Position_Allowance, new { @class = "form-control", placeholder = "Tunjangan Jabatan" })
+                        @Html.ValidationMessageFor(model => model.Position_Allowance)
+                    </div>
+                </div>
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Data Wajib Pajak</h3>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">NPWP</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.TAXID, new { @class = "form-control", placeholder = "ID Pajak" })
+                        @Html.ValidationMessageFor(model => model.TAXID)
+                    </div>
+                    <div class="col-sm-2 control-label">Nama Wajib Pajak </div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.TAXName, new { @class = "form-control", placeholder = "Nama Pajak" })
+                        @Html.ValidationMessageFor(model => model.TAXName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Alamat Wajib Pajak </div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.TaxAddress, new { @class = "form-control", placeholder = "Alamat Pajak" })
+                        @Html.ValidationMessageFor(model => model.TaxAddress)
+                    </div>
+                </div>
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Data Bank</h3>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nomor Rekening</div>
                     <div class="col-sm-2">
                         @Html.TextBoxFor(model => model.bank_account, new { @class = "form-control", placeholder = "Akun Bank" })
                         @Html.ValidationMessageFor(model => model.bank_account)
                     </div>
 
-                    <div class="col-sm-1 control-label">Nama Bank</div>
-                    <div class="col-sm-5">
+                    <div class="col-sm-2 control-label">Nama Bank</div>
+                    <div class="col-sm-2">
                         @Html.TextBoxFor(model => model.bank_name, new { @class = "form-control", placeholder = "Nama Bank" })
                         @Html.ValidationMessageFor(model => model.bank_name)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label"> Cabang </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2 control-label">Cabang Bank</div>
+                    <div class="col-sm-2">
                         @Html.TextBoxFor(model => model.bank_branch, new { @class = "form-control", placeholder = "Cabang" })
                         @Html.ValidationMessageFor(model => model.bank_branch)
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Jenis Konsumen</div>
-                    <div class="col-sm-8">
-                        @*@Html.DropDownList(model => model.status, new { @class = "form-control", placeholder = "Jenis Konsumen" })
-                            @Html.ValidationMessageFor(model => model.status)*@
+                <div class="box-header with-border">
+                    <h3 class="box-title">Data Lainnya</h3>
+                </div>
 
-                        @Html.DropDownListFor(model => model.tipe_konsumen, listItems, "-- Select Jenis Konsumen --", new { @class = "form-control", placeholder = "Jenis Konsumen" })
-                        @Html.ValidationMessageFor(model => model.tipe_konsumen)
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Tanggal Mulai Kontrak</div>
+                    <div class="col-sm-1">
+                        @Html.TextBoxFor(model => model.Start_Date, new { @class = "form-control", placeholder = "Tanggal Mulai Kontrak" })
+                        @Html.ValidationMessageFor(model => model.Start_Date)
+                    </div>
+
+                    <div class="col-sm-3 control-label">Tanggal Selesai Kontrak</div>
+                    <div class="col-sm-1">
+                        @Html.TextBoxFor(model => model.End_Date, new { @class = "form-control", placeholder = "Tanggal Selesai Kontrak" })
+                        @Html.ValidationMessageFor(model => model.End_Date)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">COA</div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.COA, new { @class = "form-control", placeholder = "COA" })
-                        @Html.ValidationMessageFor(model => model.COA)
+                    <div class="col-sm-2 control-label">Departemen</div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => model.Department, ViewBag.DepartmentList as SelectList, new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">TOP</div>
-                    <div class="col-sm-8">
-                        @Html.DropDownListFor(model => model.TOP, ViewBag.TOPList as SelectList, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.TOP)
+                    <div class="col-sm-2 control-label">Posisi</div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => model.Position, ViewBag.JabatanList as SelectList, new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Profit Share</div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.profit_share, new { @class = "form-control", placeholder = "profit_share", onkeydown = "return ValidateNumber(event);" })
-                        @Html.ValidationMessageFor(model => model.profit_share)
+                    <div class="col-sm-2 control-label">Penempatan</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Placement, new { @class = "form-control", placeholder = "Penempatan" })
+                        @Html.ValidationMessageFor(model => model.Placement)
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Kredit Limit</div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.credit_limit, new { @class = "form-control", placeholder = "Kredit Limit", onkeydown = "return ValidateNumber(event);" })
-                        @Html.ValidationMessageFor(model => model.credit_limit)
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Initial</div>
-                    <div class="col-sm-8">
-                        @Html.TextBoxFor(model => model.initial, new { @class = "form-control", placeholder = "Initial", maxlength = "3" })
-                        @Html.ValidationMessageFor(model => model.initial)
-                    </div>
-                </div>
-
 
                 <div class="form-group">
                     <div class="col-sm-2"></div>

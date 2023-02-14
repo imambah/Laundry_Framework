@@ -65,7 +65,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.id)
+                                @Html.DisplayFor(modelItem => item.RecordID)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.EmployeeID)
@@ -80,7 +80,7 @@
                                 @Html.DisplayFor(modelItem => item.Phone)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.email)
+                                @Html.DisplayFor(modelItem => item.Email)
                             </td>
                             <td>
                                 @if (item.is_delete == 0)
@@ -95,15 +95,15 @@
                             <td>
                                 @if (item.is_delete == 0)
                                 {
-                                    <a class="text-primary" href="@Url.Action("Details", new { client_code=item.EmployeeID })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
-                                    <a class="text-success" href="@Url.Action("Edit", new { client_code=item.EmployeeID })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
-                                    <a class="text-danger" href="@Url.Action("Delete", new { client_code=item.EmployeeID })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                    <a class="text-primary" href="@Url.Action("Details", new { EmployeeID=item.EmployeeID })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-success" href="@Url.Action("Edit", new { EmployeeID=item.EmployeeID })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { EmployeeID=item.EmployeeID })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
 
                                 }
                                 else
                                 {
-                                    <a class="text-primary" href="@Url.Action("Details", new { client_code=item.EmployeeID })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
-                                    <a class="text-success" href="@Url.Action("Active", new { client_code=item.EmployeeID  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
+                                    <a class="text-primary" href="@Url.Action("Details", new { EmployeeID=item.EmployeeID })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                    <a class="text-success" href="@Url.Action("Active", new { EmployeeID=item.EmployeeID  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
                                 }
 
                             </td>

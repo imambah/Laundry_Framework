@@ -16,9 +16,13 @@ namespace Web.Dto
         public string Country { get; set; }
         public string Zip { get; set; }
         public string Gender { get; set; }
+        public string Gender_Desc { get; set; }
         public string Religion { get; set; }
+        public string Religion_Desc { get; set; }
         public string Status { get; set; }
+        public string Status_Desc { get; set; }
         public string ID_Card { get; set; }
+        public string ID_Card_Desc { get; set; }
         public string ID_Card_No { get; set; }
         public decimal Salary { get; set; }
         public decimal Transport_Allowance { get; set; }
@@ -35,7 +39,9 @@ namespace Web.Dto
         public DateTime ? Start_Date { get; set; }
         public DateTime ? End_Date { get; set; }
         public string Department { get; set; }
+        public string Department_Desc { get; set; }
         public string Position { get; set; }
+        public string Position_Desc { get; set; }
         public string Placement { get; set; }
 
         public DateTime ? create_date{ get; set; }
@@ -49,7 +55,7 @@ namespace Web.Dto
         {
             Master_Employee obj = new Master_Employee();
             obj.RecordID = Convert.ToInt32(reader["RecordID"]);
-            obj.EmployeeID = reader["kode_Employee"].ToString();
+            obj.EmployeeID = reader["EmployeeID"].ToString();
             obj.EmployeeName = reader["EmployeeName"].ToString();
             obj.Address1 = reader["Address1"].ToString();
             obj.Address2 = reader["Address2"].ToString();
@@ -58,20 +64,23 @@ namespace Web.Dto
             obj.Country = reader["Country"].ToString();
             obj.Zip = reader["Zip"].ToString();
             obj.Gender = reader["Gender"].ToString();
+            obj.Gender_Desc = reader["Gender_Desc"].ToString();
             obj.Religion = reader["Religion"].ToString();
+            obj.Religion_Desc = reader["Religion_Desc"].ToString();
             obj.Status = reader["Status"].ToString();
-            obj.Gender = reader["Gender"].ToString();
+            obj.Status_Desc = reader["Status_Desc"].ToString();
             obj.ID_Card = reader["ID_Card"].ToString();
+            obj.ID_Card_Desc = reader["ID_Card_Desc"].ToString();
             obj.ID_Card_No = reader["ID_Card_No"].ToString();
             obj.Salary = reader["Salary"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Salary"]); 
-            obj.Transport_Allowance = reader["Transport_Allowance"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["credit_limit"]); 
+            obj.Transport_Allowance = reader["Transport_Allowance"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Transport_Allowance"]); 
             obj.Meal_Allowance = reader["Meal_Allowance"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Meal_Allowance"]); 
             obj.Position_Allowance = reader["Position_Allowance"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Position_Allowance"]); 
-            obj.Phone = reader["pic"].ToString();
+            obj.Phone = reader["Phone"].ToString();
             obj.Email = reader["Email"].ToString();
-            obj.TAXID = reader["tax_id"].ToString();
-            obj.TAXName = reader["tax_name"].ToString();
-            obj.TaxAddress = reader["tax_address"].ToString();
+            obj.TAXID = reader["TAXID"].ToString();
+            obj.TAXName = reader["TAXName"].ToString();
+            obj.TaxAddress = reader["TaxAddress"].ToString();
             obj.bank_account = reader["bank_account"].ToString();
             obj.bank_name = reader["bank_name"].ToString();
             obj.bank_branch = reader["bank_branch"].ToString();
@@ -79,7 +88,9 @@ namespace Web.Dto
             obj.End_Date = reader["End_Date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["End_Date"]);
 
             obj.Department = reader["Department"].ToString();
+            obj.Department_Desc = reader["Department_Desc"].ToString();
             obj.Position = reader["Position"].ToString();
+            obj.Position_Desc = reader["Position_Desc"].ToString();
             obj.Placement = reader["Placement"].ToString();
 
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);

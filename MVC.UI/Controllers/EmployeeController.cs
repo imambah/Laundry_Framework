@@ -29,13 +29,58 @@ namespace MVC.UI.Controllers
         // GET: Employee/Create
         public ActionResult Create()
         {
-            ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
+            //Agama
+            List<ItemGroupDbo> MasterGroup = Master_ItemGroupItem.GetItemParameterByTable("Agama");
+            List<SelectListItem> ListReligionGroup = new List<SelectListItem>();
+            MasterGroup.ForEach(t =>
+            {
+                ListReligionGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.ReligionList = new SelectList(ListReligionGroup, "Value", "Text");
+
+            //Status Pajak
+            List<ItemGroupDbo> MasterGroupStatus = Master_ItemGroupItem.GetItemParameterByTable("Status");
+            List<SelectListItem> ListStatusGroup = new List<SelectListItem>();
+            MasterGroupStatus.ForEach(t =>
+            {
+                ListStatusGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.StatusList = new SelectList(ListStatusGroup, "Value", "Text");
+
+            //ID Card
+            List<ItemGroupDbo> MasterGroupIDCard = Master_ItemGroupItem.GetItemParameterByTable("ID_Card");
+            List<SelectListItem> ListIDCardGroup = new List<SelectListItem>();
+            MasterGroupIDCard.ForEach(t =>
+            {
+                ListIDCardGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.ID_CardList = new SelectList(ListIDCardGroup, "Value", "Text");
+
+            //Departemen
+            List<ItemGroupDbo> MasterGroupDepartment = Master_ItemGroupItem.GetItemParameterByTable("Departemen");
+            List<SelectListItem> ListDepartmentGroup = new List<SelectListItem>();
+            MasterGroupDepartment.ForEach(t =>
+            {
+                ListDepartmentGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.DepartmentList = new SelectList(ListDepartmentGroup, "Value", "Text");
+
+            //Jabatan
+            List<ItemGroupDbo> MasterGroupJabatan = Master_ItemGroupItem.GetItemParameterByTable("Jabatan");
+            List<SelectListItem> ListJabatanGroup = new List<SelectListItem>();
+            MasterGroupJabatan.ForEach(t =>
+            {
+                ListJabatanGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.JabatanList = new SelectList(ListJabatanGroup, "Value", "Text");
+
+            //ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
             return View();
         }
 
-        public List<GroupDbo> TOPList()
+        public List<ItemGroupDbo> TOPList()
         {
-            List<GroupDbo> TOPList = Master_EmployeeItem.GetTOP();
+            List<ItemGroupDbo> TOPList = Master_ItemGroupItem.GetItemParameterByTable("TOP");
             return TOPList;
         }
 
@@ -60,7 +105,52 @@ namespace MVC.UI.Controllers
         public ActionResult Edit(string EmployeeID)
         {
             Master_Employee existing = Master_EmployeeItem.GetByEmployeeID(EmployeeID);
-            ViewBag.TOPList = new SelectList(TOPList(), "nama", "nama");
+
+            //Agama
+            List<ItemGroupDbo> MasterGroup = Master_ItemGroupItem.GetItemParameterByTable("Agama");
+            List<SelectListItem> ListReligionGroup = new List<SelectListItem>();
+            MasterGroup.ForEach(t =>
+            {
+                ListReligionGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.ReligionList = new SelectList(ListReligionGroup, "Value", "Text");
+
+            //Status Pajak
+            List<ItemGroupDbo> MasterGroupStatus = Master_ItemGroupItem.GetItemParameterByTable("Status");
+            List<SelectListItem> ListStatusGroup = new List<SelectListItem>();
+            MasterGroupStatus.ForEach(t =>
+            {
+                ListStatusGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.StatusList = new SelectList(ListStatusGroup, "Value", "Text");
+
+            //ID Card
+            List<ItemGroupDbo> MasterGroupIDCard = Master_ItemGroupItem.GetItemParameterByTable("ID_Card");
+            List<SelectListItem> ListIDCardGroup = new List<SelectListItem>();
+            MasterGroupIDCard.ForEach(t =>
+            {
+                ListIDCardGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.ID_CardList = new SelectList(ListIDCardGroup, "Value", "Text");
+
+            //Departemen
+            List<ItemGroupDbo> MasterGroupDepartment = Master_ItemGroupItem.GetItemParameterByTable("Departemen");
+            List<SelectListItem> ListDepartmentGroup = new List<SelectListItem>();
+            MasterGroupDepartment.ForEach(t =>
+            {
+                ListDepartmentGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.DepartmentList = new SelectList(ListDepartmentGroup, "Value", "Text");
+
+            //Jabatan
+            List<ItemGroupDbo> MasterGroupJabatan = Master_ItemGroupItem.GetItemParameterByTable("Jabatan");
+            List<SelectListItem> ListJabatanGroup = new List<SelectListItem>();
+            MasterGroupJabatan.ForEach(t =>
+            {
+                ListJabatanGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.JabatanList = new SelectList(ListJabatanGroup, "Value", "Text");
+
             return View(existing);
         }
 
