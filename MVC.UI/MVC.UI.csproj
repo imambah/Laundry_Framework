@@ -231,6 +231,7 @@
     <Compile Include="Controllers\BOM_DetailController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CompanyProfileController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\BankController.cs" />
@@ -417,6 +418,10 @@
     <Content Include="Views\Pos\Create.cshtml" />
     <Content Include="Views\Shared\V_Report_1.cshtml" />
     <Content Include="Views\Pos\print.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\details.cshtml" />
+    <Content Include="Views\Employee\edit.cshtml" />
+    <Content Include="Views\Employee\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -435,10 +440,6 @@
     <ProjectReference Include="..\Web.Dta\Web.Dta.csproj">
       <Project>{935C556B-535B-4F30-BE76-C465DD8B8A8F}</Project>
       <Name>Web.Dta</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Web.Dto\Web.Dto.csproj">
-      <Project>{F7403BDD-D3E7-4117-8BB2-6A52A23F925B}</Project>
-      <Name>Web.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web.Logic\Web.Logic.csproj">
       <Project>{04B27B79-E2B8-4DBE-BA2B-76E7761573C0}</Project>
