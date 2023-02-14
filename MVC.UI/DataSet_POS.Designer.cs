@@ -20,17 +20,17 @@ namespace MVC.UI {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("Dataset1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSet_POS")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class Dataset1 : global::System.Data.DataSet {
+    public partial class DataSet_POS : global::System.Data.DataSet {
         
-        private t_POS_detailDataTable tablet_POS_detail;
+        private sp_Report_GetPOSbyIDDataTable tablesp_Report_GetPOSbyID;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public Dataset1() {
+        public DataSet_POS() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace MVC.UI {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected Dataset1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSet_POS(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace MVC.UI {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["t_POS_detail"] != null)) {
-                    base.Tables.Add(new t_POS_detailDataTable(ds.Tables["t_POS_detail"]));
+                if ((ds.Tables["sp_Report_GetPOSbyID"] != null)) {
+                    base.Tables.Add(new sp_Report_GetPOSbyIDDataTable(ds.Tables["sp_Report_GetPOSbyID"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace MVC.UI {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public t_POS_detailDataTable t_POS_detail {
+        public sp_Report_GetPOSbyIDDataTable sp_Report_GetPOSbyID {
             get {
-                return this.tablet_POS_detail;
+                return this.tablesp_Report_GetPOSbyID;
             }
         }
         
@@ -127,7 +127,7 @@ namespace MVC.UI {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            Dataset1 cln = ((Dataset1)(base.Clone()));
+            DataSet_POS cln = ((DataSet_POS)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace MVC.UI {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["t_POS_detail"] != null)) {
-                    base.Tables.Add(new t_POS_detailDataTable(ds.Tables["t_POS_detail"]));
+                if ((ds.Tables["sp_Report_GetPOSbyID"] != null)) {
+                    base.Tables.Add(new sp_Report_GetPOSbyIDDataTable(ds.Tables["sp_Report_GetPOSbyID"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace MVC.UI {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tablet_POS_detail = ((t_POS_detailDataTable)(base.Tables["t_POS_detail"]));
+            this.tablesp_Report_GetPOSbyID = ((sp_Report_GetPOSbyIDDataTable)(base.Tables["sp_Report_GetPOSbyID"]));
             if ((initTable == true)) {
-                if ((this.tablet_POS_detail != null)) {
-                    this.tablet_POS_detail.InitVars();
+                if ((this.tablesp_Report_GetPOSbyID != null)) {
+                    this.tablesp_Report_GetPOSbyID.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace MVC.UI {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "Dataset1";
+            this.DataSetName = "DataSet_POS";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/Dataset1.xsd";
+            this.Namespace = "http://tempuri.org/DataSet_POS.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tablet_POS_detail = new t_POS_detailDataTable();
-            base.Tables.Add(this.tablet_POS_detail);
+            this.tablesp_Report_GetPOSbyID = new sp_Report_GetPOSbyIDDataTable();
+            base.Tables.Add(this.tablesp_Report_GetPOSbyID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializet_POS_detail() {
+        private bool ShouldSerializesp_Report_GetPOSbyID() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace MVC.UI {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            Dataset1 ds = new Dataset1();
+            DataSet_POS ds = new DataSet_POS();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,18 +270,26 @@ namespace MVC.UI {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void t_POS_detailRowChangeEventHandler(object sender, t_POS_detailRowChangeEvent e);
+        public delegate void sp_Report_GetPOSbyIDRowChangeEventHandler(object sender, sp_Report_GetPOSbyIDRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class t_POS_detailDataTable : global::System.Data.TypedTableBase<t_POS_detailRow> {
-            
-            private global::System.Data.DataColumn columnid;
+        public partial class sp_Report_GetPOSbyIDDataTable : global::System.Data.TypedTableBase<sp_Report_GetPOSbyIDRow> {
             
             private global::System.Data.DataColumn columntransaction_id;
+            
+            private global::System.Data.DataColumn columntransaction_date;
+            
+            private global::System.Data.DataColumn columntransaction_type;
+            
+            private global::System.Data.DataColumn columncustomerid;
+            
+            private global::System.Data.DataColumn columncustomer_name;
+            
+            private global::System.Data.DataColumn columncustomer_address;
             
             private global::System.Data.DataColumn columnkode_item;
             
@@ -295,16 +303,14 @@ namespace MVC.UI {
             
             private global::System.Data.DataColumn columnservice_drycleaning_price;
             
-            private global::System.Data.DataColumn columntotal_qty;
-            
             private global::System.Data.DataColumn columntotal_harga;
             
-            private global::System.Data.DataColumn columnremarks;
+            private global::System.Data.DataColumn columntotal_qty;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public t_POS_detailDataTable() {
-                this.TableName = "t_POS_detail";
+            public sp_Report_GetPOSbyIDDataTable() {
+                this.TableName = "sp_Report_GetPOSbyID";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -312,7 +318,7 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal t_POS_detailDataTable(global::System.Data.DataTable table) {
+            internal sp_Report_GetPOSbyIDDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -329,17 +335,9 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected t_POS_detailDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected sp_Report_GetPOSbyIDDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -347,6 +345,46 @@ namespace MVC.UI {
             public global::System.Data.DataColumn transaction_idColumn {
                 get {
                     return this.columntransaction_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn transaction_dateColumn {
+                get {
+                    return this.columntransaction_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn transaction_typeColumn {
+                get {
+                    return this.columntransaction_type;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn customeridColumn {
+                get {
+                    return this.columncustomerid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn customer_nameColumn {
+                get {
+                    return this.columncustomer_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn customer_addressColumn {
+                get {
+                    return this.columncustomer_address;
                 }
             }
             
@@ -400,14 +438,6 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn total_qtyColumn {
-                get {
-                    return this.columntotal_qty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn total_hargaColumn {
                 get {
                     return this.columntotal_harga;
@@ -416,9 +446,9 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn remarksColumn {
+            public global::System.Data.DataColumn total_qtyColumn {
                 get {
-                    return this.columnremarks;
+                    return this.columntotal_qty;
                 }
             }
             
@@ -433,62 +463,58 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public t_POS_detailRow this[int index] {
+            public sp_Report_GetPOSbyIDRow this[int index] {
                 get {
-                    return ((t_POS_detailRow)(this.Rows[index]));
+                    return ((sp_Report_GetPOSbyIDRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event t_POS_detailRowChangeEventHandler t_POS_detailRowChanging;
+            public event sp_Report_GetPOSbyIDRowChangeEventHandler sp_Report_GetPOSbyIDRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event t_POS_detailRowChangeEventHandler t_POS_detailRowChanged;
+            public event sp_Report_GetPOSbyIDRowChangeEventHandler sp_Report_GetPOSbyIDRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event t_POS_detailRowChangeEventHandler t_POS_detailRowDeleting;
+            public event sp_Report_GetPOSbyIDRowChangeEventHandler sp_Report_GetPOSbyIDRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event t_POS_detailRowChangeEventHandler t_POS_detailRowDeleted;
+            public event sp_Report_GetPOSbyIDRowChangeEventHandler sp_Report_GetPOSbyIDRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Addt_POS_detailRow(t_POS_detailRow row) {
+            public void Addsp_Report_GetPOSbyIDRow(sp_Report_GetPOSbyIDRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public t_POS_detailRow Addt_POS_detailRow(string transaction_id, string kode_item, string nama_item, int service_laundry_qty, decimal service_laundry_price, int service_drycleaning_qty, decimal service_drycleaning_price, int total_qty, decimal total_harga, string remarks) {
-                t_POS_detailRow rowt_POS_detailRow = ((t_POS_detailRow)(this.NewRow()));
+            public sp_Report_GetPOSbyIDRow Addsp_Report_GetPOSbyIDRow(string transaction_id, System.DateTime transaction_date, string transaction_type, string customerid, string customer_name, string customer_address, string kode_item, string nama_item, int service_laundry_qty, decimal service_laundry_price, int service_drycleaning_qty, decimal service_drycleaning_price, decimal total_harga, int total_qty) {
+                sp_Report_GetPOSbyIDRow rowsp_Report_GetPOSbyIDRow = ((sp_Report_GetPOSbyIDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         transaction_id,
+                        transaction_date,
+                        transaction_type,
+                        customerid,
+                        customer_name,
+                        customer_address,
                         kode_item,
                         nama_item,
                         service_laundry_qty,
                         service_laundry_price,
                         service_drycleaning_qty,
                         service_drycleaning_price,
-                        total_qty,
                         total_harga,
-                        remarks};
-                rowt_POS_detailRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowt_POS_detailRow);
-                return rowt_POS_detailRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public t_POS_detailRow FindByid(int id) {
-                return ((t_POS_detailRow)(this.Rows.Find(new object[] {
-                            id})));
+                        total_qty};
+                rowsp_Report_GetPOSbyIDRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowsp_Report_GetPOSbyIDRow);
+                return rowsp_Report_GetPOSbyIDRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                t_POS_detailDataTable cln = ((t_POS_detailDataTable)(base.Clone()));
+                sp_Report_GetPOSbyIDDataTable cln = ((sp_Report_GetPOSbyIDDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -496,32 +522,43 @@ namespace MVC.UI {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new t_POS_detailDataTable();
+                return new sp_Report_GetPOSbyIDDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnid = base.Columns["id"];
                 this.columntransaction_id = base.Columns["transaction_id"];
+                this.columntransaction_date = base.Columns["transaction_date"];
+                this.columntransaction_type = base.Columns["transaction_type"];
+                this.columncustomerid = base.Columns["customerid"];
+                this.columncustomer_name = base.Columns["customer_name"];
+                this.columncustomer_address = base.Columns["customer_address"];
                 this.columnkode_item = base.Columns["kode_item"];
                 this.columnnama_item = base.Columns["nama_item"];
                 this.columnservice_laundry_qty = base.Columns["service_laundry_qty"];
                 this.columnservice_laundry_price = base.Columns["service_laundry_price"];
                 this.columnservice_drycleaning_qty = base.Columns["service_drycleaning_qty"];
                 this.columnservice_drycleaning_price = base.Columns["service_drycleaning_price"];
-                this.columntotal_qty = base.Columns["total_qty"];
                 this.columntotal_harga = base.Columns["total_harga"];
-                this.columnremarks = base.Columns["remarks"];
+                this.columntotal_qty = base.Columns["total_qty"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
                 this.columntransaction_id = new global::System.Data.DataColumn("transaction_id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntransaction_id);
+                this.columntransaction_date = new global::System.Data.DataColumn("transaction_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntransaction_date);
+                this.columntransaction_type = new global::System.Data.DataColumn("transaction_type", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntransaction_type);
+                this.columncustomerid = new global::System.Data.DataColumn("customerid", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomerid);
+                this.columncustomer_name = new global::System.Data.DataColumn("customer_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_name);
+                this.columncustomer_address = new global::System.Data.DataColumn("customer_address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_address);
                 this.columnkode_item = new global::System.Data.DataColumn("kode_item", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnkode_item);
                 this.columnnama_item = new global::System.Data.DataColumn("nama_item", typeof(string), null, global::System.Data.MappingType.Element);
@@ -534,50 +571,43 @@ namespace MVC.UI {
                 base.Columns.Add(this.columnservice_drycleaning_qty);
                 this.columnservice_drycleaning_price = new global::System.Data.DataColumn("service_drycleaning_price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnservice_drycleaning_price);
-                this.columntotal_qty = new global::System.Data.DataColumn("total_qty", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntotal_qty);
                 this.columntotal_harga = new global::System.Data.DataColumn("total_harga", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntotal_harga);
-                this.columnremarks = new global::System.Data.DataColumn("remarks", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnremarks);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
-                this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
-                this.columnid.Unique = true;
+                this.columntotal_qty = new global::System.Data.DataColumn("total_qty", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_qty);
                 this.columntransaction_id.MaxLength = 20;
+                this.columntransaction_type.MaxLength = 30;
+                this.columncustomerid.MaxLength = 25;
+                this.columncustomer_name.MaxLength = 100;
+                this.columncustomer_address.MaxLength = 200;
                 this.columnkode_item.MaxLength = 50;
                 this.columnnama_item.MaxLength = 100;
-                this.columnremarks.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public t_POS_detailRow Newt_POS_detailRow() {
-                return ((t_POS_detailRow)(this.NewRow()));
+            public sp_Report_GetPOSbyIDRow Newsp_Report_GetPOSbyIDRow() {
+                return ((sp_Report_GetPOSbyIDRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new t_POS_detailRow(builder);
+                return new sp_Report_GetPOSbyIDRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(t_POS_detailRow);
+                return typeof(sp_Report_GetPOSbyIDRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.t_POS_detailRowChanged != null)) {
-                    this.t_POS_detailRowChanged(this, new t_POS_detailRowChangeEvent(((t_POS_detailRow)(e.Row)), e.Action));
+                if ((this.sp_Report_GetPOSbyIDRowChanged != null)) {
+                    this.sp_Report_GetPOSbyIDRowChanged(this, new sp_Report_GetPOSbyIDRowChangeEvent(((sp_Report_GetPOSbyIDRow)(e.Row)), e.Action));
                 }
             }
             
@@ -585,8 +615,8 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.t_POS_detailRowChanging != null)) {
-                    this.t_POS_detailRowChanging(this, new t_POS_detailRowChangeEvent(((t_POS_detailRow)(e.Row)), e.Action));
+                if ((this.sp_Report_GetPOSbyIDRowChanging != null)) {
+                    this.sp_Report_GetPOSbyIDRowChanging(this, new sp_Report_GetPOSbyIDRowChangeEvent(((sp_Report_GetPOSbyIDRow)(e.Row)), e.Action));
                 }
             }
             
@@ -594,8 +624,8 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.t_POS_detailRowDeleted != null)) {
-                    this.t_POS_detailRowDeleted(this, new t_POS_detailRowChangeEvent(((t_POS_detailRow)(e.Row)), e.Action));
+                if ((this.sp_Report_GetPOSbyIDRowDeleted != null)) {
+                    this.sp_Report_GetPOSbyIDRowDeleted(this, new sp_Report_GetPOSbyIDRowChangeEvent(((sp_Report_GetPOSbyIDRow)(e.Row)), e.Action));
                 }
             }
             
@@ -603,14 +633,14 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.t_POS_detailRowDeleting != null)) {
-                    this.t_POS_detailRowDeleting(this, new t_POS_detailRowChangeEvent(((t_POS_detailRow)(e.Row)), e.Action));
+                if ((this.sp_Report_GetPOSbyIDRowDeleting != null)) {
+                    this.sp_Report_GetPOSbyIDRowDeleting(this, new sp_Report_GetPOSbyIDRowChangeEvent(((sp_Report_GetPOSbyIDRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Removet_POS_detailRow(t_POS_detailRow row) {
+            public void Removesp_Report_GetPOSbyIDRow(sp_Report_GetPOSbyIDRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -619,7 +649,7 @@ namespace MVC.UI {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Dataset1 ds = new Dataset1();
+                DataSet_POS ds = new DataSet_POS();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -637,7 +667,7 @@ namespace MVC.UI {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "t_POS_detailDataTable";
+                attribute2.FixedValue = "sp_Report_GetPOSbyIDDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -681,26 +711,15 @@ namespace MVC.UI {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class t_POS_detailRow : global::System.Data.DataRow {
+        public partial class sp_Report_GetPOSbyIDRow : global::System.Data.DataRow {
             
-            private t_POS_detailDataTable tablet_POS_detail;
+            private sp_Report_GetPOSbyIDDataTable tablesp_Report_GetPOSbyID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal t_POS_detailRow(global::System.Data.DataRowBuilder rb) : 
+            internal sp_Report_GetPOSbyIDRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablet_POS_detail = ((t_POS_detailDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int id {
-                get {
-                    return ((int)(this[this.tablet_POS_detail.idColumn]));
-                }
-                set {
-                    this[this.tablet_POS_detail.idColumn] = value;
-                }
+                this.tablesp_Report_GetPOSbyID = ((sp_Report_GetPOSbyIDDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -708,14 +727,97 @@ namespace MVC.UI {
             public string transaction_id {
                 get {
                     try {
-                        return ((string)(this[this.tablet_POS_detail.transaction_idColumn]));
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.transaction_idColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'transaction_id\' in table \'t_POS_detail\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'transaction_id\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.transaction_idColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.transaction_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime transaction_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_Report_GetPOSbyID.transaction_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'transaction_date\' in table \'sp_Report_GetPOSbyID\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.transaction_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string transaction_type {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.transaction_typeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'transaction_type\' in table \'sp_Report_GetPOSbyID\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.transaction_typeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string customerid {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.customeridColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'customerid\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.customeridColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string customer_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.customer_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'customer_name\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.customer_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string customer_address {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.customer_addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'customer_address\' in table \'sp_Report_GetPOSbyID\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.customer_addressColumn] = value;
                 }
             }
             
@@ -724,14 +826,14 @@ namespace MVC.UI {
             public string kode_item {
                 get {
                     try {
-                        return ((string)(this[this.tablet_POS_detail.kode_itemColumn]));
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.kode_itemColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'kode_item\' in table \'t_POS_detail\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'kode_item\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.kode_itemColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.kode_itemColumn] = value;
                 }
             }
             
@@ -740,14 +842,14 @@ namespace MVC.UI {
             public string nama_item {
                 get {
                     try {
-                        return ((string)(this[this.tablet_POS_detail.nama_itemColumn]));
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.nama_itemColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nama_item\' in table \'t_POS_detail\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'nama_item\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.nama_itemColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.nama_itemColumn] = value;
                 }
             }
             
@@ -756,14 +858,15 @@ namespace MVC.UI {
             public int service_laundry_qty {
                 get {
                     try {
-                        return ((int)(this[this.tablet_POS_detail.service_laundry_qtyColumn]));
+                        return ((int)(this[this.tablesp_Report_GetPOSbyID.service_laundry_qtyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'service_laundry_qty\' in table \'t_POS_detail\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'service_laundry_qty\' in table \'sp_Report_GetPOSbyID\' is DBN" +
+                                "ull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.service_laundry_qtyColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.service_laundry_qtyColumn] = value;
                 }
             }
             
@@ -772,14 +875,15 @@ namespace MVC.UI {
             public decimal service_laundry_price {
                 get {
                     try {
-                        return ((decimal)(this[this.tablet_POS_detail.service_laundry_priceColumn]));
+                        return ((decimal)(this[this.tablesp_Report_GetPOSbyID.service_laundry_priceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'service_laundry_price\' in table \'t_POS_detail\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'service_laundry_price\' in table \'sp_Report_GetPOSbyID\' is D" +
+                                "BNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.service_laundry_priceColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.service_laundry_priceColumn] = value;
                 }
             }
             
@@ -788,15 +892,15 @@ namespace MVC.UI {
             public int service_drycleaning_qty {
                 get {
                     try {
-                        return ((int)(this[this.tablet_POS_detail.service_drycleaning_qtyColumn]));
+                        return ((int)(this[this.tablesp_Report_GetPOSbyID.service_drycleaning_qtyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'service_drycleaning_qty\' in table \'t_POS_detail\' is DBNull." +
-                                "", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'service_drycleaning_qty\' in table \'sp_Report_GetPOSbyID\' is" +
+                                " DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.service_drycleaning_qtyColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.service_drycleaning_qtyColumn] = value;
                 }
             }
             
@@ -805,31 +909,15 @@ namespace MVC.UI {
             public decimal service_drycleaning_price {
                 get {
                     try {
-                        return ((decimal)(this[this.tablet_POS_detail.service_drycleaning_priceColumn]));
+                        return ((decimal)(this[this.tablesp_Report_GetPOSbyID.service_drycleaning_priceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'service_drycleaning_price\' in table \'t_POS_detail\' is DBNul" +
-                                "l.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'service_drycleaning_price\' in table \'sp_Report_GetPOSbyID\' " +
+                                "is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.service_drycleaning_priceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int total_qty {
-                get {
-                    try {
-                        return ((int)(this[this.tablet_POS_detail.total_qtyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'total_qty\' in table \'t_POS_detail\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablet_POS_detail.total_qtyColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.service_drycleaning_priceColumn] = value;
                 }
             }
             
@@ -838,151 +926,199 @@ namespace MVC.UI {
             public decimal total_harga {
                 get {
                     try {
-                        return ((decimal)(this[this.tablet_POS_detail.total_hargaColumn]));
+                        return ((decimal)(this[this.tablesp_Report_GetPOSbyID.total_hargaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'total_harga\' in table \'t_POS_detail\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_harga\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.total_hargaColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.total_hargaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string remarks {
+            public int total_qty {
                 get {
                     try {
-                        return ((string)(this[this.tablet_POS_detail.remarksColumn]));
+                        return ((int)(this[this.tablesp_Report_GetPOSbyID.total_qtyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'remarks\' in table \'t_POS_detail\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_qty\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablet_POS_detail.remarksColumn] = value;
+                    this[this.tablesp_Report_GetPOSbyID.total_qtyColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Istransaction_idNull() {
-                return this.IsNull(this.tablet_POS_detail.transaction_idColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.transaction_idColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Settransaction_idNull() {
-                this[this.tablet_POS_detail.transaction_idColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.transaction_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Istransaction_dateNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.transaction_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Settransaction_dateNull() {
+                this[this.tablesp_Report_GetPOSbyID.transaction_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Istransaction_typeNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.transaction_typeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Settransaction_typeNull() {
+                this[this.tablesp_Report_GetPOSbyID.transaction_typeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IscustomeridNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.customeridColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetcustomeridNull() {
+                this[this.tablesp_Report_GetPOSbyID.customeridColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Iscustomer_nameNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.customer_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setcustomer_nameNull() {
+                this[this.tablesp_Report_GetPOSbyID.customer_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Iscustomer_addressNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.customer_addressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setcustomer_addressNull() {
+                this[this.tablesp_Report_GetPOSbyID.customer_addressColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Iskode_itemNull() {
-                return this.IsNull(this.tablet_POS_detail.kode_itemColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.kode_itemColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setkode_itemNull() {
-                this[this.tablet_POS_detail.kode_itemColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.kode_itemColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Isnama_itemNull() {
-                return this.IsNull(this.tablet_POS_detail.nama_itemColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.nama_itemColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setnama_itemNull() {
-                this[this.tablet_POS_detail.nama_itemColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.nama_itemColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Isservice_laundry_qtyNull() {
-                return this.IsNull(this.tablet_POS_detail.service_laundry_qtyColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.service_laundry_qtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setservice_laundry_qtyNull() {
-                this[this.tablet_POS_detail.service_laundry_qtyColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.service_laundry_qtyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Isservice_laundry_priceNull() {
-                return this.IsNull(this.tablet_POS_detail.service_laundry_priceColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.service_laundry_priceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setservice_laundry_priceNull() {
-                this[this.tablet_POS_detail.service_laundry_priceColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.service_laundry_priceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Isservice_drycleaning_qtyNull() {
-                return this.IsNull(this.tablet_POS_detail.service_drycleaning_qtyColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.service_drycleaning_qtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setservice_drycleaning_qtyNull() {
-                this[this.tablet_POS_detail.service_drycleaning_qtyColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.service_drycleaning_qtyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Isservice_drycleaning_priceNull() {
-                return this.IsNull(this.tablet_POS_detail.service_drycleaning_priceColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.service_drycleaning_priceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setservice_drycleaning_priceNull() {
-                this[this.tablet_POS_detail.service_drycleaning_priceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Istotal_qtyNull() {
-                return this.IsNull(this.tablet_POS_detail.total_qtyColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Settotal_qtyNull() {
-                this[this.tablet_POS_detail.total_qtyColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.service_drycleaning_priceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Istotal_hargaNull() {
-                return this.IsNull(this.tablet_POS_detail.total_hargaColumn);
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.total_hargaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Settotal_hargaNull() {
-                this[this.tablet_POS_detail.total_hargaColumn] = global::System.Convert.DBNull;
+                this[this.tablesp_Report_GetPOSbyID.total_hargaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsremarksNull() {
-                return this.IsNull(this.tablet_POS_detail.remarksColumn);
+            public bool Istotal_qtyNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.total_qtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetremarksNull() {
-                this[this.tablet_POS_detail.remarksColumn] = global::System.Convert.DBNull;
+            public void Settotal_qtyNull() {
+                this[this.tablesp_Report_GetPOSbyID.total_qtyColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -990,22 +1126,22 @@ namespace MVC.UI {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class t_POS_detailRowChangeEvent : global::System.EventArgs {
+        public class sp_Report_GetPOSbyIDRowChangeEvent : global::System.EventArgs {
             
-            private t_POS_detailRow eventRow;
+            private sp_Report_GetPOSbyIDRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public t_POS_detailRowChangeEvent(t_POS_detailRow row, global::System.Data.DataRowAction action) {
+            public sp_Report_GetPOSbyIDRowChangeEvent(sp_Report_GetPOSbyIDRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public t_POS_detailRow Row {
+            public sp_Report_GetPOSbyIDRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1021,7 +1157,7 @@ namespace MVC.UI {
         }
     }
 }
-namespace MVC.UI.Dataset1TableAdapters {
+namespace MVC.UI.DataSet_POSTableAdapters {
     
     
     /// <summary>
@@ -1033,7 +1169,7 @@ namespace MVC.UI.Dataset1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class t_POS_detailTableAdapter : global::System.ComponentModel.Component {
+    public partial class sp_Report_GetPOSbyIDTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1047,7 +1183,7 @@ namespace MVC.UI.Dataset1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public t_POS_detailTableAdapter() {
+        public sp_Report_GetPOSbyIDTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1144,53 +1280,22 @@ namespace MVC.UI.Dataset1TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "t_POS_detail";
-            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.DataSetTable = "sp_Report_GetPOSbyID";
             tableMapping.ColumnMappings.Add("transaction_id", "transaction_id");
+            tableMapping.ColumnMappings.Add("transaction_date", "transaction_date");
+            tableMapping.ColumnMappings.Add("transaction_type", "transaction_type");
+            tableMapping.ColumnMappings.Add("customerid", "customerid");
+            tableMapping.ColumnMappings.Add("customer_name", "customer_name");
+            tableMapping.ColumnMappings.Add("customer_address", "customer_address");
             tableMapping.ColumnMappings.Add("kode_item", "kode_item");
             tableMapping.ColumnMappings.Add("nama_item", "nama_item");
             tableMapping.ColumnMappings.Add("service_laundry_qty", "service_laundry_qty");
             tableMapping.ColumnMappings.Add("service_laundry_price", "service_laundry_price");
             tableMapping.ColumnMappings.Add("service_drycleaning_qty", "service_drycleaning_qty");
             tableMapping.ColumnMappings.Add("service_drycleaning_price", "service_drycleaning_price");
-            tableMapping.ColumnMappings.Add("total_qty", "total_qty");
             tableMapping.ColumnMappings.Add("total_harga", "total_harga");
-            tableMapping.ColumnMappings.Add("remarks", "remarks");
+            tableMapping.ColumnMappings.Add("total_qty", "total_qty");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [t_POS_detail] WHERE (([id] = @Original_id))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [t_POS_detail] ([transaction_id], [kode_item], [nama_item], [service_laundry_qty], [service_laundry_price], [service_drycleaning_qty], [service_drycleaning_price], [total_qty], [total_harga], [remarks]) VALUES (@transaction_id, @kode_item, @nama_item, @service_laundry_qty, @service_laundry_price, @service_drycleaning_qty, @service_drycleaning_price, @total_qty, @total_harga, @remarks)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transaction_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "transaction_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kode_item", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kode_item", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nama_item", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nama_item", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_laundry_qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "service_laundry_qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_laundry_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "service_laundry_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_drycleaning_qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "service_drycleaning_qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_drycleaning_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "service_drycleaning_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@total_qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "total_qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@total_harga", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "total_harga", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@remarks", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "remarks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [t_POS_detail] SET [transaction_id] = @transaction_id, [kode_item] = @kode_item, [nama_item] = @nama_item, [service_laundry_qty] = @service_laundry_qty, [service_laundry_price] = @service_laundry_price, [service_drycleaning_qty] = @service_drycleaning_qty, [service_drycleaning_price] = @service_drycleaning_price, [total_qty] = @total_qty, [total_harga] = @total_harga, [remarks] = @remarks WHERE (([id] = @Original_id))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transaction_id", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "transaction_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kode_item", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kode_item", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nama_item", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nama_item", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_laundry_qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "service_laundry_qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_laundry_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "service_laundry_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_drycleaning_qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "service_drycleaning_qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@service_drycleaning_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "service_drycleaning_price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@total_qty", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "total_qty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@total_harga", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "total_harga", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@remarks", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "remarks", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1206,16 +1311,24 @@ namespace MVC.UI.Dataset1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "select * from t_POS_detail";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].CommandText = "dbo.sp_Report_GetPOSbyID";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@transaction_id", global::System.Data.SqlDbType.NVarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Dataset1.t_POS_detailDataTable dataTable) {
+        public virtual int Fill(DataSet_POS.sp_Report_GetPOSbyIDDataTable dataTable, string transaction_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((transaction_id == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(transaction_id));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1227,225 +1340,17 @@ namespace MVC.UI.Dataset1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Dataset1.t_POS_detailDataTable GetData() {
+        public virtual DataSet_POS.sp_Report_GetPOSbyIDDataTable GetData(string transaction_id) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Dataset1.t_POS_detailDataTable dataTable = new Dataset1.t_POS_detailDataTable();
+            if ((transaction_id == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(transaction_id));
+            }
+            DataSet_POS.sp_Report_GetPOSbyIDDataTable dataTable = new DataSet_POS.sp_Report_GetPOSbyIDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Dataset1.t_POS_detailDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Dataset1 dataSet) {
-            return this.Adapter.Update(dataSet, "t_POS_detail");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string transaction_id, string kode_item, string nama_item, global::System.Nullable<int> service_laundry_qty, global::System.Nullable<decimal> service_laundry_price, global::System.Nullable<int> service_drycleaning_qty, global::System.Nullable<decimal> service_drycleaning_price, global::System.Nullable<int> total_qty, global::System.Nullable<decimal> total_harga, string remarks) {
-            if ((transaction_id == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(transaction_id));
-            }
-            if ((kode_item == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(kode_item));
-            }
-            if ((nama_item == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(nama_item));
-            }
-            if ((service_laundry_qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(service_laundry_qty.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((service_laundry_price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(service_laundry_price.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((service_drycleaning_qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(service_drycleaning_qty.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((service_drycleaning_price.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(service_drycleaning_price.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((total_qty.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(total_qty.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((total_harga.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((decimal)(total_harga.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((remarks == null)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(remarks));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string transaction_id, string kode_item, string nama_item, global::System.Nullable<int> service_laundry_qty, global::System.Nullable<decimal> service_laundry_price, global::System.Nullable<int> service_drycleaning_qty, global::System.Nullable<decimal> service_drycleaning_price, global::System.Nullable<int> total_qty, global::System.Nullable<decimal> total_harga, string remarks, int Original_id) {
-            if ((transaction_id == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(transaction_id));
-            }
-            if ((kode_item == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(kode_item));
-            }
-            if ((nama_item == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(nama_item));
-            }
-            if ((service_laundry_qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(service_laundry_qty.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((service_laundry_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(service_laundry_price.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((service_drycleaning_qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(service_drycleaning_qty.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((service_drycleaning_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(service_drycleaning_price.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((total_qty.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(total_qty.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((total_harga.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(total_harga.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((remarks == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(remarks));
-            }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
         }
     }
     
@@ -1461,8 +1366,6 @@ namespace MVC.UI.Dataset1TableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
-        private t_POS_detailTableAdapter _t_POS_detailTableAdapter;
-        
         private bool _backupDataSetBeforeUpdate;
         
         private global::System.Data.IDbConnection _connection;
@@ -1475,20 +1378,6 @@ namespace MVC.UI.Dataset1TableAdapters {
             }
             set {
                 this._updateOrder = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public t_POS_detailTableAdapter t_POS_detailTableAdapter {
-            get {
-                return this._t_POS_detailTableAdapter;
-            }
-            set {
-                this._t_POS_detailTableAdapter = value;
             }
         }
         
@@ -1511,10 +1400,6 @@ namespace MVC.UI.Dataset1TableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._t_POS_detailTableAdapter != null) 
-                            && (this._t_POS_detailTableAdapter.Connection != null))) {
-                    return this._t_POS_detailTableAdapter.Connection;
-                }
                 return null;
             }
             set {
@@ -1528,9 +1413,6 @@ namespace MVC.UI.Dataset1TableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._t_POS_detailTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 return count;
             }
         }
@@ -1540,17 +1422,8 @@ namespace MVC.UI.Dataset1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(Dataset1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DataSet_POS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._t_POS_detailTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.t_POS_detail.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._t_POS_detailTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -1559,16 +1432,8 @@ namespace MVC.UI.Dataset1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(Dataset1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DataSet_POS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._t_POS_detailTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.t_POS_detail.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._t_POS_detailTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -1577,16 +1442,8 @@ namespace MVC.UI.Dataset1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(Dataset1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DataSet_POS dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._t_POS_detailTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.t_POS_detail.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._t_POS_detailTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             return result;
         }
         
@@ -1619,17 +1476,12 @@ namespace MVC.UI.Dataset1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(Dataset1 dataSet) {
+        public virtual int UpdateAll(DataSet_POS dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
-            }
-            if (((this._t_POS_detailTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._t_POS_detailTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
             }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
@@ -1663,15 +1515,6 @@ namespace MVC.UI.Dataset1TableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._t_POS_detailTableAdapter != null)) {
-                    revertConnections.Add(this._t_POS_detailTableAdapter, this._t_POS_detailTableAdapter.Connection);
-                    this._t_POS_detailTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._t_POS_detailTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._t_POS_detailTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._t_POS_detailTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._t_POS_detailTableAdapter.Adapter);
-                    }
-                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -1729,10 +1572,6 @@ namespace MVC.UI.Dataset1TableAdapters {
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
-                }
-                if ((this._t_POS_detailTableAdapter != null)) {
-                    this._t_POS_detailTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._t_POS_detailTableAdapter]));
-                    this._t_POS_detailTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

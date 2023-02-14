@@ -16,7 +16,7 @@
 
        </asp:ScriptManager>
         <rsweb:ReportViewer ID="ReportViewer1"  runat="server" Font-Names="Verdana" 
-            Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%">
+            Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" SizeToReportContent="true">
         </rsweb:ReportViewer>
         
     </div>

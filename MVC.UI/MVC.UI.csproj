@@ -240,10 +240,10 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Dataset1.Designer.cs">
+    <Compile Include="DataSet_POS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Dataset1.xsd</DependentUpon>
+      <DependentUpon>DataSet_POS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -289,16 +289,16 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Dataset1.xsc">
-      <DependentUpon>Dataset1.xsd</DependentUpon>
+    <Content Include="DataSet_POS.xsc">
+      <DependentUpon>DataSet_POS.xsd</DependentUpon>
     </Content>
-    <None Include="Dataset1.xsd">
-      <SubType>Designer</SubType>
+    <None Include="DataSet_POS.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Dataset1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet_POS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
-    <Content Include="Dataset1.xss">
-      <DependentUpon>Dataset1.xsd</DependentUpon>
+    <Content Include="DataSet_POS.xss">
+      <DependentUpon>DataSet_POS.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -450,6 +450,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Report\Report1.rdlc" />
+    <EmbeddedResource Include="Report\TandaTerimaHotel.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

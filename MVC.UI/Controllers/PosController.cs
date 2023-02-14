@@ -107,15 +107,18 @@ namespace MVC.UI.Controllers
                 return View();
             } 
         }
-        public ActionResult Print()
+        public ActionResult Print(string id )
         {
-            // return Redirect("~/Report/WebForm2.aspx");
-            return View();
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = id;
+            return View(paramDbo);
         }
         public ActionResult PrintOut()
         {
             return Redirect("~/Report/WebForm2.aspx");
             //return View();
         }
+
+       
     }
 }
