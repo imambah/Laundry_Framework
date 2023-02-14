@@ -15,7 +15,7 @@ namespace Web.Dto
         public string param8 { get; set; }
         public string param9 { get; set; }
         public string param10 { get; set; }
-
+        public string param11 { get; set; }
     }
 
 }
