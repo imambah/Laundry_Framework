@@ -61,6 +61,12 @@
     <Compile Include="tbl_userItem.cs" />
     <Compile Include="tbl_user_roleItem.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Web.Dto\Web.Dto.csproj">
+      <Project>{f7403bdd-d3e7-4117-8bb2-6a52a23f925b}</Project>
+      <Name>Web.Dto</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

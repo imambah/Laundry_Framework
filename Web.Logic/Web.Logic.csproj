@@ -53,6 +53,10 @@
       <Project>{935C556B-535B-4F30-BE76-C465DD8B8A8F}</Project>
       <Name>Web.Dta</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Web.Dto\Web.Dto.csproj">
+      <Project>{f7403bdd-d3e7-4117-8bb2-6a52a23f925b}</Project>
+      <Name>Web.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
