@@ -116,7 +116,7 @@ namespace MVC.UI.Controllers
         public ActionResult PrintOut(ReportParamDbo Model)
         {
             string str = Model.param1;
-            return Redirect("~/Report/WebForm2.aspx?id" + str);
+            return Redirect("~/Report/WebForm2.aspx?id=" + str);
             //return View();
         }
 
