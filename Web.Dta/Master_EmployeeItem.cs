@@ -20,7 +20,6 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new Master_Employee());
         }
-
         public static Master_Employee GetByEmployeeID(string EmployeeID)
         {
 
