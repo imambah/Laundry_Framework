@@ -68,7 +68,5 @@ namespace MVC.UI.Report
             con.Close();
             return ds;
         }
-
-
     }
 }

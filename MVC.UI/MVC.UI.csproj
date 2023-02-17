@@ -422,6 +422,7 @@
     <Content Include="Views\Employee\details.cshtml" />
     <Content Include="Views\Employee\edit.cshtml" />
     <Content Include="Views\Employee\index.cshtml" />
+    <Content Include="Views\Pos\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

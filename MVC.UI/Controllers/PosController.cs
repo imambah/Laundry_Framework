@@ -119,7 +119,11 @@ namespace MVC.UI.Controllers
             return Redirect("~/Report/WebForm2.aspx?id=" + str);
             //return View();
         }
+        public ActionResult Edit(string id)
+        {
+           // List<POSDbo> list = Master_POSItem.GetAll();
+            return View();
+        }
 
-       
     }
 }
