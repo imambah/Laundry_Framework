@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.Mvc;
 using ReportViewerForMvc;
+using Web.Dta;
 
 namespace MVC.UI.Report
 {
@@ -26,22 +27,17 @@ namespace MVC.UI.Report
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Report1.rdlc");
                 ds = GetData(strID);
-                //ReportParameterCollection reportparameter = new ReportParameterCollection();
-                // reportparameter.Add(new ReportParameter("counter_name", "PT IKAN BANDENG INDONESIA"));
+                string steKetentuan = Report_PosItem.GetKetentuan();
+                ReportParameter[] parameters = new ReportParameter[2];
+                parameters[0] = new ReportParameter("counter_name", "PT IKAN BANDENG SEJAHTERA ");
+                parameters[1] = new ReportParameter("ketentuan", steKetentuan);
+                ReportViewer1.LocalReport.SetParameters(parameters);
 
-
-                List<ReportParameter> parameters = new List<ReportParameter>();
-                ReportParameter parameter = new ReportParameter();
-                parameter.Name = "counter_name";
-               // parameter.Labels.Add("10250");
-                parameter.Values.Add("PT IKAN BANDENG SEJAHTERA ");
-                //Add parameter
-                parameters.Add(parameter);
 
 
                 if (ds.Tables[0].Rows.Count > 0) {
                     ReportDataSource rdc = new ReportDataSource("DataSet_POS", ds.Tables[0]);
-                    ReportViewer1.LocalReport.SetParameters(parameter);
+                    ReportViewer1.LocalReport.SetParameters(parameters);
                     ReportViewer1.LocalReport.DataSources.Clear();
                     ReportViewer1.LocalReport.DataSources.Add(rdc);
                     ReportViewer1.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
@@ -68,5 +64,7 @@ namespace MVC.UI.Report
             con.Close();
             return ds;
         }
+
+        
     }
 }
