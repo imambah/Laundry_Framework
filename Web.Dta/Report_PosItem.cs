@@ -28,6 +28,19 @@ namespace Web.Dta
             return strKetentuan;
         }
 
+        public static string Get_workshop()
+        {
+            string strWorkshop = "";
+            IDBHelper context = new DBHelper();
+            //string sqlQuery = "sp_klien_workshop";
+            string sqlQuery = "sp_klien_workshop";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            object obj = DBUtil.ExecuteScalar(context);
+            if (obj != null)
+                strWorkshop = obj.ToString();
+            return strWorkshop;
+        }
 
     }
 }
