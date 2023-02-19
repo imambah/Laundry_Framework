@@ -1,0 +1,110 @@
+﻿
+@model Web.Dto.Master_COADbo
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Debit",
+        Value = "D"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Credit",
+        Value = "C",
+        Selected = true
+    });
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Master COA</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Master COA</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ubah Data COA</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.id)
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kode COA</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.kode_COA, new { @class = "form-control", placeholder = "Kode COA" })
+                        @Html.ValidationMessageFor(model => model.kode_COA)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama COA</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.nama_COA, new { @class = "form-control", placeholder = "Nama COA" })
+                        @Html.ValidationMessageFor(model => model.nama_COA)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Dr/Cr</div>
+                    <div class="col-sm-2">
+                        @Html.DropDownListFor(model => model.DRCR, listItems, new { @class = "form-control", placeholder = "Dr/Cr" })
+                        @Html.ValidationMessageFor(model => model.DRCR)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kelompok</div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => model.kelompok_COA, ViewBag.GroupList as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Sub GL</div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => model.sub_gl, ViewBag.GroupSubList as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Level </div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => model.level_COA, ViewBag.GroupLevelList as SelectList, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
+                    </div>
+                </div>
+            }
+
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

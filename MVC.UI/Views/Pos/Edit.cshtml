@@ -1,30 +1,9 @@
-﻿@model Web.Dto.POSDbo
-
+﻿@model Web.Dto.POS_TransactionDbo
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@{
-    List<SelectListItem> listItems = new List<SelectListItem>();
-    listItems.Add(new SelectListItem
-    {
-        Text = "-- Pilih Tipe --",
-        Value = "",
-        Selected = true
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "HK / FB Linen",
-        Value = "Linen",
 
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Guest / Uniform",
-        Value = "Uniform",
-    });
-
-}
 
 <style>
     .ui-autocomplete {
@@ -58,37 +37,36 @@
         </div>
         <div class="box-body">
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform",@class = "form-horizontal", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform", @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
 
-            <div class="form-group">
-                <div class="col-sm-2 control-label">Type</div>
-                <div class="col-sm-3">
-                    @Html.DropDownListFor(model => model.transaction_type, listItems, new { @class = "form-control", placeholder = "Transaction Type" })
-                    @Html.ValidationMessageFor(model => model.transaction_type)
-                   
-                    @*<span>HK / FB Linen : </span> @Html.RadioButton("TeaType", "Linen", true)
-                    <span> | Guest / Uniform: </span> @Html.RadioButton("TeaType", "Uniform", true)*@
-                   
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Type</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.transaction_type, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.transaction_type)
+
+
+
+                    </div>
+
+
+
+                    <div class="col-sm-1 control-label">Room </div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.room)
+                    </div>
+
+
                 </div>
-
-                
-
-                <div class="col-sm-1 control-label">Room </div>
-                <div class="col-sm-2">
-                    @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                    @Html.ValidationMessageFor(model => model.room)
-                </div>
-
-
-            </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Pelanggan</div>
                     <div class="col-sm-3">
                         @*<input id="auto-complete">*@
-                        @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", required = "required" } })
+                        @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled" } })
                     </div>
                     <div class="col-sm-1 control-label">CustID</div>
                     <div class="col-sm-2">
@@ -96,7 +74,7 @@
                         @Html.ValidationMessageFor(model => model.customerid)
 
                     </div>
-                   
+
                     <div class="col-sm-1 control-label">Tipe </div>
                     <div class="col-sm-3">
                         @Html.TextBoxFor(model => model.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
@@ -109,27 +87,27 @@
                         @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.customer_address)
                     </div>
-                   
+
                 </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label"></div>
                     <div class="col-sm-6">
                     </div>
-                </div>     
+                </div>
                 <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
                     <thead>
                         <tr class="bg-danger">
-                            <th class="text-center" style="vertical-align: middle; padding: 0 " >
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 ID
                             </th>
-                            <th class="text-center" style="vertical-align: middle; padding: 0 " >
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 Item's
                             </th>
-                            <th class="text-center"  style="vertical-align: middle; padding: 0 ">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 Qty Laundry
                             </th>
-                            <th class="text-center"  style="vertical-align: middle; padding: 0 ">
-                                Qty Dry Cleaning 
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Qty Dry Cleaning
                             </th>
                             <th class="text-center" rowspan="2" style="vertical-align: middle; padding: 0 ">
                                 Remark
@@ -139,17 +117,17 @@
                         <tr class="bg-danger">
 
                             @*<th class="text-center">
-                                Laundry
-                            </th>*@
+                                    Laundry
+                                </th>*@
                             @*<th class="text-center">
-                                Dry Cleaning
-                            </th>*@
+                                    Dry Cleaning
+                                </th>*@
                         </tr>
                     </thead>
                     <tbody id="tableBody">
                     </tbody>
                 </table>
-                               
+
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
@@ -158,9 +136,9 @@
                     </div>
                 </div>
             }
-        <div>
-            <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
-        </div>
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
 
         </div>
         <!-- /.box-body -->
@@ -288,25 +266,9 @@
 
     }
 
-    function settingDryCleaning() {
-        var checkBox = document.getElementById("laundry");
 
-        if (checkBox.checked == true) {
-            document.getElementById("drycleaning").checked = false;
-        } else {
-            document.getElementById("drycleaning").checked = true;
-        }
-    }
 
-    function settingLaundry() {
-        var checkBox = document.getElementById("drycleaning");
 
-        if (checkBox.checked == true) {
-            document.getElementById("laundry").checked = false;
-        } else {
-            document.getElementById("laundry").checked = true;
-        }
-    }
 
 </script>
 

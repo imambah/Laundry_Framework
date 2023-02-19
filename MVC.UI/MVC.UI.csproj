@@ -230,6 +230,7 @@
     <Compile Include="Controllers\BOMController.cs" />
     <Compile Include="Controllers\BOM_DetailController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\COAController.cs" />
     <Compile Include="Controllers\CompanyProfileController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -423,6 +424,10 @@
     <Content Include="Views\Employee\edit.cshtml" />
     <Content Include="Views\Employee\index.cshtml" />
     <Content Include="Views\Pos\Edit.cshtml" />
+    <Content Include="Views\COA\Create.cshtml" />
+    <Content Include="Views\COA\details.cshtml" />
+    <Content Include="Views\COA\edit.cshtml" />
+    <Content Include="Views\COA\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
