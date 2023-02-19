@@ -27,10 +27,12 @@ namespace MVC.UI.Report
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Report1.rdlc");
                 ds = GetData(strID);
-                string steKetentuan = Report_PosItem.GetKetentuan();
-                ReportParameter[] parameters = new ReportParameter[2];
+                string strKetentuan = Report_PosItem.GetKetentuan();
+                string strWorkshop = Report_PosItem.Get_workshop();
+                ReportParameter[] parameters = new ReportParameter[3];
                 parameters[0] = new ReportParameter("counter_name", "PT IKAN BANDENG SEJAHTERA ");
-                parameters[1] = new ReportParameter("ketentuan", steKetentuan);
+                parameters[1] = new ReportParameter("ketentuan", strKetentuan);
+                parameters[2] = new ReportParameter("workshop", strWorkshop);
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
 
