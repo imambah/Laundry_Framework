@@ -124,6 +124,18 @@ namespace MVC.UI.Controllers
             List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction(id);
             return View(listPOS);
         }
-
+        [HttpPost]
+        public ActionResult EditTrans(string transactionid)
+        {
+            try
+            {
+                Master_POSItem.Update(transactionid, Utilities.Username);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
