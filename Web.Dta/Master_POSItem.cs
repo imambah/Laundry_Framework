@@ -95,7 +95,19 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<PosDetailPriceDbo>(context, new PosDetailPriceDbo()).FirstOrDefault();
 
         }
-# endregion
+
+        public static List<POS_TransactionDbo> Get_POSTransaction(string id)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_POS_GetTransaction_ByID]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@id", id);
+            return DBUtil.ExecuteMapper(context, new POS_TransactionDbo());
+
+            //return DBUtil.ExecuteMapper<Service_PriceDbo>(context, new Service_PriceDbo()).FirstOrDefault();
+        }
+        #endregion
 
     }
 }

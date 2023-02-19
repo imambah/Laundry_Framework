@@ -121,8 +121,8 @@ namespace MVC.UI.Controllers
         }
         public ActionResult Edit(string id)
         {
-           // List<POSDbo> list = Master_POSItem.GetAll();
-            return View();
+            List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction(id);
+            return View(listPOS);
         }
 
     }

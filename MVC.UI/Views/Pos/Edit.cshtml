@@ -1,7 +1,10 @@
-﻿@model Web.Dto.POS_TransactionDbo
+﻿
+@model IEnumerable<Web.Dto.POS_TransactionDbo>
 @{
+    var Item = Model.FirstOrDefault();
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
 }
 
 
@@ -42,96 +45,139 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
 
+
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Type</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.transaction_type, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.transaction_type)
-
-
+                        @Html.TextBoxFor(model => Item.transaction_type, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.transaction_type)
 
                     </div>
-
-
-
                     <div class="col-sm-1 control-label">Room </div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.room)
+                        @Html.TextBoxFor(model => Item.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.room)
                     </div>
-
-
                 </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Pelanggan</div>
                     <div class="col-sm-3">
                         @*<input id="auto-complete">*@
-                        @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled" } })
+                        @Html.EditorFor(model => Item.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled" } })
                     </div>
                     <div class="col-sm-1 control-label">CustID</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.customerid)
+                        @Html.TextBoxFor(model => Item.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.customerid)
 
                     </div>
 
                     <div class="col-sm-1 control-label">Tipe </div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.customer_type)
+                        @Html.TextBoxFor(model => Item.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.customer_type)
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Alamat Pelanggan</div>
                     <div class="col-sm-6">
-                        @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.customer_address)
+                        @Html.TextAreaFor(model => Item.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.customer_address)
                     </div>
 
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-2 control-label"></div>
-                    <div class="col-sm-6">
-                    </div>
                 </div>
                 <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
                     <thead>
                         <tr class="bg-danger">
-                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
-                                ID
-                            </th>
+
                             <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 Item's
                             </th>
-                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ; text-align:left ">
                                 Qty Laundry
                             </th>
-                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                            <th class="text-center" style="vertical-align: middle; padding: 0; text-align: left">
+                                Harga Laundry
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0; text-align: left">
                                 Qty Dry Cleaning
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0; text-align: left ">
+                                Harga Dry Cleaning
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0; text-align: left ">
+                                Subtotal Qty
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0; text-align: left ">
+                                Subtotal
                             </th>
                             <th class="text-center" rowspan="2" style="vertical-align: middle; padding: 0 ">
                                 Remark
                             </th>
-
                         </tr>
                         <tr class="bg-danger">
-
-                            @*<th class="text-center">
-                                    Laundry
-                                </th>*@
-                            @*<th class="text-center">
-                                    Dry Cleaning
-                                </th>*@
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nama_item)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.service_laundry_qty)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.service_laundry_price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.service_drycleaning_qty)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.service_drycleaning_price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.subtotal_qty)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.total_harga)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.remarks)
+                                </td>
+
+                            </tr>
+                        }
                     </tbody>
                 </table>
-
+                <div class="form-group">
+                    <div class="col-sm-8 control-label">Total </div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.Nilai, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" , Styles = " text-align: left" })
+                        @Html.ValidationMessageFor(model => Item.Nilai)
+                    </div>
+                    <div class="col-sm-8 control-label">Disc </div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.ppn, new { @class = "form-control", placeholder = "Disc", disabled = "disabled", Styles = " text-align: left" })
+                        @Html.ValidationMessageFor(model => Item.ppn)
+                    </div>
+                    <div class="col-sm-8 control-label">Ppn</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.ppn, new { @class = "form-control", placeholder = "PPn", disabled = "disabled", Styles = " text-align: left" })
+                        @Html.ValidationMessageFor(model => Item.ppn)
+                    </div>
+                    <div class="col-sm-8 control-label">Grand Total</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.Nilai, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", Styles = " text-align: left" })
+                        @Html.ValidationMessageFor(model => Item.Nilai)
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
-                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Selesai</button>
                         <button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>
                     </div>
                 </div>
