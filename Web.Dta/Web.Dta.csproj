@@ -46,6 +46,7 @@
     <Compile Include="BOMItem.cs" />
     <Compile Include="Master_COAItem.cs" />
     <Compile Include="Report_ARItem.cs" />
+    <Compile Include="Report_AR_Aging_Item .cs" />
     <Compile Include="Report_PosItem.cs" />
     <Compile Include="Master_EmployeeItem.cs" />
     <Compile Include="Master_POSItem.cs" />

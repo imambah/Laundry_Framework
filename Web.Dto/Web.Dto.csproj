@@ -52,6 +52,7 @@
     <Compile Include="ReportParamDbo.cs" />
     <Compile Include="PosDetailPriceDbo.cs" />
     <Compile Include="Report_ARDbo.cs" />
+    <Compile Include="Report_AR_Aging_Dbo.cs" />
     <Compile Include="Service_PriceDbo.cs" />
     <Compile Include="GroupDbo.cs" />
     <Compile Include="Master_SupplierDbo.cs" />
