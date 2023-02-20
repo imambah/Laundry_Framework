@@ -40,7 +40,7 @@
         </div>
         <div class="box-body">
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "updateform", @class = "form-horizontal", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform", @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -168,27 +168,26 @@
                         @Html.TextBoxFor(model => Item.Nilai, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", @style = "text-align:right" })
                         @Html.ValidationMessageFor(model => Item.Nilai)
                     </div>
-                    <div class="col-sm-10 control-label">Disc </div>
-                    <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.disc, new { @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0" })
-                        @Html.ValidationMessageFor(model => Item.disc)
-                    </div>
-                    <div class="col-sm-10 control-label">Ppn</div>
-                    <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.ppn, new { @class = "form-control", placeholder = "Ppn", @style = "text-align:right", @value = "0" })
+                    <div class="col-sm-8 control-label">Disc </div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.ppn, new { @class = "form-control", placeholder = "Disc", disabled = "disabled", Styles = " text-align: left" })
                         @Html.ValidationMessageFor(model => Item.ppn)
                     </div>
-                    <div class="col-sm-10 control-label">Grand Total</div>
-                    <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.Nilai, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", @style = "text-align:right" })
+                    <div class="col-sm-8 control-label">Ppn</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.ppn, new { @class = "form-control", placeholder = "PPn", disabled = "disabled", Styles = " text-align: left" })
+                        @Html.ValidationMessageFor(model => Item.ppn)
+                    </div>
+                    <div class="col-sm-8 control-label">Grand Total</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.Nilai, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", Styles = " text-align: left" })
                         @Html.ValidationMessageFor(model => Item.Nilai)
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
-
-                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Selesai</button>
                         <button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>
                     </div>
                 </div>
@@ -205,10 +204,83 @@
 <!-- /.content -->
 
 <script type="text/javascript">
-    
-    $('#updateform').submit(function () {
-            SaveData();
+    $("#customer_name").autocomplete({
+        source: function (request, response) {
+            //var csname = 'Counter';
+            $.ajax({
+                type: "POST",
+                url: "/POS/getName?Prefix=" + $('#customer_name').val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                //data: { Prefix: $('#customer_name').val() },
+                success: function (data) {
+                    var result = $.map(data, function (item) {
+                        return {
+                            label: item.nama_klien,
+                            value: item.alamat,
+                            customertype: item.tipe_konsumen,
+                            id: item.kode_klien
+                        };
+                    });
+                    return response(result);
+                }
+            });
+        },
+        select: function (event, ui) {
+            event.preventDefault();
+            $('#customer_name').val(ui.item.label);
+            $('#customer_address').val(ui.item.value);
+            $('#customerid').val(ui.item.id);
+            $('#customer_type').val(ui.item.customertype);
+
+        }
     });
+
+    $('#saveform').submit(function () {
+        if ($("#customer_name").val() == "") {
+            $("#customer_name").text("*Please enter customer name");
+            return false;
+        }
+        else {
+            SaveData();
+        }
+    });
+
+    $("#transaction_type").change(function () {
+        var transaction_type = $(this).val();
+        if (transaction_type == 'Linen') {
+            $("#room").prop('disabled', true);
+        } else {
+            $("#room").prop('disabled', false);
+        }
+        $.ajax({
+            type: "post",
+            url: "/POS/GetItemByType?strType=" + transaction_type,
+            data: "[]",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty_laundry' name='qty_laundry' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='text' id='qty_drycleaning' name='qty_drycleaning' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
+                //var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><select id='service'><option value='laundry'>Laundry</option><option value='drycleaning'>Dry Cleaning</option></select></td><td style='text-align:center'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
+            $("#tableBody").html(output);
+            }
+        })
+    });
+
+    function ValidateNumber(e) {
+        var charCode;
+        if (e.keyCode > 0) {
+            charCode = e.which || e.keyCode;
+        }
+        else if (typeof (e.charCode) != "undefined") {
+            charCode = e.which || e.keyCode;
+        }
+        if (charCode == 46)
+            return true;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    };
 
     function SaveData() {
         var strTransID = $("#transid").val();

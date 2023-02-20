@@ -17,7 +17,6 @@ namespace Web.Dto
         public string jumlah_item { get; set; }
         public string Nilai { get; set; }
         public string subtotal { get; set; }
-        public string disc { get; set; }
         public string ppn { get; set; }
         public string grand_total { get; set; }
 
@@ -46,17 +45,16 @@ namespace Web.Dto
             obj.jumlah_item = reader["jumlah_item"].ToString();
             obj.Nilai = reader["Nilai"].ToString();
             obj.subtotal = reader["sub_total"].ToString();
-            obj.disc = reader["disc"] == DBNull.Value ? "0" : reader["disc"].ToString();
-            obj.ppn =  reader["ppn"] == DBNull.Value ? "0" : reader["ppn"].ToString();
-            obj.grand_total = reader["grand_total"] == DBNull.Value ? "0" : reader["grand_total"].ToString();
+            obj.ppn = reader["ppn"].ToString();
+            obj.grand_total = reader["grand_total"].ToString();
 
             obj.nama_item = reader["nama_item"].ToString();
             obj.service_laundry_qty = reader["service_laundry_qty"] == DBNull.Value ? 0 : Convert.ToInt32(reader["service_laundry_qty"]);
             obj.service_laundry_price = reader["service_laundry_price"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["service_laundry_price"]);
             obj.service_drycleaning_qty = reader["service_drycleaning_qty"] == DBNull.Value ? 0 : Convert.ToInt32(reader["service_drycleaning_qty"]);
             obj.service_drycleaning_price = reader["service_drycleaning_price"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["service_drycleaning_price"]);
-            obj.total_harga = reader["total_harga"] == DBNull.Value ? "0" : reader["total_harga"].ToString();
-            obj.subtotal_qty = reader["subtotal_qty"] == DBNull.Value ? "0" : reader["subtotal_qty"].ToString();
+            obj.total_harga = reader["total_harga"].ToString();
+            obj.subtotal_qty = reader["subtotal_qty"].ToString(); 
             obj.remarks = reader["remarks"].ToString();
             return obj;
         }
