@@ -125,11 +125,11 @@ namespace MVC.UI.Controllers
             return View(listPOS);
         }
         [HttpPost]
-        public ActionResult EditTrans(string transactionid)
+        public ActionResult EditTrans(string transactionid, string disc, string ppn )
         {
             try
             {
-                Master_POSItem.Update(transactionid, Utilities.Username);
+                Master_POSItem.Update(transactionid, Utilities.Username,disc,ppn);
                 return RedirectToAction("Index");
             }
             catch

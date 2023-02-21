@@ -19,9 +19,9 @@ namespace MVC.UI.Controllers
             return View(list);
         }
 
-        public ActionResult Details(string custid)
+        public ActionResult Details(string id)
         {
-            List<Report_ARDbo> list_det = Report_ARItem.GetDetail(custid);
+            List<Report_ARDbo> list_det = Report_ARItem.GetDetail(id);
             return View(list_det);
         }
 

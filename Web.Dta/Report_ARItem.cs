@@ -24,7 +24,7 @@ namespace Web.Dta
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_report_AR_Detail";
-            context.AddParameter("param", "A001"); //sementara hardcode
+            context.AddParameter("param", custid); //sementara hardcode
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new Report_ARDbo());
