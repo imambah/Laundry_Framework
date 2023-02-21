@@ -92,7 +92,8 @@
 
                     <div class="col-sm-1 control-label">Transaction ID </div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => Item.transaction_id, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                        @*@Html.TextBoxFor(model => Item.transaction_id, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })*@
+                        @Html.Label(Item.transaction_id, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => Item.transaction_id)
                     </div>
                 </div>
