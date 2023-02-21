@@ -226,6 +226,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ARAgingController.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\BOMController.cs" />
@@ -432,6 +433,7 @@
     <Content Include="Views\AR\index.cshtml" />
     <Content Include="Views\AR\print.cshtml" />
     <Content Include="Views\AR\details.cshtml" />
+    <Content Include="Views\ARAging\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
