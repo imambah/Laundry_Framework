@@ -172,24 +172,30 @@
                 </table>
                 <div class="form-group">
                     <div class="col-sm-10 control-label"></div>
-                    <div class="col-sm-2" >
-                        <img src="@Url.Content("~/Images/selesai.png")" class="img-thumbnail" alt="User Image" width="100px" height="10px">
+                    <div class="col-sm-2">
+                        @if (Item.finishdate == null || Item.finishdate == "")
+                        {
+                            
+                        }
+                        else { 
+                        <img src="@Url.Content("~/Images/selesai.png")" class="img-thumbnail" alt="User Image" width="300px" height="10px">
+                        }
                     </div>
                     <div class="col-sm-10 control-label">Total </div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.Nilai, new { id = "nilai_total", @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", @style = "text-align:right" })
+                        @Html.TextBoxFor(model => Item.Nilai, new { id = "nilai_total", @class = "form-control", @readonly = "readonly", @style = "text-align:right" })
                         @Html.ValidationMessageFor(model => Item.Nilai)
                     </div>
                     <div class="col-sm-10 control-label">Disc </div>
                     <div class="col-sm-2">
                         @if (Item.finishdate == null || Item.finishdate == "")
                         {
-                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onChange = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0" })
+                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0" })
                             @Html.ValidationMessageFor(model => Item.disc)
                         }
                         else
                         {
-                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onChange = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", disabled = "disabled" })
+                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", disabled = "disabled" })
                             @Html.ValidationMessageFor(model => Item.disc)
                         }
 
@@ -321,9 +327,10 @@
 
     function SaveData() {
         var strTransID = $("#transid").val();
-        var strDisc = "0";
-        var strPPn = "0";
-        $.post('@Url.Action("EditTrans", "POS")', { transactionid: strTransID, disc: strDisc, ppn: strPPn }, function (data) { });
+        var strDisc = $("#nilai_disc").val(); 
+        var strPPn = $("#nilai_ppn").val(); 
+        var strGrandTotal = $("#nilai_grandtotal").val(); 
+        $.post('@Url.Action("EditTrans", "POS")', { transactionid: strTransID, disc: strDisc, ppn: strPPn, grandtotal: strGrandTotal }, function (data) { });
 
     };
 

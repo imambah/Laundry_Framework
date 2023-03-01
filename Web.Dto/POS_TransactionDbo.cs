@@ -18,6 +18,7 @@ namespace Web.Dto
         public string Nilai { get; set; }
         public string subtotal { get; set; }
         public string ppn { get; set; }
+        public string disc { get; set; }
         public string grand_total { get; set; }
 
         //==========Detail =============================================================
@@ -48,6 +49,7 @@ namespace Web.Dto
             obj.jumlah_item = reader["jumlah_item"].ToString();
             obj.Nilai = reader["Nilai"].ToString();
             obj.subtotal = reader["sub_total"].ToString();
+            obj.disc = reader["disc"].ToString();
             obj.ppn = reader["ppn"].ToString();
             obj.grand_total = reader["grand_total"].ToString();
 
