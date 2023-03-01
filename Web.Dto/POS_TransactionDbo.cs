@@ -31,7 +31,10 @@ namespace Web.Dto
         public string total_harga { get; set; }
         public string subtotal_qty { get; set; }
         public string remarks { get; set; }
-       
+        public string receiveddate { get; set; }
+        public string finishdate { get; set; }
+
+
         public POS_TransactionDbo Map(System.Data.IDataReader reader)
         {
             POS_TransactionDbo obj = new POS_TransactionDbo();
@@ -58,6 +61,8 @@ namespace Web.Dto
             obj.total_harga = reader["total_harga"] == DBNull.Value ? "0" : reader["total_harga"].ToString();
             obj.subtotal_qty = reader["subtotal_qty"] == DBNull.Value ? "0" : reader["subtotal_qty"].ToString();
             obj.remarks = reader["remarks"].ToString();
+            obj.receiveddate = reader["receiveddate"].ToString();
+            obj.finishdate = reader["finishdate"].ToString();
             return obj;
         }
     }

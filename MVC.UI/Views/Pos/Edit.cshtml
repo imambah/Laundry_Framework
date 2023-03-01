@@ -20,8 +20,6 @@
 </style>
 
 
-
-
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Data Transaksi</h1>
@@ -46,56 +44,66 @@
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => Item.transaction_id)
 
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Type</div>
-                    <div class="col-sm-3">
-                        @Html.TextBoxFor(model => Item.transaction_type, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => Item.transaction_type)
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Type</div>
+                <div class="col-sm-3">
+                    @Html.TextBoxFor(model => Item.transaction_type, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => Item.transaction_type)
 
-                    </div>
-                    <div class="col-sm-1 control-label">Room </div>
-                    <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => Item.room)
-                    </div>
-                    <div class="col-sm-1 control-label">Tanggal Terima </div>
-                    <div class="col-sm-3">
-                        @Html.TextBoxFor(model => Item.transaction_date, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => Item.customer_type)
-                    </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Pelanggan</div>
-                    <div class="col-sm-3">
-                        @*<input id="auto-complete">*@
-                        @Html.EditorFor(model => Item.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled" } })
-                    </div>
-                    <div class="col-sm-1 control-label">CustID</div>
-                    <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => Item.customerid)
-
-                    </div>
-
-                    <div class="col-sm-1 control-label">Tipe </div>
-                    <div class="col-sm-3">
-                        @Html.TextBoxFor(model => Item.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => Item.customer_type)
-                    </div>
+                <div class="col-sm-1 control-label"> </div>
+                <div class="col-sm-2">
+                    
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Alamat Pelanggan</div>
-                    <div class="col-sm-6">
-                        @Html.TextAreaFor(model => Item.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => Item.customer_address)
-                    </div>
-
-                    <div class="col-sm-1 control-label">Transaction ID </div>
-                    <div class="col-sm-3">
-                        <td>@Html.TextBoxFor(model => Item.transaction_id, new { id = "transid", @readonly = "readonly" })</td>
-                        @Html.ValidationMessageFor(model => Item.transaction_id)
-                    </div>
+                <div class="col-sm-2 control-label">Transaction ID </div>
+                <div class="col-sm-2">
+                    <td>@Html.TextBoxFor(model => Item.transaction_id, new { id = "transid", @readonly = "readonly" })</td>
+                    @Html.ValidationMessageFor(model => Item.transaction_id)
                 </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Nama Pelanggan</div>
+                <div class="col-sm-3">
+                    @*<input id="auto-complete">*@
+                    @Html.EditorFor(model => Item.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled" } })
+                </div>
+                <div class="col-sm-1 control-label">Room </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => Item.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => Item.room)
+                </div>
+                <div class="col-sm-2 control-label">Tanggal Terima </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => Item.transaction_date, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => Item.customer_type)
+                </div>
+                @*<div class="col-sm-1 control-label">CustID</div>
+        <div class="col-sm-2">
+            @Html.TextBoxFor(model => Item.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
+            @Html.ValidationMessageFor(model => Item.customerid)
+
+        </div>
+
+        <div class="col-sm-1 control-label">Tipe </div>
+        <div class="col-sm-3">
+            @Html.TextBoxFor(model => Item.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+            @Html.ValidationMessageFor(model => Item.customer_type)
+        </div>*@
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 control-label">Alamat Pelanggan</div>
+                <div class="col-sm-6">
+                    @Html.TextAreaFor(model => Item.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => Item.customer_address)
+                </div>
+                <div class="col-sm-2 control-label">Tanggal Selesai </div>
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => Item.finishdate, new { @class = "form-control", placeholder = "Tanggal Selesai", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => Item.finishdate)
+                </div>
+
+            </div>
                 <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
                     <thead>
                         <tr class="bg-danger">
@@ -163,33 +171,61 @@
                     </tbody>
                 </table>
                 <div class="form-group">
+                    <div class="col-sm-10 control-label"></div>
+                    <div class="col-sm-2" >
+                        <img src="@Url.Content("~/Images/selesai.png")" class="img-thumbnail" alt="User Image" width="100px" height="10px">
+                    </div>
                     <div class="col-sm-10 control-label">Total </div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.Nilai, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", @style = "text-align:right" })
+                        @Html.TextBoxFor(model => Item.Nilai, new { id = "nilai_total", @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", @style = "text-align:right" })
                         @Html.ValidationMessageFor(model => Item.Nilai)
                     </div>
                     <div class="col-sm-10 control-label">Disc </div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.disc, new { @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0" })
-                        @Html.ValidationMessageFor(model => Item.disc)
+                        @if (Item.finishdate == null || Item.finishdate == "")
+                        {
+                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onChange = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0" })
+                            @Html.ValidationMessageFor(model => Item.disc)
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onChange = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => Item.disc)
+                        }
+
                     </div>
                     <div class="col-sm-10 control-label">Ppn</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.ppn, new { @class = "form-control", placeholder = "Ppn", @style = "text-align:right", @value = "0" })
-                        @Html.ValidationMessageFor(model => Item.ppn)
+                        @if (Item.finishdate == null || Item.finishdate == "")
+                        {
+                            @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", @value = "0" })
+                            @Html.ValidationMessageFor(model => Item.ppn)
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => Item.ppn)
+                        }
+
                     </div>
                     <div class="col-sm-10 control-label">Grand Total</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.Nilai, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled", @style = "text-align:right" })
-                        @Html.ValidationMessageFor(model => Item.Nilai)
+                        @Html.TextBoxFor(model => Item.grand_total, new { id = "nilai_grandtotal", @class = "form-control", placeholder = "Grand Total", disabled = "disabled", @style = "text-align:right" })
+                        @Html.ValidationMessageFor(model => Item.grand_total)
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
+                        @if (Item.finishdate == null || Item.finishdate == "" )
+                        {
+                            <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>
+                        }
 
-                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-                        <button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>
                     </div>
                 </div>
             }
@@ -216,11 +252,27 @@
         var strPPn = "0";
         $.post('@Url.Action("EditTrans", "POS")', { transactionid: strTransID, disc: strDisc, ppn: strPPn }, function (data) { });
 
+    };
+
+    function calculatedisc(ctr) {
+        var intNilaiTotal = $("#nilai_total").val();
+        var intdisc = $("#nilai_disc").val();
+        var intppn = $("#nilai_ppn").val();
+
+        $("#nilai_grandtotal").val(intdisc);
+    };  
+
+    function calculateppn(obj) {
+        var intNilaiTotal = $("#nilai_total").val();
+        var intdisc = $("#nilai_disc").val();
+        var intppn = $("#nilai_ppn").val();
+
+        var nilai_grand_total = parseInt(intNilaiTotal); 
+        var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total ;
+        var total_ppn = (parseInt(intppn) / 100) * nilai_grand_total;
+        var GT = nilai_grand_total + total_disc + total_ppn;
+        $("#nilai_grandtotal").val(GT);
     }
-
-
-
-
 
 </script>
 
