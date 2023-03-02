@@ -1,0 +1,108 @@
+﻿
+@model Web.Dto.CashDbo
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data BOM</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Cashflow</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ubah Data Voucher</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.id)
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kode Voucher</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Voucher_ID, new { @class = "form-control", placeholder = "Kode Voucher", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.Voucher_ID)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Tanggal</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Transaction_date, new { @class = "form-control", placeholder = "Tanggal" })
+                        @Html.ValidationMessageFor(model => model.Transaction_date)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @if (Model.Voucher_Type == "BM")
+                    {
+                        <div class="col-sm-2 control-label">Terima dari</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.PIC, new { @class = "form-control", placeholder = "Terima dari" })
+                            @Html.ValidationMessageFor(model => model.PIC)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-sm-2 control-label">Diberikan kepada</div>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(model => model.PIC, new { @class = "form-control", placeholder = "Diberikan kepada" })
+                            @Html.ValidationMessageFor(model => model.PIC)
+                        </div>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nilai</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Amount, new { @class = "form-control", placeholder = "Nilai" })
+                        @Html.ValidationMessageFor(model => model.Amount)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Keterangan</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Voucher_Desc, new { @class = "form-control", placeholder = "Keterangan" })
+                        @Html.ValidationMessageFor(model => model.Voucher_Desc)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Melalui Bank</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.BankID, new { @class = "form-control", placeholder = "Bank" })
+                        @Html.ValidationMessageFor(model => model.BankID)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
+                    </div>
+                </div>
+            }
+
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->
