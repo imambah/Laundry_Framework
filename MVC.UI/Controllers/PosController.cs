@@ -97,6 +97,8 @@ namespace MVC.UI.Controllers
                 ObjPosHeader.nilai = detail_price.jumlah_nilai;
                 ObjPosHeader.disc = detail_price.disc / 100;
                 ObjPosHeader.sub_total = detail_price.jumlah_nilai - (detail_price.jumlah_nilai * (detail_price.disc / 100));
+                ObjPosHeader.branchid = Session["Branch_ID"].ToString();
+                ObjPosHeader.create_by = Utilities.Username;
                 //ObjPosHeader.ppn = (detail_price.jumlah_nilai - detail_price.disc ) * (10/100) ;
 
                 Master_POSItem.Insert(ObjPosHeader);
