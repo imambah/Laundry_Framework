@@ -32,6 +32,7 @@ namespace Web.Dto
 
         public string UserGroup { get; set; }
         public string Branch { get; set; }
+        public string Branch_Name { get; set; }
 
         //public string kode_perusahaan { get; set; }
 
@@ -55,6 +56,7 @@ namespace Web.Dto
             obj.IsActive = reader["IsActive"] == DBNull.Value ? (Int32?) null : Convert.ToInt32(reader["IsActive"]);
             obj.UserGroup = reader["UserGroup"] == DBNull.Value ? null : reader["UserGroup"].ToString();
             obj.Branch = reader["Branch"] == DBNull.Value ? null : reader["Branch"].ToString();
+            obj.Branch_Name = reader["Branch_Name"] == DBNull.Value ? null : reader["Branch_Name"].ToString();
             //testc tetststetsts
 
             return obj;

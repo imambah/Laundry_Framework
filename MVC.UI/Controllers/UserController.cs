@@ -131,11 +131,14 @@ namespace MVC.UI.Controllers
                         Session["Username"] = item.Username;
                         Session["Fullname"] = item.FullName;
                         Session["Branch_ID"] = item.Branch;
+                        Session["Branch_NAME"] = item.Branch_Name;
                         item.IsLogin = 1;
                         item.LastLogin = DateTime.Now;
                         item.IPAddress = Utilities.GetIpAddress();
                         item.MachineName = Utilities.GetComputerName();
-                        
+                        item.Branch = item.Branch;
+
+                       
                         tbl_userItem.Update(item,"N");
                         Log.Info(string.Format("User :{0} logged in", item.Username));
 

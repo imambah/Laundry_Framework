@@ -21,7 +21,15 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new POSDbo());
         }
 
-
+        public static List<POSDbo> GetAll_ByBranchID(string strBranch_ID)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_pos_GetByBranch]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@branchid", strBranch_ID);
+            return DBUtil.ExecuteMapper(context, new POSDbo());
+        }
 
         #region Data Access
 

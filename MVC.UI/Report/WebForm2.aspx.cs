@@ -25,12 +25,13 @@ namespace MVC.UI.Report
                 DataSet ds = new DataSet();
                 
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
-                ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Report1.rdlc");
+                ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Tanda_Terima.rdlc");
                 ds = GetData(strID);
                 string strKetentuan = Report_PosItem.GetKetentuan();
                 string strWorkshop = Report_PosItem.Get_workshop();
+                string branch_name = Session["Branch_NAME"].ToString();
                 ReportParameter[] parameters = new ReportParameter[3];
-                parameters[0] = new ReportParameter("counter_name", "PT IKAN BANDENG SEJAHTERA ");
+                parameters[0] = new ReportParameter("counter_name", branch_name); 
                 parameters[1] = new ReportParameter("ketentuan", strKetentuan);
                 parameters[2] = new ReportParameter("workshop", strWorkshop);
                 ReportViewer1.LocalReport.SetParameters(parameters);
