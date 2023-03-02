@@ -119,13 +119,13 @@ namespace MVC.UI.Controllers
             return Redirect("~/Report/WebForm2.aspx?id=" + str);
             //return View();
         }
-        public ActionResult Edit(string id)
+        public ActionResult Selesai(string id)
         {
             List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction(id);
             return View(listPOS);
         }
         [HttpPost]
-        public ActionResult EditTrans(string transactionid, string disc, string ppn, string grandtotal)
+        public ActionResult ProsesTransEdit(string transactionid, string disc, string ppn, string grandtotal)
         {
             try
             {

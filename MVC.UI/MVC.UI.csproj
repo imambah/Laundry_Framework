@@ -434,6 +434,7 @@
     <Content Include="Views\AR\print.cshtml" />
     <Content Include="Views\AR\details.cshtml" />
     <Content Include="Views\ARAging\index.cshtml" />
+    <Content Include="Views\Pos\Selesai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
