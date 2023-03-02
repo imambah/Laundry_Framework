@@ -78,11 +78,23 @@
                                 @Html.DisplayFor(modelItem => item.jumlah_item)
                             </td>
                             <td>
-                                <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
-                                <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
-                                <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
-                                <a class="text-success" href="@Url.Action("Print", new { id=item.id })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
-                                <a class="text-success" href="@Url.Action("Selesai", new { id=item.id })" data-toggle="tooltip" title="Proses Selesai"><i class="fa fa-check"></i></a>
+                                @if (item.finishdate == null )
+                                {
+                                   
+                                    <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                    <i class="fa fa-print"></i>
+                                    <a class="text-success" href="@Url.Action("Selesai", new { id=item.id })" data-toggle="tooltip" title="Proses Selesai"><i class="fa fa-check"></i></a>
+                                }
+                                else
+                                {
+                                   
+                                    <i class="fa fa-pencil"></i>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                    <a class="text-success" href="@Url.Action("Print", new { id=item.id })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
+                                    <a class="text-success" href="@Url.Action("Selesai", new { id=item.id })" data-toggle="tooltip" title="Proses Selesai"><i class="fa fa-check"></i></a>
+                                }
+
                             </td>
 
                         </tr>

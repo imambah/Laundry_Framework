@@ -5,7 +5,7 @@ namespace Web.Dto
 {
     public class POS_TransactionDbo : IDataMapper<POS_TransactionDbo>
     {
-    
+        public string id { get; set; }
         public string transaction_id { get; set; }
         public string transaction_date { get; set; }
         public string transaction_type { get; set; }
@@ -23,6 +23,7 @@ namespace Web.Dto
 
         //==========Detail =============================================================
 
+        public string id_item { get; set; }
         public string nama_item { get; set; }
         public int service_laundry_qty { get; set; }
         public decimal service_laundry_price { get; set; }
@@ -38,6 +39,7 @@ namespace Web.Dto
         public POS_TransactionDbo Map(System.Data.IDataReader reader)
         {
             POS_TransactionDbo obj = new POS_TransactionDbo();
+            obj.id = reader["id"].ToString();
             obj.transaction_id = reader["transaction_id"].ToString();
             obj.transaction_date = reader["transaction_date"].ToString();
             obj.transaction_type = reader["transaction_type"].ToString();
@@ -53,6 +55,7 @@ namespace Web.Dto
             obj.ppn = reader["ppn"].ToString();
             obj.grand_total = reader["grand_total"].ToString();
 
+            obj.id_item = reader["id_item"].ToString();
             obj.nama_item = reader["nama_item"].ToString();
             obj.service_laundry_qty = reader["service_laundry_qty"] == DBNull.Value ? 0 : Convert.ToInt32(reader["service_laundry_qty"]);
             obj.service_laundry_price = reader["service_laundry_price"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["service_laundry_price"]);

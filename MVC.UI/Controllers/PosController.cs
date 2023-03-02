@@ -137,5 +137,47 @@ namespace MVC.UI.Controllers
                 return View();
             }
         }
+        public ActionResult Edit(string id)
+        {
+            List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction(id);
+            return View(listPOS);
+        }
+        [HttpPost]
+        public ActionResult EditItem(List<string> rows, string transactionid) {
+
+            rows.ForEach(x =>
+            {
+                var row = x.Split('|');
+                var transaction_id = transactionid;
+                var id = row[0];
+                var name = row[1];
+                var qty_laundry = row[2];
+                var qty_drycleaning = row[3];
+                var remark = row[4];
+
+                var _qty_laundry = qty_laundry == "" ? 0 : Convert.ToInt32(qty_laundry);
+                var _qty_drycleaning = qty_drycleaning == "" ? 0 : Convert.ToInt32(qty_drycleaning);
+
+                Service_PriceDbo price = Master_POSItem.GetPrice(id);
+                var _laundry_price = price.service_Laundry_price;
+                var _drycleaning_price = price.service_DryCleaning_price;
+
+                POS_DetailDbo ObjPosDetail = new POS_DetailDbo();
+                ObjPosDetail.transaction_id = transactionid;
+                ObjPosDetail.kode_item = id;
+                ObjPosDetail.service_laundry_qty = _qty_laundry;
+                ObjPosDetail.service_laundry_price = _laundry_price;
+                ObjPosDetail.service_drycleaning_qty = _qty_drycleaning;
+                ObjPosDetail.service_drycleaning_price = _drycleaning_price;
+                ObjPosDetail.total_qty = _qty_laundry + _qty_drycleaning;
+                ObjPosDetail.total_harga = (_qty_laundry * _laundry_price) + (_qty_drycleaning * _drycleaning_price);
+                ObjPosDetail.remarks = remark;
+                Master_POSItem.UpdateItem(ObjPosDetail);
+
+
+            });
+            return RedirectToAction("Index", "POS");
+        }
+
     }
 }

@@ -122,5 +122,23 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POS_TransactionDbo>(context, new POS_TransactionDbo()).FirstOrDefault();
         }
+
+        public static POS_DetailDbo UpdateItem(POS_DetailDbo obj)
+        {
+            IDBHelper context = new DBHelper();
+            context.AddParameter("@id_Item", obj.kode_item);
+            context.AddParameter("@transaction_id", obj.transaction_id);
+            context.AddParameter("@service_laundry_qty", obj.service_laundry_qty);
+            context.AddParameter("@service_laundry_price", obj.service_laundry_price);
+            context.AddParameter("@service_drycleaning_qty", obj.service_drycleaning_qty);
+            context.AddParameter("@service_drycleaning_price", obj.service_drycleaning_price);
+            context.AddParameter("@total_qty", obj.total_qty);
+            context.AddParameter("@total_harga", obj.total_harga);
+            context.AddParameter("@remarks", obj.remarks);
+            string sqlQuery = "[sp_POS_Update_Item]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<POS_DetailDbo>(context, new POS_DetailDbo()).FirstOrDefault();
+        }
     }
 }
