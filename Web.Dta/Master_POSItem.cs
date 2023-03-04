@@ -32,10 +32,7 @@ namespace Web.Dta
         }
 
         #region Data Access
-
-        /// <summary>
-        /// Execute Insert to TABLE [tabel POS]
-        /// </summary>        
+       
         public static POSDbo Insert(POSDbo obj)
         {
             //Random rdm = new Random();
