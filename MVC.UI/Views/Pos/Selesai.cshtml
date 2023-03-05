@@ -223,13 +223,15 @@
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
-                        @if (Item.finishdate == null || Item.finishdate == "" )
+                        @if (Item.finishdate == null || Item.finishdate == "")
                         {
                             <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
                         }
                         else
                         {
-                            <button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>
+                            @*<button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>*@
+                            <a class="btn btn-primary fa fa-print " href="@Url.Action("print_penyerahan", new { tr_id = Item.transaction_id })" role="button">Print</a>
+                          
                         }
 
                     </div>

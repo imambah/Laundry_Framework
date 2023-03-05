@@ -258,6 +258,13 @@
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ReportViewer_TandaPenyerahan.aspx.cs">
+      <DependentUpon>ReportViewer_TandaPenyerahan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer_TandaPenyerahan.aspx.designer.cs">
+      <DependentUpon>ReportViewer_TandaPenyerahan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\WebForm2.aspx.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -285,6 +292,7 @@
     <Content Include="Images\logo_laundry.jpeg" />
     <Content Include="Images\logo_laundry_abu.jpeg" />
     <Content Include="ReportViewerWebForm.aspx" />
+    <Content Include="Report\ReportViewer_TandaPenyerahan.aspx" />
     <Content Include="Report\WebForm2.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -435,6 +443,7 @@
     <Content Include="Views\AR\details.cshtml" />
     <Content Include="Views\ARAging\index.cshtml" />
     <Content Include="Views\Pos\Selesai.cshtml" />
+    <Content Include="Views\Pos\print_penyerahan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -467,6 +476,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Report1.rdlc" />
     <EmbeddedResource Include="Report\TandaTerimaHotel.rdlc" />

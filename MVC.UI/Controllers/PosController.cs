@@ -121,6 +121,19 @@ namespace MVC.UI.Controllers
             return Redirect("~/Report/WebForm2.aspx?id=" + str);
             //return View();
         }
+
+
+        public ActionResult print_penyerahan(string tr_id) {
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = tr_id;
+            return View(paramDbo);
+        }
+        public ActionResult PrintOut_Penyerahan(ReportParamDbo Model)
+        {
+            string str = Model.param1;
+            return Redirect("~/Report/ReportViewer_TandaPenyerahan.aspx?id=" + str);
+            //return View();
+        }
         public ActionResult Selesai(string id)
         {
             List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction(id);
