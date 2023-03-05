@@ -24,6 +24,18 @@ namespace MVC.UI.Controllers
             List<Report_ARDbo> list_det = Report_ARItem.GetDetail(id);
             return View(list_det);
         }
+        public ActionResult Print(string id)
+        {
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = id;
+            return View(paramDbo);
+        }
+        public ActionResult PrintOut(ReportParamDbo Model)
+        {
+            string str = Model.param1;
+            return Redirect("~/Report/WebForm_ARDetail1.aspx?id=" + str);
+            //return View();
+        }
 
     }
 }

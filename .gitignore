@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MVC.UI/Report/WebForm_ARDetail.aspx.designer.cs
+/MVC.UI/Report/WebForm_ARDetail.aspx.cs
+/MVC.UI/Report/WebForm_ARDetail.aspx
+/MVC.UI/Report/Rpt_ARDetail.rdlc
+/MVC.UI/DataSet_ARDetail.xss
+/MVC.UI/DataSet_ARDetail.xsd
+/MVC.UI/DataSet_ARDetail.xsc
+/MVC.UI/DataSet_ARDetail.Designer.cs

@@ -1,0 +1,106 @@
+﻿
+@model IEnumerable<Web.Dto.CashDbo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Cashflow</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Cashflow</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Data Cashflow</h3>
+        </div>
+        <div class="box-body">
+            <p>
+                <a class="btn btn-warning " href="@Url.Action("Create", new { scr="BM" })" role="button"><i class="fa fa-plus"></i> Bank/Cash Masuk</a>
+                <a class="btn btn-warning " href="@Url.Action("Create", new { scr="BK" })" role="button"><i class="fa fa-plus"></i> Bank/Cash Keluar</a>
+            </p>
+            <table id="mydatatable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Kode Voucher
+                            @*@Html.DisplayNameFor(model => model.Username)*@
+                        </th>
+                        <th>
+                            Keterangan
+                            @*@Html.DisplayNameFor(model => model.Username)*@
+                        </th>
+                        <th>
+                            PIC
+                            @*@Html.DisplayNameFor(model => model.Username)*@
+                        </th>
+                        <th>
+                            Tanggal Voucher
+                            @*@Html.DisplayNameFor(model => model.Username)*@
+                        </th>
+                        <th>
+                            Bank
+                            @*@Html.DisplayNameFor(model => model.FullName)*@
+                        </th>
+                        <th>
+                            Nilai
+                            @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Voucher_ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Voucher_Desc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PIC)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Transaction_date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BankID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+
+                            <td>
+                                <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
+                                <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                <a class="text-success" href="@Url.Action("ViewDetail", new { Voucher_ID=item.Voucher_ID })" data-toggle="tooltip" title="View Detail"><i class="fa fa-navicon"></i></a>&nbsp;&nbsp;
+                                <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+            <!-- /.box-body -->
+        </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

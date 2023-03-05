@@ -231,6 +231,8 @@
     <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\BOMController.cs" />
     <Compile Include="Controllers\BOM_DetailController.cs" />
+    <Compile Include="Controllers\CashController.cs" />
+    <Compile Include="Controllers\CashDetailController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\COAController.cs" />
     <Compile Include="Controllers\CompanyProfileController.cs" />
@@ -244,6 +246,11 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DataSet_ARDetail1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet_ARDetail1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet_POS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -272,6 +279,13 @@
     <Compile Include="Report\WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\WebForm_ARDetail1.aspx.cs">
+      <DependentUpon>WebForm_ARDetail1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\WebForm_ARDetail1.aspx.designer.cs">
+      <DependentUpon>WebForm_ARDetail1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -294,6 +308,7 @@
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Report\ReportViewer_TandaPenyerahan.aspx" />
     <Content Include="Report\WebForm2.aspx" />
+    <Content Include="Report\WebForm_ARDetail1.aspx" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -303,6 +318,17 @@
     </Content>
     <Content Include="DataSet_POS.xsc">
       <DependentUpon>DataSet_POS.xsd</DependentUpon>
+    </Content>
+    <Content Include="DataSet_ARDetail1.xsc">
+      <DependentUpon>DataSet_ARDetail1.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet_ARDetail1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet_ARDetail1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DataSet_ARDetail1.xss">
+      <DependentUpon>DataSet_ARDetail1.xsd</DependentUpon>
     </Content>
     <None Include="DataSet_POS.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -444,6 +470,12 @@
     <Content Include="Views\ARAging\index.cshtml" />
     <Content Include="Views\Pos\Selesai.cshtml" />
     <Content Include="Views\Pos\print_penyerahan.cshtml" />
+    <Content Include="Views\Cash\Create.cshtml" />
+    <Content Include="Views\Cash\CreateDetail.cshtml" />
+    <Content Include="Views\Cash\details.cshtml" />
+    <Content Include="Views\Cash\edit.cshtml" />
+    <Content Include="Views\Cash\index.cshtml" />
+    <Content Include="Views\Cash\viewdetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -479,6 +511,7 @@
     <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Report1.rdlc" />
+    <EmbeddedResource Include="Report\Rpt_ARDetail1.rdlc" />
     <EmbeddedResource Include="Report\TandaTerimaHotel.rdlc" />
   </ItemGroup>
   <PropertyGroup>
