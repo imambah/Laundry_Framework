@@ -228,6 +228,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ARAgingController.cs" />
     <Compile Include="Controllers\ARController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\BOMController.cs" />
     <Compile Include="Controllers\BOM_DetailController.cs" />
@@ -476,6 +477,7 @@
     <Content Include="Views\Cash\edit.cshtml" />
     <Content Include="Views\Cash\index.cshtml" />
     <Content Include="Views\Cash\viewdetail.cshtml" />
+    <Content Include="Views\Invoice\filterPerusahaan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

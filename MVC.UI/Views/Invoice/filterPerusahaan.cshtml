@@ -1,0 +1,270 @@
+﻿@model Web.Dto.POSDbo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "-- Pilih Tipe --",
+        Value = "",
+        Selected = true
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "HK / FB Linen",
+        Value = "Linen",
+
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Guest / Uniform",
+        Value = "Uniform",
+    });
+
+}
+@{
+    List<SelectListItem> listItems_periode = new List<SelectListItem>();
+    listItems_periode.Add(new SelectListItem
+    {
+        Text = "Period I Tgl 1 - 15",
+        Value = "P1",
+
+    });
+    listItems_periode.Add(new SelectListItem
+    {
+        Text = "Period II Tgl 16 - 31",
+        Value = "P2",
+    });
+
+}
+
+
+
+<style>
+    .ui-autocomplete {
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    .ui-autocomplete {
+        height: 100px;
+    }
+</style>
+
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Transaksi</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Transaksi</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Data Invoice</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform", @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Type</div>
+                    <div class="col-sm-3">
+                        @Html.DropDownListFor(model => model.transaction_type, listItems, new { @class = "form-control", placeholder = "Transaction Type" , required = "required" })
+                        @Html.ValidationMessageFor(model => model.transaction_type)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Pelanggan</div>
+                    <div class="col-sm-3">
+                        @*<input id="auto-complete">*@
+                        @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", required = "required" } })
+                    </div>
+                    <div class="col-sm-1 control-label">CustID</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.customerid)
+
+                    </div>
+
+                    <div class="col-sm-1 control-label">Tipe </div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.customer_type)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Alamat Pelanggan</div>
+                    <div class="col-sm-6">
+                        @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled", required = "required" })
+                        @Html.ValidationMessageFor(model => model.customer_address)
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Period</div>
+                    <div class="col-sm-3">
+                        @Html.DropDownList("period_invoice", listItems_periode, new { @class = "form-control", placeholder = "Transaction Type" })
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"></div>
+                    <div class="col-sm-6">
+                        <button type="button" name="search_data" id="search_data" class="btn btn-success"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</button>
+                        
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"></div>
+                    <div class="col-sm-6">
+                    </div>
+                </div>
+                <table id="mydatatable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                No
+                            </th>
+                            <th>
+                                No. Nota
+                            </th>
+
+                            <th>
+                                Cabang
+                            </th>
+                            <th>
+                                Pelanggan
+                            </th>
+                            <th>
+                                Tgl Transaksi
+                            </th>
+
+                            <th>
+                                Jenis
+                            </th>
+                            <th>
+                                Total
+                            </th>
+
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            }
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->
+
+<script type="text/javascript">
+    $("#customer_name").autocomplete({
+        source: function (request, response) {
+            //var csname = 'Counter';
+            $.ajax({
+                type: "POST",
+                url: "/POS/getName?Prefix=" + $('#customer_name').val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                //data: { Prefix: $('#customer_name').val() },
+                success: function (data) {
+                    var result = $.map(data, function (item) {
+                        return {
+                            label: item.nama_klien,
+                            value: item.alamat,
+                            customertype: item.tipe_konsumen,
+                            id: item.kode_klien
+                        };
+                    });
+                    return response(result);
+                }
+            });
+        },
+        select: function (event, ui) {
+            event.preventDefault();
+            $('#customer_name').val(ui.item.label);
+            $('#customer_address').val(ui.item.value);
+            $('#customerid').val(ui.item.id);
+            $('#customer_type').val(ui.item.customertype);
+
+        }
+    });
+
+    $("#search_data").click(function () {
+        var strtr_type = $('#transaction_type').val();       
+        var strCustId = $('#customerid').val(); 
+        var strPeriode = $('#period_invoice').val();
+    });
+    //$(document).ready(function () {
+    //    //Call EmpDetails jsonResult Method  
+    //    $.getJSON("Home/EmpDetails",
+    //        function (json) {
+    //            var tr;
+    //            //Append each row to html table  
+    //            for (var i = 0; i < json.length; i++) {
+    //                tr = $('<tr/>');
+    //                tr.append("<td>" + json[i].Id + "</td>");
+    //                tr.append("<td>" + json[i].Name + "</td>");
+    //                tr.append("<td>" + json[i].City + "</td>");
+    //                tr.append("<td>" + json[i].Address + "</td>");
+    //                $('table').append(tr);
+    //            }
+    //        });
+    //});  
+
+    //$("#transaction_type").change(function () {
+    //    var transaction_type = $(this).val();
+    //    if (transaction_type == 'Linen') {
+    //        $("#room").prop('disabled', true);
+    //    } else {
+    //        $("#room").prop('disabled', false);
+    //    }
+    //    $.ajax({
+    //        type: "post",
+    //        url: "/POS/GetItemByType?strType=" + transaction_type,
+    //        data: "[]",
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "json",
+    //        success: function (data) {
+    //            var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty_laundry' name='qty_laundry' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='text' id='qty_drycleaning' name='qty_drycleaning' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
+    //            //var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><select id='service'><option value='laundry'>Laundry</option><option value='drycleaning'>Dry Cleaning</option></select></td><td style='text-align:center'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
+    //            $("#tableBody").html(output);
+    //        }
+    //    })
+    //});
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
