@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BOMItem.cs" />
     <Compile Include="CashItem.cs" />
+    <Compile Include="InvoiceItem.cs" />
     <Compile Include="Master_COAItem.cs" />
     <Compile Include="Report_ARItem.cs" />
     <Compile Include="Report_AR_Aging_Item .cs" />

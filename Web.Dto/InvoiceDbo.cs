@@ -6,29 +6,36 @@ namespace Web.Dto
 	public class InvoiceDbo : IDataMapper<InvoiceDbo>
 	{
 
-		//public int id { get; set; }
+        //public int id { get; set; }
+        public int id { get; set; }
+        public int no_urut { get; set; }
+        public string transaction_id { get; set; }
+        public string customerid { get; set; }
+        public string customer_name { get; set; }
+        public string customer_address { get; set; }
+        public string customer_type { get; set; }
+        public string transaction_date { get; set; }
+        public string transaction_type { get; set; }
+        public string nilai { get; set; }
         public string BranchID { get; set; }
-        public string Description { get; set; }
-        public string Account { get; set; }
-        public string Area { get; set; }
-     
+        public string BranchName { get; set; }
+
 
         public InvoiceDbo Map(System.Data.IDataReader reader)
         {
             InvoiceDbo obj = new InvoiceDbo();
-            //obj.id = Convert.ToInt32(reader["id"]);
-            //obj.BankID = reader["BankID"].ToString();
-            //obj.Description = reader["Description"].ToString();
-            //obj.Account = reader["Account"].ToString();
-            //obj.Area = reader["Area"].ToString();
-            //obj.Balance = reader["Balance"].ToString();
-            //obj.Account_Name = reader["account_name"].ToString();
-            //obj.COA = reader["COA"].ToString();
-            //obj.is_delete = reader["is_delete"] == DBNull.Value ? 0 : Convert.ToInt32(reader["is_delete"]);
-            //obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
-            //obj.create_by = reader["create_by"].ToString();
-            //obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
-            //obj.update_by = reader["update_by"].ToString();
+            obj.id = Convert.ToInt32(reader["id"]);
+            obj.no_urut = Convert.ToInt32(reader["no_urut"]);
+            obj.transaction_id = reader["transaction_id"].ToString();
+            obj.customerid = reader["customerid"].ToString();
+            obj.customer_name = reader["customer_name"].ToString();
+            obj.customer_address = reader["customer_address"].ToString();
+            obj.customer_type = reader["customer_type"].ToString();
+            obj.transaction_date = reader["transaction_date"].ToString();
+            obj.transaction_type = reader["transaction_type"].ToString();
+            obj.nilai = reader["nilai"].ToString();
+            obj.BranchID = reader["BranchID"].ToString();
+            obj.BranchName = reader["BranchName"].ToString();
             return obj;
         }
     }

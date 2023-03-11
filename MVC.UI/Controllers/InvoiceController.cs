@@ -32,6 +32,14 @@ namespace MVC.UI.Controllers
             List<CompanyDbo> ListBranch = Master_CompanyItem.GetUserGroup();
             return ListBranch;
         }
+
+        public JsonResult GetInvoice(string Type, string CustomerID, string Periode)
+        {
+            List<InvoiceDbo> listInvoice = InvoiceItem.GetItemByParam(Type, CustomerID, Periode);
+            return Json(listInvoice);
+        }
+
+
     }
 }
 

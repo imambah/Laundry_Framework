@@ -160,11 +160,9 @@
                             <th>
                                 Total
                             </th>
-
-                            <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody  id="tableBody">
                     </tbody>
                 </table>
             }
@@ -216,6 +214,29 @@
         var strtr_type = $('#transaction_type').val();       
         var strCustId = $('#customerid').val(); 
         var strPeriode = $('#period_invoice').val();
+        //alert(strtr_type);
+        //alert(strCustId);
+        //alert(strPeriode);
+        $.ajax({
+            type: "post",
+            url: "/Invoice/GetInvoice?Type=" + strtr_type + "&CustomerId=" + strCustId + "&Periode=" + strPeriode,
+            data: "[]",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var output = data.map(i => "<tr><td>"
+                    + i.no_urut + "</td><td>"
+                    + i.transaction_id + "</td><td>"
+                    + i.BranchName + "</td><td>"
+                    + i.customer_name + "</td><td>"
+                    + i.transaction_date + "</td><td>"
+                    + i.transaction_type + "</td><td>"
+                    + i.nilai + "</td></tr>");
+                $("#tableBody").html(output);
+            }
+        })
+
+
     });
     //$(document).ready(function () {
     //    //Call EmpDetails jsonResult Method  
