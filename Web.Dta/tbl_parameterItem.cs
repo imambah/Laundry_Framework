@@ -96,6 +96,7 @@ namespace Web.Dta
             string InvoiceNo = "";
             int no_seri = 0;
             NomorDbo nomer = tbl_parameterItem.getNomer(strJenis);
+            int intID = nomer.id;
             string strTahun = nomer.tahun.ToString();
             string strBulan = nomer.bulan.ToString();
             string strNo = nomer.nomer.ToString();
@@ -104,12 +105,26 @@ namespace Web.Dta
             string strYearNow = now.Year.ToString();
             string strMonthNow = now.Month.ToString();
 
-            //if (strTahun == strYearNow && strBulan == strMonthNow)
-            //    no_seri = Convert.ToInt32(strNo) + 1;
-            //else
-            //    no_seri = Convert.ToInt32(strNo);
+            NomorDbo penomoran = new NomorDbo();
+            if (strTahun == strYearNow && strBulan == strMonthNow) {
+                no_seri = Convert.ToInt32(strNo) + 1;
+                penomoran.id = intID;
+                penomoran.tahun = Convert.ToInt32(strTahun);
+                penomoran.bulan = Convert.ToInt32(strBulan);
+                penomoran.nomer = Convert.ToInt32(no_seri);
+                strNo = no_seri.ToString();
+            }
+            else
+            {
+                no_seri = Convert.ToInt32(1);
+                penomoran.id = intID;
+                penomoran.tahun = Convert.ToInt32(strYearNow);
+                penomoran.bulan = Convert.ToInt32(strMonthNow);
+                penomoran.nomer = Convert.ToInt32(no_seri);
+                strNo = no_seri.ToString();
+            }
 
-
+            UpdateNomer(penomoran);
 
             if (strNo.Length == 1)
             {
@@ -149,6 +164,19 @@ namespace Web.Dta
             return InvoiceNo;
         }
         #endregion
+        public static NomorDbo UpdateNomer(NomorDbo obj)
+        {
 
+            IDBHelper context = new DBHelper();
+            context.AddParameter("@id", obj.id);
+            context.AddParameter("@tahun", obj.tahun);
+            context.AddParameter("@bulan", obj.bulan);
+            context.AddParameter("@nomer", obj.nomer);
+
+            string sqlQuery = "sp_parameter_Update_Nomer";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<NomorDbo>(context, new NomorDbo()).FirstOrDefault();
+        }
     }
 }
