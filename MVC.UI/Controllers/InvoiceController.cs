@@ -45,7 +45,8 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                string strInvoice_No = tbl_parameterItem.getInvoce_Nomer("invoice","TGH");
+
+                string strInvoice_No = tbl_parameterItem.getInvoce_Nomer("invoice");
                 string strCustomer_Id = "";
                 string strCustomer_Name = "";
                 //string strBranch_Id = "";

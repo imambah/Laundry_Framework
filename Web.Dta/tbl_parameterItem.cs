@@ -91,7 +91,7 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<NomorDbo>(context, new NomorDbo()).FirstOrDefault();
         }
 
-        public static string getInvoce_Nomer(string strJenis, string initial)
+        public static string getInvoce_Nomer(string strJenis)
         {
             string InvoiceNo = "";
             int no_seri = 0;
@@ -160,7 +160,7 @@ namespace Web.Dta
             else if (strBulan == "12")
                 strBulan = "XII";
 
-            InvoiceNo = strNo + "/" + "BiW-" + initial + "/" + strBulan + "/" + strTahun;
+            InvoiceNo = strNo + "/" + "BiW-/" + strBulan + "/" + strTahun;
             return InvoiceNo;
         }
         #endregion
