@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.22917in</Width>
+              <Width>1.21412in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.23958in</Width>
+              <Width>0.22454in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.5868in</Width>
+              <Width>1.57176in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -30,6 +30,7 @@
                             <TextRun>
                               <Value>No Invoice </Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -60,7 +61,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>:</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -91,7 +94,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!invoice_no.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -128,6 +133,7 @@
                             <TextRun>
                               <Value>Periode</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -158,7 +164,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>:</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -189,7 +197,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -226,6 +236,7 @@
                             <TextRun>
                               <Value>Tanggal</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -256,7 +267,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>:</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -287,7 +300,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!invoice_date.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -324,6 +339,7 @@
                             <TextRun>
                               <Value>Jatuh Tempo</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -354,7 +370,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>:</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -385,7 +403,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -422,6 +442,7 @@
                             <TextRun>
                               <Value>No. Referensi</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -452,7 +473,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>:</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -463,7 +486,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -492,7 +517,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>-</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -535,9 +562,9 @@
         </TablixRowHierarchy>
         <DataSetName>DS_INVOICE</DataSetName>
         <Top>0.375in</Top>
-        <Left>4.07166in</Left>
+        <Left>2.90847in</Left>
         <Height>1.25in</Height>
-        <Width>3.05555in</Width>
+        <Width>3.01041in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -548,7 +575,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.60291in</Width>
+              <Width>2.85291in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -565,7 +592,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!customer_name.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -599,7 +628,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!customer_address.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -636,7 +667,7 @@
         <DataSetName>DS_INVOICE</DataSetName>
         <Top>0.5in</Top>
         <Height>0.5in</Height>
-        <Width>3.60291in</Width>
+        <Width>2.85291in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -648,7 +679,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>7.12722in</Width>
+              <Width>5.91888in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -679,8 +710,7 @@
                       <rd:DefaultName>Textbox29</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -705,7 +735,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <Height>0.38542in</Height>
-        <Width>7.12722in</Width>
+        <Width>5.91888in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -720,10 +750,10 @@
               <Width>0.57292in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.20014in</Width>
+              <Width>1.7418in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.71875in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.09375in</Width>
@@ -747,6 +777,7 @@
                             <TextRun>
                               <Value>No</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -800,6 +831,7 @@
                             <TextRun>
                               <Value>Nama Barang</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -851,6 +883,7 @@
                             <TextRun>
                               <Value>Jumlah</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -904,6 +937,7 @@
                             <TextRun>
                               <Value>Harga Satuan (Rp.)</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -957,6 +991,7 @@
                             <TextRun>
                               <Value>Total (Rp.)</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -1014,7 +1049,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!row_no.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1065,7 +1102,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!jenis_nota.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1114,7 +1153,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!jmlh.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1165,7 +1206,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!nilai.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1216,7 +1259,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!total.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1272,7 +1317,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1303,7 +1350,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1332,7 +1381,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Total :</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1385,7 +1436,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Sum(Fields!total.Value, "DS_INVOICE")</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -1632,8 +1685,7 @@
                       <rd:DefaultName>Textbox41</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1685,9 +1737,8 @@
         </TablixRowHierarchy>
         <DataSetName>DS_INVOICE</DataSetName>
         <Top>1.88417in</Top>
-        <Left>0.25in</Left>
         <Height>1.375in</Height>
-        <Width>6.70013in</Width>
+        <Width>5.96055in</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -1699,7 +1750,7 @@
     <Height>3.25917in</Height>
     <Style />
   </Body>
-  <Width>7.12722in</Width>
+  <Width>5.96055in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
