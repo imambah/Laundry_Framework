@@ -10,6 +10,7 @@ namespace Web.Dto
         public int id { get; set; }
         public int no_urut { get; set; }
         public string invoice_no { get; set; }
+        public string invoice_date { get; set; }
         public string transaction_id { get; set; }
         public string customerid { get; set; }
         public string customer_name { get; set; }
@@ -38,6 +39,7 @@ namespace Web.Dto
             obj.BranchID = reader["BranchID"].ToString();
             obj.BranchName = reader["BranchName"].ToString();
             obj.invoice_no = reader["invoice_no"].ToString();
+            obj.invoice_date = reader["invoice_date"].ToString();
             return obj;
         }
     }

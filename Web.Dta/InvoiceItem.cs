@@ -49,7 +49,14 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<InvoiceDbo>(context, new InvoiceDbo()).FirstOrDefault();
         }
 
-
+        public static List<InvoiceDbo> GetAll()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_invoice_getList";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new InvoiceDbo());
+        }
 
     }
 }

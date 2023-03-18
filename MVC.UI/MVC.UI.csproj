@@ -487,6 +487,8 @@
     <Content Include="Views\Cash\viewdetail.cshtml" />
     <Content Include="Views\Invoice\filterPerusahaan.cshtml" />
     <Content Include="Views\Invoice\index.cshtml" />
+    <Content Include="Views\Invoice\list_invoice.cshtml" />
+    <Content Include="Views\Invoice\print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -519,7 +521,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Report\Invoce.rdlc" />
+    <EmbeddedResource Include="Report\Invoice.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Report1.rdlc" />

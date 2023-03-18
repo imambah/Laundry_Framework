@@ -65,10 +65,8 @@ namespace MVC.UI.Controllers
                     InvoiceItem.create_invoice_detail(strInvoice_No, transaction_id, strCustomer_Id);
                 });
 
-               
-                //InvoiceItem.create_invoice_header(strInvoice_No);
-                //PosDetailPriceDbo detail_price = Master_POSItem.GetPriceDetail(transactionid);
-                return RedirectToAction("index", "Invoice");
+
+                return RedirectToAction("Index", "Invoice");
             }
             catch
             {
@@ -76,51 +74,24 @@ namespace MVC.UI.Controllers
             }
         }
 
-        //public string getInvoce_Nomer(string strJenis, string initial) {
-        //    string InvoiceNo = "";
-        //    NomorDbo nomer = tbl_parameterItem.getNomer(strJenis);
-        //    string strTahun = nomer.tahun.ToString();
-        //    string strBulan = nomer.bulan.ToString();
-        //    string strNo = nomer.nomer.ToString();
+        public ActionResult list_invoice()
+        {
+            List<InvoiceDbo> list = InvoiceItem.GetAll();
+            return View(list);
+        }
 
-        //    if (strNo.Length == 1)
-        //    {
-        //        strNo = "00" + strNo;
-        //    }
-        //    else if (strNo.Length == 2)
-        //    {
-        //        strNo = "0" + strNo;
-        //    }
-
-        //    if (strBulan == "1")
-        //        strBulan = "I";
-        //    else if (strBulan == "2")
-        //        strBulan = "II";
-        //    else if (strBulan == "3")
-        //        strBulan = "III";
-        //    else if (strBulan == "4")
-        //        strBulan = "IV";
-        //    else if (strBulan == "5")
-        //        strBulan = "V";
-        //    else if (strBulan == "6")
-        //        strBulan = "VI";
-        //    else if (strBulan == "7")
-        //        strBulan = "VII";
-        //    else if (strBulan == "8")
-        //        strBulan = "VIII";
-        //    else if (strBulan == "9")
-        //        strBulan = "XI";
-        //    else if (strBulan == "10")
-        //        strBulan = "X";
-        //    else if (strBulan == "11")
-        //        strBulan = "XI";
-        //    else if (strBulan == "12")
-        //        strBulan = "XII";
-
-        //    InvoiceNo = strNo + "/" + "BiW-" + initial + "/" + strBulan + "/" + strTahun;
-        //    return InvoiceNo;
-        //}
-
+        public ActionResult Print(string invoice_no)
+        {
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = invoice_no;
+            return View(paramDbo);
+        }
+        public ActionResult PrintOut(ReportParamDbo Model)
+        {
+            string str = Model.param1;
+            return Redirect("~/Report/ReportViewer_Invoice.aspx?invoice_no=" + str);
+            //return View();
+        }
     }
 }
 

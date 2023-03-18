@@ -18,7 +18,7 @@ namespace MVC.UI.Report
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           string customer_id = Request.QueryString["customer_id"].ToString();
+           string invoice_no = Request.QueryString["invoice_no"].ToString();
 
             if (!Page.IsPostBack)
             {
@@ -27,17 +27,16 @@ namespace MVC.UI.Report
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Invoice.rdlc");
 
-                ds = GetData("c205");
+                ds = GetData(invoice_no);
                 
-                ReportParameter[] parameters = new ReportParameter[1];
-               // parameters[0] = new ReportParameter("customer_id", 'c205'); 
-                ReportViewer1.LocalReport.SetParameters(parameters);
+                //ReportParameter[] parameters = new ReportParameter[1];
+                //ReportViewer1.LocalReport.SetParameters(parameters);
 
 
 
                 if (ds.Tables[0].Rows.Count > 0) {
                     ReportDataSource rdc = new ReportDataSource("DS_INVOICE", ds.Tables[0]);
-                    ReportViewer1.LocalReport.SetParameters(parameters);
+                    //ReportViewer1.LocalReport.SetParameters(parameters);
                     ReportViewer1.LocalReport.DataSources.Clear();
                     ReportViewer1.LocalReport.DataSources.Add(rdc);
                     ReportViewer1.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
@@ -45,7 +44,7 @@ namespace MVC.UI.Report
 
             }
         }
-        private DataSet GetData(string cust_id)
+        private DataSet GetData(string invoice_no)
         {
 
             string conString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
@@ -57,7 +56,7 @@ namespace MVC.UI.Report
             DataTable dt = new DataTable();
             cmd.Connection = con;
             cmd = new SqlCommand("[sp_Report_InvoicePeriode]", cmd.Connection);
-            cmd.Parameters.Add(new SqlParameter("@customer_id", cust_id));
+            cmd.Parameters.Add(new SqlParameter("@invoice_no", invoice_no));
             cmd.CommandType = CommandType.StoredProcedure;
             da.SelectCommand = cmd;
             da.Fill(ds);
