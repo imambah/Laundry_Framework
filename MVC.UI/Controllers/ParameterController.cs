@@ -97,5 +97,10 @@ namespace MVC.UI.Controllers
             return RedirectToAction("Index");
 
         }
+
+        //public string GetNomer(string jenis) {
+
+        //    return "";
+        //}
     }
 }

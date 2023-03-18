@@ -1,29 +1,38 @@
 ﻿@model Web.Dto.POSDbo
 
 @{
-    ViewBag.Title = "Filter Perusahaan";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @{
     List<SelectListItem> listItems = new List<SelectListItem>();
     listItems.Add(new SelectListItem
     {
-        Text = "-- Pilih Tipe --",
+        Text = "-- Pilih Tipe Konsumen --",
         Value = "",
         Selected = true
     });
     listItems.Add(new SelectListItem
     {
-        Text = "HK / FB Linen",
-        Value = "Linen",
+        Text = "Agent",
+        Value = "Agent",
 
     });
     listItems.Add(new SelectListItem
     {
-        Text = "Guest / Uniform",
-        Value = "Uniform",
+        Text = "Coorporate",
+        Value = "Coorporate",
     });
-
+    listItems.Add(new SelectListItem
+    {
+        Text = "Counter",
+        Value = "Counter",
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Hotel",
+        Value = "Hotel",
+    });
 }
 @{
     List<SelectListItem> listItems_periode = new List<SelectListItem>();
@@ -41,7 +50,7 @@
 
 }
 
-@*@{
+@{
     List<SelectListItem> listItems_Bulan = new List<SelectListItem>();
     listItems_Bulan.Add(new SelectListItem
     {
@@ -96,17 +105,19 @@
         Text = "September",
         Value = "9",
 
-    }); listItems_Bulan.Add(new SelectListItem
+    });
+    listItems_Bulan.Add(new SelectListItem
     {
         Text = "Oktober",
         Value = "10",
 
-    }); listItems_Bulan.Add(new SelectListItem
+    });
+    listItems_Bulan.Add(new SelectListItem
     {
         Text = "November",
         Value = "11",
-
-    }); listItems_Bulan.Add(new SelectListItem
+    });
+    listItems_Bulan.Add(new SelectListItem
     {
         Text = "Desember",
         Value = "12",
@@ -166,8 +177,7 @@
 
     });
 
-}*@
-
+}
 
 
 <style>
@@ -186,12 +196,13 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Transaksi</h1>
+    <h1>Data Invoice</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Transaksi</li>
+        <li class="active">Invoice</li>
     </ol>
 </section>
+
 
 <!-- Main content -->
 <section class="content">
@@ -202,34 +213,35 @@
         </div>
         <div class="box-body">
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "search_data", @class = "form-horizontal", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Type </div>
+                    <div class="col-sm-2 control-label">Customer Type </div>
                     <div class="col-sm-3">
-                        @Html.DropDownListFor(model => model.transaction_type, listItems, new { @class = "form-control", placeholder = "Transaction Type" })
-                        @Html.ValidationMessageFor(model => model.transaction_type)
+                        @Html.DropDownListFor(model => model.customer_type, listItems, new { @class = "form-control", placeholder = "Customer Type" })
+                        @Html.ValidationMessageFor(model => model.customer_type)
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Tahun Period</div>
                     <div class="col-sm-1">
+                        @Html.DropDownList("period_invoice", listItems_Tahun, new { @class = "form-control", placeholder = "Transaction Type" })
 
                     </div>
                     <div class="col-sm-1 control-label">Bulan Period</div>
                     <div class="col-sm-1">
+                        @Html.DropDownList("period_invoice", listItems_Bulan, new { @class = "form-control", placeholder = "Transaction Type" })
 
                     </div>
                     <div class="col-sm-1 control-label">Period</div>
                     <div class="col-sm-2">
                         @Html.DropDownList("period_invoice", listItems_periode, new { @class = "form-control", placeholder = "Transaction Type" })
+
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Pelanggan</div>
                     <div class="col-sm-3">
@@ -260,7 +272,8 @@
                 <div class="form-group">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <button class="btn btn-success" id="search_data"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</button>
+                        <button type="button" class="btn btn-success" id="search_data"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</button>
+                        <button type="button" class="btn btn-primary" id="proses_invoice"><i class="fa fa-file"></i>&nbsp;&nbsp;Invoice</button>
                     </div>
                 </div>
 
@@ -291,6 +304,7 @@
                             <th>
                                 Total
                             </th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody id="tableBody">
@@ -308,7 +322,8 @@
     </div>
     <!-- /.box -->
 </section>
-<!-- /.content -->
+
+<!--  -->
 
 <script type="text/javascript">
     $("#customer_name").autocomplete({
@@ -344,15 +359,13 @@
     });
 
     $("#search_data").click(function () {
-        var strtr_type = $('#transaction_type').val();
+        var strtr_type = $('#customer_type').val();
         var strCustId = $('#customerid').val();
         var strPeriode = $('#period_invoice').val();
-        //alert(strtr_type);
-        //alert(strCustId);
-        //alert(strPeriode);
+        //alert('masuk sini');
         $.ajax({
             type: "post",
-            url: "/Invoice/GetInvoice?Type=" + strtr_type + "&CustomerId=" + strCustId + "&Periode=" + strPeriode,
+            url: "/Invoice/GetInvoice?CustomerType=" + strtr_type + "&CustomerId=" + strCustId + "&Periode=" + strPeriode,
             data: "[]",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -364,21 +377,34 @@
                     + i.customer_name + "</td><td>"
                     + i.transaction_date + "</td><td>"
                     + i.transaction_type + "</td><td>"
-                    + i.nilai + "</td></tr>");
+                    + i.nilai + "</td><td><input type='checkbox'  id='cbInvoice' name='cbInvoice' style='aligment-text:center;'></td></tr>");
                 $("#tableBody").html(output);
             }
         })
-
-
     });
-   
+
+    $("#proses_invoice").click(function () {
+        var strtr_type = $('#customer_type').val();
+        var strCustId = $('#customerid').val();
+        var strCustName = $('#customer_name').val();
+        var strPeriode = $('#period_invoice').val();
+       //alert('masuk sini');
+        var dataInvoice = document.getElementById("mydatatable");
+       // alert(dataInvoice);
+        //insert detail =============================================
+        var rows = [];
+        for (var i = 1; i < dataInvoice.rows.length; i++) {
+            var _id = dataInvoice.rows[i].cells[0].innerText;
+            var _transaction_id = dataInvoice.rows[i].cells[1].innerText;
+            var _checked = dataInvoice.rows[i].cells[7].firstChild.checked;
+            if (_checked == true) {
+                var row = _id + "|" + _transaction_id + "|" + strCustId + "|" + strCustName;
+                rows.push(row);
+            }
+        }
+ 
+        $.post('@Url.Action("create_invoice", "Invoice")', { rows: rows }, function (data) { });
+    });
 
 
 </script>
-
-
-
-
-
-
-

@@ -23,63 +23,62 @@
         <div class="box-body">
             <p>
                 <a class="btn btn-warning " href="@Url.Action("Create")" role="button" aria-pressed="true"><i class="fa fa-plus"></i> Tambah Data</a>
-
             </p>
-            <table id="mydatatable" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th> @Html.DisplayNameFor(model => model.Username)</th>
-                        <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                        <th> Group User</th>
-                        <th>Nama Cabang</th>
-                        <th>@Html.DisplayNameFor(model => model.LastLogin)</th>
-                        <th>Status Record</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+                <table id="mydatatable" class="table table-bordered table-striped">
+                    <thead>
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Username)</td>
-                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.UserGroup)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Branch)</td>
-                            <td>@Web.Logic.Utilities.FullDateFormat(item.LastLogin)</td>
-
-                            <td>
-                                @if (item.IsActive == 1)
-                                {
-
-                                    @("Aktif") }
-                                else
-                                {
-                                    <p style="color:red">Tidak Aktif</p>
-                                }
-                            </td>
-
-                            <td>
-                                @if (item.IsActive == 1)
-                                {
-                                    <a class="text-success" href="@Url.Action("Edit", new { Username=item.Username })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
-                                    <a class="text-primary" href="@Url.Action("Details", new { Username=item.Username})" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
-                                    <a class="text-danger" href="@Url.Action("Delete", new { Username=item.Username })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
-                                }
-                                else
-                                {
-                                    <a class="text-primary" href="@Url.Action("Details", new { Username=item.Username })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
-                                    <a class="text-success" href="@Url.Action("Active", new { Username=item.Username  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
-                                }
-                            </td>
-                            <td>
-                            </td>
+                            <th> @Html.DisplayNameFor(model => model.Username)</th>
+                            <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                            <th> Group User</th>
+                            <th>Nama Cabang</th>
+                            <th>@Html.DisplayNameFor(model => model.LastLogin)</th>
+                            <th>Status Record</th>
+                            <th>Aksi</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UserGroup)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Branch)</td>
+                                <td>@Web.Logic.Utilities.FullDateFormat(item.LastLogin)</td>
 
-    </div>
+                                <td>
+                                    @if (item.IsActive == 1)
+                                    {
+
+                                        @("Aktif") }
+                                    else
+                                    {
+                                        <p style="color:red">Tidak Aktif</p>
+                                    }
+                                </td>
+
+                                <td>
+                                    @if (item.IsActive == 1)
+                                    {
+                                        <a class="text-success" href="@Url.Action("Edit", new { Username=item.Username })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                        <a class="text-primary" href="@Url.Action("Details", new { Username=item.Username})" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                        <a class="text-danger" href="@Url.Action("Delete", new { Username=item.Username })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                    }
+                                    else
+                                    {
+                                        <a class="text-primary" href="@Url.Action("Details", new { Username=item.Username })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                        <a class="text-success" href="@Url.Action("Active", new { Username=item.Username  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
+                                    }
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
 
 </section>
 

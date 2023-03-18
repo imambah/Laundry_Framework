@@ -24,17 +24,32 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new InvoiceDbo());
         }
 
-       
 
-        #region Data Access
+        public static InvoiceDbo create_invoice_detail(string strInvoice, string strTransaction, string strCustomerID)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_Invoice_CreateInvoice_Detail]";
+            context.AddParameter("@transaction_id", strTransaction);
+            context.AddParameter("@invoice_no", strInvoice);
+            context.AddParameter("@customer_id", strCustomerID);
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<InvoiceDbo>(context, new InvoiceDbo()).FirstOrDefault();
+        }
 
-        /// <summary>
-        /// Execute Insert to TABLE [tbl_log]
-        /// </summary>        
-      
-       
+        public static InvoiceDbo create_invoice_header(string strInvoice, string strCustID, string strCustName )
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_Invoice_CreateInvoice_Header]";
+            context.AddParameter("@invoice_no", strInvoice);
+            context.AddParameter("@customer_id", strCustID);
+            context.AddParameter("@customer_name", strCustName);
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<InvoiceDbo>(context, new InvoiceDbo()).FirstOrDefault();
+        }
 
-        #endregion
+
 
     }
 }
