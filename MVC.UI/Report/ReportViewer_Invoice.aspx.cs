@@ -28,10 +28,10 @@ namespace MVC.UI.Report
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Invoice.rdlc");
 
                 ds = GetData(invoice_no);
-                
-                //ReportParameter[] parameters = new ReportParameter[1];
-                //ReportViewer1.LocalReport.SetParameters(parameters);
 
+                ReportParameter[] parameters = new ReportParameter[1];
+                parameters[0] = new ReportParameter("username", "User Test" );
+                ReportViewer1.LocalReport.SetParameters(parameters);
 
 
                 if (ds.Tables[0].Rows.Count > 0) {
