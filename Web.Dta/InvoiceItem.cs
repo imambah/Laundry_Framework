@@ -12,7 +12,7 @@ namespace Web.Dta
     /// </summary>    
     public partial class InvoiceItem
     {
-        public static List<InvoiceDbo> GetItemByParam(string strType, string CustomerID, string Periode)
+        public static List<InvoiceDbo> GetItemByParam(string strType, string CustomerID, string Periode, string strTahun, string strBulan)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_Invoice_Get";
@@ -20,21 +20,24 @@ namespace Web.Dta
             context.AddParameter("@type", strType);
             context.AddParameter("@customerid", CustomerID);
             context.AddParameter("@periode", Periode);
+            context.AddParameter("@tahun", strTahun);
+            context.AddParameter("@bulan", strBulan);
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new InvoiceDbo());
         }
 
 
-        public static InvoiceDbo create_invoice_detail(string strInvoice, string strTransaction, string strCustomerID)
+        public static InvoiceSummaryDbo create_invoice_detail(string strInvoice, string strTransaction, string strCustomerID,string strCustomerType)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "[sp_Invoice_CreateInvoice_Detail]";
             context.AddParameter("@transaction_id", strTransaction);
             context.AddParameter("@invoice_no", strInvoice);
             context.AddParameter("@customer_id", strCustomerID);
+            context.AddParameter("@customer_type", strCustomerType);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
-            return DBUtil.ExecuteMapper<InvoiceDbo>(context, new InvoiceDbo()).FirstOrDefault();
+            return DBUtil.ExecuteMapper<InvoiceSummaryDbo>(context, new InvoiceSummaryDbo()).FirstOrDefault();
         }
 
         public static InvoiceDbo create_invoice_header(string strInvoice, string strCustID, string strCustName )
@@ -58,5 +61,14 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new InvoiceDbo());
         }
 
+        public static InvoiceDbo createAR(string strInvoice_no, string strUsername) {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_Invoice_CreateAR]";
+            context.AddParameter("@invoice_no", strInvoice_no);
+            context.AddParameter("@create_by", strUsername);
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<InvoiceDbo>(context, new InvoiceDbo()).FirstOrDefault();
+        }
     }
 }

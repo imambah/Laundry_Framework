@@ -48,6 +48,7 @@
     <Compile Include="BOMDbo.cs" />
     <Compile Include="CashDbo.cs" />
     <Compile Include="CashDetailDbo.cs" />
+    <Compile Include="InvoiceSummaryDbo.cs" />
     <Compile Include="NomorDbo.cs" />
     <Compile Include="InvoiceDbo.cs" />
     <Compile Include="Master_COADbo.cs" />

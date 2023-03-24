@@ -15,7 +15,7 @@ namespace Web.Dta
         public static List<Master_Klien> GetAll()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "sp_master_client_GetAll";
+            string sqlQuery = "sp_master_client_GetAll_POS";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new Master_Klien());
@@ -135,6 +135,16 @@ namespace Web.Dta
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new GroupDbo());
+        }
+
+        public static List<Master_Klien> GetAll_Invoice(string strCustomerType)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_master_client_GetAll_Invoice";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@customer_type", strCustomerType);
+            return DBUtil.ExecuteMapper(context, new Master_Klien());
         }
     }
 }

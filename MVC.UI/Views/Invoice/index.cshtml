@@ -44,7 +44,7 @@
     });
     listItems_periode.Add(new SelectListItem
     {
-        Text = "Period II Tgl 16 - 31",
+        Text = "Period II > Tgl 15",
         Value = "P2",
     });
 
@@ -228,12 +228,12 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Tahun Period</div>
                     <div class="col-sm-1">
-                        @Html.DropDownList("period_invoice", listItems_Tahun, new { @class = "form-control", placeholder = "Transaction Type" })
+                        @Html.DropDownList("tahun_periode", listItems_Tahun, new { @class = "form-control", placeholder = "Transaction Type", id="tahun_periode"  })
 
                     </div>
                     <div class="col-sm-1 control-label">Bulan Period</div>
                     <div class="col-sm-1">
-                        @Html.DropDownList("period_invoice", listItems_Bulan, new { @class = "form-control", placeholder = "Transaction Type" })
+                        @Html.DropDownList("bulan_periode", listItems_Bulan, new { @class = "form-control", placeholder = "Transaction Type", id = "bulan_periode" })
 
                     </div>
                     <div class="col-sm-1 control-label">Period</div>
@@ -314,7 +314,7 @@
             }
 
             <div>
-                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+                <a href="@Url.Action("List_invoice")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
             </div>
 
         </div>
@@ -331,7 +331,7 @@
             //var csname = 'Counter';
             $.ajax({
                 type: "POST",
-                url: "/POS/getName?Prefix=" + $('#customer_name').val(),
+                url: "/POS/getName_Invoice?Prefix=" + $('#customer_name').val() + "&strCustomer_type=" + $('#customer_type').val() ,
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
                 //data: { Prefix: $('#customer_name').val() },
@@ -362,10 +362,12 @@
         var strtr_type = $('#customer_type').val();
         var strCustId = $('#customerid').val();
         var strPeriode = $('#period_invoice').val();
-        //alert('masuk sini');
+        var strTahun = $('#tahun_periode').val();
+        var strBulan = $('#bulan_periode').val();
+        alert(strTahun);
         $.ajax({
             type: "post",
-            url: "/Invoice/GetInvoice?CustomerType=" + strtr_type + "&CustomerId=" + strCustId + "&Periode=" + strPeriode,
+            url: "/Invoice/GetInvoice?CustomerType=" + strtr_type + "&CustomerId=" + strCustId + "&Periode=" + strPeriode + "&strTahun=" + strTahun + "&strBulan=" + strBulan,
             data: "[]",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -398,7 +400,7 @@
             var _transaction_id = dataInvoice.rows[i].cells[1].innerText;
             var _checked = dataInvoice.rows[i].cells[7].firstChild.checked;
             if (_checked == true) {
-                var row = _id + "|" + _transaction_id + "|" + strCustId + "|" + strCustName;
+                var row = _id + "|" + _transaction_id + "|" + strCustId + "|" + strCustName + "|" + strtr_type ;
                 rows.push(row);
             }
         }

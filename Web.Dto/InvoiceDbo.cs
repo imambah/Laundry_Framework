@@ -22,7 +22,6 @@ namespace Web.Dto
         public string BranchID { get; set; }
         public string BranchName { get; set; }
 
-
         public InvoiceDbo Map(System.Data.IDataReader reader)
         {
             InvoiceDbo obj = new InvoiceDbo();

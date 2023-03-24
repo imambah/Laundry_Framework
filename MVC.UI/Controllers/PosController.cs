@@ -194,5 +194,15 @@ namespace MVC.UI.Controllers
             return RedirectToAction("Index", "POS");
         }
 
+        [HttpPost]
+        public JsonResult getName_Invoice(string Prefix, string strCustomer_type)
+        {
+            var strValue = Prefix.ToUpper();
+            List<Master_Klien> ObjList = Master_KlienItem.GetAll_Invoice(strCustomer_type);
+            var Name = (from N in ObjList
+                        where N.nama_klien.ToUpper().Contains(strValue)
+                        select new { N.nama_klien, N.alamat, N.kode_klien, N.tipe_konsumen });
+            return Json(Name, JsonRequestBehavior.AllowGet);
+        }
     }
 }

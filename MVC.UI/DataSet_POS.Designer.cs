@@ -1553,6 +1553,12 @@ namespace MVC.UI {
             
             private global::System.Data.DataColumn columnrow_no;
             
+            private global::System.Data.DataColumn columnppn1;
+            
+            private global::System.Data.DataColumn columndisc1;
+            
+            private global::System.Data.DataColumn columnjml;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_Report_InvoicePeriodeDataTable() {
@@ -1684,6 +1690,30 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ppn1Column {
+                get {
+                    return this.columnppn1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn disc1Column {
+                get {
+                    return this.columndisc1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn jmlColumn {
+                get {
+                    return this.columnjml;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1719,7 +1749,7 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public sp_Report_InvoicePeriodeRow Addsp_Report_InvoicePeriodeRow(string customer_name, string invoice_no, System.DateTime invoice_date, string customer_id, string jenis_nota, decimal nilai, int ppn, int disc, decimal total, int jmlh, string customer_address, long row_no) {
+            public sp_Report_InvoicePeriodeRow Addsp_Report_InvoicePeriodeRow(string customer_name, string invoice_no, System.DateTime invoice_date, string customer_id, string jenis_nota, decimal nilai, int ppn, int disc, decimal total, int jmlh, string customer_address, long row_no, decimal ppn1, decimal disc1, int jml) {
                 sp_Report_InvoicePeriodeRow rowsp_Report_InvoicePeriodeRow = ((sp_Report_InvoicePeriodeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         customer_name,
@@ -1733,7 +1763,10 @@ namespace MVC.UI {
                         total,
                         jmlh,
                         customer_address,
-                        row_no};
+                        row_no,
+                        ppn1,
+                        disc1,
+                        jml};
                 rowsp_Report_InvoicePeriodeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_Report_InvoicePeriodeRow);
                 return rowsp_Report_InvoicePeriodeRow;
@@ -1768,6 +1801,9 @@ namespace MVC.UI {
                 this.columnjmlh = base.Columns["jmlh"];
                 this.columncustomer_address = base.Columns["customer_address"];
                 this.columnrow_no = base.Columns["row_no"];
+                this.columnppn1 = base.Columns["ppn1"];
+                this.columndisc1 = base.Columns["disc1"];
+                this.columnjml = base.Columns["jml"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1797,6 +1833,12 @@ namespace MVC.UI {
                 base.Columns.Add(this.columncustomer_address);
                 this.columnrow_no = new global::System.Data.DataColumn("row_no", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrow_no);
+                this.columnppn1 = new global::System.Data.DataColumn("ppn1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnppn1);
+                this.columndisc1 = new global::System.Data.DataColumn("disc1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndisc1);
+                this.columnjml = new global::System.Data.DataColumn("jml", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnjml);
                 this.columncustomer_name.MaxLength = 100;
                 this.columninvoice_no.MaxLength = 50;
                 this.columncustomer_id.MaxLength = 50;
@@ -1804,6 +1846,11 @@ namespace MVC.UI {
                 this.columnjmlh.ReadOnly = true;
                 this.columncustomer_address.MaxLength = 2147483647;
                 this.columnrow_no.ReadOnly = true;
+                this.columnppn1.ReadOnly = true;
+                this.columnppn1.Caption = "ppn";
+                this.columndisc1.ReadOnly = true;
+                this.columndisc1.Caption = "disc";
+                this.columnjml.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3398,6 +3445,54 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal ppn1 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_Report_InvoicePeriode.ppn1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ppn1\' in table \'sp_Report_InvoicePeriode\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_InvoicePeriode.ppn1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal disc1 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablesp_Report_InvoicePeriode.disc1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'disc1\' in table \'sp_Report_InvoicePeriode\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_InvoicePeriode.disc1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int jml {
+                get {
+                    try {
+                        return ((int)(this[this.tablesp_Report_InvoicePeriode.jmlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'jml\' in table \'sp_Report_InvoicePeriode\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_InvoicePeriode.jmlColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Iscustomer_nameNull() {
                 return this.IsNull(this.tablesp_Report_InvoicePeriode.customer_nameColumn);
             }
@@ -3538,6 +3633,42 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setrow_noNull() {
                 this[this.tablesp_Report_InvoicePeriode.row_noColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isppn1Null() {
+                return this.IsNull(this.tablesp_Report_InvoicePeriode.ppn1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setppn1Null() {
+                this[this.tablesp_Report_InvoicePeriode.ppn1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isdisc1Null() {
+                return this.IsNull(this.tablesp_Report_InvoicePeriode.disc1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setdisc1Null() {
+                this[this.tablesp_Report_InvoicePeriode.disc1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsjmlNull() {
+                return this.IsNull(this.tablesp_Report_InvoicePeriode.jmlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetjmlNull() {
+                this[this.tablesp_Report_InvoicePeriode.jmlColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4178,12 +4309,13 @@ namespace MVC.UI.DataSet_POSTableAdapters {
             tableMapping.ColumnMappings.Add("customer_id", "customer_id");
             tableMapping.ColumnMappings.Add("jenis_nota", "jenis_nota");
             tableMapping.ColumnMappings.Add("nilai", "nilai");
-            tableMapping.ColumnMappings.Add("ppn", "ppn");
-            tableMapping.ColumnMappings.Add("disc", "disc");
             tableMapping.ColumnMappings.Add("total", "total");
             tableMapping.ColumnMappings.Add("jmlh", "jmlh");
             tableMapping.ColumnMappings.Add("customer_address", "customer_address");
             tableMapping.ColumnMappings.Add("row_no", "row_no");
+            tableMapping.ColumnMappings.Add("ppn", "ppn1");
+            tableMapping.ColumnMappings.Add("disc", "disc1");
+            tableMapping.ColumnMappings.Add("jml", "jml");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

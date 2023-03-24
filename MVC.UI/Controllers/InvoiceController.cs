@@ -35,9 +35,9 @@ namespace MVC.UI.Controllers
             return ListBranch;
         }
 
-        public JsonResult GetInvoice(string CustomerType, string CustomerID, string Periode)
+        public JsonResult GetInvoice(string CustomerType, string CustomerID, string Periode, string strTahun, string strBulan)
         {
-            List<InvoiceDbo> listInvoice = InvoiceItem.GetItemByParam(CustomerType, CustomerID, Periode);
+            List<InvoiceDbo> listInvoice = InvoiceItem.GetItemByParam(CustomerType, CustomerID, Periode, strTahun, strBulan);
             return Json(listInvoice);
         }
 
@@ -45,11 +45,10 @@ namespace MVC.UI.Controllers
         {
             try
             {
-
                 string strInvoice_No = tbl_parameterItem.getInvoce_Nomer("invoice");
                 string strCustomer_Id = "";
                 string strCustomer_Name = "";
-                //string strBranch_Id = "";
+                string strCust_Type= "";
                 int iterasi = 0;
                 rows.ForEach(x =>
                 {
@@ -58,14 +57,15 @@ namespace MVC.UI.Controllers
                     var transaction_id = row[1];
                     strCustomer_Id = row[2];
                     strCustomer_Name = row[3];
+                    strCust_Type = row[4];
                     if (iterasi == 0) {
                         InvoiceItem.create_invoice_header(strInvoice_No, strCustomer_Id, strCustomer_Name);
                     }
                     iterasi = iterasi + 1;
-                    InvoiceItem.create_invoice_detail(strInvoice_No, transaction_id, strCustomer_Id);
+                    InvoiceItem.create_invoice_detail(strInvoice_No, transaction_id, strCustomer_Id, strCust_Type);
                 });
 
-
+                InvoiceItem.createAR(strInvoice_No, Utilities.Username);
                 return RedirectToAction("Index", "Invoice");
             }
             catch
