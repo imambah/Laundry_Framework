@@ -121,8 +121,8 @@
                     </div>
                     <div class="col-sm-1 control-label">Tgl Selesai </div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.finishdate, new { @class = "form-control", placeholder = "Tgl Selesai" })
-                        @Html.ValidationMessageFor(model => model.finishdate)
+                        @Html.TextBoxFor(model => model.estimasi_selesai, new { @class = "form-control", placeholder = "Tgl Selesai" })
+                        @Html.ValidationMessageFor(model => model.estimasi_selesai)
 
                     </div>
                 </div>
@@ -180,7 +180,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#finishdate").datepicker({
+        $("#estimasi_selesai").datepicker({
             changeMonth: true,
             changeYear: true,
             dateFormat: 'dd-mm-yy'
@@ -298,7 +298,8 @@
         var _customer_address = $("#customer_address").val();
         var _customer_type = $("#customer_type").val();
         var _customer_id = $("#customerid").val();
-        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id
+        var _estimasi_selesai = $("#estimasi_selesai").val();
+        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id + '|' + _estimasi_selesai
 
         // header ============================
         $.post('@Url.Action("ProccessDetail", "POS")', { rows: rows, transactionid: _transid, header: _header }, function (data) { });

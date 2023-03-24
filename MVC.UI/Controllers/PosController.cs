@@ -94,14 +94,16 @@ namespace MVC.UI.Controllers
                 ObjPosHeader.customer_address = result[4].Trim();
                 ObjPosHeader.customer_type = result[5].Trim();
                 ObjPosHeader.customerid = result[6].Trim();
+                ObjPosHeader.estimasi_selesai = Convert.ToDateTime(result[7].Trim());
                 ObjPosHeader.jumlah_item = detail_price.jumlah_qty;
                 ObjPosHeader.nilai = detail_price.jumlah_nilai;
                 ObjPosHeader.disc = detail_price.disc / 100;
                 ObjPosHeader.sub_total = detail_price.jumlah_nilai - (detail_price.jumlah_nilai * (detail_price.disc / 100));
                 ObjPosHeader.branchid = Session["Branch_ID"].ToString();
                 ObjPosHeader.create_by = Utilities.Username;
-                //ObjPosHeader.finishdate = "";
                 Master_POSItem.Insert(ObjPosHeader);
+
+
                 return RedirectToAction("index","POS");
             }
             catch

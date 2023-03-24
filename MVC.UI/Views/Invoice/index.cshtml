@@ -364,7 +364,7 @@
         var strPeriode = $('#period_invoice').val();
         var strTahun = $('#tahun_periode').val();
         var strBulan = $('#bulan_periode').val();
-        alert(strTahun);
+        //alert(strTahun);
         $.ajax({
             type: "post",
             url: "/Invoice/GetInvoice?CustomerType=" + strtr_type + "&CustomerId=" + strCustId + "&Periode=" + strPeriode + "&strTahun=" + strTahun + "&strBulan=" + strBulan,

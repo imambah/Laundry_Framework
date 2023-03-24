@@ -50,7 +50,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>MP</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>My Project</b></span>
+                <span class="logo-lg"><b>LanSa Laundry</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -106,7 +106,8 @@
                         <img src="@Url.Content("~/Content/dist/img/avatar5.png")" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>@string.Format("{0}", Web.Logic.Utilities.Username)</p>
+                        <p>@string.Format("{0}", Web.Logic.Utilities.Username) - @string.Format("{0}", Session["Branch_NAME"]) </p>
+                        
                         <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
                     </div>
                 </div>

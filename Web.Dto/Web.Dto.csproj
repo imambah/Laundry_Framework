@@ -53,6 +53,7 @@
     <Compile Include="InvoiceDbo.cs" />
     <Compile Include="Master_COADbo.cs" />
     <Compile Include="Master_Employee.cs" />
+    <Compile Include="POS_AgentDbo.cs" />
     <Compile Include="POS_TransactionDbo.cs" />
     <Compile Include="ReportParamDbo.cs" />
     <Compile Include="PosDetailPriceDbo.cs" />

@@ -55,6 +55,7 @@ namespace Web.Dta
             context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", obj.create_by);
             context.AddParameter("@branchid", obj.branchid);
+            context.AddParameter("@estimasi_selesai", obj.estimasi_selesai);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POSDbo>(context, new POSDbo()).FirstOrDefault();
