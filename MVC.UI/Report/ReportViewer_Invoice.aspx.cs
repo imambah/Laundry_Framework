@@ -19,6 +19,7 @@ namespace MVC.UI.Report
         protected void Page_Load(object sender, EventArgs e)
         {
            string invoice_no = Request.QueryString["invoice_no"].ToString();
+           string logo = Request.QueryString["logo"].ToString();
 
             if (!Page.IsPostBack)
             {
@@ -27,12 +28,14 @@ namespace MVC.UI.Report
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Invoice.rdlc");
 
+                //ReportParameter lim = new ReportParameter("image", @logo, true);
+                ReportViewer1.LocalReport.EnableExternalImages = true;
+
                 ds = GetData(invoice_no);
-
-                ReportParameter[] parameters = new ReportParameter[1];
+                ReportParameter[] parameters = new ReportParameter[2];
                 parameters[0] = new ReportParameter("username", "User Test" );
+                parameters[1] = new ReportParameter("logo", "file:///" + logo);
                 ReportViewer1.LocalReport.SetParameters(parameters);
-
 
                 if (ds.Tables[0].Rows.Count > 0) {
                     ReportDataSource rdc = new ReportDataSource("DS_INVOICE", ds.Tables[0]);

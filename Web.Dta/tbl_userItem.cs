@@ -38,8 +38,9 @@ namespace Web.Dta
              context.AddParameter("@IsActive", obj.IsActive);
              context.AddParameter("@UserGroup", obj.UserGroup);
              context.AddParameter("@Branch", obj.Branch);
-            
-             context.CommandText = sqlQuery;
+             context.AddParameter("@user_level", obj.User_Level);
+
+            context.CommandText = sqlQuery;
              context.CommandType = CommandType.StoredProcedure;
              return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
         }

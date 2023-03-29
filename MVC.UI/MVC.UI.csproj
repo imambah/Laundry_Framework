@@ -307,10 +307,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\corona.jpg" />
     <Content Include="Images\dollar_laundry.png" />
     <Content Include="Images\icon laundry.png" />
-    <Content Include="Images\logo-twitter.jpg" />
     <Content Include="Images\logo_laundry.jpeg" />
     <Content Include="Images\logo_laundry_abu.jpeg" />
     <Content Include="ReportViewerWebForm.aspx" />
@@ -381,6 +379,7 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="UploadFiles\logo-twitter.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -492,7 +491,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="UploadFiles\" />
     <Folder Include="Views\BOM_Detail\" />
   </ItemGroup>
   <ItemGroup>
@@ -522,9 +520,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Report\Invoice.rdlc" />
+    <EmbeddedResource Include="Report\Rpt_Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Terima.rdlc" />
-    <EmbeddedResource Include="Report\Report1.rdlc" />
     <EmbeddedResource Include="Report\Rpt_ARDetail1.rdlc" />
     <EmbeddedResource Include="Report\TandaTerimaHotel.rdlc" />
   </ItemGroup>

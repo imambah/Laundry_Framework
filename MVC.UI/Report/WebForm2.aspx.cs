@@ -19,23 +19,26 @@ namespace MVC.UI.Report
         protected void Page_Load(object sender, EventArgs e)
         {
            string strID = Request.QueryString["id"].ToString();
+           string logo = Request.QueryString["logo"].ToString();
 
             if (!Page.IsPostBack)
             {
                 DataSet ds = new DataSet();
                 
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
-                ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Tanda_Terima.rdlc");
+                //ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Tanda_Terima.rdlc");
+                ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Rpt_Tanda_Terima.rdlc");
+                ReportViewer1.LocalReport.EnableExternalImages = true;
                 ds = GetData(strID);
                 string strKetentuan = Report_PosItem.GetKetentuan();
                 string strWorkshop = Report_PosItem.Get_workshop();
                 string branch_name = Session["Branch_NAME"].ToString();
-                ReportParameter[] parameters = new ReportParameter[3];
+                ReportParameter[] parameters = new ReportParameter[4];
                 parameters[0] = new ReportParameter("counter_name", branch_name); 
                 parameters[1] = new ReportParameter("ketentuan", strKetentuan);
                 parameters[2] = new ReportParameter("workshop", strWorkshop);
+                parameters[3] = new ReportParameter("logo", "file:///" + logo);
                 ReportViewer1.LocalReport.SetParameters(parameters);
-
 
 
                 if (ds.Tables[0].Rows.Count > 0) {

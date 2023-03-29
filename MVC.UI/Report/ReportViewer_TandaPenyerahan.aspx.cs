@@ -19,6 +19,7 @@ namespace MVC.UI.Report
         protected void Page_Load(object sender, EventArgs e)
         {
            string strID = Request.QueryString["id"].ToString();
+           string logo = Request.QueryString["logo"].ToString();
 
             if (!Page.IsPostBack)
             {
@@ -26,14 +27,15 @@ namespace MVC.UI.Report
                 
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Tanda_Penyerahan.rdlc");
-
+                ReportViewer1.LocalReport.EnableExternalImages = true;
                 ds = GetData(strID);
-                //ds = GetData("74");
+
                 string strKetentuan = Report_PosItem.GetKetentuan();
                 string strWorkshop = Report_PosItem.Get_workshop();
                 string branch_name = Session["Branch_NAME"].ToString();
                 ReportParameter[] parameters = new ReportParameter[1];
-                parameters[0] = new ReportParameter("counter_name", branch_name); 
+                parameters[0] = new ReportParameter("counter_name", branch_name);
+                //parameters[1] = new ReportParameter("logo", "file:///" + logo);
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
 

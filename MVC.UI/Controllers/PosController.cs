@@ -111,7 +111,7 @@ namespace MVC.UI.Controllers
                 return View();
             } 
         }
-        public ActionResult Print(string id )
+        public ActionResult Print(string id)
         {
             var paramDbo = new ReportParamDbo();
             paramDbo.param1 = id;
@@ -120,20 +120,26 @@ namespace MVC.UI.Controllers
         public ActionResult PrintOut(ReportParamDbo Model)
         {
             string str = Model.param1;
-            return Redirect("~/Report/WebForm2.aspx?id=" + str);
+            Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
+            string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
+            //return Redirect("~/Report/WebForm2.aspx?id=" + str );
+            return Redirect("~/Report/WebForm2.aspx?id=" + str + "&logo=" + imgLogo);
             //return View();
         }
 
-
         public ActionResult print_penyerahan(string tr_id) {
+           
             var paramDbo = new ReportParamDbo();
             paramDbo.param1 = tr_id;
+           
             return View(paramDbo);
         }
         public ActionResult PrintOut_Penyerahan(ReportParamDbo Model)
         {
             string str = Model.param1;
-            return Redirect("~/Report/ReportViewer_TandaPenyerahan.aspx?id=" + str);
+            Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
+            string imgLogo =  AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo; ;
+            return Redirect("~/Report/ReportViewer_TandaPenyerahan.aspx?id=" + str + "&logo=" + imgLogo);
             //return View();
         }
         public ActionResult Selesai(string id)

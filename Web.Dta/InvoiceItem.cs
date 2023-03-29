@@ -40,13 +40,14 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<InvoiceSummaryDbo>(context, new InvoiceSummaryDbo()).FirstOrDefault();
         }
 
-        public static InvoiceDbo create_invoice_header(string strInvoice, string strCustID, string strCustName )
+        public static InvoiceDbo create_invoice_header(string strInvoice, string strCustID, string strCustName, string strPeriode )
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "[sp_Invoice_CreateInvoice_Header]";
             context.AddParameter("@invoice_no", strInvoice);
             context.AddParameter("@customer_id", strCustID);
             context.AddParameter("@customer_name", strCustName);
+            context.AddParameter("@periode", strPeriode);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<InvoiceDbo>(context, new InvoiceDbo()).FirstOrDefault();

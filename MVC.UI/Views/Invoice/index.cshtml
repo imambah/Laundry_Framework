@@ -38,14 +38,14 @@
     List<SelectListItem> listItems_periode = new List<SelectListItem>();
     listItems_periode.Add(new SelectListItem
     {
-        Text = "Period I Tgl 1 - 15",
-        Value = "P1",
+        Text = "I (1-15)",
+        Value = "I (1-15)",
 
     });
     listItems_periode.Add(new SelectListItem
     {
-        Text = "Period II > Tgl 15",
-        Value = "P2",
+        Text = "II (>15)",
+        Value = "II (>15)",
     });
 
 }
@@ -400,7 +400,7 @@
             var _transaction_id = dataInvoice.rows[i].cells[1].innerText;
             var _checked = dataInvoice.rows[i].cells[7].firstChild.checked;
             if (_checked == true) {
-                var row = _id + "|" + _transaction_id + "|" + strCustId + "|" + strCustName + "|" + strtr_type ;
+                var row = _id + "|" + _transaction_id + "|" + strCustId + "|" + strCustName + "|" + strtr_type + "|" + strPeriode ;
                 rows.push(row);
             }
         }

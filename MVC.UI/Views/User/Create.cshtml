@@ -3,6 +3,28 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "-- Pilih Level User --",
+        Value = "",
+        Selected = true
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Admin",
+        Value = "admin",
+
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "User",
+        Value = "user",
+    });
+
+}
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Data Pengguna</h1>
@@ -63,9 +85,16 @@
                     @*@Html.LabelFor(model => model.BranchCode, new { @class = "col-sm-2 control-label" })*@
                     <div class="col-sm-2 control-label">Cabang</div>
                     <div class="col-sm-4">
-                        @Html.DropDownListFor(model => model.Branch, new SelectList(""),"-- Pilih Cabang --", new { @class = "form-control" })
-                    
-                   
+                        @Html.DropDownListFor(model => model.Branch, new SelectList(""), "-- Pilih Cabang --", new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">User Level</div>
+                    <div class="col-sm-4">
+
+                         @Html.DropDownListFor(model => model.User_Level, listItems, new { @class = "form-control", placeholder = "Transaction Type" })
+                         @Html.ValidationMessageFor(model => model.User_Level)
                     </div>
                 </div>
 

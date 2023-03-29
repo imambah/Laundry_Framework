@@ -49,6 +49,7 @@ namespace MVC.UI.Controllers
                 string strCustomer_Id = "";
                 string strCustomer_Name = "";
                 string strCust_Type= "";
+                string strPeriode = "";
                 int iterasi = 0;
                 rows.ForEach(x =>
                 {
@@ -58,8 +59,9 @@ namespace MVC.UI.Controllers
                     strCustomer_Id = row[2];
                     strCustomer_Name = row[3];
                     strCust_Type = row[4];
+                    strPeriode = row[5];
                     if (iterasi == 0) {
-                        InvoiceItem.create_invoice_header(strInvoice_No, strCustomer_Id, strCustomer_Name);
+                        InvoiceItem.create_invoice_header(strInvoice_No, strCustomer_Id, strCustomer_Name,strPeriode);
                     }
                     iterasi = iterasi + 1;
                     InvoiceItem.create_invoice_detail(strInvoice_No, transaction_id, strCustomer_Id, strCust_Type);
@@ -89,7 +91,9 @@ namespace MVC.UI.Controllers
         public ActionResult PrintOut(ReportParamDbo Model)
         {
             string str = Model.param1;
-            return Redirect("~/Report/ReportViewer_Invoice.aspx?invoice_no=" + str);
+            Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
+            string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
+            return Redirect("~/Report/ReportViewer_Invoice.aspx?invoice_no=" + str + "&logo=" + imgLogo);
             //return View();
         }
     }

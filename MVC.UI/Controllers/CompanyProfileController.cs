@@ -37,7 +37,7 @@ namespace MVC.UI.Controllers
                 {
                     if (logo != null)
                     {
-                        string path = Path.Combine(Server.MapPath("~/Images"), Path.GetFileName(logo.FileName));
+                        string path = Path.Combine(Server.MapPath("~/UploadFiles"), Path.GetFileName(logo.FileName));
                         logo.SaveAs(path);
                     }
                     Item.logo = logo.FileName;

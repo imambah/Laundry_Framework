@@ -178,5 +178,7 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<NomorDbo>(context, new NomorDbo()).FirstOrDefault();
         }
+
+      
     }
 }

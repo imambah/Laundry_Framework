@@ -17,9 +17,9 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="customer_name">
-          <DataField>customer_name</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="row_no">
+          <DataField>row_no</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
         </Field>
         <Field Name="invoice_no">
           <DataField>invoice_no</DataField>
@@ -31,6 +31,14 @@
         </Field>
         <Field Name="customer_id">
           <DataField>customer_id</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="customer_name">
+          <DataField>customer_name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="customer_address">
+          <DataField>customer_address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="jenis_nota">
@@ -53,29 +61,13 @@
           <DataField>total</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="jmlh">
-          <DataField>jmlh</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="customer_address">
-          <DataField>customer_address</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="row_no">
-          <DataField>row_no</DataField>
-          <rd:TypeName>System.Int64</rd:TypeName>
-        </Field>
-        <Field Name="ppn1">
-          <DataField>ppn</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="disc1">
-          <DataField>disc</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
         <Field Name="jml">
           <DataField>jml</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="periode">
+          <DataField>periode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
@@ -279,14 +271,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox8">
+                        <Textbox Name="periode">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!periode.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -297,7 +289,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
+                          <rd:DefaultName>periode</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -651,8 +643,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DS_INVOICE</DataSetName>
-            <Top>0.375in</Top>
-            <Left>4.65847in</Left>
+            <Top>1.25in</Top>
+            <Left>4.6793in</Left>
             <Height>1.25in</Height>
             <Width>3.01042in</Width>
             <Style>
@@ -755,7 +747,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DS_INVOICE</DataSetName>
-            <Top>0.5in</Top>
+            <Top>1.25in</Top>
+            <Left>0.02083in</Left>
             <Height>0.5in</Height>
             <Width>2.85291in</Width>
             <ZIndex>1</ZIndex>
@@ -769,7 +762,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>7.64805in</Width>
+                  <Width>4.44666in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -824,8 +817,9 @@
                 <TablixMember />
               </TablixMembers>
             </TablixRowHierarchy>
+            <Left>1.87847in</Left>
             <Height>0.38542in</Height>
-            <Width>7.64805in</Width>
+            <Width>4.44666in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1085,7 +1079,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>PPN</Value>
+                                  <Value>PPN (Rp.)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1139,7 +1133,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Disc</Value>
+                                  <Value>Disc (Rp.)</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1412,6 +1406,7 @@
                                   <Value>=Fields!nilai.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
+                                    <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1425,26 +1420,6 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1515,7 +1490,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!disc1.Value</Value>
+                                  <Value>=Fields!disc.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -1571,6 +1546,7 @@
                                   <Value>=Fields!total.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
+                                    <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1584,26 +1560,6 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1814,6 +1770,7 @@
                                   <Value>=Sum(Fields!total.Value, "DS_INVOICE")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
+                                    <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1827,26 +1784,6 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -3624,7 +3561,8 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DS_INVOICE</DataSetName>
-            <Top>1.88417in</Top>
+            <Top>2.63417in</Top>
+            <Left>0.02083in</Left>
             <Height>3.48957in</Height>
             <Width>7.64805in</Width>
             <ZIndex>3</ZIndex>
@@ -3634,11 +3572,25 @@
               </Border>
             </Style>
           </Tablix>
+          <Image Name="Image1">
+            <Source>External</Source>
+            <Value>=Parameters!logo.Value</Value>
+            <Sizing>FitProportional</Sizing>
+            <Left>0.01389in</Left>
+            <Height>0.94666in</Height>
+            <Width>1.30555in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
         </ReportItems>
-        <Height>5.50916in</Height>
+        <Height>7.57166in</Height>
         <Style />
       </Body>
-      <Width>7.66889in</Width>
+      <Width>7.68972in</Width>
       <Page>
         <PageHeight>8.5in</PageHeight>
         <PageWidth>11in</PageWidth>
@@ -3656,6 +3608,11 @@
       <Nullable>true</Nullable>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="logo">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -3666,6 +3623,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>username</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>logo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
