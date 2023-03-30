@@ -33,9 +33,9 @@ namespace MVC.UI.Report
                 string strKetentuan = Report_PosItem.GetKetentuan();
                 string strWorkshop = Report_PosItem.Get_workshop();
                 string branch_name = Session["Branch_NAME"].ToString();
-                ReportParameter[] parameters = new ReportParameter[1];
+                ReportParameter[] parameters = new ReportParameter[2];
                 parameters[0] = new ReportParameter("counter_name", branch_name);
-                //parameters[1] = new ReportParameter("logo", "file:///" + logo);
+                parameters[1] = new ReportParameter("logo", "file:///" + logo);
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
 
