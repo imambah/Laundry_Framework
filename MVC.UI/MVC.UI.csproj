@@ -485,6 +485,7 @@
     <Content Include="Views\Cash\index.cshtml" />
     <Content Include="Views\Cash\viewdetail.cshtml" />
     <Content Include="Views\Pos\Selesai.cshtml" />
+    <Content Include="Views\ARAging\details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
