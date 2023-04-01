@@ -226,6 +226,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActionResult.cs" />
     <Compile Include="Controllers\ARAgingController.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
@@ -486,6 +487,10 @@
     <Content Include="Views\Cash\viewdetail.cshtml" />
     <Content Include="Views\Pos\Selesai.cshtml" />
     <Content Include="Views\ARAging\details.cshtml" />
+    <Content Include="Views\Invoice\filterPerusahaan.cshtml" />
+    <Content Include="Views\Invoice\index.cshtml" />
+    <Content Include="Views\Invoice\list_invoice.cshtml" />
+    <Content Include="Views\Invoice\print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
