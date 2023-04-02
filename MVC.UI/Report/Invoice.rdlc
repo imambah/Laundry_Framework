@@ -834,10 +834,10 @@
                   <Width>0.57292in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.7418in</Width>
+                  <Width>1.89227in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.71875in</Width>
+                  <Width>0.53819in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.09375in</Width>
@@ -1440,6 +1440,7 @@
                                   <Value>=Fields!ppn.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
+                                    <Format>f2</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1453,26 +1454,6 @@
                             <Border>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -3564,7 +3545,7 @@
             <Top>2.63417in</Top>
             <Left>0.02083in</Left>
             <Height>3.48957in</Height>
-            <Width>7.64805in</Width>
+            <Width>7.61796in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
