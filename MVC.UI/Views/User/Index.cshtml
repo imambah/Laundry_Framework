@@ -24,27 +24,27 @@
             <p>
                 <a class="btn btn-warning " href="@Url.Action("Create")" role="button" aria-pressed="true"><i class="fa fa-plus"></i> Tambah Data</a>
             </p>
-                <table id="mydatatable" class="table table-bordered table-striped">
-                    <thead>
+            <table id="mydatatable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th> @Html.DisplayNameFor(model => model.Username)</th>
+                        <th>@Html.DisplayNameFor(model => model.FullName)</th>
+                        <th> Group User</th>
+                        <th>Cabang/Departemen</th>
+                        <th>@Html.DisplayNameFor(model => model.LastLogin)</th>
+                        <th>Initial</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
                         <tr>
-                            <th> @Html.DisplayNameFor(model => model.Username)</th>
-                            <th>@Html.DisplayNameFor(model => model.FullName)</th>
-                            <th> Group User</th>
-                            <th>Nama Cabang</th>
-                            <th>@Html.DisplayNameFor(model => model.LastLogin)</th>
-                            <th>Status Record</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.Username)</td>
-                                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.UserGroup)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Branch)</td>
-                                <td>@Web.Logic.Utilities.FullDateFormat(item.LastLogin)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.UserGroup)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Branch_Name)</td>
+                            <td>@Web.Logic.Utilities.FullDateFormat(item.LastLogin)</td>
 
                                 <td>
                                     @if (item.IsActive == 1)
