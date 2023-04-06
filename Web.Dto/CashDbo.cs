@@ -13,6 +13,7 @@ namespace Web.Dto
         public string PIC { get; set; }
         public DateTime? Transaction_date { get; set; }
         public string BankID { get; set; }
+        public string BankName { get; set; }
         public double Amount { get; set; }
         public string Voucher_Type { get; set; }
         public string Posted { get; set; }
@@ -32,6 +33,7 @@ namespace Web.Dto
             obj.PIC = reader["PIC"].ToString();
             obj.Transaction_date = reader["Transaction_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["Transaction_date"]);
             obj.BankID = reader["BankID"].ToString();
+            obj.BankID = reader["BankName"].ToString();
             obj.Amount = Convert.ToDouble(reader["Amount"]);
             obj.Voucher_Type = reader["Voucher_Type"].ToString();
             obj.Posted = reader["Posted"].ToString();

@@ -31,6 +31,16 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_BankDbo>(context, new Master_BankDbo()).FirstOrDefault();
         }
 
+        public static List<GroupDbo> GetBank()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_master_bank_GetLooping]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new GroupDbo());
+        }
+
+
         #region Data Access
 
         /// <summary>

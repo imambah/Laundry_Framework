@@ -1,0 +1,88 @@
+﻿@model Web.Dto.AR_BayarDbo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Bank</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Bank</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Tambah Data Bank</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.Hidden("hdfuser", @Session["Fullname"].ToString())
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Invoice No.</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.Invoice_No, new { @class = "form-control", placeholder = "Invoice No.", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Invoice_No)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nilai Piutang</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.NilaiPiutang, new { @class = "form-control", placeholder = "Nilai Piutang", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.NilaiPiutang)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nominal Bayar</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.BayarPiutang, new { id = "nominal_bayar", onkeyup = "calculate(this);", @class = "form-control", placeholder = "Nominal Bayar" })
+                        @Html.ValidationMessageFor(model => model.BayarPiutang)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Sisa Bayar</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.SisaPiutang, new { @class = "form-control", placeholder = "Sisa Bayar", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.SisaPiutang)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-success"><i class="fa fa-money"></i>&nbsp;&nbsp;Bayar</button>
+                    </div>
+                </div>
+            }
+
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->
+<script type="text/javascript">
+
+    function calculate(obj) {
+        var decNominalPiutang = $("#NilaiPiutang").val();
+        var decBayarPiutang = $("#nominal_bayar").val();
+        var decSisaBayar = parseFloat(decNominalPiutang) - parseFloat(decBayarPiutang) ;
+        $("#SisaPiutang").val(decSisaBayar);
+    }
+</script>

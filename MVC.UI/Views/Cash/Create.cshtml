@@ -31,19 +31,26 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Voucher</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Voucher_ID, new { @class = "form-control", placeholder = "Kode BOM" })
+                        @Html.TextBox("Voucher_ID", (string)ViewBag.Kode_Voucher, new { @class = "form-control", @readonly = "readonly" })
                         @Html.ValidationMessageFor(model => model.Voucher_ID)
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Tanggal</div>
+                    <div class="col-sm-2 control-label">Tipe Voucher </div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Transaction_date, new { @class = "form-control", placeholder = "Tanggal" })
-                        @Html.ValidationMessageFor(model => model.Transaction_date)
+                        @Html.TextBox("Voucher_Type", (string)ViewBag.Tipe_Voucher, new { @class = "form-control",@readonly = "readonly"})
+                        @Html.ValidationMessageFor(model => model.Voucher_Type)
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Tanggal</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Transaction_date, new { @class = "form-control", placeholder = "Tgl Selesai" })
+                        @Html.ValidationMessageFor(model => model.Transaction_date)
 
+                    </div>
+                </div>
                 <div class="form-group">
                     @if (ViewBag.scr == "BM")
                     {
@@ -82,7 +89,8 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Melalui Bank</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.BankID, new { @class = "form-control", placeholder = "Bank" })
+                        @*@Html.TextBoxFor(model => model.BankID, ViewBag.BANKList as SelectList, new { @class = "form-control", placeholder = "Bank" })*@
+                        @Html.DropDownListFor(model => model.BankID, ViewBag.BANKList as SelectList, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.BankID)
                     </div>
                 </div>
@@ -105,3 +113,15 @@
     <!-- /.box -->
 </section>
 <!-- /.content -->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Transaction_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy'
+        });
+    });
+
+</script>

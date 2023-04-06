@@ -38,22 +38,23 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">COA</div>
                     <div class="col-sm-4">
-                        @Html.DropDownListFor(model => model.COA, ViewBag.BarangList as SelectList, new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.COA_Detail, ViewBag.BarangList as SelectList, new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Keterangan</div>
                     <div class="col-sm-4">
-                        @Html.DropDownListFor(model => model.Description, ViewBag.BarangList as SelectList, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Description_Detail, new { @class = "form-control", placeholder = "Keterangan" })
+                        @Html.ValidationMessageFor(model => model.Description_Detail)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Jumlah</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Value, new { @class = "form-control", placeholder = "Jumlah" })
-                        @Html.ValidationMessageFor(model => model.Value)
+                        @Html.TextBoxFor(model => model.value_detail, new { @class = "form-control", placeholder = "Jumlah" })
+                        @Html.ValidationMessageFor(model => model.value_detail)
                     </div>
                 </div>
 

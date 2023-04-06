@@ -87,13 +87,13 @@ namespace Web.Dta
             IDBHelper context = new DBHelper();
             context.CommandType = CommandType.StoredProcedure;
             context.CommandText = "[sp_GetNomer]";
-            context.AddParameter("@jenis", "invoice");
+            context.AddParameter("@jenis", strJenis);
             return DBUtil.ExecuteMapper<NomorDbo>(context, new NomorDbo()).FirstOrDefault();
         }
 
         public static string getInvoce_Nomer(string strJenis)
         {
-            string InvoiceNo = "";
+            string GenNo = "";
             int no_seri = 0;
             NomorDbo nomer = tbl_parameterItem.getNomer(strJenis);
             int intID = nomer.id;
@@ -134,34 +134,40 @@ namespace Web.Dta
             {
                 strNo = "0" + strNo;
             }
+            if (strJenis == "cashin" || strJenis == "cashout")
+            {
+                GenNo = now.Date.ToString("yyyy") + "." + now.Date.ToString("MM") + "." + now.Date.ToString("dd")+"." + strNo;
 
-            if (strBulan == "1")
-                strBulan = "I";
-            else if (strBulan == "2")
-                strBulan = "II";
-            else if (strBulan == "3")
-                strBulan = "III";
-            else if (strBulan == "4")
-                strBulan = "IV";
-            else if (strBulan == "5")
-                strBulan = "V";
-            else if (strBulan == "6")
-                strBulan = "VI";
-            else if (strBulan == "7")
-                strBulan = "VII";
-            else if (strBulan == "8")
-                strBulan = "VIII";
-            else if (strBulan == "9")
-                strBulan = "XI";
-            else if (strBulan == "10")
-                strBulan = "X";
-            else if (strBulan == "11")
-                strBulan = "XI";
-            else if (strBulan == "12")
-                strBulan = "XII";
-
-            InvoiceNo = strNo + "/" + "BiW-/" + strBulan + "/" + strTahun;
-            return InvoiceNo;
+            }
+            else {
+                if (strBulan == "1")
+                    strBulan = "I";
+                else if (strBulan == "2")
+                    strBulan = "II";
+                else if (strBulan == "3")
+                    strBulan = "III";
+                else if (strBulan == "4")
+                    strBulan = "IV";
+                else if (strBulan == "5")
+                    strBulan = "V";
+                else if (strBulan == "6")
+                    strBulan = "VI";
+                else if (strBulan == "7")
+                    strBulan = "VII";
+                else if (strBulan == "8")
+                    strBulan = "VIII";
+                else if (strBulan == "9")
+                    strBulan = "XI";
+                else if (strBulan == "10")
+                    strBulan = "X";
+                else if (strBulan == "11")
+                    strBulan = "XI";
+                else if (strBulan == "12")
+                    strBulan = "XII";
+                GenNo = strNo + "/" + "BiW-/" + strBulan + "/" + strTahun;
+            }
+            
+            return GenNo;
         }
         #endregion
         public static NomorDbo UpdateNomer(NomorDbo obj)

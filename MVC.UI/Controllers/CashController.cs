@@ -29,10 +29,24 @@ namespace MVC.UI.Controllers
         // GET: Cash/Create
         public ActionResult Create(string scr)
         {
-            //CashDbo existing = scr;
+            if (scr == "BM")
+            {
+                ViewBag.Kode_Voucher = "BM." + tbl_parameterItem.getInvoce_Nomer("cashin");
+                ViewBag.Tipe_Voucher = "CI";
+            }
+            else {
+                ViewBag.Kode_Voucher = "BK." + tbl_parameterItem.getInvoce_Nomer("cashout");
+                ViewBag.Tipe_Voucher = "CO";
+            }
+            
+            ViewBag.BANKList = new SelectList(BANKList(), "id", "nama");
             return View();
         }
-
+        public List<GroupDbo> BANKList()
+        {
+            List<GroupDbo> BANKList = Master_BankItem.GetBank();
+            return BANKList;
+        }
         // POST: Cash/Create
         [HttpPost]
         public ActionResult Create(CashDbo  collection)

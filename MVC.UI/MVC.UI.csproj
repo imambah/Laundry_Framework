@@ -380,6 +380,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="UploadFiles\logo-twitter.jpg" />
+    <Content Include="Views\AR\Bayar.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -486,6 +487,10 @@
     <Content Include="Views\Cash\viewdetail.cshtml" />
     <Content Include="Views\Pos\Selesai.cshtml" />
     <Content Include="Views\ARAging\details.cshtml" />
+    <Content Include="Views\Invoice\filterPerusahaan.cshtml" />
+    <Content Include="Views\Invoice\index.cshtml" />
+    <Content Include="Views\Invoice\list_invoice.cshtml" />
+    <Content Include="Views\Invoice\print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

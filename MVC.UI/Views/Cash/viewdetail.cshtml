@@ -1,5 +1,5 @@
 ﻿
-@model Web.Dto.CashDbo
+@model Web.Dto.CashDetailDbo
 
 @{
     ViewBag.Title = "Details";
@@ -98,30 +98,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Details)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.COA)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Value)
-                            </td>
-
-                            <td>
-                                <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>&nbsp;&nbsp;
-                                <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
-                                @*<a class="text-success" href="@Url.Action("ViewDetail", new { id=item.id })" data-toggle="tooltip" title="View Detail"><i class="fa fa-navicon"></i></a>&nbsp;&nbsp;*@
-                                <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
-                            </td>
-                        </tr>
-                    }
+                   
                 </tbody>
             </table>
             <div>

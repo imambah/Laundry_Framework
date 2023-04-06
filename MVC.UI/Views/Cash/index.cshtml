@@ -30,9 +30,9 @@
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>
+                        @*<th>
                             ID
-                        </th>
+                        </th>*@
                         <th>
                             Kode Voucher
                             @*@Html.DisplayNameFor(model => model.Username)*@
@@ -65,9 +65,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.id)
-                            </td>
+                            </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Voucher_ID)
                             </td>

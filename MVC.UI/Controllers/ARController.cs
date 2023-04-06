@@ -37,6 +37,29 @@ namespace MVC.UI.Controllers
             //return View();
         }
 
+        public ActionResult Bayar(decimal nilaiPiutang,string invoice_no)
+        {
+            AR_BayarDbo ARDbo = new AR_BayarDbo();
+            ARDbo.Invoice_No = invoice_no;
+            ARDbo.NilaiPiutang = nilaiPiutang;
+            return View(ARDbo);
+        }
+
+        [HttpPost]
+        public ActionResult Bayar(AR_BayarDbo item)
+        {
+            try
+            {
+                item.Create_By = Utilities.Username;
+                ARItem.Insert(item);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }
 
