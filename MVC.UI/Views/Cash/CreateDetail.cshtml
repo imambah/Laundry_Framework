@@ -1,5 +1,4 @@
 ﻿@model Web.Dto.CashDetailDbo
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -31,14 +30,14 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Voucher</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Voucher_ID, new { @class = "form-control", disabled = "disabled" })
+                        @Html.TextBoxFor(model => model.Voucher_ID, new { @class = "form-control", @readonly="readonly" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">COA</div>
                     <div class="col-sm-4">
-                        @Html.DropDownListFor(model => model.COA_Detail, ViewBag.BarangList as SelectList, new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.COA_Detail, ViewBag.COAList as SelectList, new { @class = "form-control" })
                     </div>
                 </div>
 

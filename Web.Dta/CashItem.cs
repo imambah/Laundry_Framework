@@ -86,18 +86,20 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             context.CommandText = "[sp_Cash_Detail_GetByCode]";
             context.AddParameter("@Voucher_ID", Voucher_ID);
+           // return DBUtil.ExecuteMapper(context, new CashDetailDbo());
+
             return DBUtil.ExecuteMapper<CashDetailDbo>(context, new CashDetailDbo()).FirstOrDefault();
             //using (IDataReader reader = DBUtil.ExecuteReader(context))
             //{
             //    while (reader.Read())
             //    {
-            //        master = new CashDbo().Map(reader);
+            //        master = new CashDetailDbo().Map(reader);
             //    }
             //    if (master != null)
             //    {
             //        if (reader.NextResult())
             //        {
-            //            master.Details = new List<CashDetailDbo>();
+            //            master. = new List<CashDetailDbo>();
             //            while (reader.Read())
             //            {
 
@@ -111,12 +113,23 @@ namespace Web.Dta
             //return master;
         }
 
+
+        public static List<CashDetailDbo> GetMasterDetailByCode_LIST(string Voucher_ID)
+        {
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "[sp_Cash_Detail_GetByCode]";
+            context.AddParameter("@Voucher_ID", Voucher_ID);
+            return DBUtil.ExecuteMapper(context, new CashDetailDbo());
+
+            //return DBUtil.ExecuteMapper<Service_PriceDbo>(context, new Service_PriceDbo()).FirstOrDefault();
+        }
         public static CashDetailDbo InsertDetail(CashDetailDbo obj)
         {
 
             IDBHelper context = new DBHelper();
             string sqlQuery = "[sp_Cash_Detail_Insert]";
-            context.AddParameter("@Voucher_ID", obj.Voucher_ID_Detail);
+            context.AddParameter("@Voucher_ID", obj.Voucher_ID);
             context.AddParameter("@Description", obj.Description_Detail);
             context.AddParameter("@Value", obj.value_detail);
             context.AddParameter("@Category", obj.Category_Detail);
@@ -130,5 +143,14 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<CashDetailDbo>(context, new CashDetailDbo()).FirstOrDefault();
         }
         #endregion
+
+        public static List<GroupDbo> GetCOA()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_master_COA_GetLooping]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new GroupDbo());
+        }
     }
 }

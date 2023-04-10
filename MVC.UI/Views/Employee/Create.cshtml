@@ -236,13 +236,13 @@
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Tanggal Mulai Kontrak</div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         @Html.TextBoxFor(model => model.Start_Date, new { @class = "form-control", placeholder = "Tanggal Mulai Kontrak" })
                         @Html.ValidationMessageFor(model => model.Start_Date)
                     </div>
 
                     <div class="col-sm-3 control-label">Tanggal Selesai Kontrak</div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                         @Html.TextBoxFor(model => model.End_Date, new { @class = "form-control", placeholder = "Tanggal Selesai Kontrak" })
                         @Html.ValidationMessageFor(model => model.End_Date)
                     </div>
@@ -292,7 +292,17 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#Start_Date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy'
+        });
 
+        $("#End_Date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd-mm-yy'
+        });
     })
 
      function ValidateNumber(e) {

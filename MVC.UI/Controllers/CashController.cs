@@ -42,11 +42,7 @@ namespace MVC.UI.Controllers
             ViewBag.BANKList = new SelectList(BANKList(), "id", "nama");
             return View();
         }
-        public List<GroupDbo> BANKList()
-        {
-            List<GroupDbo> BANKList = Master_BankItem.GetBank();
-            return BANKList;
-        }
+       
         // POST: Cash/Create
         [HttpPost]
         public ActionResult Create(CashDbo  collection)
@@ -112,22 +108,18 @@ namespace MVC.UI.Controllers
 
         public ActionResult Viewdetail(string Voucher_ID)
         {
-            var existing = CashItem.GetMasterDetailByCode(Voucher_ID);
-            return View(existing);
+            //var existing = CashItem.GetMasterDetailByCode(Voucher_ID);
+            //return View(existing);
+            List<CashDetailDbo> listPOS = CashItem.GetMasterDetailByCode_LIST(Voucher_ID);
+            return View(listPOS);
+
         }
-
-        public ActionResult CreateDetail(string Voucher_ID)
+       
+        public ActionResult CreateDetail(string id)
         {
-            List<Master_BarangDbo> MasterBarang = Master_BarangItem.GetAll();
-            List<SelectListItem> ListItemBarang = new List<SelectListItem>();
-            MasterBarang.ForEach(t =>
-            {
-                ListItemBarang.Add(new SelectListItem() { Value = t.ItemCode, Text = t.ItemCode +"-"+ t.ItemDesc});
-            });
-            ViewBag.BarangList = new SelectList(ListItemBarang, "Value", "Text");
-
             CashDetailDbo Cashdetail = new CashDetailDbo();
-            Cashdetail.Voucher_ID = Voucher_ID;
+            Cashdetail.Voucher_ID = id.Replace("|",".");
+            ViewBag.COAList = new SelectList(COAList(), "id", "nama");
             return View(Cashdetail);
         }
 
@@ -159,7 +151,16 @@ namespace MVC.UI.Controllers
             }
         }
 
+        public List<GroupDbo> BANKList()
+        {
+            List<GroupDbo> BANKList = Master_BankItem.GetBank();
+            return BANKList;
+        }
+        public List<GroupDbo> COAList()
+        {
+            List<GroupDbo> COAList = CashItem.GetCOA();
+            return COAList;
+        }
 
-        
     }
 }

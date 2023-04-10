@@ -1,7 +1,8 @@
 ﻿
-@model Web.Dto.CashDetailDbo
-
+@*@model Web.Dto.CashDetailDbo*@
+@model IEnumerable<Web.Dto.CashDetailDbo>
 @{
+    var Item = Model.FirstOrDefault();
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -30,56 +31,57 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Voucher</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Voucher_ID, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.Voucher_ID)
+                        @Html.TextBoxFor(model => Item.Voucher_ID, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.Voucher_ID)
                     </div>
                     <div class="col-sm-1 control-label">Tanggal</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Transaction_date, new { @class = "form-control", placeholder = "Keterangan BOM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.Transaction_date)
+                        @Html.TextBoxFor(model => Item.Transaction_date, new { @class = "form-control", placeholder = "Keterangan BOM", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.Transaction_date)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Keterangan</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Voucher_Desc, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.Voucher_Desc)
+                        @Html.TextBoxFor(model => Item.Voucher_Desc, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.Voucher_Desc)
                     </div>
                     <div class="col-sm-1 control-label">PIC</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.PIC, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.PIC)
+                        @Html.TextBoxFor(model => Item.PIC, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.PIC)
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Bank</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.BankID, new { @class = "form-control", placeholder = "Keterangan BOM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.BankID)
+                        @Html.TextBoxFor(model => Item.BankID, new { @class = "form-control", placeholder = "Keterangan BOM", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.BankID)
                     </div>
                     <div class="col-sm-1 control-label">Nilai</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Amount, new { @class = "form-control", placeholder = "Harga Jual", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.Amount)
+                        @Html.TextBoxFor(model => Item.Amount, new { @class = "form-control", placeholder = "Harga Jual", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.Amount)
                     </div>
                 </div>
 
 
-                @Html.HiddenFor(model => model.Voucher_ID)
-                <p>
-                    @*<a class="text-success" href="@Url.Action("Add")"><i class="fa fa-plus"></i> Tambah</a>*@
-                    <input type="submit" value="Tambah Detail" id="Submit" class="btn btn-success" />
-                </p>
+                @Html.HiddenFor(model => Item.Voucher_ID)
+        <p>
+
+            <a class="btn btn-success " href="@Url.Action("CreateDetail", new { id=Item.Voucher_ID.Replace('.','|') })" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
+          
+        </p>
             }
 
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>
+                        @*<th>
                             ID
-                        </th>
+                        </th>*@
 
                         <th>
                             COA
@@ -94,11 +96,31 @@
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
 
-                        <th></th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            @*<td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.COA_Detail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description_Detail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.value_detail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.value_detail)
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
             <div>
@@ -111,3 +133,16 @@
     <!-- /.box -->
 </section>
 <!-- /.content -->
+<script type="text/javascript">
+     
+    function tambahdetail() {
+        alert("ok");
+        @*var strTransID = $("#transid").val();
+        var strDisc = $("#nilai_disc").val();
+        var strPPn = $("#nilai_ppn").val();
+        var strGrandTotal = $("#nilai_grandtotal").val();
+        $.post('@Url.Action("ProsesTransEdit", "POS")', { transactionid: strTransID, disc: strDisc, ppn: strPPn, grandtotal: strGrandTotal }, function (data) { });*@
+
+    };
+
+</script>
