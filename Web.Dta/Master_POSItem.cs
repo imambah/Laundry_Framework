@@ -115,6 +115,17 @@ namespace Web.Dta
             //return DBUtil.ExecuteMapper<Service_PriceDbo>(context, new Service_PriceDbo()).FirstOrDefault();
         }
         #endregion
+        public static List<POS_TransactionDbo> Get_POSTransaction_Selesai(string id)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_POS_GetTransaction_ByID_selesai]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@id", id);
+            return DBUtil.ExecuteMapper(context, new POS_TransactionDbo());
+
+            //return DBUtil.ExecuteMapper<Service_PriceDbo>(context, new Service_PriceDbo()).FirstOrDefault();
+        }
         public static POS_TransactionDbo Update(string transactionid, string update_by, string disc , string ppn, string grandtotal)
         {
             IDBHelper context = new DBHelper();

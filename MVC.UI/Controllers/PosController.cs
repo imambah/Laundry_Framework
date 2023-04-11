@@ -94,7 +94,8 @@ namespace MVC.UI.Controllers
                 string year = date_now[2].Trim();
                 //convert date
 
-                string tgl_estimasi = month + '/' + date + '/' + year;
+                //string tgl_estimasi = month + '/' + date + '/' + year;
+                string tgl_estimasi = year + '/' + month + '/' + date;
 
                 POSDbo ObjPosHeader = new POSDbo();
                 ObjPosHeader.transaction_type = result[0].Trim();
@@ -154,7 +155,7 @@ namespace MVC.UI.Controllers
         }
         public ActionResult Selesai(string id)
         {
-            List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction(id);
+            List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction_Selesai(id);
             return View(listPOS);
         }
         [HttpPost]

@@ -42,7 +42,7 @@ namespace MVC.UI.Report
                 parameters[0] = new ReportParameter("counter_name", branch_name);
                 parameters[1] = new ReportParameter("logo", "file:///" + logo);
                 parameters[2] = new ReportParameter("company_name", CP.company_name);
-                parameters[3] = new ReportParameter("cityname", CP.company_address);
+                parameters[3] = new ReportParameter("cityname", CP.city);
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
 
