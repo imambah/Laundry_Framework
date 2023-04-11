@@ -179,14 +179,24 @@
 <!-- /.content -->
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#estimasi_selesai").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'dd-mm-yy'
-        });
-    });
+    //$(document).ready(function () {
+    //    //$("#estimasi_selesai").datepicker({
+    //    //    changeMonth: true,
+    //    //    changeYear: true,
+    //    //    changeDate: true,
+    //    //    Format: 'dd/MM/yyyy'
+    //    //});
+    //    $('#estimasi_selesai').datepicker({
+    //        dateFormat: 'dd/MM/yy', minDate: 0, maxDate: 0
+    //    });
+       
+    //});
 
+    $("#estimasi_selesai").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/yy'
+    })
     $("#customer_name").autocomplete({
         source: function (request, response) {
             //var csname = 'Counter';

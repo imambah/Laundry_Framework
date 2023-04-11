@@ -86,6 +86,15 @@ namespace MVC.UI.Controllers
                 PosDetailPriceDbo detail_price = Master_POSItem.GetPriceDetail(transactionid);
 
                 string[] result = header.Split('|');
+
+                string[] date_now = result[7].Trim().Split('/');
+
+                string date = date_now[0].Trim();
+                string month = date_now[1].Trim();
+                string year = date_now[2].Trim();
+
+                string tgl_estimasi = month + '/' + date + '/' + year;
+
                 POSDbo ObjPosHeader = new POSDbo();
                 ObjPosHeader.transaction_type = result[0].Trim();
                 ObjPosHeader.transaction_id = result[1].Trim();
@@ -94,7 +103,7 @@ namespace MVC.UI.Controllers
                 ObjPosHeader.customer_address = result[4].Trim();
                 ObjPosHeader.customer_type = result[5].Trim();
                 ObjPosHeader.customerid = result[6].Trim();
-                ObjPosHeader.estimasi_selesai = Convert.ToDateTime(result[7].Trim());
+                ObjPosHeader.estimasi_selesai = Convert.ToDateTime(tgl_estimasi);
                 ObjPosHeader.jumlah_item = detail_price.jumlah_qty;
                 ObjPosHeader.nilai = detail_price.jumlah_nilai;
                 ObjPosHeader.disc = detail_price.disc / 100;
