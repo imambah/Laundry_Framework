@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Web.Mvc;
 using ReportViewerForMvc;
 using Web.Dta;
+using Web.Dto;
 
 namespace MVC.UI.Report
 {
@@ -34,12 +35,14 @@ namespace MVC.UI.Report
 
                 ds = GetData(invoice_no);
                 dsBANK = GetBankInfo();
-                ReportParameter[] parameters = new ReportParameter[5];
+                Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
+                ReportParameter[] parameters = new ReportParameter[6];
                 parameters[0] = new ReportParameter("username", "User Test" );
                 parameters[1] = new ReportParameter("logo", "file:///" + logo);
                 parameters[2] = new ReportParameter("acc_no", dsBANK.Tables[0].Rows[0][0].ToString());
                 parameters[3] = new ReportParameter("bank_name", dsBANK.Tables[0].Rows[0][1].ToString());
                 parameters[4] = new ReportParameter("branch_name", dsBANK.Tables[0].Rows[0][2].ToString());
+                parameters[5] = new ReportParameter("company_name",CP.company_name );
 
                 ReportViewer1.LocalReport.SetParameters(parameters);
 

@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Web.Mvc;
 using ReportViewerForMvc;
 using Web.Dta;
+using Web.Dto;
 
 namespace MVC.UI.Report
 {
@@ -24,20 +25,24 @@ namespace MVC.UI.Report
             if (!Page.IsPostBack)
             {
                 DataSet ds = new DataSet();
+
+                Company_ProfileDbo dsCompany = Master_CompanyItem.GetCompanyProfile();
                 
-                //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
-                //ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Tanda_Terima.rdlc");
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Rpt_Tanda_Terima.rdlc");
                 ReportViewer1.LocalReport.EnableExternalImages = true;
                 ds = GetData(strID);
+
+
                 string strKetentuan = Report_PosItem.GetKetentuan();
                 string strWorkshop = Report_PosItem.Get_workshop();
                 string branch_name = Session["Branch_NAME"].ToString();
-                ReportParameter[] parameters = new ReportParameter[4];
+                Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
+                ReportParameter[] parameters = new ReportParameter[5];
                 parameters[0] = new ReportParameter("counter_name", branch_name); 
                 parameters[1] = new ReportParameter("ketentuan", strKetentuan);
                 parameters[2] = new ReportParameter("workshop", strWorkshop);
                 parameters[3] = new ReportParameter("logo", "file:///" + logo);
+                parameters[4] = new ReportParameter("company_name", CP.company_name);
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
 

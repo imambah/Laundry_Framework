@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Web.Mvc;
 using ReportViewerForMvc;
 using Web.Dta;
+using Web.Dto;
 
 namespace MVC.UI.Report
 {
@@ -24,18 +25,24 @@ namespace MVC.UI.Report
             if (!Page.IsPostBack)
             {
                 DataSet ds = new DataSet();
+                DataSet dsBANK = new DataSet();
                 
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Tanda_Penyerahan.rdlc");
                 ReportViewer1.LocalReport.EnableExternalImages = true;
                 ds = GetData(strID);
+                
 
                 string strKetentuan = Report_PosItem.GetKetentuan();
                 string strWorkshop = Report_PosItem.Get_workshop();
                 string branch_name = Session["Branch_NAME"].ToString();
-                ReportParameter[] parameters = new ReportParameter[2];
+                Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
+
+                ReportParameter[] parameters = new ReportParameter[4];
                 parameters[0] = new ReportParameter("counter_name", branch_name);
                 parameters[1] = new ReportParameter("logo", "file:///" + logo);
+                parameters[2] = new ReportParameter("company_name", CP.company_name);
+                parameters[3] = new ReportParameter("cityname", CP.company_address);
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
 
@@ -70,6 +77,24 @@ namespace MVC.UI.Report
             return ds;
         }
 
-        
+        private DataSet GetBankInfo()
+        {
+            string conString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            SqlConnection con = new SqlConnection(conString);
+            DataSet ds = new DataSet();
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            cmd.Connection = con;
+            cmd = new SqlCommand("[sp_GETBANK_INFO]", cmd.Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            da.SelectCommand = cmd;
+            da.Fill(ds);
+            con.Close();
+            return ds;
+        }
+
+
     }
 }
