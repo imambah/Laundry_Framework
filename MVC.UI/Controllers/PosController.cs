@@ -92,6 +92,7 @@ namespace MVC.UI.Controllers
                 string date = date_now[0].Trim();
                 string month = date_now[1].Trim();
                 string year = date_now[2].Trim();
+                //convert date
 
                 string tgl_estimasi = month + '/' + date + '/' + year;
 
