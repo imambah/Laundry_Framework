@@ -228,6 +228,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ARAgingController.cs" />
     <Compile Include="Controllers\ARController.cs" />
+    <Compile Include="Controllers\POController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
     <Compile Include="Controllers\BOMController.cs" />
@@ -491,6 +492,7 @@
     <Content Include="Views\Invoice\index.cshtml" />
     <Content Include="Views\Invoice\list_invoice.cshtml" />
     <Content Include="Views\Invoice\print.cshtml" />
+    <Content Include="Views\PO\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
