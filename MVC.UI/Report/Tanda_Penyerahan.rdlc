@@ -2356,7 +2356,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!disc.Value)</Value>
+                                  <Value>=Fields!disc.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -2588,7 +2588,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!ppn.Value)</Value>
+                                  <Value>=Fields!ppn.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
@@ -2820,7 +2820,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!grand_total.Value)</Value>
+                                  <Value>=Fields!grand_total.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                   </Style>
