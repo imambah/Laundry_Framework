@@ -37,12 +37,13 @@ namespace MVC.UI.Report
                 string strWorkshop = Report_PosItem.Get_workshop();
                 string branch_name = Session["Branch_NAME"].ToString();
                 Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
-                ReportParameter[] parameters = new ReportParameter[5];
+                ReportParameter[] parameters = new ReportParameter[6];
                 parameters[0] = new ReportParameter("counter_name", branch_name); 
                 parameters[1] = new ReportParameter("ketentuan", strKetentuan);
                 parameters[2] = new ReportParameter("workshop", strWorkshop);
                 parameters[3] = new ReportParameter("logo", "file:///" + logo);
                 parameters[4] = new ReportParameter("company_name", CP.company_name);
+                parameters[5] = new ReportParameter("address", CP.company_address);
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
 

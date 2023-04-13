@@ -32,25 +32,16 @@
                 <thead>
                     <tr>
                         <th>
-                            No.Nota
+                            No.PO
                         </th>
                         <th>
-                            Pelanggan
+                            Supplier
                         </th>
 
                         <th>
-                            Tgl Terima 
+                            Tgl PO 
                         </th>
-                        @*<th>
-                            Tgl Selesai
-                        </th>*@
-                        <th>
-                            Jenis
-                        </th>
-
-                        <th>
-                            Total Item
-                        </th>
+                       
 
                         <th>Aksi</th>
                     </tr>
@@ -60,28 +51,20 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.transaction_id)
+                                @Html.DisplayFor(modelItem => item.PO_number)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.customer_name)
+                                @Html.DisplayFor(modelItem => item.customerid)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.receiveddate)
+                                @Html.DisplayFor(modelItem => item.create_date)
                             </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.finishdate)
-                            </td>*@
-                            <td> 
-                                @Html.DisplayFor(modelItem => item.transaction_type)
-                            </td>
+                          
                             <td>
-                                @Html.DisplayFor(modelItem => item.jumlah_item)
-                            </td>
-                            <td>
-                                    <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
-                                    <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
-                                    <a class="text-success" href="@Url.Action("Print", new { id=item.id })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
-                                    <a class="text-success" href="@Url.Action("Selesai", new { id=item.id })" data-toggle="tooltip" title="Proses Selesai"><i class="fa fa-check"></i></a>
+                                    <a class="text-success" href="@Url.Action("Edit", new { id=item.PO_number })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { id=item.PO_number  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                    <a class="text-success" href="@Url.Action("Print", new { id=item.PO_number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
+                                    <a class="text-success" href="@Url.Action("Selesai", new { id=item.PO_number })" data-toggle="tooltip" title="Proses Selesai"><i class="fa fa-check"></i></a>
                              </td>
 
                         </tr>

@@ -15,7 +15,7 @@ namespace MVC.UI.Controllers
         // GET: Client
         public ActionResult Index()
         {
-            List<Master_Klien> list = Master_KlienItem.GetAll();
+            List<PODbo> list = POItem.GetAll();
             return View(list);
         }
 
