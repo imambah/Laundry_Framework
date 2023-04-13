@@ -74,7 +74,7 @@
                                 @Html.DisplayFor(modelItem => item.outstanding)
                             </td>
                             <td>
-                                <a class="text-primary" href="@Url.Action("Bayar", new { nilaiPiutang = item.amt, invoice_no =  item.invoice_no })" data-toggle="tooltip" title="Bayar"><i class="fa fa-money"></i></a>
+                                <a class="text-primary" href="@Url.Action("Bayar", new { nilaiPiutang = item.outstanding, invoice_no =  item.invoice_no })" data-toggle="tooltip" title="Bayar"><i class="fa fa-money"></i></a>
                             </td>
                         </tr>
                     }
