@@ -135,7 +135,7 @@ namespace Web.Dta
             context.AddParameter("@ppn", ppn);
             context.AddParameter("@grand_total", grandtotal);
             context.AddParameter("@finishedby", update_by);
-            context.AddParameter("@update_by", update_by);
+            context.AddParameter("@create_by", update_by);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POS_TransactionDbo>(context, new POS_TransactionDbo()).FirstOrDefault();
