@@ -26,7 +26,8 @@ namespace MVC.UI.Report
             {
                 DataSet ds = new DataSet();
                 DataSet dsBANK = new DataSet();
-                
+                DataSet dsCatatan = new DataSet();
+
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
                 ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Invoice.rdlc");
 
@@ -35,8 +36,9 @@ namespace MVC.UI.Report
 
                 ds = GetData(invoice_no);
                 //dsBANK = GetBankInfo();
+                dsCatatan = GetCatatan();
                 Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
-                ReportParameter[] parameters = new ReportParameter[8];
+                ReportParameter[] parameters = new ReportParameter[9];
                 parameters[0] = new ReportParameter("username", CP.finance);
                 parameters[1] = new ReportParameter("logo", "file:///" + logo);
                 //parameters[2] = new ReportParameter("acc_no", dsBANK.Tables[0].Rows[0][0].ToString());
@@ -48,6 +50,7 @@ namespace MVC.UI.Report
                 parameters[5] = new ReportParameter("company_name",CP.company_name );
                 parameters[6] = new ReportParameter("account_name", CP.account_name);
                 parameters[7] = new ReportParameter("address", CP.city);
+                parameters[8] = new ReportParameter("catatan", dsCatatan.Tables[0].Rows[0][2].ToString());
 
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
@@ -98,7 +101,23 @@ namespace MVC.UI.Report
             return ds;
         }
 
-
+        private DataSet GetCatatan()
+        {
+            string conString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+            SqlConnection con = new SqlConnection(conString);
+            DataSet ds = new DataSet();
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            SqlDataAdapter da = new SqlDataAdapter();
+            DataTable dt = new DataTable();
+            cmd.Connection = con;
+            cmd = new SqlCommand("[sp_parameter_Catatan]", cmd.Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            da.SelectCommand = cmd;
+            da.Fill(ds);
+            con.Close();
+            return ds;
+        }
 
     }
 }
