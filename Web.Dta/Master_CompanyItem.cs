@@ -92,6 +92,10 @@ namespace Web.Dta
             context.AddParameter("@website_erp", obj.website_erp);
             context.AddParameter("@certificate_no", obj.certificate_no);
             context.AddParameter("@fbackground", obj.fbackground);
+            context.AddParameter("@bank", obj.bank);
+            context.AddParameter("@account_name", obj.account_name);
+            context.AddParameter("@account_no", obj.account_no);
+            context.AddParameter("@bank_branch", obj.bank_branch);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", "user_system_update");
             string sqlQuery = "sp_master_CompanyProfile_Update";

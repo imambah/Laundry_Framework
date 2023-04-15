@@ -34,15 +34,20 @@ namespace MVC.UI.Report
                 ReportViewer1.LocalReport.EnableExternalImages = true;
 
                 ds = GetData(invoice_no);
-                dsBANK = GetBankInfo();
+                //dsBANK = GetBankInfo();
                 Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
-                ReportParameter[] parameters = new ReportParameter[6];
-                parameters[0] = new ReportParameter("username", "User Test" );
+                ReportParameter[] parameters = new ReportParameter[8];
+                parameters[0] = new ReportParameter("username", CP.finance);
                 parameters[1] = new ReportParameter("logo", "file:///" + logo);
-                parameters[2] = new ReportParameter("acc_no", dsBANK.Tables[0].Rows[0][0].ToString());
-                parameters[3] = new ReportParameter("bank_name", dsBANK.Tables[0].Rows[0][1].ToString());
-                parameters[4] = new ReportParameter("branch_name", dsBANK.Tables[0].Rows[0][2].ToString());
+                //parameters[2] = new ReportParameter("acc_no", dsBANK.Tables[0].Rows[0][0].ToString());
+                //parameters[3] = new ReportParameter("bank_name", dsBANK.Tables[0].Rows[0][1].ToString());
+                //parameters[4] = new ReportParameter("branch_name", dsBANK.Tables[0].Rows[0][2].ToString());
+                parameters[2] = new ReportParameter("acc_no", CP.account_no);
+                parameters[3] = new ReportParameter("bank_name", CP.bank);
+                parameters[4] = new ReportParameter("branch_name", CP.bank_branch);
                 parameters[5] = new ReportParameter("company_name",CP.company_name );
+                parameters[6] = new ReportParameter("account_name", CP.account_name);
+                parameters[7] = new ReportParameter("address", CP.city);
 
                 ReportViewer1.LocalReport.SetParameters(parameters);
 

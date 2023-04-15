@@ -25,6 +25,10 @@ namespace Web.Dto
         public string website_erp { get; set; }
         public string certificate_no { get; set; }
         public string fbackground { get; set; }
+        public string bank { get; set; }
+        public string account_name { get; set; }
+        public string account_no { get; set; }
+        public string bank_branch { get; set; }
         public DateTime? create_date { get; set; }
         public string create_by { get; set; }
         public DateTime? update_date { get; set; }
@@ -52,6 +56,10 @@ namespace Web.Dto
             obj.website_erp = reader["website_erp"].ToString();
             obj.certificate_no = reader["certificate_no"].ToString();
             obj.fbackground = reader["fbackground"].ToString();
+            obj.bank = reader["bank"].ToString();
+            obj.account_name = reader["account_name"].ToString();
+            obj.account_no = reader["account_no"].ToString();
+            obj.bank_branch = reader["bank_branch"].ToString();
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
             obj.create_by = reader["create_by"].ToString();
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
