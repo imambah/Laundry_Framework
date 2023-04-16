@@ -7,6 +7,7 @@ namespace Web.Dto
     {
         public int RecordID { get; set; }
         public string PO_number { get; set; }
+        public DateTime? PO_Date { get; set; }
         public string PR_number { get; set; }
         public string SupplierID { get; set; }
         public string PIC { get; set; }
@@ -33,6 +34,7 @@ namespace Web.Dto
             PODbo obj = new PODbo();
             obj.RecordID = Convert.ToInt32(reader["RecordID"]);
             obj.PO_number = reader["PO_number"].ToString();
+            obj.PO_Date = reader["PO_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["PO_date"]);
             obj.PR_number = reader["PR_number"].ToString();
             obj.SupplierID = reader["SupplierID"].ToString();
             obj.PIC = reader["PIC"].ToString();
@@ -53,12 +55,11 @@ namespace Web.Dto
             obj.Term_Of_Payment = reader["Term_Of_Payment"].ToString();
             obj.status = reader["status"] == DBNull.Value ? 0 : Convert.ToInt32(reader["status"]);  
            
-            obj.delivery_date = reader["delivery_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["delivery_date"]);
-            obj.EntryByUser = reader["EntryByUser"].ToString();
+           obj.EntryByUser = reader["EntryByUser"].ToString();
 
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
             obj.last_update = reader["last_update"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["last_update"]);
-            obj.expire_date = reader["expire_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["expire_date"]);
+            obj.expire_date = reader["expired_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["expired_date"]);
             return obj;
         }
     }

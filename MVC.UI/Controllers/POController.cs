@@ -18,7 +18,10 @@ namespace MVC.UI.Controllers
             List<PODbo> list = POItem.GetAll();
             return View(list);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-       
     }
 }

@@ -1,0 +1,154 @@
+﻿@model Web.Dto.PODbo
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .ui-autocomplete {
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    .ui-autocomplete {
+        height: 100px;
+    }
+</style>
+
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Purchase Order</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Transaksi</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Tambah Data Purchase Order</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform", @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">PO Number</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "PO Number", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.PO_number)
+                    </div>
+
+
+
+                    <div class="col-sm-2 control-label">PO Date </div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.PO_Date, new { @class = "form-control", placeholder = "PO Date", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.PO_Date)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Customer ID</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "Customer Name", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.PO_number)
+                    </div>
+
+
+
+                    <div class="col-sm-2 control-label">Delivery Date Plane</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.PO_Date, new { @class = "form-control", placeholder = "Delivery Date", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.PO_Date)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Term Of Payment</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "Term Of Payment", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.PO_number)
+                    </div>
+
+                    <div class="col-sm-2 control-label">PO Description </div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.PO_Date, new { @class = "form-control", placeholder = "PO Description", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.PO_Date)
+                    </div>
+                </div>
+
+                <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
+                    <thead>
+                        <tr class="bg-danger">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                ID
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Item's
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Price
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                UOM
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Qty
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Qty Outstanding
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Discount
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Total
+                            </th>
+
+                        </tr>
+                        <tr class="bg-danger">
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+
+                <div class="form-group">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2 text-right">
+                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                    </div>
+                </div>
+            }
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->
+
+<script type="text/javascript">
+   
+
+</script>
+
+
+
+
+
+
+

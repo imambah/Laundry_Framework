@@ -493,6 +493,7 @@
     <Content Include="Views\Invoice\list_invoice.cshtml" />
     <Content Include="Views\Invoice\print.cshtml" />
     <Content Include="Views\PO\index.cshtml" />
+    <Content Include="Views\PO\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
