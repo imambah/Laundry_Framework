@@ -341,7 +341,11 @@
         var intdisc = $("#nilai_disc").val();
         var intppn = $("#nilai_ppn").val();
 
-        $("#nilai_grandtotal").val(intdisc);
+        var nilai_grand_total = parseInt(intNilaiTotal);
+        var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total;
+        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total-total_disc);
+        var GT = nilai_grand_total - total_disc + total_ppn;
+        $("#nilai_grandtotal").val(GT);
     };  
 
     function calculateppn(obj) {
@@ -351,8 +355,8 @@
 
         var nilai_grand_total = parseInt(intNilaiTotal); 
         var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total ;
-        var total_ppn = (parseInt(intppn) / 100) * nilai_grand_total;
-        var GT = nilai_grand_total + total_disc + total_ppn;
+        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total - total_disc);
+        var GT = nilai_grand_total - total_disc + total_ppn;
         $("#nilai_grandtotal").val(GT);
     }
 
