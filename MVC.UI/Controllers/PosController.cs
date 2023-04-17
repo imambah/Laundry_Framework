@@ -223,5 +223,12 @@ namespace MVC.UI.Controllers
                         select new { N.nama_klien, N.alamat, N.kode_klien, N.tipe_konsumen });
             return Json(Name, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Delete(string id)
+        {
+            POS_TransactionDbo existing = Master_POSItem.CancelByID(Int32.Parse(id));
+            return RedirectToAction("Index");
+        }
+
     }
 }

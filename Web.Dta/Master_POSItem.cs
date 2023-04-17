@@ -158,5 +158,15 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POS_DetailDbo>(context, new POS_DetailDbo()).FirstOrDefault();
         }
+
+        public static POS_TransactionDbo CancelByID(int id)
+        {
+            IDBHelper context = new DBHelper();
+            context.AddParameter("@id", id);
+            string sqlQuery = "[sp_POS_Update_Header]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<POS_TransactionDbo>(context, new POS_TransactionDbo()).FirstOrDefault();
+        }
     }
 }
