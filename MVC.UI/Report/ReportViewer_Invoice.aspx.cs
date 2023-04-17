@@ -38,7 +38,7 @@ namespace MVC.UI.Report
                 //dsBANK = GetBankInfo();
                 dsCatatan = GetCatatan();
                 Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
-                ReportParameter[] parameters = new ReportParameter[9];
+                ReportParameter[] parameters = new ReportParameter[10];
                 parameters[0] = new ReportParameter("username", CP.finance);
                 parameters[1] = new ReportParameter("logo", "file:///" + logo);
                 //parameters[2] = new ReportParameter("acc_no", dsBANK.Tables[0].Rows[0][0].ToString());
@@ -50,7 +50,9 @@ namespace MVC.UI.Report
                 parameters[5] = new ReportParameter("company_name",CP.company_name );
                 parameters[6] = new ReportParameter("account_name", CP.account_name);
                 parameters[7] = new ReportParameter("address", CP.city);
-                parameters[8] = new ReportParameter("catatan", dsCatatan.Tables[0].Rows[0][2].ToString());
+                //parameters[8] = new ReportParameter("catatan", dsCatatan.Tables[0].Rows[0][2].ToString());
+                parameters[8] = new ReportParameter("catatan", "tes catatan ");
+                parameters[9] = new ReportParameter("terbilang", ds.Tables[0].Rows[0][14].ToString());
 
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
