@@ -78,7 +78,7 @@
                         @Html.ValidationMessageFor(model => model.City)
                     </div>
 
-                    <div class="col-sm-1 control-label">Area</div>
+                    <div class="col-sm-1 control-label">Propinsi</div>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.Area, new { @class = "form-control", placeholder = "Area" })
                         @Html.ValidationMessageFor(model => model.Area)
@@ -123,8 +123,8 @@
                     <div class="col-sm-1">
                         @Html.DropDownListFor(model => model.Religion, ViewBag.ReligionList as SelectList, new { @class = "form-control" })
                     </div>
-                    <div class="col-sm-2 control-label">Status</div>
-                    <div class="col-sm-1">
+                    <div class="col-sm-1 control-label">Status</div>
+                    <div class="col-sm-2">
                         @Html.DropDownListFor(model => model.Status, ViewBag.StatusList as SelectList, new { @class = "form-control" })
                     </div>
                 </div>
@@ -302,8 +302,7 @@
             changeMonth: true,
             changeYear: true,
             dateFormat: 'dd-mm-yy'
-        });
-    })
+        });    });
 
      function ValidateNumber(e) {
          var charCode;

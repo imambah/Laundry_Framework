@@ -35,27 +35,25 @@
                         </th>
                         <th>
                             Kode Pegawai
-
                         </th>
 
                         <th>
                             Nama Pegawai
-
                         </th>
                         <th>
                             Alamat
-
                         </th>
                         <th>
                             No Telp
-
                         </th>
                         <th>
-                            Tipe
+                            Status Pegawai
                         </th>
-
                         <th>
-                            Status Record
+                            Jabatan
+                        </th>
+                        <th>
+                            Penempatan
                         </th>
                         <th>Aksi</th>
                     </tr>
@@ -74,23 +72,27 @@
                                 @Html.DisplayFor(modelItem => item.EmployeeName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Address1)
+                                @Html.DisplayFor(modelItem => item.Address1) - @Html.DisplayFor(modelItem => item.City) -
+                                @Html.DisplayFor(modelItem => item.Area)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Phone)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @if (item.is_delete == 0)
+                                @if (item.End_Date == null)
                                 {
-
-                                    @("Aktif") }
+                                    <p style="color:red">Tetap</p>
+                                }
                                 else
                                 {
-                                    <p style="color:red">Tidak Aktif</p>
+                                    @("Kontrak")
                                 }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Placement)
                             </td>
                             <td>
                                 @if (item.is_delete == 0)

@@ -51,6 +51,7 @@ namespace MVC.UI.Controllers
             {
                 // TODO: Add insert logic here
                 collection.create_by = Utilities.Username;
+
                 CashItem.Insert(collection);
                 return RedirectToAction("Index");
             }
