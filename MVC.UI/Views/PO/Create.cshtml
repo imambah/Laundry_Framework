@@ -57,36 +57,47 @@
                         @Html.ValidationMessageFor(model => model.PO_Date)
                     </div>
                 </div>
-                
+
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Customer ID</div>
+
+
+                    <div class="col-sm-2 control-label">Customer Name</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "Customer Name", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.PO_number)
+                        @*<input id="auto-complete">*@
+                        @Html.EditorFor(model => model.customername, new { htmlAttributes = new { @class = "form-control", placeholder = "Customer Nmae ", required = "required" } })
+                    </div>
+
+                    <div class="col-sm-2 control-label">Cus ID</div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => model.customerid, new { @class = "form-control", placeholder = "Delivery Date", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.customerid)
                     </div>
 
 
+                </div>
+                <div class="form-group">
 
                     <div class="col-sm-2 control-label">Delivery Date Plane</div>
-                    <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.PO_Date, new { @class = "form-control", placeholder = "Delivery Date", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.PO_Date)
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Term Of Payment</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "Term Of Payment", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.PO_number)
+                        @Html.TextBoxFor(model => model.DeliveryDatePlan, new { @class = "form-control", placeholder = "Delivery Date Plane", required = "required" })
+                        @Html.ValidationMessageFor(model => model.DeliveryDatePlan)
                     </div>
 
-                    <div class="col-sm-2 control-label">PO Description </div>
+                    <div class="col-sm-2 control-label">Term Of Payment</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.PO_Date, new { @class = "form-control", placeholder = "PO Description", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.PO_Date)
+                        @Html.TextBoxFor(model => model.Term_Of_Payment, new { @class = "form-control", placeholder = "Term Of Payment", required = "required" })
+                        @Html.ValidationMessageFor(model => model.Term_Of_Payment)
                     </div>
+
                 </div>
 
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">PO Description </div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.PO_Description, new { @class = "form-control", placeholder = "PO Description", required = "required"})
+                        @Html.ValidationMessageFor(model => model.PO_Description)
+                    </div>
+                </div>
                 <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
                     <thead>
                         <tr class="bg-danger">
@@ -142,8 +153,41 @@
 <!-- /.content -->
 
 <script type="text/javascript">
-   
 
+    $("#DeliveryDatePlan").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/yy'
+    })
+    $("#customername").autocomplete({
+        source: function (request, response) {
+            //var csname = 'Counter';
+            $.ajax({
+                type: "POST",
+                url: "/PO/getName?Prefix=" + $('#customername').val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                //data: { Prefix: $('#customer_name').val() },
+                success: function (data) {
+                    var result = $.map(data, function (item) {
+                        return {
+                            label: item.nama_klien,
+                            value: item.alamat,
+                            customertype: item.tipe_konsumen,
+                            id: item.kode_klien
+                        };
+                    });
+                    return response(result);
+                }
+            });
+        },
+        select: function (event, ui) {
+            event.preventDefault();
+           $('#customername').val(ui.item.label);
+           $('#customerid').val(ui.item.id);
+
+        }
+    });
 </script>
 
 

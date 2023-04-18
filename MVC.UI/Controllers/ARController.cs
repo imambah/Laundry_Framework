@@ -50,9 +50,17 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                item.Create_By = Utilities.Username;
-                ARItem.Insert(item);
-                return RedirectToAction("Index");
+                if (item.SisaPiutang < 0)
+                {
+                    ViewBag.ErrorMessage = "Nilai tidak boleh kurang dari Nol";
+                    return RedirectToAction("Bayar", new { nilaiPiutang = item.NilaiPiutang, invoice_no = item.Invoice_No});
+                }
+                else {
+                    item.Create_By = Utilities.Username;
+                    ARItem.Insert(item);
+                    return RedirectToAction("Index");
+                }
+                
             }
             catch
             {

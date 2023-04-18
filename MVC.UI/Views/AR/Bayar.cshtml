@@ -18,11 +18,13 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Pembayaran Piutang</h3>
+            <h3 class="box-title">Pembayaran Piutang.</h3>
         </div>
         <div class="box-body">
-
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            <div class="alert ">
+                <p>@ViewBag.ErrorMessage</p>
+            </div>
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform", @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -62,7 +64,8 @@
                 <div class="form-group">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <button class="btn btn-success"><i class="fa fa-money"></i>&nbsp;&nbsp;Bayar</button>
+                        @*<button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-money"></i>&nbsp;&nbsp;Bayar</button>*@
+                        <button type="submit" name="saveform" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
                     </div>
                 </div>
             }
@@ -79,10 +82,22 @@
 <!-- /.content -->
 <script type="text/javascript">
 
+    $('#saveform').submit(function () {
+        var sisa = $("#SisaPiutang").val();
+        //alert(sisa);
+        if (sisa < 0) {
+            alert("sisa piutang minus");
+            return false;
+        }
+        else {
+            return true;
+        }
+    });
     function calculate(obj) {
         var decNominalPiutang = $("#NilaiPiutang").val();
         var decBayarPiutang = $("#nominal_bayar").val();
         var decSisaBayar = parseFloat(decNominalPiutang) - parseFloat(decBayarPiutang) ;
         $("#SisaPiutang").val(decSisaBayar);
     }
+
 </script>

@@ -23,5 +23,16 @@ namespace MVC.UI.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult getName(string Prefix)
+        {
+            var strValue = Prefix.ToUpper();
+            List<Master_Klien> ObjList = Master_KlienItem.GetAll();
+            var Name = (from N in ObjList
+                        where N.nama_klien.ToUpper().Contains(strValue)
+                        select new { N.nama_klien, N.alamat, N.kode_klien, N.tipe_konsumen });
+            return Json(Name, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
