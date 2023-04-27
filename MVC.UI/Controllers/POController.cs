@@ -20,7 +20,8 @@ namespace MVC.UI.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            List<Master_BarangDbo> ListBarang = Master_BarangItem.GetAll();
+            return View(ListBarang);
         }
 
         [HttpPost]

@@ -1,4 +1,4 @@
-﻿@model Web.Dto.PODbo
+﻿@model IEnumerable<Web.Dto.Master_BarangDbo>
 
 @{
     ViewBag.Title = "Create";
@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">PO Number</div>
                     <div class="col-sm-3">
-                        @Html.TextBox("PO_Number",null, new {  @class = "form-control", placeholder = "PO Number", required = "required", disabled = "disabled" })
+                        @Html.TextBox("PO_Number", null, new { @class = "form-control", placeholder = "PO Number", required = "required", disabled = "disabled" })
                         @*@Html.ValidationMessageFor("PO_Number")*@
                     </div>
 
@@ -54,7 +54,7 @@
                     <div class="col-sm-2 control-label">PO Date </div>
                     <div class="col-sm-2">
                         @*@Html.TextBoxFor(model => model.PO_Date, new { @class = "form-control", placeholder = "PO Date", required = "required", disabled = "disabled" })
-                    @Html.ValidationMessageFor(model => model.PO_Date)*@
+                            @Html.ValidationMessageFor(model => model.PO_Date)*@
                         @Html.TextBox("PO_Date", DateTime.Today.ToString("dd/MM/yyyy"), new { id = "PO_Date", @class = "form-control", @disabled = "disabled" })
                         @Html.Hidden("PO_Date", DateTime.Today)
                     </div>
@@ -71,8 +71,8 @@
 
                     <div class="col-sm-2 control-label">Cus ID</div>
                     <div class="col-sm-2">
-                        @Html.TextBox("customerid", null,new { id = "customerid", @class = "form-control", placeholder = "Delivery Date", required = "required", disabled = "disabled" })
-                       
+                        @Html.TextBox("customerid", null, new { id = "customerid", @class = "form-control", placeholder = "Delivery Date", required = "required", disabled = "disabled" })
+
                     </div>
 
 
@@ -81,14 +81,14 @@
 
                     <div class="col-sm-2 control-label">Delivery Date Plane</div>
                     <div class="col-sm-3">
-                        @Html.TextBox("DeliveryDatePlan", null,new { id = "DeliveryDatePlan", @class = "form-control", placeholder = "Delivery Date Plane", required = "required" })
-                 
+                        @Html.TextBox("DeliveryDatePlan", null, new { id = "DeliveryDatePlan", @class = "form-control", placeholder = "Delivery Date Plane", required = "required" })
+
                     </div>
 
                     <div class="col-sm-2 control-label">Term Of Payment</div>
                     <div class="col-sm-2">
                         @Html.TextBox("Term_Of_Payment", null, new { id = "Term_Of_Payment", @class = "form-control", placeholder = "Term Of Payment", required = "required" })
-                      
+
                     </div>
 
                 </div>
@@ -96,20 +96,20 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">PO Description </div>
                     <div class="col-sm-4">
-                        @Html.TextBox("PO_Description",null, new { id = "PO_Description", @class = "form-control", placeholder = "PO Description", required = "required" })
-                       
+                        @Html.TextBox("PO_Description", null, new { id = "PO_Description", @class = "form-control", placeholder = "PO Description", required = "required" })
+
                     </div>
                 </div>
 
-                <div class="box-header with-border">
+                <div class="box-header with-border"
                     <h3 class="box-title">Tambah Data Barang</h3>
                 </div>
-                <br/>
+                <br />
                 <div class="form-group">
                     <div class="col-sm-1 control-label">Kode Barang</div>
                     <div class="col-sm-1">
-                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "Kode Barang", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.PO_number)
+                        @Html.TextBox("item_code", null, new { @class = "form-control", placeholder = "Kode Barang", required = "required", disabled = "disabled" })
+
                     </div>
 
 
@@ -117,8 +117,7 @@
                         Nama Barang
                     </div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.customerid, new { @class = "form-control", placeholder = "Nama Barang", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.customerid)
+                        @Html.TextBox("item_name", null, new { @class = "form-control", placeholder = "Nama Barang", required = "required", disabled = "disabled" })
 
                     </div>
 
@@ -132,14 +131,14 @@
 
                     <div class="col-sm-1 control-label">Harga</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "Kode Barang", required = "required", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.PO_number)
+                        @Html.TextBox("item_price", null, new { @class = "form-control", placeholder = "Harga Barang", required = "required", disabled = "disabled" })
+
                     </div>
 
                     <div class="col-sm-1 control-label">Qty</div>
                     <div class="col-sm-1">
-                        @Html.TextBoxFor(model => model.PO_number, new { @class = "form-control", placeholder = "Qty", required = "required", })
-                        @Html.ValidationMessageFor(model => model.PO_number)
+                        @Html.TextBox("qty", null, new { @class = "form-control", placeholder = "Qty", required = "required" })
+
                     </div>
                     <div class="col-sm-1">
 
@@ -178,7 +177,7 @@
                     <tbody>
                     </tbody>
                 </table>
-               
+
 
                 <div class="form-group">
                     <div class="col-sm-10"></div>
@@ -198,8 +197,6 @@
 </section>
 <!-- /.content -->
 <!-- Button trigger modal -->
-
-
 <!-- Modal -->
 <div class="modal" id="barangModal">
     <div class="modal-dialog" style="width:1250px;">
@@ -215,34 +212,54 @@
                     <thead>
                         <tr>
                             <th>
-                                ID
+                                Kode Barang
+                                @*@Html.DisplayNameFor(model => model.FullName)*@
                             </th>
                             <th>
                                 Nama Barang
                                 @*@Html.DisplayNameFor(model => model.Username)*@
                             </th>
-                            <th>
-                                Kode Barang
-                                @*@Html.DisplayNameFor(model => model.FullName)*@
-                            </th>
+
                             <th>
                                 Kategori
                                 @*@Html.DisplayNameFor(model => model.LastLogin)*@
                             </th>
                             <th>
-                                UoM
-                                @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                               Qty Stock
                             </th>
-                            <th>Aksi</th>
+                            <th>
+                                Aksi
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ItemCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ItemDesc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Group_Desc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Buffer_Stock)
+                                </td>
+                                <td>
+                                    <a class="text-primary" href="@Url.Action("Select", new { id=item.id })" data-toggle="tooltip" title="Pilih Barang"><i class="fa fa-check"></i></a>
+
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                
             </div>
         </div>
 
