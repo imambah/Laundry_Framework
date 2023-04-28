@@ -45,7 +45,8 @@ namespace Web.Dto
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
             obj.update_by = reader["update_by"].ToString();
             obj.Group_Desc = reader["Group_Desc"].ToString();
-           
+            obj.Price_Purchase = reader["Price_Purchase"] == DBNull.Value ? 0 : Convert.ToDouble(reader["Price_Purchase"]);
+            obj.Price_Inventory = reader["Price_Inventory"] == DBNull.Value ? 0 : Convert.ToDouble(reader["Price_Inventory"]);
             return obj;
         }
     }

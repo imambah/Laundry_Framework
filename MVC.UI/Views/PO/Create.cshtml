@@ -101,14 +101,14 @@
                     </div>
                 </div>
 
-                <div class="box-header with-border"
+                <div class="box-header with-border">
                     <h3 class="box-title">Tambah Data Barang</h3>
                 </div>
                 <br />
                 <div class="form-group">
                     <div class="col-sm-1 control-label">Kode Barang</div>
                     <div class="col-sm-1">
-                        @Html.TextBox("item_code", null, new { @class = "form-control", placeholder = "Kode Barang", required = "required", disabled = "disabled" })
+                        @Html.TextBox("item_code", null, new { id = "item_code", @class = "form-control", placeholder = "Kode Barang", required = "required", disabled = "disabled" })
 
                     </div>
 
@@ -117,7 +117,7 @@
                         Nama Barang
                     </div>
                     <div class="col-sm-2">
-                        @Html.TextBox("item_name", null, new { @class = "form-control", placeholder = "Nama Barang", required = "required", disabled = "disabled" })
+                        @Html.TextBox("item_name", null, new { id = "item_name", @class = "form-control", placeholder = "Nama Barang", required = "required", disabled = "disabled" })
 
                     </div>
 
@@ -131,66 +131,73 @@
 
                     <div class="col-sm-1 control-label">Harga</div>
                     <div class="col-sm-2">
-                        @Html.TextBox("item_price", null, new { @class = "form-control", placeholder = "Harga Barang", required = "required", disabled = "disabled" })
+                        @Html.TextBox("item_price", null, new { id = "item_price", @class = "form-control", placeholder = "Harga Barang", required = "required", disabled = "disabled" })
 
                     </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-1 control-label">Stock</div>
+                        <div class="col-sm-1">
+                            @Html.TextBox("stock", null, new { id = "stock", @class = "form-control", placeholder = "Stock", required = "required", disabled = "disabled" })
 
-                    <div class="col-sm-1 control-label">Qty</div>
-                    <div class="col-sm-1">
-                        @Html.TextBox("qty", null, new { @class = "form-control", placeholder = "Qty", required = "required" })
+                        </div>
+
+                        <div class="col-sm-1 control-label">Qty</div>
+                        <div class="col-sm-1">
+                            @Html.TextBox("qty", null, new { id = "qty", @class = "form-control", placeholder = "Qty", required = "required" })
+
+                        </div>
+                        <div class="col-sm-1">
+
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="">
+                                &nbsp;<i class="fa fa-plus"></i>
+                                Tambah
+                            </button>
+                        </div>
 
                     </div>
-                    <div class="col-sm-1">
+                    <table id="tabelBarang" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Nama Barang
+                                    @*@Html.DisplayNameFor(model => model.Username)*@
+                                </th>
+                                <th>
+                                    Kode Barang
+                                    @*@Html.DisplayNameFor(model => model.FullName)*@
+                                </th>
+                                <th>
+                                    Kategori
+                                    @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                                </th>
+                                <th>
+                                    UoM
+                                    @*@Html.DisplayNameFor(model => model.LastLogin)*@
+                                </th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
 
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="">
-                            &nbsp;<i class="fa fa-plus"></i>
-                            Tambah
-                        </button>
+
+                    <div class="form-group">
+                        <div class="col-sm-10"></div>
+                        <div class="col-sm-2 text-right">
+                            <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        </div>
+                    </div>
+                    }
+                    <div>
+                        <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
                     </div>
 
                 </div>
-                <table id="tabelBarang" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                ID
-                            </th>
-                            <th>
-                                Nama Barang
-                                @*@Html.DisplayNameFor(model => model.Username)*@
-                            </th>
-                            <th>
-                                Kode Barang
-                                @*@Html.DisplayNameFor(model => model.FullName)*@
-                            </th>
-                            <th>
-                                Kategori
-                                @*@Html.DisplayNameFor(model => model.LastLogin)*@
-                            </th>
-                            <th>
-                                UoM
-                                @*@Html.DisplayNameFor(model => model.LastLogin)*@
-                            </th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-
-
-                <div class="form-group">
-                    <div class="col-sm-10"></div>
-                    <div class="col-sm-2 text-right">
-                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-                    </div>
-                </div>
-            }
-            <div>
-                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
-            </div>
-
-        </div>
         <!-- /.box-body -->
     </div>
     <!-- /.box -->
@@ -208,24 +215,23 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table id="mydatatable" class="table table-bordered table-striped">
+                <table id="tabelBarangPopup" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>
                                 Kode Barang
-                                @*@Html.DisplayNameFor(model => model.FullName)*@
                             </th>
                             <th>
                                 Nama Barang
-                                @*@Html.DisplayNameFor(model => model.Username)*@
                             </th>
-
                             <th>
                                 Kategori
-                                @*@Html.DisplayNameFor(model => model.LastLogin)*@
                             </th>
                             <th>
-                               Qty Stock
+                                Qty Stock
+                            </th>
+                            <th>
+                                Harga
                             </th>
                             <th>
                                 Aksi
@@ -249,8 +255,15 @@
                                     @Html.DisplayFor(modelItem => item.Buffer_Stock)
                                 </td>
                                 <td>
-                                    <a class="text-primary" href="@Url.Action("Select", new { id=item.id })" data-toggle="tooltip" title="Pilih Barang"><i class="fa fa-check"></i></a>
-
+                                    @Html.DisplayFor(modelItem => item.Price_Inventory)
+                                </td>
+                                <td>
+                                    @*<a class="text-primary" href="@Url.Action("Select", new { id=item.id })" data-toggle="tooltip" title="Pilih Barang"><i class="fa fa-check"></i></a>
+            <button class="btnSelect">Select</button>*@
+                                    <button type="button" class="btnSelect btn btn-primary" data-toggle="modal" data-target="#barangModal">
+                                        &nbsp;<i class="fa fa-check"></i>
+                                        Pilih
+                                    </button>
                                 </td>
                             </tr>
                         }
@@ -269,6 +282,30 @@
 
 <script type="text/javascript">
 
+    //$(document).ready(function () {
+
+    //    // code to read selected table row cell data (values).
+        
+    //});
+
+    $("#tabelBarangPopup").on('click', '.btnSelect', function () {
+        // get the current row
+        var currentRow = $(this).closest("tr");
+
+        var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+        var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+        var col3 = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
+        var col4 = currentRow.find("td:eq(3)").text(); // get current row 3rd TD
+        var col5 = currentRow.find("td:eq(4)").text(); // get current row 3rd TD
+        var data = col1 + "\n" + col2 + "\n" + col3;
+        
+        $('#item_code').val(col1.trim());
+        $('#item_name').val(col2.trim());
+        $('#stock').val(col4.trim());
+        $('#item_price').val(col5.trim());
+        
+
+    });
     $("#DeliveryDatePlan").datepicker({
         changeMonth: true,
         changeYear: true,
@@ -304,46 +341,7 @@
         }
     });
 
-    $('#saveform').submit(function () {
-        var sTableName = document.getElementById("tabelBarang");
-
-        var date = new Date();
-        var dateStr =
-            date.getFullYear() +
-            ("00" + (date.getMonth() + 1)).slice(-2) +
-            ("00" + date.getDate()).slice(-2) +
-            ("00" + date.getHours()).slice(-2) +
-            ("00" + date.getMinutes()).slice(-2) +
-            ("00" + date.getSeconds()).slice(-2);
-        var _transid = 'TR-' + dateStr;//+ time.toString();.
-
-        //insert detail =============================================
-        var rows = [];
-        for (var i = 2; i < sTableName.rows.length; i++) {
-            var _id = sTableName.rows[i].cells[0].innerText;
-            var _name = sTableName.rows[i].cells[1].innerText;
-            var _qty_laundry = sTableName.rows[i].cells[2].firstChild.value;
-            var _qty_drycleaning = sTableName.rows[i].cells[3].firstChild.value;
-            var _remark = sTableName.rows[i].cells[4].firstChild.value;
-            var row = _id + "|" + _name + "|" + _qty_laundry + "|" + _qty_drycleaning + "|" + _remark;
-            rows.push(row);
-        }
-        //detail -====================================================
-        //insert to header====================
-        var _transactionType = $("#transaction_type").val();
-        var _customer_name = $("#customer_name").val();
-        var _room = $("#room").val();
-        var _receiveddate = $("#receiveddate").val();
-        var _customer_address = $("#customer_address").val();
-        var _customer_type = $("#customer_type").val();
-        var _customer_id = $("#customerid").val();
-        var _estimasi_selesai = $("#estimasi_selesai").val();
-        var _header = _transactionType + '|' + _transid + '|' + _customer_name + '|' + _room + '|' + _customer_address + '|' + _customer_type + '|' + _customer_id + '|' + _estimasi_selesai
-
-        // header ============================
-       // $.post('@Url.Action("ProccessDetail", "POS")', { rows: rows, transactionid: _transid, header: _header }, function (data) { });
-
-    });
+   
 </script>
 
 
