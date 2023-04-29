@@ -153,6 +153,10 @@
                 $('#mydatatable').DataTable({ 'searching': true })
             }
 
+            if ($('#mydatatablePopup').length) {
+                $('#mydatatablePopup').DataTable({ 'searching': true })
+            }
+
             if ($('#nilaidatatable').length) {
                 $('#nilaidatatable').DataTable({ 'searching': true, order: [[1, 'desc']] })
             }
