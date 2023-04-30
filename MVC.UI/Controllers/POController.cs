@@ -38,10 +38,17 @@ namespace MVC.UI.Controllers
 
 
         [HttpPost]
-        public ActionResult ProccessInputPO(List<string> rows, string header)
+        public ActionResult Create(List<string> rows, string header)
         {
             try
             {
+
+                if (header == null)
+                {
+                    return RedirectToAction("Index", "PO");
+                }
+                else
+                { 
                 string[] result = header.Split('|');
                 var _ponumber = result[0];
                 var _podate = result[1];
@@ -97,7 +104,10 @@ namespace MVC.UI.Controllers
                 //ObjPosHeader.create_by = Utilities.Username;
                 POItem.Insert_Header(ObjPoHeader);
                 return RedirectToAction("Index", "PO");
-                //return RedirectToAction("index", "POS");
+                //return RedirectToRoute("PO");
+                //return Redirect("PO/Index");
+
+                }
             }
             catch
             {

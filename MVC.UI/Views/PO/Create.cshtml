@@ -189,6 +189,8 @@
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
                         <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button type="submit" name="CALLPAGE" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;CALL</button>
+                        @*<a class="btn btn-success " href="@Url.Action("Index")" role="button"><i class="fa fa-plus"></i> CALL PAGE</a>*@
                     </div>
                 </div>
             }
@@ -396,7 +398,7 @@
    
         var _header = _ponumber + '|' + _podate + '|' + _customer_id + '|' + _customer_name + '|' + _delivery_date_plane + '|' + _tof + '|' + _po_desc 
         // header ============================
-        $.post('@Url.Action("ProccessInputPO", "PO")', { rows: rows, header: _header }, function (data) { });
+        $.post('@Url.Action("Create", "PO")', { rows: rows, header: _header }, function (data) { });
         //alert(rows);
         //alert(_header);
     });
