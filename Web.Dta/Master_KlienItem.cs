@@ -146,5 +146,6 @@ namespace Web.Dta
             context.AddParameter("@customer_type", strCustomerType);
             return DBUtil.ExecuteMapper(context, new Master_Klien());
         }
+
     }
 }

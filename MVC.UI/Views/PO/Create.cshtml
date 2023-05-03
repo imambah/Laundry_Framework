@@ -280,38 +280,95 @@
 <script type="text/javascript">
 
     function insertIntoTable() {
-        var table = document.getElementById("tabelBarang");
-        var row = table.insertRow(1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        var cell6 = row.insertCell(5);
-        cell1.innerHTML = $('#item_code').val();
-        cell2.innerHTML = $('#item_name').val();
-        cell3.innerHTML = $('#item_price').val();
-        cell4.innerHTML = $('#qty').val();
 
-        //let inputQTY = document.createElement('input');
-        //inputQTY.type = 'text';
-        //cell4.appendChild(inputQTY);
+        var _kodeBarang = $('#item_code').val();
+        var _qty = $('#qty').val();
 
-        cell5.innerHTML = $('#qty').val() * $('#item_price').val();
 
-        let button = document.createElement('button');
-        button.innerText = 'Delete';
-        button.type = 'button';
-        button.setAttribute('onclick', 'sayHi()');
-        cell6.appendChild(button);
+        if (_kodeBarang == "") {
+            alert("Barang harus di pilih terlebih dahulu")
+        }
+        else {
+            if (_qty == "" || _qty == 0) {
+                alert("QTY tidak boleh kosong atau kurang dari 1")
+            }
+            else {
+                var qty_Tabel;
+                var total_Tabel;
+                var _id = $('#item_code').val();
+                var strValue = getstatusID(_id);
+                /*alert(qty_Tabel);*/
+                if (strValue == "") {
+                    var table = document.getElementById("tabelBarang");
+                    var row = table.insertRow(1);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
+                    cell1.innerHTML = $('#item_code').val();
+                    cell2.innerHTML = $('#item_name').val();
+                    cell3.innerHTML = $('#item_price').val();
+                    cell4.innerHTML = $('#qty').val();
 
-        $('#item_code').val('');
-        $('#item_name').val('');
-        $('#item_price').val('');
-        $('#stock').val('');
-        $('#qty').val('');
+                    //let inputQTY = document.createElement('input');
+                    //inputQTY.type = 'text';
+                    //cell4.appendChild(inputQTY);
+
+                    cell5.innerHTML = $('#qty').val() * $('#item_price').val();
+
+                    let button = document.createElement('button');
+                    button.innerText = 'Delete';
+                    button.type = 'button';
+                    button.setAttribute('onclick', 'sayHi()');
+                    cell6.appendChild(button);
+                }
+                else {//update di data gridnya 
+                    var new_itemcode = $('#item_code').val();
+                    var new_itemname = $('#item_name').val();
+                    var new_itemprice = $('#item_price').val();
+                    var new_qty = $('#qty').val();
+
+                    alert(strValue);
+                    //alert(total_Tabel);
+                }
+
+                $('#item_code').val('');
+                $('#item_name').val('');
+                $('#item_price').val('');
+                $('#stock').val('');
+                $('#qty').val('');
+            }
+        }
     }
 
+    function getstatusID(_id) {
+        var strValue = "";
+        var qty_Tabel = "";
+        var total_Tabel = "";
+        var price = "";
+        var temp_qty = $('#qty').val();
+        var new_qty = "";
+        var new_price = "";
+        var tableBarang = document.getElementById("tabelBarang");
+        var rows = [];
+        for (var i = 0; i < tableBarang.rows.length; i++) {
+            var idOnTable = tableBarang.rows[i].cells[0].innerText;
+            if (idOnTable == _id) {
+                price = tableBarang.rows[i].cells[2].innerText;
+                qty_Tabel = tableBarang.rows[i].cells[3].innerText;
+                total_Tabel = tableBarang.rows[i].cells[4].innerText;
+                strValue = qty_Tabel + "|" + total_Tabel;
+                new_qty = parseInt(qty_Tabel) + parseInt(temp_qty);
+                new_price = parseInt(new_qty) * parseFloat(price);
+                tableBarang.rows[i].cells[3].innerHTML = new_qty;
+                tableBarang.rows[i].cells[4].innerHTML = new_price;
+                return strValue;
+            }
+        }
+        return strValue; 
+    }
     $("#mydatatablePopup").on('click', '.btnSelect', function () {
         // get the current row
         var currentRow = $(this).closest("tr");
@@ -348,10 +405,9 @@
                 success: function (data) {
                     var result = $.map(data, function (item) {
                         return {
-                            label: item.nama_klien,
+                            label: item.nama_suplier,
                             value: item.alamat,
-                            customertype: item.tipe_konsumen,
-                            id: item.kode_klien
+                            id: item.kode_suplier
                         };
                     });
                     return response(result);

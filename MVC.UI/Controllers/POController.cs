@@ -29,10 +29,10 @@ namespace MVC.UI.Controllers
         public JsonResult getName(string Prefix)
         {
             var strValue = Prefix.ToUpper();
-            List<Master_Klien> ObjList = Master_KlienItem.GetAll();
+            List<Master_SupplierDbo> ObjList = Master_SupplierItem.GetAll();
             var Name = (from N in ObjList
-                        where N.nama_klien.ToUpper().Contains(strValue)
-                        select new { N.nama_klien, N.alamat, N.kode_klien, N.tipe_konsumen });
+                        where N.nama_suplier.ToUpper().Contains(strValue)
+                        select new { N.nama_suplier, N.alamat, N.kode_suplier });
             return Json(Name, JsonRequestBehavior.AllowGet);
         }
 
