@@ -61,13 +61,13 @@
                 <div class="form-group">
 
 
-                    <div class="col-sm-2 control-label">Customer Name</div>
+                    <div class="col-sm-2 control-label">Supplier Name</div>
                     <div class="col-sm-3">
                         @*<input id="auto-complete">*@
                         @Html.Editor("customername", new { htmlAttributes = new { id = "customername", @class = "form-control", placeholder = "Customer Name ", required = "required" } })
                     </div>
 
-                    <div class="col-sm-2 control-label">Cus ID</div>
+                    <div class="col-sm-2 control-label">Supplier ID</div>
                     <div class="col-sm-2">
                         @Html.TextBox("customerid", null, new { id = "customerid", @class = "form-control", placeholder = "Delivery Date", required = "required", disabled = "disabled" })
 
@@ -189,7 +189,7 @@
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
                         <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-                        <button type="submit" name="CALLPAGE" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;CALL</button>
+                        @*<button type="submit" name="CALLPAGE" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;CALL</button>*@
                         @*<a class="btn btn-success " href="@Url.Action("Index")" role="button"><i class="fa fa-plus"></i> CALL PAGE</a>*@
                     </div>
                 </div>
