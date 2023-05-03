@@ -43,13 +43,13 @@
                 @Html.ValidationSummary(true)
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">PO Number</div>
+                    <div class="col-sm-2 control-label">Nomor PO</div>
                     <div class="col-sm-3">
                         @Html.TextBox("PO_Number", (string)ViewBag.PO_number, new { @class = "form-control", placeholder = "PO Number", required = "required", disabled = "disabled" })
                         @*@Html.ValidationMessageFor("PO_Number")*@
                     </div>
 
-                    <div class="col-sm-2 control-label">PO Date </div>
+                    <div class="col-sm-2 control-label">Tanggal PO </div>
                     <div class="col-sm-2">
                         @*@Html.TextBoxFor(model => model.PO_Date, new { @class = "form-control", placeholder = "PO Date", required = "required", disabled = "disabled" })
                     @Html.ValidationMessageFor(model => model.PO_Date)*@
@@ -61,15 +61,15 @@
                 <div class="form-group">
 
 
-                    <div class="col-sm-2 control-label">Supplier Name</div>
+                    <div class="col-sm-2 control-label">Nama Supplier</div>
                     <div class="col-sm-3">
                         @*<input id="auto-complete">*@
-                        @Html.Editor("customername", new { htmlAttributes = new { id = "customername", @class = "form-control", placeholder = "Customer Name ", required = "required" } })
+                        @Html.Editor("customername", new { htmlAttributes = new { id = "customername", @class = "form-control", placeholder = "Nama Supplier ", required = "required" } })
                     </div>
 
-                    <div class="col-sm-2 control-label">Supplier ID</div>
+                    <div class="col-sm-2 control-label">Kode Supplier</div>
                     <div class="col-sm-2">
-                        @Html.TextBox("customerid", null, new { id = "customerid", @class = "form-control", placeholder = "Delivery Date", required = "required", disabled = "disabled" })
+                        @Html.TextBox("customerid", null, new { id = "customerid", @class = "form-control", placeholder = "Kode SUpplier", required = "required", disabled = "disabled" })
 
                     </div>
 
@@ -77,24 +77,24 @@
                 </div>
                 <div class="form-group">
 
-                    <div class="col-sm-2 control-label">Delivery Date Plane</div>
+                    <div class="col-sm-2 control-label">Rencana Kirim</div>
                     <div class="col-sm-3">
-                        @Html.TextBox("DeliveryDatePlan", null, new { id = "DeliveryDatePlan", @class = "form-control", placeholder = "Delivery Date Plane", required = "required" })
+                        @Html.TextBox("DeliveryDatePlan", null, new { id = "DeliveryDatePlan", @class = "form-control", placeholder = "Rencana Kirim", required = "required" })
 
                     </div>
 
-                    <div class="col-sm-2 control-label">Term Of Payment</div>
+                    <div class="col-sm-2 control-label">Cara Bayar</div>
                     <div class="col-sm-2">
-                        @Html.TextBox("Term_Of_Payment", null, new { id = "Term_Of_Payment", @class = "form-control", placeholder = "Term Of Payment", required = "required" })
+                        @Html.TextBox("Term_Of_Payment", null, new { id = "Term_Of_Payment", @class = "form-control", placeholder = "Cara Bayar", required = "required" })
 
                     </div>
 
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">PO Description </div>
+                    <div class="col-sm-2 control-label">Keterangan</div>
                     <div class="col-sm-7">
-                        @Html.TextBox("PO_Description", null, new { id = "PO_Description", @class = "form-control", placeholder = "PO Description", required = "required" })
+                        @Html.TextBox("PO_Description", null, new { id = "PO_Description", @class = "form-control", placeholder = "Keterangan", required = "required" })
 
                     </div>
                 </div>
@@ -142,7 +142,7 @@
 
                     <div class="col-sm-1 control-label">Qty</div>
                     <div class="col-sm-1">
-                        @Html.TextBox("qty", null, new { id = "qty", @class = "form-control", placeholder = "Qty" })
+                        @Html.TextBox("qty", null, new { id = "qty", @class = "form-control", placeholder = "Qty", required = "required" })
 
                     </div>
                     <div class="col-sm-4">
@@ -189,8 +189,6 @@
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
                         <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
-                        @*<button type="submit" name="CALLPAGE" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;CALL</button>*@
-                        @*<a class="btn btn-success " href="@Url.Action("Index")" role="button"><i class="fa fa-plus"></i> CALL PAGE</a>*@
                     </div>
                 </div>
             }
