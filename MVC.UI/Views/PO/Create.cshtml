@@ -142,7 +142,7 @@
 
                     <div class="col-sm-1 control-label">Qty</div>
                     <div class="col-sm-1">
-                        @Html.TextBox("qty", null, new { id = "qty", @class = "form-control", placeholder = "Qty", required = "required" })
+                        @Html.TextBox("qty", null, new { id = "qty", @class = "form-control", placeholder = "Qty" })
 
                     </div>
                     <div class="col-sm-4">
@@ -324,7 +324,7 @@
                     button.setAttribute('onclick', 'sayHi()');
                     cell6.appendChild(button);
                 }
-                else {//update di data gridnya 
+                else {//update di data gridnya
                     var new_itemcode = $('#item_code').val();
                     var new_itemname = $('#item_name').val();
                     var new_itemprice = $('#item_price').val();
@@ -367,7 +367,7 @@
                 return strValue;
             }
         }
-        return strValue; 
+        return strValue;
     }
     $("#mydatatablePopup").on('click', '.btnSelect', function () {
         // get the current row
@@ -427,34 +427,41 @@
     }
 
     $('#saveform').submit(function () {
+
+        //alert('kesini');
         var sTableName = document.getElementById("tabelBarang");
         //alert(sTableName.rows.length);
         //insert detail =============================================
-        var rows = [];
-        for (var i = 1; i < sTableName.rows.length; i++) {
-            var _item_code = sTableName.rows[i].cells[0].innerText;
-            var _nama_barang = sTableName.rows[i].cells[1].innerText;
-            var _harga = sTableName.rows[i].cells[2].innerText;
-            var _qty = sTableName.rows[i].cells[3].innerText;
-            var _total = sTableName.rows[i].cells[4].innerText;
-            var row = _item_code + "|" + _nama_barang + "|" + _harga + "|" + _qty + "|" + _total;
-            rows.push(row);
+        //alert(sTableName.rows.length);
+        if (sTableName.rows.length < 2) {
+            alert("Detail Barang Masih Kosong");
         }
-        //detail -====================================================
-        //insert to header====================
-        var _ponumber = $("#PO_Number").val();
-        var _podate = $("#PO_Date").val();
-        var _customer_id = $("#customerid").val();
-        var _customer_name = $("#customername").val();
-        var _delivery_date_plane = $("#DeliveryDatePlan").val();
-        var _tof = $("#Term_Of_Payment").val();
-        var _po_desc = $("#PO_Description").val();
-   
-        var _header = _ponumber + '|' + _podate + '|' + _customer_id + '|' + _customer_name + '|' + _delivery_date_plane + '|' + _tof + '|' + _po_desc 
-        // header ============================
-        $.post('@Url.Action("Create", "PO")', { rows: rows, header: _header }, function (data) { });
-        //alert(rows);
-        //alert(_header);
+        else {
+            var rows = [];
+            for (var i = 1; i < sTableName.rows.length; i++) {
+                var _item_code = sTableName.rows[i].cells[0].innerText;
+                var _nama_barang = sTableName.rows[i].cells[1].innerText;
+                var _harga = sTableName.rows[i].cells[2].innerText;
+                var _qty = sTableName.rows[i].cells[3].innerText;
+                var _total = sTableName.rows[i].cells[4].innerText;
+                var row = _item_code + "|" + _nama_barang + "|" + _harga + "|" + _qty + "|" + _total;
+                rows.push(row);
+            }
+            //detail -====================================================
+            //insert to header====================
+            var _ponumber = $("#PO_Number").val();
+            var _podate = $("#PO_Date").val();
+            var _customer_id = $("#customerid").val();
+            var _customer_name = $("#customername").val();
+            var _delivery_date_plane = $("#DeliveryDatePlan").val();
+            var _tof = $("#Term_Of_Payment").val();
+            var _po_desc = $("#PO_Description").val();
+
+            var _header = _ponumber + '|' + _podate + '|' + _customer_id + '|' + _customer_name + '|' + _delivery_date_plane + '|' + _tof + '|' + _po_desc
+            // header ============================
+            $.post('@Url.Action("Create", "PO")', { rows: rows, header: _header }, function (data) { });
+        }
+
     });
 
     $("#DeliveryDatePlan").datepicker({
