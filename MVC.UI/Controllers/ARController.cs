@@ -22,6 +22,7 @@ namespace MVC.UI.Controllers
         public ActionResult Details(string id)
         {
             List<Report_ARDbo> list_det = Report_ARItem.GetDetail(id);
+            ViewBag.ID = id;
             return View(list_det);
         }
         public ActionResult Print(string id)

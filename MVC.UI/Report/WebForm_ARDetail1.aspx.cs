@@ -59,7 +59,7 @@ namespace MVC.UI.Report
             DataTable dt = new DataTable();
             cmd.Connection = con;
             cmd = new SqlCommand("[sp_report_AR_Detail]", cmd.Connection);
-            cmd.Parameters.Add(new SqlParameter("@param", "A001"));
+            cmd.Parameters.Add(new SqlParameter("@param", id));
             cmd.CommandType = CommandType.StoredProcedure;
             da.SelectCommand = cmd;
             da.Fill(ds);
