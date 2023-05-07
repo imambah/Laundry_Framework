@@ -38,17 +38,11 @@ namespace MVC.UI.Report
                 dsCatatan = GetCatatan();
                 Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
                 ReportParameter[] parameters = new ReportParameter[3];
-                parameters[0] = new ReportParameter("NB", "TEST");
+                parameters[0] = new ReportParameter("NB", "");
                 parameters[1] = new ReportParameter("logo", "file:///" + logo);
-                parameters[2] = new ReportParameter("keterangan", "test Keterangan");
-                //parameters[3] = new ReportParameter("bank_name", CP.bank);
-                //parameters[4] = new ReportParameter("branch_name", CP.bank_branch);
-                //parameters[5] = new ReportParameter("company_name",CP.company_name );
-                //parameters[6] = new ReportParameter("account_name", CP.account_name);
-                //parameters[7] = new ReportParameter("address", CP.city);
-                ////parameters[8] = new ReportParameter("catatan", dsCatatan.Tables[0].Rows[0][2].ToString());
-                //parameters[8] = new ReportParameter("catatan", "tes catatan ");
-                //parameters[9] = new ReportParameter("terbilang", ds.Tables[0].Rows[0][14].ToString());
+                parameters[2] = new ReportParameter("keterangan", "");
+                parameters[2] = new ReportParameter("companyname", CP.company_name);
+                parameters[2] = new ReportParameter("companyaddress", CP.company_address);
 
                 ReportViewer1.LocalReport.SetParameters(parameters);
 
