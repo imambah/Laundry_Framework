@@ -267,6 +267,13 @@
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\ReportViewer_PO.aspx.cs">
+      <DependentUpon>ReportViewer_PO.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer_PO.aspx.designer.cs">
+      <DependentUpon>ReportViewer_PO.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReportViewer_Invoice.aspx.cs">
       <DependentUpon>ReportViewer_Invoice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,6 +320,7 @@
     <Content Include="Images\logo_laundry.jpeg" />
     <Content Include="Images\logo_laundry_abu.jpeg" />
     <Content Include="ReportViewerWebForm.aspx" />
+    <Content Include="Report\ReportViewer_PO.aspx" />
     <Content Include="Report\ReportViewer_Invoice.aspx" />
     <Content Include="Report\ReportViewer_TandaPenyerahan.aspx" />
     <Content Include="Report\WebForm2.aspx" />
@@ -494,6 +502,7 @@
     <Content Include="Views\Invoice\print.cshtml" />
     <Content Include="Views\PO\index.cshtml" />
     <Content Include="Views\PO\Create.cshtml" />
+    <Content Include="Views\PO\print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -526,6 +535,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Report\Invoice.rdlc" />
+    <EmbeddedResource Include="Report\Rpt_PO.rdlc" />
     <EmbeddedResource Include="Report\Rpt_Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Terima.rdlc" />
