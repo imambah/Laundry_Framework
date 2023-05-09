@@ -201,5 +201,13 @@ namespace Web.Logic
             }
             return buffer;
         }
+
+        public static string User_Level
+        {
+            get
+            {
+                return string.Format("{0}", HttpContext.Current == null ? "" : HttpContext.Current.Session["user_level"]);
+            }
+        }
     }
 }
