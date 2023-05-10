@@ -209,5 +209,20 @@ namespace Web.Logic
                 return string.Format("{0}", HttpContext.Current == null ? "" : HttpContext.Current.Session["user_level"]);
             }
         }
+
+        public static string User_Group
+        {
+            get
+            {
+                return string.Format("{0}", HttpContext.Current == null ? "" : HttpContext.Current.Session["user_group"]);
+            }
+        }
+        public static string BranchID
+        {
+            get
+            {
+                return string.Format("{0}", HttpContext.Current == null ? "" : HttpContext.Current.Session["Branch_ID"]);
+            }
+        }
     }
 }

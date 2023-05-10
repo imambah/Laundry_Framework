@@ -133,6 +133,7 @@ namespace MVC.UI.Controllers
                         Session["Branch_ID"] = item.Branch;
                         Session["Branch_NAME"] = item.Branch_Name;
                         Session["user_level"] = item.User_Level;
+                        Session["user_group"] = item.UserGroup;
                         item.IsLogin = 1;
                         item.LastLogin = DateTime.Now;
                         item.IPAddress = Utilities.GetIpAddress();

@@ -15,7 +15,7 @@ namespace MVC.UI.Controllers
         // GET: Client
         public ActionResult Index()
         {
-            List<PODbo> list = POItem.GetAll();
+            List<PODbo> list = POItem.GetAll(Utilities.BranchID);
             return View(list);
         }
         public ActionResult Create()
@@ -42,7 +42,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
-
+                
                 if (header == null)
                 {
                     return RedirectToAction("Index", "PO");
@@ -100,7 +100,7 @@ namespace MVC.UI.Controllers
                 ObjPoHeader.DeliveryDatePlan = Convert.ToDateTime(DeliveryDatePlan);
                 ObjPoHeader.Term_Of_Payment = result[5].Trim();
                 ObjPoHeader.PO_Description = result[6].Trim();
-                ObjPoHeader.BranchID = "usersystem";
+                ObjPoHeader.BranchID = Utilities.BranchID;
                 //ObjPosHeader.create_by = Utilities.Username;
                 POItem.Insert_Header(ObjPoHeader);
                 return RedirectToAction("Index", "PO");

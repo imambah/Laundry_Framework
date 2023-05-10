@@ -122,7 +122,14 @@
                         }
                         else
                         {
-                            @Html.Partial("_OperatorMenu");
+                            if (string.Format("{0}", Web.Logic.Utilities.User_Group).ToUpper() == "COUNTER")
+                            {
+                                @Html.Partial("_CounterMenu");
+                            }
+                            else
+                            {
+                                @Html.Partial("_OperatorMenu");
+                            }
                         }
 
                     }

@@ -503,6 +503,7 @@
     <Content Include="Views\PO\index.cshtml" />
     <Content Include="Views\PO\Create.cshtml" />
     <Content Include="Views\PO\print.cshtml" />
+    <Content Include="Views\Shared\_CounterMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
