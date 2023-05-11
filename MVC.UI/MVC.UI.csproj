@@ -228,6 +228,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ARAgingController.cs" />
     <Compile Include="Controllers\ARController.cs" />
+    <Compile Include="Controllers\GRController.cs" />
     <Compile Include="Controllers\POController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
@@ -504,6 +505,8 @@
     <Content Include="Views\PO\Create.cshtml" />
     <Content Include="Views\PO\print.cshtml" />
     <Content Include="Views\Shared\_CounterMenu.cshtml" />
+    <Content Include="Views\GR\index.cshtml" />
+    <Content Include="Views\GR\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

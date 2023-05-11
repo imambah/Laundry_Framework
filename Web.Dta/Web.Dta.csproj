@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GRItem.cs" />
     <Compile Include="POItem.cs" />
     <Compile Include="BOMItem.cs" />
     <Compile Include="CashItem.cs" />
