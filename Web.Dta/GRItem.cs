@@ -21,6 +21,19 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new GRDbo());
         }
 
+        public static List<GR_TransDbo> Get_GRTransaction(string po_no)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_GR_GetTransaction_ByPoNo]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@po_no", po_no);
+            return DBUtil.ExecuteMapper(context, new GR_TransDbo());
+
+            //return DBUtil.ExecuteMapper<Service_PriceDbo>(context, new Service_PriceDbo()).FirstOrDefault();
+        }
+        //Get_GRTransaction(po_no);
+
         //public static PO_HeaderDbo Insert_Header(PO_HeaderDbo obj)
         //{
         //    IDBHelper context = new DBHelper();

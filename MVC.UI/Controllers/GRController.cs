@@ -26,37 +26,10 @@ namespace MVC.UI.Controllers
         }
 
         // GET: GR/Create
-        public ActionResult Create()
+        public ActionResult Create(string po_no)
         {
-            return View();
+            List<GR_TransDbo> listPO = GRItem.Get_GRTransaction(po_no);
+            return View(listPO);
         }
-
-        // POST: GR/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: GR/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-       
-
-        
-
-      
     }
 }
