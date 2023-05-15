@@ -85,6 +85,10 @@
           <DataField>alamat</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="tgl_po">
+          <DataField>tgl_po</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet_POS</rd:DataSetName>
@@ -171,7 +175,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Date :</Value>
+                    <Value>="Date :" + First(Fields!tgl_po.Value, "DataSet_PO")</Value>
                     <Style>
                       <TextDecoration>None</TextDecoration>
                     </Style>
@@ -181,7 +185,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.77778in</Top>
+            <Top>0.77083in</Top>
             <Height>0.20834in</Height>
             <Width>2.36458in</Width>
             <ZIndex>2</ZIndex>

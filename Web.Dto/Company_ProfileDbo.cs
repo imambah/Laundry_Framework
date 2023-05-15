@@ -37,6 +37,7 @@ namespace Web.Dto
         public Company_ProfileDbo Map(System.Data.IDataReader reader)
         {
             Company_ProfileDbo obj = new Company_ProfileDbo();
+            obj.id = Convert.ToInt32(reader["id"]);
             obj.company_name = reader["company_name"].ToString();
             obj.company_address = reader["company_address"].ToString();
             obj.company_address2 = reader["company_address2"].ToString();

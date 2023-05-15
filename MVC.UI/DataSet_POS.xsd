@@ -150,6 +150,7 @@
               <Mapping SourceColumn="CustomerID" DataSetColumn="CustomerID" />
               <Mapping SourceColumn="CustomerName" DataSetColumn="CustomerName" />
               <Mapping SourceColumn="alamat" DataSetColumn="alamat" />
+              <Mapping SourceColumn="tgl_po" DataSetColumn="tgl_po" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -444,28 +445,29 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="amount" msprop:Generator_UserColumnName="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnVarNameInTable="columnamount" type="xs:double" minOccurs="0" />
-              <xs:element name="CustomerID" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_ColumnVarNameInTable="columnCustomerID" msprop:Generator_UserColumnName="CustomerID" minOccurs="0">
+              <xs:element name="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_UserColumnName="amount" msprop:Generator_ColumnVarNameInTable="columnamount" type="xs:double" minOccurs="0" />
+              <xs:element name="CustomerID" msprop:Generator_UserColumnName="CustomerID" msprop:Generator_ColumnPropNameInTable="CustomerIDColumn" msprop:Generator_ColumnPropNameInRow="CustomerID" msprop:Generator_ColumnVarNameInTable="columnCustomerID" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="25" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="CustomerName" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_ColumnVarNameInTable="columnCustomerName" msprop:Generator_UserColumnName="CustomerName" minOccurs="0">
+              <xs:element name="CustomerName" msprop:Generator_UserColumnName="CustomerName" msprop:Generator_ColumnPropNameInTable="CustomerNameColumn" msprop:Generator_ColumnPropNameInRow="CustomerName" msprop:Generator_ColumnVarNameInTable="columnCustomerName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="alamat" msprop:Generator_ColumnPropNameInRow="alamat" msprop:Generator_ColumnPropNameInTable="alamatColumn" msprop:Generator_ColumnVarNameInTable="columnalamat" msprop:Generator_UserColumnName="alamat" minOccurs="0">
+              <xs:element name="alamat" msprop:Generator_UserColumnName="alamat" msprop:Generator_ColumnPropNameInTable="alamatColumn" msprop:Generator_ColumnPropNameInRow="alamat" msprop:Generator_ColumnVarNameInTable="columnalamat" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="tgl_po" msprop:Generator_ColumnPropNameInRow="tgl_po" msprop:Generator_ColumnPropNameInTable="tgl_poColumn" msprop:Generator_ColumnVarNameInTable="columntgl_po" msprop:Generator_UserColumnName="tgl_po" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

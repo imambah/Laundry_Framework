@@ -16,8 +16,9 @@ namespace MVC.UI.Controllers
         // GET: Pos
         public ActionResult Index()
         {
-            string strBranch_id = Session["Branch_ID"].ToString();
-            List<POSDbo> list = Master_POSItem.GetAll_ByBranchID(strBranch_id);
+            //string strBranch_id = Session["Branch_ID"].ToString();
+            //List<POSDbo> list = Master_POSItem.GetAll_ByBranchID(strBranch_id);
+            List<POSDbo> list = Master_POSItem.GetAll_ByBranchID();
             return View(list);
         }
 
@@ -142,7 +143,6 @@ namespace MVC.UI.Controllers
            
             var paramDbo = new ReportParamDbo();
             paramDbo.param1 = tr_id;
-           
             return View(paramDbo);
         }
         public ActionResult PrintOut_Penyerahan(ReportParamDbo Model)

@@ -2025,6 +2025,8 @@ namespace MVC.UI {
             
             private global::System.Data.DataColumn columnalamat;
             
+            private global::System.Data.DataColumn columntgl_po;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_Report_PODataTable() {
@@ -2196,6 +2198,14 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn tgl_poColumn {
+                get {
+                    return this.columntgl_po;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2248,7 +2258,8 @@ namespace MVC.UI {
                         double amount, 
                         string CustomerID, 
                         string CustomerName, 
-                        string alamat) {
+                        string alamat, 
+                        System.DateTime tgl_po) {
                 sp_Report_PORow rowsp_Report_PORow = ((sp_Report_PORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PO_number,
@@ -2267,7 +2278,8 @@ namespace MVC.UI {
                         amount,
                         CustomerID,
                         CustomerName,
-                        alamat};
+                        alamat,
+                        tgl_po};
                 rowsp_Report_PORow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_Report_PORow);
                 return rowsp_Report_PORow;
@@ -2307,6 +2319,7 @@ namespace MVC.UI {
                 this.columnCustomerID = base.Columns["CustomerID"];
                 this.columnCustomerName = base.Columns["CustomerName"];
                 this.columnalamat = base.Columns["alamat"];
+                this.columntgl_po = base.Columns["tgl_po"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2346,6 +2359,8 @@ namespace MVC.UI {
                 base.Columns.Add(this.columnCustomerName);
                 this.columnalamat = new global::System.Data.DataColumn("alamat", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnalamat);
+                this.columntgl_po = new global::System.Data.DataColumn("tgl_po", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntgl_po);
                 this.columnPO_number.MaxLength = 30;
                 this.columnPO_Description.MaxLength = 50;
                 this.columnItemCode.MaxLength = 25;
@@ -4409,6 +4424,22 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime tgl_po {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_Report_PO.tgl_poColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tgl_po\' in table \'sp_Report_PO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_PO.tgl_poColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPO_numberNull() {
                 return this.IsNull(this.tablesp_Report_PO.PO_numberColumn);
             }
@@ -4609,6 +4640,18 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetalamatNull() {
                 this[this.tablesp_Report_PO.alamatColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Istgl_poNull() {
+                return this.IsNull(this.tablesp_Report_PO.tgl_poColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Settgl_poNull() {
+                this[this.tablesp_Report_PO.tgl_poColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5487,6 +5530,7 @@ namespace MVC.UI.DataSet_POSTableAdapters {
             tableMapping.ColumnMappings.Add("CustomerID", "CustomerID");
             tableMapping.ColumnMappings.Add("CustomerName", "CustomerName");
             tableMapping.ColumnMappings.Add("alamat", "alamat");
+            tableMapping.ColumnMappings.Add("tgl_po", "tgl_po");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

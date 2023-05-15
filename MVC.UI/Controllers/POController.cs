@@ -15,7 +15,8 @@ namespace MVC.UI.Controllers
         // GET: Client
         public ActionResult Index()
         {
-            List<PODbo> list = POItem.GetAll(Utilities.BranchID);
+           // List<PODbo> list = POItem.GetAll(Utilities.BranchID);
+            List<PODbo> list = POItem.GetAll();
             return View(list);
         }
         public ActionResult Create()

@@ -31,6 +31,14 @@
                 //@Html.HiddenFor(model => model.company_name)
 
                 <div class="form-group">
+                    <div class="col-sm-2 control-label">ID Perusahaan</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.id, new { @class = "form-control", placeholder = "Nama Perusahaan", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.id)
+                    </div>
+
+                </div>
+                <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Perusahaan</div>
                     <div class="col-sm-4">
                         @Html.TextBoxFor(model => model.company_name, new { @class = "form-control", placeholder = "Nama Perusahaan" })

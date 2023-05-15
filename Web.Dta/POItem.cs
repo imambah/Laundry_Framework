@@ -12,11 +12,11 @@ namespace Web.Dta
     /// </summary>    
     public partial class POItem
     {
-        public static List<PODbo> GetAll(string strBranchID)
+        public static List<PODbo> GetAll()
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_PO_GetAll";
-            context.AddParameter("@branchid", strBranchID);
+            //context.AddParameter("@branchid", strBranchID);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new PODbo());

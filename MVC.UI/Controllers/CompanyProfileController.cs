@@ -31,7 +31,7 @@ namespace MVC.UI.Controllers
                 //return RedirectToAction("Index");
                 //var fileName = Path.GetFileName(logo.FileName);
 
-                Company_ProfileDbo existing =  Master_CompanyItem.GetCompanyProfileByName(Item.company_name);
+                Company_ProfileDbo existing =  Master_CompanyItem.GetCompanyProfileByName(Item.id);
                 
                 if (existing != null)
                 {

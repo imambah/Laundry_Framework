@@ -48,12 +48,12 @@ namespace Web.Dta
 
 
         //public static GetCompanyProfile
-        public static Company_ProfileDbo GetCompanyProfileByName(string company_name)
+        public static Company_ProfileDbo GetCompanyProfileByName(int id)
         {
             IDBHelper context = new DBHelper();
             context.CommandType = CommandType.StoredProcedure;
-            context.CommandText = "sp_master_CompanyProfile_GetByName";
-            context.AddParameter("@company_name", company_name);
+            context.CommandText = "[sp_master_CompanyProfile_GetByID]";
+            context.AddParameter("@id", id);
             return DBUtil.ExecuteMapper<Company_ProfileDbo>(context, new Company_ProfileDbo()).FirstOrDefault();
         }
 
@@ -73,6 +73,7 @@ namespace Web.Dta
         {
            
             IDBHelper context = new DBHelper();
+            context.AddParameter("@id", obj.id);
             context.AddParameter("@CompanyName", obj.company_name);
             context.AddParameter("@CompanyAddress", obj.company_address);
             context.AddParameter("@CompanyAddress2", obj.company_address2);
