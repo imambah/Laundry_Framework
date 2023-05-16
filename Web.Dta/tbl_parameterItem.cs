@@ -165,7 +165,7 @@ namespace Web.Dta
                     strBulan = "XI";
                 else if (strBulan == "12")
                     strBulan = "XII";
-                GenNo = strNo + "/" + "BiW-" + strBulan + "/" + strTahun;
+                GenNo = strNo + "/" + "BiW" + strBulan + "/" + strTahun;
             }
             
             return GenNo;
