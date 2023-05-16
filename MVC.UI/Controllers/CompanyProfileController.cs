@@ -39,8 +39,12 @@ namespace MVC.UI.Controllers
                     {
                         string path = Path.Combine(Server.MapPath("~/UploadFiles"), Path.GetFileName(logo.FileName));
                         logo.SaveAs(path);
+                        Item.logo = logo.FileName;
                     }
-                    Item.logo = logo.FileName;
+                    else {
+                        Item.logo = existing.logo;
+                    }
+                   
                     Master_CompanyItem.Update(Item);
                     ViewBag.Message = string.Format("Data Berhasil di Update ");
                 }
