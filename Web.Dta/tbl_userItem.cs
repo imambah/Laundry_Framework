@@ -81,7 +81,7 @@ namespace Web.Dta
              context.AddParameter("@IsActive", is_delete);
              context.AddParameter("@UserGroup", obj.UserGroup);
              context.AddParameter("@Branch", obj.Branch);
-             //context.AddParameter("@kode_perusahaan", obj.kode_perusahaan);
+             context.AddParameter("@user_level", obj.User_Level);
              //context.AddParameter("@nama_perusahaan", obj.nama_perusahaan);
             string sqlQuery = "Gen_tbl_user_Update";
              context.CommandText = sqlQuery;

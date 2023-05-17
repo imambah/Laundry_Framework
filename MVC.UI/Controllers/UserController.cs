@@ -98,6 +98,7 @@ namespace MVC.UI.Controllers
                     existing.IsActive = 0;
                     existing.Branch = item.Branch;
                     existing.UserGroup = item.UserGroup;
+                    existing.User_Level = item.User_Level;
                 // TODO: Add update logic here
                 tbl_user result = tbl_userItem.Update(existing,"N");
                 return RedirectToAction("Index");
