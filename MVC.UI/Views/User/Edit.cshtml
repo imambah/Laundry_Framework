@@ -3,6 +3,26 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}@{
+    List<SelectListItem> listuserlevel = new List<SelectListItem>();
+    listuserlevel.Add(new SelectListItem
+    {
+        Text = "-- Pilih Level User --",
+        Value = "",
+        Selected = true
+    });
+    listuserlevel.Add(new SelectListItem
+    {
+        Text = "Admin",
+        Value = "admin",
+
+    });
+    listuserlevel.Add(new SelectListItem
+    {
+        Text = "User",
+        Value = "user",
+    });
+
 }
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -69,6 +89,13 @@
 
 
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">User Level</div>
+                    <div class="col-sm-4">
+                         @Html.DropDownListFor(model => model.User_Level, listuserlevel, new { @class = "form-control" })
+                     </div>
                 </div>
 
                 <div class="form-group">
