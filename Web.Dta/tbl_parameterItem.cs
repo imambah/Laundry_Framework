@@ -230,7 +230,12 @@ namespace Web.Dta
             {
                 strNo = "0" + strNo;
             }
-                GenNo = "PO-"+ now.Date.ToString("yyyy") + "." + now.Date.ToString("MM") + "." + now.Date.ToString("dd") + "." + strNo;
+            if (strJenis == "gr") {
+                GenNo = "GR-" + now.Date.ToString("yyyy") + "." + now.Date.ToString("MM") + "." + now.Date.ToString("dd") + "." + strNo;
+            } else {
+                GenNo = "PO-" + now.Date.ToString("yyyy") + "." + now.Date.ToString("MM") + "." + now.Date.ToString("dd") + "." + strNo;
+            }
+            
             return GenNo;
         }
     }

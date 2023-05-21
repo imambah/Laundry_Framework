@@ -62,12 +62,12 @@ namespace Web.Dta
             IDBHelper context = new DBHelper();
             context.AddParameter("@id", obj.id);
             context.AddParameter("@Voucher_ID", obj.Voucher_ID);
-            context.AddParameter("@Voucher_Desc", obj.Voucher_Desc);
-            context.AddParameter("@PIC", obj.PIC);
+            context.AddParameter("@Voucher_Desc", obj.Voucher_Desc.Trim());
+            context.AddParameter("@PIC", obj.PIC.Trim());
             context.AddParameter("@Transaction_date", obj.Transaction_date);
             context.AddParameter("@BankID", obj.BankID);
             context.AddParameter("@Amount", obj.Amount);
-            context.AddParameter("@Voucher_Type", obj.Voucher_Type);
+            //context.AddParameter("@Voucher_Type", obj.Voucher_Type);
             context.AddParameter("@update_date", DateTime.Now);
             context.AddParameter("@update_by", obj.update_by);
             string sqlQuery = "[sp_Cash_Update]";

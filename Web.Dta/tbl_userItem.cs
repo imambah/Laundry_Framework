@@ -161,7 +161,17 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<tbl_user>(context, new tbl_user()).FirstOrDefault();
         }
 
-
+        public static string getFileLogo() {
+            string result = "";
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_get_logo";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            object obj = DBUtil.ExecuteScalar(context);
+            if (obj != null)
+                result = obj.ToString();
+            return result;
+        }
         #endregion
 
     }

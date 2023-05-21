@@ -7,13 +7,25 @@ namespace Web.Dto
     {
         public int RecordID { get; set; }
         public string PO_Number { get; set; }
-        public DateTime? tgl_po { get; set; }
         public string supplier_id { get; set; }
         public string supplier_name { get; set; }
+        public DateTime? tgl_po { get; set; }
         public DateTime? rencana_kirim { get; set; }
         public string cara_bayar { get; set; }
         public string PO_description { get; set; }
-
+        /// <summary>
+        /// detaillllllllllllllllll
+        /// </summary>
+        /// 
+        public int RecordID_det { get; set; }
+        public int po_line { get; set; }
+        public string item_code { get; set; }
+        public string item_name { get; set; }
+        public double price { get; set; }
+        public string uom { get; set; }
+        public int qty { get; set; }
+        public double total { get; set; }
+        public int sisa { get; set; }
         public GR_TransDbo Map(System.Data.IDataReader reader)
         {
             GR_TransDbo obj = new GR_TransDbo();
@@ -24,7 +36,16 @@ namespace Web.Dto
             obj.tgl_po = reader["tgl_po"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["tgl_po"]);
             obj.rencana_kirim = reader["rencana_kirim"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["rencana_kirim"]);
             obj.cara_bayar = reader["cara_bayar"] == DBNull.Value ? "" : reader["cara_bayar"].ToString();
-            obj.PO_description = reader["PO_description"] == DBNull.Value ? "" : reader["PO_description"].ToString();
+
+            obj.RecordID = Convert.ToInt32(reader["RecordID_det"]);
+            obj.po_line = reader["PO_line"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PO_line"]);
+            obj.item_code = reader["ItemCode"] == DBNull.Value ? "" : reader["ItemCode"].ToString();
+            obj.item_name = reader["ItemDesc"] == DBNull.Value ? "" : reader["ItemDesc"].ToString();
+            obj.price = reader["Price"] == DBNull.Value ? 0 : Convert.ToDouble(reader["Price"]);
+            obj.uom = reader["Uom"] == DBNull.Value ? "" : reader["Uom"].ToString();
+            obj.qty = reader["Quantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Quantity"]);
+            obj.total = reader["Total"] == DBNull.Value ? 0 : Convert.ToDouble(reader["Total"]);
+            obj.sisa = reader["sisa"] == DBNull.Value ? 0 : Convert.ToInt32(reader["sisa"]);
             return obj;
         }
     }

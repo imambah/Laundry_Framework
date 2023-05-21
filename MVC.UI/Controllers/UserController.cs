@@ -111,6 +111,8 @@ namespace MVC.UI.Controllers
 
         public ActionResult Login()
         {
+            var filename = tbl_userItem.getFileLogo();
+            ViewBag.fileLogo = filename;
             return View();
         }
 

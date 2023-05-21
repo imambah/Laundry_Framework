@@ -46,7 +46,8 @@
                 </div>
 
                 <div class="form-group">
-                    @if (Model.Voucher_Type == "BM")
+
+                    @if (ViewBag.tipe == "BM")
                     {
                         <div class="col-sm-2 control-label">Terima dari</div>
                         <div class="col-sm-4">
@@ -83,7 +84,8 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Melalui Bank</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.BankID, new { @class = "form-control", placeholder = "Bank" })
+                        @*@Html.TextBoxFor(model => model.BankID, ViewBag.BANKList as SelectList, new { @class = "form-control", placeholder = "Bank" })*@
+                        @Html.DropDownListFor(model => model.BankID, ViewBag.BANKList as SelectList, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.BankID)
                     </div>
                 </div>

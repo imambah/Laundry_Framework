@@ -65,6 +65,8 @@ namespace MVC.UI.Controllers
         public ActionResult Edit(int id)
         {
             CashDbo existing = CashItem.GetById(id);
+            ViewBag.tipe = existing.Voucher_Type;
+            ViewBag.BANKList = new SelectList(BANKList(), "id", "nama");
             return View(existing);
         }
 
