@@ -49,7 +49,7 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<GR_HeaderDbo>(context, new GR_HeaderDbo()).FirstOrDefault();
         }
 
-        public static GR_DetailDbo Insert_Detail(GR_DetailDbo obj)
+        public static GR_DetailDbo Insert_Detail(GR_DetailDbo obj, string po_no)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "[sp_GR_Insert_Detail]";
@@ -57,10 +57,21 @@ namespace Web.Dta
             context.AddParameter("@gr_line", obj.GR_line);
             context.AddParameter("@item_code", obj.Item_Code);
             context.AddParameter("@quantity", obj.qty);
+            context.AddParameter("@po_no", po_no);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<GR_DetailDbo>(context, new GR_DetailDbo()).FirstOrDefault();
         }
 
+
+        public static List<GR_DetailDbo> getItemBarang(string po_no)
+        {
+
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "sp_GR_GetTransaction_ByPoNo";
+            context.AddParameter("@po_no", po_no);
+            return DBUtil.ExecuteMapper(context, new GR_DetailDbo());
+        }
     }
 }

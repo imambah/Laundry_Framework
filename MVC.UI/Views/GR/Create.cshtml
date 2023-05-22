@@ -33,13 +33,13 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nomor PO</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => Item.PO_Number, new { id = "PO_Number", @class = "form-control", placeholder = "ID" })
+                        @Html.TextBoxFor(model => Item.PO_Number, new { id = "PO_Number", @class = "form-control", placeholder = "ID", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.PO_Number)
                     </div>
 
                     <div class="col-sm-2 control-label">Tanggal PO </div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.tgl_po, new { id = "tgl_po", @class = "form-control" })
+                        @Html.TextBoxFor(model => Item.tgl_po, new { id = "tgl_po", @class = "form-control" , disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.tgl_po)
                     </div>
                 </div>
@@ -49,13 +49,13 @@
 
                     <div class="col-sm-2 control-label">Nama Supplier</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => Item.supplier_name, new { id = "supplier_name", @class = "form-control", placeholder = "ID" })
+                        @Html.TextBoxFor(model => Item.supplier_name, new { id = "supplier_name", @class = "form-control", placeholder = "ID", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.supplier_name)
                     </div>
 
                     <div class="col-sm-2 control-label">Kode Supplier</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.supplier_id, new { id = "supplier_id", @class = "form-control", placeholder = "ID" })
+                        @Html.TextBoxFor(model => Item.supplier_id, new { id = "supplier_id", @class = "form-control", placeholder = "ID", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.supplier_id)
                     </div>
 
@@ -65,13 +65,13 @@
 
                     <div class="col-sm-2 control-label">Rencana Kirim</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => Item.rencana_kirim, new { id = "rencana_kirim", @class = "form-control" })
+                        @Html.TextBoxFor(model => Item.rencana_kirim, new { id = "rencana_kirim", @class = "form-control", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.rencana_kirim)
                     </div>
 
                     <div class="col-sm-2 control-label">Cara Bayar</div>
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => Item.cara_bayar, new { id = "cara_bayar", @class = "form-control", placeholder = "ID" })
+                        @Html.TextBoxFor(model => Item.cara_bayar, new { id = "cara_bayar", @class = "form-control", placeholder = "ID", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.cara_bayar)
                     </div>
 
@@ -80,7 +80,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Keterangan</div>
                     <div class="col-sm-7">
-                        @Html.TextBoxFor(model => Item.PO_description, new { id = "PO_description", @class = "form-control", placeholder = "Keterangan" })
+                        @Html.TextBoxFor(model => Item.PO_description, new { id = "PO_description", @class = "form-control", placeholder = "Keterangan" , disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.PO_description)
                     </div>
                 </div>
@@ -99,16 +99,14 @@
                             <th>
                                 Nama Barang
                             </th>
-                            <th class="text-right">
-                                Pesan
-                            </th>
-                            <th class="text-right">Sisa</th>
+                            <th class="text-center">Pesan</th>
+                            <th class="text-center">Sisa</th>
                             <th class="text-center">Terima</th>
                             <th>Keterangan</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach (var item in Model)
+                    <tbody  id="tableBody">
+                        @*@foreach (var item in Model)
                         {
                             <tr>
                                 <td>
@@ -131,7 +129,7 @@
                                 </td>
 
                             </tr>
-                        }
+                        }*@
                     </tbody>
                 </table>
                 <div class="form-group">
@@ -152,8 +150,30 @@
 </section>
 
 <script type="text/javascript">
+
+    $(document).ready(function () {
+        var po_no = $("#PO_Number").val();
+            $.ajax({
+                type: "post",
+                url: "/PO/GetItemByPoNo?po_number=" + po_no,
+                data: "[]",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    var output = data.map(i => "<tr><td>" + i.item_code + "</td><td>" + i.item_name + "</td><td style='text-align:center'>" + i.qty + "</td><td style='text-align:center'>" + i.sisa + "</td><td style='text-align:center'><input type='text' id='terima' name='terima' value=0 style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);'></td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
+                     $("#tableBody").html(output);
+                }
+            })
+    });
+
+
     $('#saveform').submit(function () {
-            var sTableName = document.getElementById("tabelBarang");
+        var sTableName = document.getElementById("tabelBarang");
+        var status = validateValue();
+        if (status == false){
+            Alert("Nilai Terima harus lebih kecil dari sisa");
+        }
+        else {
             var rows = [];
             for (var i = 1; i < sTableName.rows.length; i++) {
                 var _item_code = sTableName.rows[i].cells[0].innerText;
@@ -161,7 +181,7 @@
                 var _pesan = sTableName.rows[i].cells[2].innerText;
                 var _sisa = sTableName.rows[i].cells[3].innerText;
                 var _terima = sTableName.rows[i].cells[4].firstChild.value;
-                var _keterangan = sTableName.rows[i].cells[5].firstElementChild.innerHTML;
+                var _keterangan = sTableName.rows[i].cells[5].firstChild.value;
                 var row = _item_code + "|" + _nama_barang + "|" + _pesan + "|" + _sisa + "|" + _terima + "|" + _keterangan;
                 rows.push(row);
             }
@@ -179,8 +199,38 @@
             var _header = _ponumber + '|' + _podate + '|' + _supplier_id + '|' + _supplier_name + '|' + _rencana_kirim + '|' + _cara_bayar + '|' + _po_desc
             // header ============================
             $.post('@Url.Action("Create", "GR")', { rows: rows, header: _header }, function (data) {});
+        }
+
     });
 
+    function ValidateNumber(e) {
+        var charCode;
+        if (e.keyCode > 0) {
+            charCode = e.which || e.keyCode;
+        }
+        else if (typeof (e.charCode) != "undefined") {
+            charCode = e.which || e.keyCode;
+        }
+        if (charCode == 46)
+            return true;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    };
+
+    function validateValue() {
+        /*alert('kadie');*/
+        var sTableName = document.getElementById("tabelBarang");
+        for (var i = 1; i < sTableName.rows.length; i++) {
+            var _sisa = sTableName.rows[i].cells[3].innerText;
+            var _terima = sTableName.rows[i].cells[4].firstChild.value;
+            if (_terima > _sisa) {
+                /*alert('Nilai Terima harus lebih kecil dari Sisa');*/
+                return false;
+            }
+        }
+        return true;
+    }
 </script>
 
 

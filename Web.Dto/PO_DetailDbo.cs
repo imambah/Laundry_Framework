@@ -10,7 +10,7 @@ namespace Web.Dto
         public int PO_line { get; set; }
         public string ItemCode { get; set; }
         public decimal Price { get; set; }
-        public decimal UOM { get; set; }
+        public string UOM { get; set; }
         public int Qty { get; set; }
         public int Qty_Outstanding { get; set; }
         public decimal Disc { get; set; }
@@ -26,7 +26,7 @@ namespace Web.Dto
             obj.PO_line = reader["PO_date"] == DBNull.Value ? 0 : Convert.ToInt32(reader["PO_date"]);        
             obj.ItemCode = reader["itemcode"].ToString();
             obj.Price = reader["price"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["price"]);  
-            obj.UOM = reader["uom"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["uom"]);  
+            obj.UOM = reader["uom"] == DBNull.Value ? "" : reader["uom"].ToString();  
             obj.Qty = reader["quantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["quantity"]);  
             obj.Qty_Outstanding= reader["quantity_outstanding"] == DBNull.Value ? 0 : Convert.ToInt32(reader["quantity_outstanding"]);  
             obj.Disc = reader["discount"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["discount"]);  

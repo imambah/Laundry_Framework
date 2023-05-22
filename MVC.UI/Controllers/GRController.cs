@@ -29,6 +29,7 @@ namespace MVC.UI.Controllers
         public ActionResult Create(string po_no)
         {
             List<GR_TransDbo> listPO = GRItem.Get_GRTransaction(po_no);
+            //List<GR_DetailDbo> listItem = GRItem.getItemBarang(po_no);
             return View(listPO);
         }
 
@@ -53,26 +54,26 @@ namespace MVC.UI.Controllers
                     var _cara_bayar = result[5];
                     var _po_desc = result[6];
                     var gr_number = tbl_parameterItem.getPO_Nomer("gr");
-                    //rows.ForEach(x =>
-                    //{
-                    //    //_item_code + "|" + _nama_barang + "|" + _pesan + "|" + _sisa + "|" + _terima + "|" + _keterangan;
-                    //    var _gr_no = gr_number;
-                    //    var row = x.Split('|');
-                    //    var _item_code = row[0];
-                    //    var _nama_barang = row[1];
-                    //    var _pesan = row[2];
-                    //    var _sisa = row[3];
-                    //    var _terima = row[4];
-                    //    var _keterangan = row[5];
+                    rows.ForEach(x =>
+                    {
+                        //_item_code + "|" + _nama_barang + "|" + _pesan + "|" + _sisa + "|" + _terima + "|" + _keterangan;
+                        var _gr_no = gr_number;
+                        var row = x.Split('|');
+                        var _item_code = row[0];
+                        var _nama_barang = row[1];
+                        var _pesan = row[2];
+                        var _sisa = row[3];
+                        var _terima = row[4];
+                        var _keterangan = row[5];
 
-                    //    GR_DetailDbo ObjGRDetail = new GR_DetailDbo();
-                    //    ObjGRDetail.GR_Number = _gr_no;
-                    //    ObjGRDetail.GR_line = 0;
-                    //    ObjGRDetail.Item_Code = _item_code;
-                    //    ObjGRDetail.qty = Convert.ToInt32(_terima);
-                    //    GRItem.Insert_Detail(ObjGRDetail);
+                        GR_DetailDbo ObjGRDetail = new GR_DetailDbo();
+                        ObjGRDetail.GR_Number = _gr_no;
+                        ObjGRDetail.GR_line = 0;
+                        ObjGRDetail.Item_Code = _item_code;
+                        ObjGRDetail.qty = Convert.ToInt32(_terima);
+                        GRItem.Insert_Detail(ObjGRDetail, _ponumber);
 
-                    //});
+                    });
 
                     GR_HeaderDbo ObjGRHeader = new GR_HeaderDbo();
                     ObjGRHeader.GR_Number = gr_number;
@@ -90,5 +91,12 @@ namespace MVC.UI.Controllers
                 return View();
             }
         }
+
+        public JsonResult GetItemByPoNo(string po_number)
+        {
+            List<GR_DetailDbo> listItem = GRItem.getItemBarang(po_number);
+            return Json(listItem);
+        }
+
     }
 }

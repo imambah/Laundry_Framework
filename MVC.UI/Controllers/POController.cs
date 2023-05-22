@@ -75,7 +75,7 @@ namespace MVC.UI.Controllers
                     ObjPoDetail.PO_line = 0;
                     ObjPoDetail.ItemCode = _item_code;
                     ObjPoDetail.Price = Convert.ToInt32(_harga);
-                    ObjPoDetail.UOM = 0;
+                    ObjPoDetail.UOM = "";
                     ObjPoDetail.Qty = Convert.ToInt32(_qty);
                     ObjPoDetail.Qty_Outstanding= Convert.ToInt32(0);
                     ObjPoDetail.Total = Convert.ToInt32(_total);
@@ -129,6 +129,13 @@ namespace MVC.UI.Controllers
             string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
             return Redirect("~/Report/ReportViewer_PO.aspx?po_no=" + str + "&logo=" + imgLogo);
             //return View();
+        }
+
+        //GetItemByPoNo
+        public JsonResult GetItemByPoNo(string po_number)
+        {
+            List<GR_TransDbo> listItem = POItem.getItemBarang(po_number);
+            return Json(listItem);
         }
     }
 }

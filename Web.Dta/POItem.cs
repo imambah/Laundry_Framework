@@ -60,7 +60,15 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<PO_DetailDbo>(context, new PO_DetailDbo()).FirstOrDefault();
         }
 
+        public static List<GR_TransDbo> getItemBarang(string po_no)
+        {
 
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "sp_PO_GetItemByPO";
+            context.AddParameter("@po_no", po_no);
+            return DBUtil.ExecuteMapper(context, new GR_TransDbo());
+        }
 
 
     }
