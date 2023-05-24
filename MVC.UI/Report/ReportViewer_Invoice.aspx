@@ -20,7 +20,9 @@
         </rsweb:ReportViewer>
         
     </div>
-
+    
+  
+        <%--<asp:fileupload id="FileUpload1" CssClass="s" runat="server"></asp:fileupload>--%>
 
 </form> 
    <%-- </asp:Content>--%>

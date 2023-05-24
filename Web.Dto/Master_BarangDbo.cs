@@ -14,7 +14,7 @@ namespace Web.Dto
         public string UoM { get; set; }
         public double Price_Purchase { get; set; }
         public double Price_Inventory { get; set; }
-        public string Stock { get; set; }
+        public decimal Stock { get; set; }
         public decimal Buffer_Stock { get; set; }
         public string Company_Persentage { get; set; }
         public string Vat_Flag { get; set; }
@@ -35,6 +35,7 @@ namespace Web.Dto
             obj.Barcode = reader["Barcode"].ToString();
             obj.Group_Code = reader["Group_Code"] == DBNull.Value ? null : reader["Group_Code"].ToString();
             obj.UoM = reader["UoM"].ToString();
+            obj.Stock = reader["Stock"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Stock"]);
             obj.Buffer_Stock = reader["Buffer_Stock"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Buffer_Stock"]); 
             obj.Vat_Flag = reader["Vat_Flag"].ToString();
             obj.Conversion = reader["Conversion"].ToString();

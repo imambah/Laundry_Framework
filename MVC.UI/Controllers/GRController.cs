@@ -56,7 +56,6 @@ namespace MVC.UI.Controllers
                     var gr_number = tbl_parameterItem.getPO_Nomer("gr");
                     rows.ForEach(x =>
                     {
-                        //_item_code + "|" + _nama_barang + "|" + _pesan + "|" + _sisa + "|" + _terima + "|" + _keterangan;
                         var _gr_no = gr_number;
                         var row = x.Split('|');
                         var _item_code = row[0];
