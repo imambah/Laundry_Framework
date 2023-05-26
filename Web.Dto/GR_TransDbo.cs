@@ -26,6 +26,7 @@ namespace Web.Dto
         public int qty { get; set; }
         public double total { get; set; }
         public int sisa { get; set; }
+        public string keterangan { get; set; }
         public GR_TransDbo Map(System.Data.IDataReader reader)
         {
             GR_TransDbo obj = new GR_TransDbo();
@@ -46,6 +47,7 @@ namespace Web.Dto
             obj.qty = reader["Quantity"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Quantity"]);
             obj.total = reader["Total"] == DBNull.Value ? 0 : Convert.ToDouble(reader["Total"]);
             obj.sisa = reader["sisa"] == DBNull.Value ? 0 : Convert.ToInt32(reader["sisa"]);
+            obj.keterangan = reader["keterangan"] == DBNull.Value ? "" : reader["keterangan"].ToString();
             return obj;
         }
     }

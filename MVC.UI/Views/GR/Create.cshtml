@@ -99,6 +99,9 @@
                             <th>
                                 Nama Barang
                             </th>
+                            <th>
+                                Harga Barang
+                            </th>
                             <th class="text-center">Pesan</th>
                             <th class="text-center">Sisa</th>
                             <th class="text-center">Terima</th>
@@ -160,7 +163,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    var output = data.map(i => "<tr><td>" + i.item_code + "</td><td>" + i.item_name + "</td><td style='text-align:center'>" + i.qty + "</td><td style='text-align:center'>" + i.sisa + "</td><td style='text-align:center'><input type='text' id='terima' name='terima' value=0 style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);'></td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
+                    var output = data.map(i => "<tr><td>" + i.item_code + "</td><td>" + i.item_name + "</td><td>" + i.price +  "</td><td style='text-align:center' >" + i.qty + "</td><td style='text-align:center'>" + i.sisa + "</td><td style='text-align:center'><input type='text' id='terima' name='terima' value=0 style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);'></td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
                      $("#tableBody").html(output);
                 }
             })
@@ -178,11 +181,12 @@
             for (var i = 1; i < sTableName.rows.length; i++) {
                 var _item_code = sTableName.rows[i].cells[0].innerText;
                 var _nama_barang = sTableName.rows[i].cells[1].innerText;
-                var _pesan = sTableName.rows[i].cells[2].innerText;
-                var _sisa = sTableName.rows[i].cells[3].innerText;
-                var _terima = sTableName.rows[i].cells[4].firstChild.value;
-                var _keterangan = sTableName.rows[i].cells[5].firstChild.value;
-                var row = _item_code + "|" + _nama_barang + "|" + _pesan + "|" + _sisa + "|" + _terima + "|" + _keterangan;
+                var _price = sTableName.rows[i].cells[2].innerText;
+                var _pesan = sTableName.rows[i].cells[3].innerText;
+                var _sisa = sTableName.rows[i].cells[4].innerText;
+                var _terima = sTableName.rows[i].cells[5].firstChild.value;
+                var _keterangan = sTableName.rows[i].cells[6].firstChild.value;
+                var row = _item_code + "|" + _nama_barang + "|" + _price + "|" + _pesan + "|" + _sisa + "|" + _terima + "|" + _keterangan;
                 rows.push(row);
             }
             //row.cells[index].getElementsByName('inputcell' + index)[0].value;

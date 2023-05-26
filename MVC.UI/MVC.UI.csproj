@@ -227,6 +227,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\APController.cs" />
     <Compile Include="Controllers\ARAgingController.cs" />
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\GRController.cs" />
@@ -517,6 +518,7 @@
     <Content Include="Views\GR\index.cshtml" />
     <Content Include="Views\GR\Create.cshtml" />
     <Content Include="Views\GR\print.cshtml" />
+    <Content Include="Views\AP\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -549,7 +551,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Report\Invoice.rdlc" />
-    <EmbeddedResource Include="Report\Rpt_GR.rdlc" />
+    <EmbeddedResource Include="Report\Report_GR.rdlc" />
     <EmbeddedResource Include="Report\Rpt_PO.rdlc" />
     <EmbeddedResource Include="Report\Rpt_Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />

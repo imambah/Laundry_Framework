@@ -60,16 +60,21 @@ namespace MVC.UI.Controllers
                         var row = x.Split('|');
                         var _item_code = row[0];
                         var _nama_barang = row[1];
-                        var _pesan = row[2];
-                        var _sisa = row[3];
-                        var _terima = row[4];
-                        var _keterangan = row[5];
+                        var _price = row[2];
+                        var _pesan = row[3];
+                        var _sisa = row[4];
+                        var _terima = row[5];
+                        var _keterangan = row[6];
+
+
 
                         GR_DetailDbo ObjGRDetail = new GR_DetailDbo();
                         ObjGRDetail.GR_Number = _gr_no;
                         ObjGRDetail.GR_line = 0;
                         ObjGRDetail.Item_Code = _item_code;
+                        ObjGRDetail.Price_Sales = Convert.ToDouble(_price);
                         ObjGRDetail.qty = Convert.ToInt32(_terima);
+                        ObjGRDetail.keterangan = _keterangan;
                         GRItem.Insert_Detail(ObjGRDetail, _ponumber);
 
                     });

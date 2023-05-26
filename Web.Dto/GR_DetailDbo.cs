@@ -21,6 +21,7 @@ namespace Web.Dto
         public DateTime? Expire_Date { get; set; }
         public int CountBatch { get; set; }
         public DateTime? Create_Date { get; set; }
+        public string keterangan { get; set; }
 
         public GR_DetailDbo Map(System.Data.IDataReader reader)
         {
@@ -41,6 +42,7 @@ namespace Web.Dto
             obj.Expire_Date = reader["Expire_Date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["Expire_Date"]);
             obj.CountBatch = reader["CountBatch"] == DBNull.Value ? 0 : Convert.ToInt32(reader["CountBatch"]);
             obj.Create_Date = reader["Create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["Create_date"]);
+            obj.keterangan = reader["keterangan"] == DBNull.Value ? "" : reader["keterangan"].ToString();
             return obj;
         }
     }

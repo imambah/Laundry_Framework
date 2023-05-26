@@ -58,6 +58,8 @@ namespace Web.Dta
             context.AddParameter("@item_code", obj.Item_Code);
             context.AddParameter("@quantity", obj.qty);
             context.AddParameter("@po_no", po_no);
+            context.AddParameter("@keterangan", obj.keterangan);
+            context.AddParameter("@price", obj.Price_Sales);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<GR_DetailDbo>(context, new GR_DetailDbo()).FirstOrDefault();

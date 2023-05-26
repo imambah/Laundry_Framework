@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APDbo.cs" />
     <Compile Include="BOMDetailDbo.cs" />
     <Compile Include="BOMDbo.cs" />
     <Compile Include="CashDbo.cs" />

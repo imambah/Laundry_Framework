@@ -64,7 +64,7 @@
                                    @* <a class="text-success" href="@Url.Action("Edit", new { id=item.PO_number })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>*@
                                     <a class="text-danger" href="@Url.Action("Delete", new { id=item.PO_number  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
                                     <a class="text-success" href="@Url.Action("Print", new { po_no=item.PO_number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
-                                    <a class="text-success" href="@Url.Action("Selesai", new { id=item.PO_number })" data-toggle="tooltip" title="Proses Selesai"><i class="fa fa-check"></i></a>
+                                   @* <a class="text-success" href="@Url.Action("Selesai", new { id=item.PO_number })" data-toggle="tooltip" title="Proses Selesai"><i class="fa fa-check"></i></a>*@
                              </td>
 
                         </tr>

@@ -29,7 +29,7 @@ namespace MVC.UI.Report
                 DataSet dsCatatan = new DataSet();
 
                 //customers = _context.Customers.Where(t => t.FirstName.Contains(searchText) || t.LastName.Contains(searchText)).OrderBy(a => a.CustomerID).ToList();
-                ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Rpt_GR.rdlc");
+                ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/Report/Report_GR.rdlc");
 
                 //ReportParameter lim = new ReportParameter("image", @logo, true);
                 ReportViewer1.LocalReport.EnableExternalImages = true;
