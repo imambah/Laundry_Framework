@@ -35,13 +35,16 @@
                             No.PO
                         </th>
                         <th>
+                            No.GR
+                        </th>
+                        <th>
                             Supplier
                         </th>
 
                         <th>
-                            Tgl PO 
+                            Tgl PO
                         </th>
-                       
+
 
                         <th>Aksi</th>
                     </tr>
@@ -52,6 +55,9 @@
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PO_Number)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GR_Number)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.supplier_id)
