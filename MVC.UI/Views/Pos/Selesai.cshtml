@@ -343,7 +343,7 @@
 
         var nilai_grand_total = parseInt(intNilaiTotal);
         var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total;
-        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total-total_disc);
+        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total);
         var GT = nilai_grand_total - total_disc + total_ppn;
         $("#nilai_grandtotal").val(GT);
     };  
@@ -355,11 +355,12 @@
 
         var nilai_grand_total = parseInt(intNilaiTotal); 
         var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total ;
-        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total - total_disc);
+        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total );
         var GT = nilai_grand_total - total_disc + total_ppn;
         $("#nilai_grandtotal").val(GT);
     }
 
+    
 </script>
 
 
