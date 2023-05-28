@@ -5,6 +5,28 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@{
+    List<SelectListItem> listVAT = new List<SelectListItem>();
+    listVAT.Add(new SelectListItem
+    {
+        Text = "-- Pilih PPn --",
+        Value = "",
+        Selected = true
+    });
+    listVAT.Add(new SelectListItem
+    {
+        Text = "Ya",
+        Value = "1",
+
+    });
+    listVAT.Add(new SelectListItem
+    {
+        Text = "Tidak",
+        Value = "0",
+
+    });
+}
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Data Master Barang</h1>
@@ -52,8 +74,9 @@
 
                     <div class="col-sm-1 control-label">UoM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM" })
-                        @Html.ValidationMessageFor(model => model.UoM)
+                        @Html.DropDownListFor(model => model.UoM, ViewBag.SatuanList as SelectList, new { @class = "form-control" })
+                        @*@Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM" })
+                            @Html.ValidationMessageFor(model => model.UoM)*@
                     </div>
                 </div>
 
@@ -66,8 +89,7 @@
                     </div>
                     <div class="col-sm-1 control-label">Vat Flag </div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Vat_Flag, new { @class = "form-control", placeholder = "Vat Flag" })
-                        @Html.ValidationMessageFor(model => model.Vat_Flag)
+                        @Html.DropDownListFor(model => model.Vat_Flag, listVAT, new { @class = "form-control" })
                     </div>
 
                 </div>

@@ -30,6 +30,15 @@ namespace MVC.UI.Controllers
                 ListItemGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
             });
             ViewBag.GroupList = new SelectList(ListItemGroup, "Value", "Text");
+
+            List<ItemGroupDbo> MasterSatuan = Master_ItemGroupItem.GetSatuan();
+            List<SelectListItem> ListSatuan = new List<SelectListItem>();
+            MasterSatuan.ForEach(t =>
+            {
+                ListSatuan.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.SatuanList = new SelectList(ListSatuan, "Value", "Text");
+
             Master_BarangDbo existing = Master_BarangItem.GetById(id);
             return View(existing);
         }
@@ -45,6 +54,14 @@ namespace MVC.UI.Controllers
                 ListItemGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
             });
             ViewBag.GroupList = new SelectList(ListItemGroup, "Value", "Text");
+
+            List<ItemGroupDbo> MasterSatuan = Master_ItemGroupItem.GetSatuan();
+            List<SelectListItem> ListSatuan = new List<SelectListItem>();
+            MasterSatuan.ForEach(t =>
+            {
+                ListSatuan.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.SatuanList = new SelectList(ListSatuan, "Value", "Text");
 
             return View();
         }
@@ -76,6 +93,15 @@ namespace MVC.UI.Controllers
                 ListItemGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
             });
             ViewBag.GroupList = new SelectList(ListItemGroup, "Value", "Text");
+
+            List<ItemGroupDbo> MasterSatuan = Master_ItemGroupItem.GetSatuan();
+            List<SelectListItem> ListSatuan = new List<SelectListItem>();
+            MasterSatuan.ForEach(t =>
+            {
+                ListSatuan.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.SatuanList = new SelectList(ListSatuan, "Value", "Text");
+
             Master_BarangDbo existing = Master_BarangItem.GetById(id);
             return View(existing);
         }

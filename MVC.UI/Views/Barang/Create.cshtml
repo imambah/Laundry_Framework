@@ -4,6 +4,27 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@{
+    List<SelectListItem> listVAT = new List<SelectListItem>();
+    listVAT.Add(new SelectListItem
+    {
+        Text = "-- Pilih PPn --",
+        Value = "",
+        Selected = true
+    });
+    listVAT.Add(new SelectListItem
+    {
+        Text = "Ya",
+        Value = "1",
+
+    });
+    listVAT.Add(new SelectListItem
+    {
+        Text = "Tidak",
+        Value = "0",
+
+    });
+}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Data Item / Barang</h1>
@@ -51,22 +72,23 @@
 
                     <div class="col-sm-1 control-label">UoM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM" })
-                        @Html.ValidationMessageFor(model => model.UoM)
+                        @Html.DropDownListFor(model => model.UoM, ViewBag.SatuanList as SelectList, new { @class = "form-control" })
+                        @*@Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM" })
+                            @Html.ValidationMessageFor(model => model.UoM)*@
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Minimum Stock </div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "100,000,000.00" })
+                        @Html.TextBoxFor(model => model.Buffer_Stock, new { @class = "form-control", placeholder = "100,000,000.00", @type = "number" })
                         @Html.ValidationMessageFor(model => model.Buffer_Stock)
                     </div>
-                    <div class="col-sm-1 control-label">Vat Flag </div>
+                    <div class="col-sm-1 control-label">PPn Flag </div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.Vat_Flag, new { @class = "form-control", placeholder = "Vat Flag" })
-                        @Html.ValidationMessageFor(model => model.Vat_Flag)
-                    </div>
+                        @Html.DropDownListFor(model => model.Vat_Flag, listVAT, new { @class = "form-control", placeholder = "Transaction Type" })
+
+                      </div>
 
                 </div>
 
@@ -74,7 +96,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Konversi</div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.Conversion, new { @class = "form-control", placeholder = "Conversion" })
+                        @Html.TextBoxFor(model => model.Conversion, new { @class = "form-control", placeholder = "Conversion", @type = "number" })
                         @Html.ValidationMessageFor(model => model.Conversion)
                     </div>
 
@@ -115,5 +137,20 @@
             $input.siblings('.Buffer_Stock').text('$' + num);
         });
     })
+
+    function ValidateNumber(e) {
+        var charCode;
+        if (e.keyCode > 0) {
+            charCode = e.which || e.keyCode;
+        }
+        else if (typeof (e.charCode) != "undefined") {
+            charCode = e.which || e.keyCode;
+        }
+        if (charCode == 46)
+            return true;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    };
 
 </script>

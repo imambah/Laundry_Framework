@@ -33,5 +33,14 @@ namespace Web.Dta
 
         #endregion
 
+        public static List<ItemGroupDbo> GetSatuan()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_parameter_GetByType]";
+            context.AddParameter("@type", "SATUAN");
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new ItemGroupDbo());
+        }
     }
 }

@@ -4,6 +4,28 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+@{
+    List<SelectListItem> listVAT = new List<SelectListItem>();
+    listVAT.Add(new SelectListItem
+    {
+        Text = "-- Pilih PPn --",
+        Value = "",
+        Selected = true
+    });
+    listVAT.Add(new SelectListItem
+    {
+        Text = "Ya",
+        Value = "1",
+
+    });
+    listVAT.Add(new SelectListItem
+    {
+        Text = "Tidak",
+        Value = "0",
+
+    });
+}
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>Data Item / Barang</h1>
@@ -46,13 +68,14 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kategori</div>
                     <div class="col-sm-3">
-                        @Html.DropDownListFor(model => model.Group_Code, ViewBag.GroupList as SelectList, new { @class = "form-control" , disabled = "disabled" })
+                        @Html.DropDownListFor(model => model.Group_Code, ViewBag.GroupList as SelectList, new { @class = "form-control", disabled = "disabled" })
                     </div>
 
                     <div class="col-sm-1 control-label">UoM</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM", disabled = "disabled" })
-                        @Html.ValidationMessageFor(model => model.UoM)
+                        @Html.DropDownListFor(model => model.UoM, ViewBag.SatuanList as SelectList, new { @class = "form-control", disabled = "disabled" })
+                        @*@Html.TextBoxFor(model => model.UoM, new { @class = "form-control", placeholder = "UoM", disabled = "disabled" })
+                            @Html.ValidationMessageFor(model => model.UoM)*@
                     </div>
                 </div>
 
