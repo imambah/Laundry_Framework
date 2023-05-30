@@ -100,7 +100,13 @@
 
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Vat_Flag)
+                                @if (item.Vat_Flag == "0")
+                                {
+                                    @("Tidak") }
+                                else
+                                {
+                                    @("Ya")
+                                }
                             </td>
 
                             <td>

@@ -1368,7 +1368,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!disc.Value/100) * Fields!nilai.Value</Value>
+                                  <Value>=Fields!disc.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -1394,14 +1394,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ppn1">
+                        <Textbox Name="ppn">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!ppn.Value/100)*Fields!nilai.Value</Value>
+                                  <Value>=Fields!ppn.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <Format>#,0.00;(#,0.00)</Format>
@@ -1413,7 +1413,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ppn1</rd:DefaultName>
+                          <rd:DefaultName>ppn</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>

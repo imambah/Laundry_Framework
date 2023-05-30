@@ -138,7 +138,7 @@
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
-                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button type="button" name="savedata" class="btn btn-success"  onclick="validatestatus()"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
                     </div>
                 </div>
             }
@@ -169,14 +169,59 @@
             })
     });
 
+    function validatestatus() {
+        var status = validateValue();
+        //alert(status);
+        if (status == false) {
+            alert("Nilai Terima harus lebih kecil dari sisa");
+        } else {
+            submitForm();
+
+        }
+    };
+
+    function submitForm() {
+        //alert('masuk submit');
+        var sTableName = document.getElementById("tabelBarang");
+        var rows = [];
+            for (var i = 1; i < sTableName.rows.length; i++) {
+                var _item_code = sTableName.rows[i].cells[0].innerText;
+                var _nama_barang = sTableName.rows[i].cells[1].innerText;
+                var _price = sTableName.rows[i].cells[2].innerText;
+                var _pesan = sTableName.rows[i].cells[3].innerText;
+                var _sisa = sTableName.rows[i].cells[4].innerText;
+                var _terima = sTableName.rows[i].cells[5].firstChild.value;
+                var _keterangan = sTableName.rows[i].cells[6].firstChild.value;
+                var row = _item_code + "|" + _nama_barang + "|" + _price + "|" + _pesan + "|" + _sisa + "|" + _terima + "|" + _keterangan;
+                rows.push(row);
+            }
+            //row.cells[index].getElementsByName('inputcell' + index)[0].value;
+            //detail -====================================================
+            //insert to header====================
+            var _ponumber = $("#PO_Number").val();
+            var _podate = $("#tgl_po").val();
+            var _supplier_id = $("#supplier_id").val();
+            var _supplier_name = $("#supplier_name").val();
+            var _rencana_kirim = $("#rencana_kirim").val();
+            var _cara_bayar = $("#cara_bayar").val();
+            var _po_desc = $("#PO_description").val();
+
+            var _header = _ponumber + '|' + _podate + '|' + _supplier_id + '|' + _supplier_name + '|' + _rencana_kirim + '|' + _cara_bayar + '|' + _po_desc
+            // header ============================
+        $.post('@Url.Action("Create", "GR")', { rows: rows, header: _header }, function (data) { });
+
+       
+    
+    }
 
     $('#saveform').submit(function () {
-        var sTableName = document.getElementById("tabelBarang");
-        var status = validateValue();
-        if (status == false){
-            Alert("Nilai Terima harus lebih kecil dari sisa");
-        }
-        else {
+         var sTableName = document.getElementById("tabelBarang");
+        //var status = validateValue();
+        // alert(status)
+        //if (status == "1"){
+        //    Alert("Nilai Terima harus lebih kecil dari sisa");
+        //}
+        //else {
             var rows = [];
             for (var i = 1; i < sTableName.rows.length; i++) {
                 var _item_code = sTableName.rows[i].cells[0].innerText;
@@ -203,9 +248,12 @@
             var _header = _ponumber + '|' + _podate + '|' + _supplier_id + '|' + _supplier_name + '|' + _rencana_kirim + '|' + _cara_bayar + '|' + _po_desc
             // header ============================
             $.post('@Url.Action("Create", "GR")', { rows: rows, header: _header }, function (data) {});
-        }
+        //}
 
     });
+
+
+
 
     function ValidateNumber(e) {
         var charCode;
@@ -226,9 +274,11 @@
         /*alert('kadie');*/
         var sTableName = document.getElementById("tabelBarang");
         for (var i = 1; i < sTableName.rows.length; i++) {
-            var _sisa = sTableName.rows[i].cells[3].innerText;
-            var _terima = sTableName.rows[i].cells[4].firstChild.value;
-            if (_terima > _sisa) {
+            var _sisa = sTableName.rows[i].cells[4].innerText;
+            var _terima = sTableName.rows[i].cells[5].firstChild.value;
+            //alert(_sisa);
+            //alert(_terima);
+            if (parseInt(_terima) > parseInt(_sisa)) {
                 /*alert('Nilai Terima harus lebih kecil dari Sisa');*/
                 return false;
             }

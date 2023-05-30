@@ -151,6 +151,7 @@
               <Mapping SourceColumn="CustomerName" DataSetColumn="CustomerName" />
               <Mapping SourceColumn="alamat" DataSetColumn="alamat" />
               <Mapping SourceColumn="tgl_po" DataSetColumn="tgl_po" />
+              <Mapping SourceColumn="keterangan" DataSetColumn="keterangan" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -496,6 +497,13 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="tgl_po" msprop:Generator_ColumnPropNameInTable="tgl_poColumn" msprop:Generator_ColumnPropNameInRow="tgl_po" msprop:Generator_UserColumnName="tgl_po" msprop:Generator_ColumnVarNameInTable="columntgl_po" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="keterangan" msprop:Generator_ColumnPropNameInRow="keterangan" msprop:Generator_ColumnPropNameInTable="keteranganColumn" msprop:Generator_ColumnVarNameInTable="columnketerangan" msprop:Generator_UserColumnName="keterangan" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -540,14 +548,14 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="alamat" msprop:Generator_UserColumnName="alamat" msprop:Generator_ColumnPropNameInTable="alamatColumn" msprop:Generator_ColumnPropNameInRow="alamat" msprop:Generator_ColumnVarNameInTable="columnalamat" minOccurs="0">
+              <xs:element name="alamat" msprop:Generator_ColumnPropNameInTable="alamatColumn" msprop:Generator_ColumnPropNameInRow="alamat" msprop:Generator_UserColumnName="alamat" msprop:Generator_ColumnVarNameInTable="columnalamat" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PO_number" msprop:Generator_ColumnPropNameInRow="PO_number" msprop:Generator_ColumnPropNameInTable="PO_numberColumn" msprop:Generator_ColumnVarNameInTable="columnPO_number" msprop:Generator_UserColumnName="PO_number" minOccurs="0">
+              <xs:element name="PO_number" msprop:Generator_UserColumnName="PO_number" msprop:Generator_ColumnPropNameInTable="PO_numberColumn" msprop:Generator_ColumnPropNameInRow="PO_number" msprop:Generator_ColumnVarNameInTable="columnPO_number" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
