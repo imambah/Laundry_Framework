@@ -24,6 +24,7 @@ namespace MVC.UI.Controllers
 
         public ActionResult Create()
         {
+           
             return View();
         }
 
@@ -229,6 +230,7 @@ namespace MVC.UI.Controllers
             POS_TransactionDbo existing = Master_POSItem.CancelByID(Int32.Parse(id));
             return RedirectToAction("Index");
         }
+       
 
     }
 }

@@ -2064,6 +2064,10 @@ namespace MVC.UI {
             
             private global::System.Data.DataColumn columnketerangan;
             
+            private global::System.Data.DataColumn columnbillto_id;
+            
+            private global::System.Data.DataColumn columnbillto_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_Report_PODataTable() {
@@ -2251,6 +2255,22 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn billto_idColumn {
+                get {
+                    return this.columnbillto_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn billto_nameColumn {
+                get {
+                    return this.columnbillto_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2305,7 +2325,9 @@ namespace MVC.UI {
                         string CustomerName, 
                         string alamat, 
                         System.DateTime tgl_po, 
-                        string keterangan) {
+                        string keterangan, 
+                        string billto_id, 
+                        string billto_name) {
                 sp_Report_PORow rowsp_Report_PORow = ((sp_Report_PORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PO_number,
@@ -2326,7 +2348,9 @@ namespace MVC.UI {
                         CustomerName,
                         alamat,
                         tgl_po,
-                        keterangan};
+                        keterangan,
+                        billto_id,
+                        billto_name};
                 rowsp_Report_PORow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_Report_PORow);
                 return rowsp_Report_PORow;
@@ -2368,6 +2392,8 @@ namespace MVC.UI {
                 this.columnalamat = base.Columns["alamat"];
                 this.columntgl_po = base.Columns["tgl_po"];
                 this.columnketerangan = base.Columns["keterangan"];
+                this.columnbillto_id = base.Columns["billto_id"];
+                this.columnbillto_name = base.Columns["billto_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2411,6 +2437,10 @@ namespace MVC.UI {
                 base.Columns.Add(this.columntgl_po);
                 this.columnketerangan = new global::System.Data.DataColumn("keterangan", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnketerangan);
+                this.columnbillto_id = new global::System.Data.DataColumn("billto_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbillto_id);
+                this.columnbillto_name = new global::System.Data.DataColumn("billto_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbillto_name);
                 this.columnPO_number.MaxLength = 30;
                 this.columnPO_Description.MaxLength = 50;
                 this.columnItemCode.MaxLength = 25;
@@ -2422,6 +2452,8 @@ namespace MVC.UI {
                 this.columnCustomerName.MaxLength = 50;
                 this.columnalamat.MaxLength = 2147483647;
                 this.columnketerangan.MaxLength = 50;
+                this.columnbillto_id.MaxLength = 10;
+                this.columnbillto_name.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4887,6 +4919,38 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string billto_id {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_PO.billto_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'billto_id\' in table \'sp_Report_PO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_PO.billto_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string billto_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_PO.billto_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'billto_name\' in table \'sp_Report_PO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_PO.billto_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPO_numberNull() {
                 return this.IsNull(this.tablesp_Report_PO.PO_numberColumn);
             }
@@ -5111,6 +5175,30 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetketeranganNull() {
                 this[this.tablesp_Report_PO.keteranganColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isbillto_idNull() {
+                return this.IsNull(this.tablesp_Report_PO.billto_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setbillto_idNull() {
+                this[this.tablesp_Report_PO.billto_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isbillto_nameNull() {
+                return this.IsNull(this.tablesp_Report_PO.billto_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setbillto_nameNull() {
+                this[this.tablesp_Report_PO.billto_nameColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6320,6 +6408,8 @@ namespace MVC.UI.DataSet_POSTableAdapters {
             tableMapping.ColumnMappings.Add("alamat", "alamat");
             tableMapping.ColumnMappings.Add("tgl_po", "tgl_po");
             tableMapping.ColumnMappings.Add("keterangan", "keterangan");
+            tableMapping.ColumnMappings.Add("billto_id", "billto_id");
+            tableMapping.ColumnMappings.Add("billto_name", "billto_name");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

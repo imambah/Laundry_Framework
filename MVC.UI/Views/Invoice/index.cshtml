@@ -23,11 +23,11 @@
         Text = "Corporate",
         Value = "Corporate",
     });
-    //listItems.Add(new SelectListItem
-    //{
-    //    Text = "Counter",
-    //    Value = "Counter",
-    //});
+    listItems.Add(new SelectListItem
+    {
+        Text = "Counter",
+        Value = "Counter",
+    });
     listItems.Add(new SelectListItem
     {
         Text = "Hotel",
@@ -50,134 +50,9 @@
 
 }
 
-@{
-    List<SelectListItem> listItems_Bulan = new List<SelectListItem>();
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Januari",
-        Value = "1",
 
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Februari",
-        Value = "2",
 
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Maret",
-        Value = "3",
 
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "April",
-        Value = "4",
-
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Mei",
-        Value = "5",
-
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Juni",
-        Value = "6",
-
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Juli",
-        Value = "7",
-
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Agustus",
-        Value = "8",
-
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "September",
-        Value = "9",
-
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Oktober",
-        Value = "10",
-
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "November",
-        Value = "11",
-    });
-    listItems_Bulan.Add(new SelectListItem
-    {
-        Text = "Desember",
-        Value = "12",
-
-    });
-
-}
-
-@{
-    List<SelectListItem> listItems_Tahun = new List<SelectListItem>();
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2018",
-        Value = "2018",
-
-    });
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2019",
-        Value = "2019",
-
-    });
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2020",
-        Value = "2020",
-
-    });
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2021",
-        Value = "2021",
-
-    });
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2022",
-        Value = "2022",
-
-    });
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2023",
-        Value = "2023",
-
-    });
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2024",
-        Value = "2024",
-
-    });
-    listItems_Tahun.Add(new SelectListItem
-    {
-        Text = "2025",
-        Value = "2025",
-
-    });
-
-}
 
 
 <style>
@@ -225,23 +100,7 @@
                         @Html.ValidationMessageFor(model => model.customer_type)
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-sm-2 control-label">Tahun Period</div>
-                    <div class="col-sm-1">
-                        @Html.DropDownList("tahun_periode", listItems_Tahun, new { @class = "form-control", placeholder = "Transaction Type", id="tahun_periode"  })
 
-                    </div>
-                    <div class="col-sm-1 control-label">Bulan Period</div>
-                    <div class="col-sm-1">
-                        @Html.DropDownList("bulan_periode", listItems_Bulan, new { @class = "form-control", placeholder = "Transaction Type", id = "bulan_periode" })
-
-                    </div>
-                    <div class="col-sm-1 control-label">Period</div>
-                    <div class="col-sm-2">
-                        @Html.DropDownList("period_invoice", listItems_periode, new { @class = "form-control", placeholder = "Transaction Type" })
-
-                    </div>
-                </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Pelanggan</div>
                     <div class="col-sm-3">
@@ -268,6 +127,18 @@
                         @Html.ValidationMessageFor(model => model.customer_address)
                     </div>
 
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Periode Dari</div>
+                    <div class="col-sm-1">
+                        @*@Html.TextBoxFor(model => model.create_date, new { @class = "form-control", placeholder = "Tgl Selesai", required = "required" })*@
+                        @Html.TextBox("Start_Date", DateTime.Today.ToString("dd/MM/yyyy"), new { @class = "form-control", placeholder = "Tgl Awal", required = "required" })
+                    </div>
+                    <div class="col-sm-1 control-label">Sampai</div>
+                    <div class="col-sm-1">
+                        @Html.TextBox("End_Date", DateTime.Today.ToString("dd/MM/yyyy"), new { @class = "form-control", placeholder = "Tgl Selesai", required = "required" })
+                    </div>
+                   
                 </div>
                 <div class="form-group">
                     <div class="col-sm-2"></div>
@@ -326,6 +197,16 @@
 <!--  -->
 
 <script type="text/javascript">
+    $("#Start_Date").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/yy'
+    })
+    $("#End_Date").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/yy'
+    })
     $("#customer_name").autocomplete({
         source: function (request, response) {
             //var csname = 'Counter';
@@ -361,13 +242,14 @@
     $("#search_data").click(function () {
         var strtr_type = $('#customer_type').val();
         var strCustId = $('#customerid').val();
-        var strPeriode = $('#period_invoice').val();
-        var strTahun = $('#tahun_periode').val();
-        var strBulan = $('#bulan_periode').val();
+        var strStart_Date = $('#Start_Date').val();
+        var strEnd_Date = $('#End_Date').val();
+        //var strTahun = $('#tahun_periode').val();
+        //var strBulan = $('#bulan_periode').val();
         //alert(strTahun);
         $.ajax({
             type: "post",
-            url: "/Invoice/GetInvoice?CustomerType=" + strtr_type + "&CustomerId=" + strCustId + "&Periode=" + strPeriode + "&strTahun=" + strTahun + "&strBulan=" + strBulan,
+            url: "/Invoice/GetInvoice?CustomerType=" + strtr_type + "&CustomerId=" + strCustId + "&Start_Date=" + strStart_Date + "&End_Date=" + strEnd_Date,
             data: "[]",
             contentType: "application/json; charset=utf-8",
             dataType: "json",

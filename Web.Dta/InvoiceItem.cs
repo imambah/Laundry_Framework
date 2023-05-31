@@ -12,16 +12,17 @@ namespace Web.Dta
     /// </summary>    
     public partial class InvoiceItem
     {
-        public static List<InvoiceDbo> GetItemByParam(string strType, string CustomerID, string Periode, string strTahun, string strBulan)
+        public static List<InvoiceDbo> GetItemByParam(string strType, string CustomerID, DateTime Start_Date, DateTime End_Date)
         {
+            
+
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_Invoice_Get";
             context.CommandText = sqlQuery;
             context.AddParameter("@type", strType);
             context.AddParameter("@customerid", CustomerID);
-            context.AddParameter("@periode", Periode);
-            context.AddParameter("@tahun", strTahun);
-            context.AddParameter("@bulan", strBulan);
+            context.AddParameter("@start_date", Start_Date);
+            context.AddParameter("@end_date", End_Date);
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new InvoiceDbo());
         }

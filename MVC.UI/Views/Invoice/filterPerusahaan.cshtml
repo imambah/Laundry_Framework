@@ -216,14 +216,16 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Tahun Period</div>
+                    <div class="col-sm-2 control-label">Start Date</div>
                     <div class="col-sm-1">
-
+                        @Html.TextBoxFor(model => model.create_date, new { @class = "form-control", placeholder = "Tgl Awal", required = "required" })
+                        
                     </div>
-                    <div class="col-sm-1 control-label">Bulan Period</div>
+                    @*<div class="col-sm-1 control-label">End Date</div>
                     <div class="col-sm-1">
-
-                    </div>
+                        @Html.TextBoxFor(model => model.create_date, new { @class = "form-control", placeholder = "Tgl Akhir", required = "required" })
+                       
+                    </div>*@
                     <div class="col-sm-1 control-label">Period</div>
                     <div class="col-sm-2">
                         @Html.DropDownList("period_invoice", listItems_periode, new { @class = "form-control", placeholder = "Transaction Type" })
@@ -311,6 +313,11 @@
 <!-- /.content -->
 
 <script type="text/javascript">
+    $("#create_date").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/yy'
+    })
     $("#customer_name").autocomplete({
         source: function (request, response) {
             //var csname = 'Counter';

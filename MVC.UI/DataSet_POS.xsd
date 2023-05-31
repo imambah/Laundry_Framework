@@ -152,6 +152,8 @@
               <Mapping SourceColumn="alamat" DataSetColumn="alamat" />
               <Mapping SourceColumn="tgl_po" DataSetColumn="tgl_po" />
               <Mapping SourceColumn="keterangan" DataSetColumn="keterangan" />
+              <Mapping SourceColumn="billto_id" DataSetColumn="billto_id" />
+              <Mapping SourceColumn="billto_name" DataSetColumn="billto_name" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -497,7 +499,21 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="tgl_po" msprop:Generator_ColumnPropNameInTable="tgl_poColumn" msprop:Generator_ColumnPropNameInRow="tgl_po" msprop:Generator_UserColumnName="tgl_po" msprop:Generator_ColumnVarNameInTable="columntgl_po" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="keterangan" msprop:Generator_ColumnPropNameInRow="keterangan" msprop:Generator_ColumnPropNameInTable="keteranganColumn" msprop:Generator_ColumnVarNameInTable="columnketerangan" msprop:Generator_UserColumnName="keterangan" minOccurs="0">
+              <xs:element name="keterangan" msprop:Generator_UserColumnName="keterangan" msprop:Generator_ColumnPropNameInTable="keteranganColumn" msprop:Generator_ColumnPropNameInRow="keterangan" msprop:Generator_ColumnVarNameInTable="columnketerangan" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="billto_id" msprop:Generator_ColumnPropNameInRow="billto_id" msprop:Generator_ColumnPropNameInTable="billto_idColumn" msprop:Generator_ColumnVarNameInTable="columnbillto_id" msprop:Generator_UserColumnName="billto_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="billto_name" msprop:Generator_ColumnPropNameInRow="billto_name" msprop:Generator_ColumnPropNameInTable="billto_nameColumn" msprop:Generator_ColumnVarNameInTable="columnbillto_name" msprop:Generator_UserColumnName="billto_name" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -555,7 +571,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="PO_number" msprop:Generator_UserColumnName="PO_number" msprop:Generator_ColumnPropNameInTable="PO_numberColumn" msprop:Generator_ColumnPropNameInRow="PO_number" msprop:Generator_ColumnVarNameInTable="columnPO_number" minOccurs="0">
+              <xs:element name="PO_number" msprop:Generator_ColumnPropNameInTable="PO_numberColumn" msprop:Generator_ColumnPropNameInRow="PO_number" msprop:Generator_UserColumnName="PO_number" msprop:Generator_ColumnVarNameInTable="columnPO_number" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />

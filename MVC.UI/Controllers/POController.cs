@@ -23,6 +23,7 @@ namespace MVC.UI.Controllers
         {
             List<Master_BarangDbo> ListBarang = Master_BarangItem.GetAll();
             ViewBag.PO_number = tbl_parameterItem.getPO_Nomer("po");
+            ViewBag.TOPList = new SelectList(TOPList(), "id", "nama");
             return View(ListBarang);
         }
 
@@ -36,7 +37,17 @@ namespace MVC.UI.Controllers
                         select new { N.nama_suplier, N.alamat, N.kode_suplier });
             return Json(Name, JsonRequestBehavior.AllowGet);
         }
-
+        //
+        [HttpPost]
+        public JsonResult getNameBillTo(string Prefix)
+        {
+            var strValue = Prefix.ToUpper();
+            List<Master_Klien> ObjList = Master_KlienItem.GetAll();
+            var Name = (from N in ObjList
+                        where N.nama_klien.ToUpper().Contains(strValue)
+                        select new { N.nama_klien, N.kode_klien });
+            return Json(Name, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public ActionResult Create(List<string> rows, string header)
@@ -102,7 +113,9 @@ namespace MVC.UI.Controllers
                 ObjPoHeader.Term_Of_Payment = result[5].Trim();
                 ObjPoHeader.PO_Description = result[6].Trim();
                 ObjPoHeader.BranchID = Utilities.BranchID;
-                //ObjPosHeader.create_by = Utilities.Username;
+                ObjPoHeader.Billto_Id = result[7].Trim();
+                ObjPoHeader.Billto_Name = result[8].Trim();
+                    //ObjPosHeader.create_by = Utilities.Username;
                 POItem.Insert_Header(ObjPoHeader);
                 return RedirectToAction("Index", "PO");
                 //return RedirectToRoute("PO");
@@ -136,6 +149,20 @@ namespace MVC.UI.Controllers
         {
             List<GR_TransDbo> listItem = POItem.getItemBarang(po_number);
             return Json(listItem);
+        }
+       
+        public List<GroupDbo> TOPList()
+        {
+            List<GroupDbo> TOPList = Master_KlienItem.GetTOP();
+            return TOPList;
+        }
+
+        public ActionResult Delete(string po_no) {
+            PODbo existing = POItem.GetByPo(po_no);
+            existing.EntryByUser = Utilities.Username;
+            POItem.Update(existing, "Y");
+            return RedirectToAction("Index");
+            //return View();
         }
     }
 }

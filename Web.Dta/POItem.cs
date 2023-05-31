@@ -35,6 +35,8 @@ namespace Web.Dta
 
             context.AddParameter("@po_description", obj.PO_Description);
             context.AddParameter("@branchid", obj.BranchID);
+            context.AddParameter("@billto_id", obj.Billto_Id);
+            context.AddParameter("@billto_nama", obj.Billto_Name);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<PO_HeaderDbo>(context, new PO_HeaderDbo()).FirstOrDefault();
@@ -70,6 +72,26 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new GR_TransDbo());
         }
 
+        public static PODbo GetByPo(string po_no)
+        {
+            IDBHelper context = new DBHelper();
+            context.CommandType = CommandType.StoredProcedure;
+            context.CommandText = "[sp_PO_Getby_PONO]";
+            context.AddParameter("@po_no", po_no);
+            return DBUtil.ExecuteMapper<PODbo>(context, new PODbo()).FirstOrDefault();
+        }
 
+        public static PODbo Update(PODbo objPO, string is_delete)
+        {
+
+            IDBHelper context = new DBHelper();
+            context.AddParameter("@po_no", objPO.PO_number);
+            //context.AddParameter("@update_by", objPO.EntryByUser);
+            context.AddParameter("@is_delete", is_delete);
+            string sqlQuery = "[sp_PO_Delete]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<PODbo>(context, new PODbo()).FirstOrDefault();
+        }
     }
 }

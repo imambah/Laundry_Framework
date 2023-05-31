@@ -35,9 +35,23 @@ namespace MVC.UI.Controllers
             return ListBranch;
         }
 
-        public JsonResult GetInvoice(string CustomerType, string CustomerID, string Periode, string strTahun, string strBulan)
+        public JsonResult GetInvoice(string CustomerType, string CustomerID, string Start_Date, string End_Date)
         {
-            List<InvoiceDbo> listInvoice = InvoiceItem.GetItemByParam(CustomerType, CustomerID, Periode, strTahun, strBulan);
+            string[] date_start = Start_Date.Trim().Split('/');
+            string date = date_start[0].Trim();
+            string month = date_start[1].Trim();
+            string year = date_start[2].Trim();
+            
+            string start_dt = year + '/' + month + '/' + date;
+
+            string[] date_end = End_Date.Trim().Split('/');
+            string dt_end = date_end[0].Trim();
+            string mt_end = date_end[1].Trim();
+            string yr_end = date_end[2].Trim();
+           
+            string end_dt = yr_end + '/' + mt_end + '/' + dt_end;
+
+            List<InvoiceDbo> listInvoice = InvoiceItem.GetItemByParam(CustomerType, CustomerID, Convert.ToDateTime(start_dt), Convert.ToDateTime(end_dt));
             return Json(listInvoice);
         }
 
