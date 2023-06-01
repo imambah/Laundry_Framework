@@ -102,10 +102,10 @@ namespace MVC.UI.Controllers
             return Json(listItem);
         }
 
-        public ActionResult Print(string po_no)
+        public ActionResult Print(string gr_no)
         {
             var paramDbo = new ReportParamDbo();
-            paramDbo.param1 = po_no;
+            paramDbo.param1 = gr_no;
             return View(paramDbo);
         }
         public ActionResult PrintOut(ReportParamDbo Model)
@@ -113,7 +113,7 @@ namespace MVC.UI.Controllers
             string str = Model.param1;
             Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
             string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
-            return Redirect("~/Report/ReportViewer_GR.aspx?po_no=" + str + "&logo=" + imgLogo);
+            return Redirect("~/Report/ReportViewer_GR.aspx?gr_no=" + str + "&logo=" + imgLogo);
             //return View();
         }
     }

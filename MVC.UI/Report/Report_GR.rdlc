@@ -110,21 +110,23 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="NO:" + First(Fields!GR_Number.Value, "ds_GR")</Value>
+                    <Value>=First(Fields!GR_Number.Value, "ds_GR")</Value>
                     <Style>
-                      <FontSize>12pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
+                      <FontWeight>Normal</FontWeight>
                       <TextDecoration>None</TextDecoration>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.41667in</Top>
-            <Height>0.29167in</Height>
-            <Width>2.36458in</Width>
+            <Top>1.05708in</Top>
+            <Left>0.7875in</Left>
+            <Height>0.2486in</Height>
+            <Width>1.85416in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -143,19 +145,23 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="Date :" + First(Fields!GR_Date.Value, "ds_GR")</Value>
+                    <Value>= First(Fields!GR_Date.Value, "ds_GR")</Value>
                     <Style>
+                      <FontWeight>Normal</FontWeight>
                       <TextDecoration>None</TextDecoration>
                     </Style>
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.77083in</Top>
+            <Top>0.83069in</Top>
+            <Left>0.77708in</Left>
             <Height>0.20834in</Height>
-            <Width>2.36458in</Width>
+            <Width>1.85416in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -487,7 +493,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>ds_GR</DataSetName>
-            <Top>1.04861in</Top>
+            <Top>1.42361in</Top>
             <Height>1.45833in</Height>
             <Width>6.05728in</Width>
             <ZIndex>3</ZIndex>
@@ -1491,7 +1497,7 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>ds_GR</DataSetName>
-            <Top>2.60292in</Top>
+            <Top>2.97792in</Top>
             <Height>1.15625in</Height>
             <Width>6.05728in</Width>
             <ZIndex>4</ZIndex>
@@ -1505,7 +1511,6 @@
             <Source>External</Source>
             <Value>=Parameters!logo.Value</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>0.125in</Top>
             <Left>4.82639in</Left>
             <Height>0.70834in</Height>
             <Width>1.18277in</Width>
@@ -1516,8 +1521,167 @@
               </Border>
             </Style>
           </Image>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!PO_number.Value, "ds_GR")</Value>
+                    <Style>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <Top>0.54597in</Top>
+            <Left>0.77708in</Left>
+            <Height>0.25in</Height>
+            <Width>1.85416in</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="companyname">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!companyname.Value</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>companyname</rd:DefaultName>
+            <Top>0.85292in</Top>
+            <Left>3.20833in</Left>
+            <Height>0.25in</Height>
+            <Width>2.85292in</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>No. PO :</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>0.53347in</Top>
+            <Left>0.13417in</Left>
+            <Height>0.25in</Height>
+            <Width>0.63542in</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Tgl. PO :</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>0.80569in</Top>
+            <Left>0.13417in</Left>
+            <Height>0.25in</Height>
+            <Width>0.63542in</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>No. GR :</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>1.05569in</Top>
+            <Left>0.13417in</Left>
+            <Height>0.25in</Height>
+            <Width>0.63542in</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>5.92584in</Height>
+        <Height>4.13417in</Height>
         <Style />
       </Body>
       <Width>6.06125in</Width>

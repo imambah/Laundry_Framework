@@ -19,7 +19,7 @@ namespace MVC.UI.Report
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           string po_no = Request.QueryString["po_no"].ToString();
+           string gr_no = Request.QueryString["gr_no"].ToString();
            string logo = Request.QueryString["logo"].ToString();
 
             if (!Page.IsPostBack)
@@ -34,7 +34,7 @@ namespace MVC.UI.Report
                 //ReportParameter lim = new ReportParameter("image", @logo, true);
                 ReportViewer1.LocalReport.EnableExternalImages = true;
 
-                ds = GetData(po_no);
+                ds = GetData(gr_no);
                 dsCatatan = GetCatatan();
                 Company_ProfileDbo CP = Master_CompanyItem.GetCompanyProfile();
                 ReportParameter[] parameters = new ReportParameter[3];
@@ -54,7 +54,7 @@ namespace MVC.UI.Report
 
             }
         }
-        private DataSet GetData(string po_no)
+        private DataSet GetData(string gr_no)
         {
 
             string conString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
@@ -66,7 +66,7 @@ namespace MVC.UI.Report
             DataTable dt = new DataTable();
             cmd.Connection = con;
             cmd = new SqlCommand("[sp_Report_GR]", cmd.Connection);
-            cmd.Parameters.Add(new SqlParameter("@po_no", po_no));
+            cmd.Parameters.Add(new SqlParameter("@gr_no", gr_no));
             cmd.CommandType = CommandType.StoredProcedure;
             da.SelectCommand = cmd;
             da.Fill(ds);

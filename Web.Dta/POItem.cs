@@ -36,7 +36,7 @@ namespace Web.Dta
             context.AddParameter("@po_description", obj.PO_Description);
             context.AddParameter("@branchid", obj.BranchID);
             context.AddParameter("@billto_id", obj.Billto_Id);
-            context.AddParameter("@billto_nama", obj.Billto_Name);
+            context.AddParameter("@billto_name", obj.Billto_Name);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<PO_HeaderDbo>(context, new PO_HeaderDbo()).FirstOrDefault();

@@ -67,10 +67,18 @@
                             </td>
                           
                             <td>
+                                @if (item.GR_Number == "")
+                                {
                                     <a class="text-success" href="@Url.Action("Create", new { po_no=item.PO_Number })" data-toggle="tooltip" title="GR"><i class="fa fa-reply"></i></a>
-                                    <a class="text-success" href="@Url.Action("Print", new { po_no=item.PO_Number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
-                                   
-                             </td>
+                                    <a class="text-success" href="" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
+                                }
+                                else
+                                {
+                                    <a class="text-success" href="" data-toggle="tooltip" title="GR"><i class="fa fa-reply"></i></a>
+                                    <a class="text-success" href="@Url.Action("Print", new { gr_no = item.GR_Number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
+                                }
+
+                            </td>
 
                         </tr>
                     }

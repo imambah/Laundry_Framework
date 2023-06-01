@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@*@model Web.Dto.PO_HeaderDbo*@
 <style>
     .ui-autocomplete {
         max-height: 100px;
@@ -80,14 +81,16 @@
                     <div class="col-sm-2 control-label">Rencana Kirim</div>
                     <div class="col-sm-3">
                         @Html.TextBox("DeliveryDatePlan", null, new { id = "DeliveryDatePlan", @class = "form-control", placeholder = "Rencana Kirim", required = "required" })
-
                     </div>
 
                     <div class="col-sm-2 control-label">Cara Bayar</div>
                     <div class="col-sm-2">
-                        @*@Html.TextBox("Term_Of_Payment", null, new { id = "Term_Of_Payment", @class = "form-control", placeholder = "Cara Bayar", required = "required" })*@
-                                    
+
+                        @*@Html.DropDownList("Term_Of_Payment", new SelectList(ViewBag.TOPList, "Id", "nama"), new { @class = "form-control" })
+        @Html.Hidden("Term_Of_Payment", new SelectList(ViewBag.TOPList, "Id", "nama"))*@
+
                         @Html.DropDownList("Term_Of_Payment", ViewBag.TOPList as SelectList, new { @class = "form-control" })
+                        @*@Html.ValidationMessageFor("Term_Of_Payment")*@
                     </div>
 
                 </div>
@@ -95,7 +98,6 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Keterangan</div>
                     <div class="col-sm-7">
-                        @*@Html.TextBox("PO_Description", null, new { id = "PO_Description", @class = "form-control", placeholder = "Keterangan", required = "required" })*@
                         @Html.TextArea("PO_Description", new { rows = 3, columns = 40, @class = "form-control", placeholder = "Keterangan" })
                     </div>
                 </div>
@@ -112,10 +114,7 @@
                     <div class="col-sm-2 control-label">Kode Client</div>
                     <div class="col-sm-2">
                         @Html.TextBox("billto_id", null, new { id = "billto_id", @class = "form-control", placeholder = "Kode Client", required = "required", disabled = "disabled" })
-
                     </div>
-
-
                 </div>
 
 
@@ -500,7 +499,7 @@
             var _tof = $("#Term_Of_Payment").val();
             var _po_desc = $("#PO_Description").val();
             var _billto_name = $("#billto").val();
-            var _billto_id = $("#billto_id").val();
+            var _billto_id = $("#billto_id").val(); 
 
             var _header = _ponumber + '|' + _podate + '|' + _customer_id + '|' + _customer_name + '|' + _delivery_date_plane + '|' + _tof + '|' + _po_desc + '|' + _billto_id + '|' + _billto_name
             // header ============================

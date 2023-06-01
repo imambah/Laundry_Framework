@@ -23,7 +23,10 @@ namespace MVC.UI.Controllers
         {
             List<Master_BarangDbo> ListBarang = Master_BarangItem.GetAll();
             ViewBag.PO_number = tbl_parameterItem.getPO_Nomer("po");
-            ViewBag.TOPList = new SelectList(TOPList(), "id", "nama");
+            //var list = new SelectList(TOPList(), "Id", "nama");
+            //ViewBag.Term_Of_Payment = list;
+            ViewBag.Term_Of_Payment = new SelectList(TOPList(), "Id", "nama");
+            //ViewData["carabayarlist"] = GetList();
             return View(ListBarang);
         }
 
@@ -54,7 +57,7 @@ namespace MVC.UI.Controllers
         {
             try
             {
-                
+         
                 if (header == null)
                 {
                     return RedirectToAction("Index", "PO");
@@ -112,7 +115,7 @@ namespace MVC.UI.Controllers
                 ObjPoHeader.DeliveryDatePlan = Convert.ToDateTime(DeliveryDatePlan);
                 ObjPoHeader.Term_Of_Payment = result[5].Trim();
                 ObjPoHeader.PO_Description = result[6].Trim();
-                ObjPoHeader.BranchID = Utilities.BranchID;
+                    ObjPoHeader.BranchID = "";// Utilities.BranchID;
                 ObjPoHeader.Billto_Id = result[7].Trim();
                 ObjPoHeader.Billto_Name = result[8].Trim();
                     //ObjPosHeader.create_by = Utilities.Username;
@@ -163,6 +166,20 @@ namespace MVC.UI.Controllers
             POItem.Update(existing, "Y");
             return RedirectToAction("Index");
             //return View();
+        }
+
+        private List<SelectListItem> GetList()
+        {
+            List<GroupDbo> TOPList = Master_KlienItem.GetTOP();
+            List<SelectListItem> datalist = new List<SelectListItem>();
+            for (int i = 0; i < TOPList.Count; i++) {
+                datalist.Add(new SelectListItem
+                {
+                    Text = TOPList[i].nama.ToString(),
+                    Value = TOPList[i].Id.ToString()
+                });
+            }
+            return datalist;
         }
     }
 }
