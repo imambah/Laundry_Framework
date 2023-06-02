@@ -230,6 +230,7 @@
     <Compile Include="Controllers\APController.cs" />
     <Compile Include="Controllers\ARAgingController.cs" />
     <Compile Include="Controllers\ARController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\GRController.cs" />
     <Compile Include="Controllers\POController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
@@ -519,6 +520,8 @@
     <Content Include="Views\GR\Create.cshtml" />
     <Content Include="Views\GR\print.cshtml" />
     <Content Include="Views\AP\index.cshtml" />
+    <Content Include="Views\Contract\index.cshtml" />
+    <Content Include="Views\Contract\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

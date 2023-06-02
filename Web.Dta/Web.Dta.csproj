@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="APItem.cs" />
     <Compile Include="GRItem.cs" />
+    <Compile Include="Master_ContractItem.cs" />
     <Compile Include="POItem.cs" />
     <Compile Include="BOMItem.cs" />
     <Compile Include="CashItem.cs" />

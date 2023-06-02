@@ -258,7 +258,7 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
+                            <tr id="row1">
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ItemCode)
                                 </td>
@@ -339,7 +339,7 @@
                     let button = document.createElement('button');
                     button.innerText = 'Delete';
                     button.type = 'button';
-                    button.setAttribute('onclick', 'sayHi()');
+                    button.setAttribute('onclick', 'DeleteRowInGrid(this)');
                     cell6.appendChild(button);
                 }
                 else {//update di data gridnya
@@ -402,10 +402,20 @@
         $('#item_name').val(col2.trim());
         $('#item_price').val(col4.trim());
         $('#stock').val(col5.trim());
-
-
-
     });
+
+
+    function DeleteRowInGrid(r) {
+        //var d = document.getElementById("tabelBarang");
+        //r.remove().row(1);
+        var i = r.parentNode.parentNode.rowIndex;
+        document.getElementById('tabelBarang').deleteRow(1);
+        alert("Hi");
+    }
+    function deleteRow(btn) {
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
     $("#DeliveryDatePlan").datepicker({
         changeMonth: true,
         changeYear: true,

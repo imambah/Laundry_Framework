@@ -1,0 +1,253 @@
+﻿@model IEnumerable<Web.Dto.Master_PricelistDbo>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .ui-autocomplete {
+        max-height: 100px;
+        overflow-y: auto;
+    }
+
+    .ui-autocomplete {
+        height: 100px;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Contract Customer</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Contract</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Tambah Data Layanan Contract</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Konsumen</div>
+                    <div class="col-sm-4">
+                        @Html.TextBox("Nama_Klien", null, new { @class = "form-control", placeholder = "Nama Konsumen", required = "required" })
+                    </div>
+                    <div class="col-sm-2 control-label">Kode Konsumen</div>
+                    <div class="col-sm-2">
+                        @Html.TextBox("Kode_Klien", null, new { @class = "form-control", placeholder = "Kode Konsumen", required = "required" })
+
+                    </div>
+                </div>
+               
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Tambah Data Barang</h3>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-sm-1 control-label">Kode Layanan</div>
+                    <div class="col-sm-2">
+                        @Html.TextBox("kode_layanan", null, new { id = "kode_layanan", @class = "form-control", placeholder = "Kode Layanan", required = "required", disabled = "disabled" })
+
+                    </div>
+
+
+                    <div class="col-sm-1 control-label">
+                        Nama Layanan
+                    </div>
+                    <div class="col-sm-4">
+                        @Html.TextBox("nama_layanan", null, new { id = "nama_layanan", @class = "form-control", placeholder = "Nama Layanan", required = "required", disabled = "disabled" })
+
+                    </div>
+
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LayananModal">
+                            &nbsp;<i class="fa fa-search"></i>
+                            Cari
+                        </button>
+
+                    </div>
+
+                   
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-1 control-label">Type</div>
+                    <div class="col-sm-2">
+                        @Html.TextBox("type", null, new { id = "type", @class = "form-control", placeholder = "Type", @type = "number", required = "required", disabled = "disabled" })
+
+                    </div>
+
+                    <div class="col-sm-1 control-label">Harga</div>
+                    <div class="col-sm-2">
+                        @Html.TextBox("harga", null, new { id = "harga", @class = "form-control", placeholder = "harga", @type = "number" })
+
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" onclick="insertIntoTable()" class="btn btn-success" data-toggle="modal" data-target="">
+                            &nbsp;<i class="fa fa-plus"></i>
+                            Tambah&nbsp;
+                        </button>
+                    </div>
+
+                </div>
+
+
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Detail Barang</h3>
+                </div>
+                <br />
+
+                <table id="tabelServiceContract" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Kode Layanan
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Nama Layanan
+                            </th>
+
+                            <th>
+                                Harga
+                            </th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <div class="col-sm-10"></div>
+                    <div class="col-sm-2 text-right">
+                        <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                    </div>
+                </div>
+
+            }
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+                <!-- /.box-body -->
+            </div>
+    <!-- /.box -->
+
+    <div class="modal" id="LayananModal">
+        <div class="modal-dialog" style="width:1250px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">List Layanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="mydatatablePopup" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Kode Layanan
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                   Nama Layanan
+                                </th>
+                                @*<th>
+                                    Harga Laundry
+                                </th>
+                                <th>
+                                    Harga Dry Cleaning
+                                </th>*@
+
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row1">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.type)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.service)
+                                    </td>
+                                    @*<td>
+                                        @Html.DisplayFor(modelItem => item.laundry)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.dry_clean)
+                                    </td>*@
+                                    <td>
+                                        <button type="button" class="btnSelect btn btn-primary" data-toggle="modal" data-target="#LayananModal">
+                                            &nbsp;<i class="fa fa-check"></i>
+                                            Pilih
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+
+<script type="text/javascript">
+    $("#Nama_Klien").autocomplete({
+        source: function (request, response) {
+            //var csname = 'Counter';
+            $.ajax({
+                type: "POST",
+                url: "/PO/getName?Prefix=" + $('#Nama_Klien').val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                //data: { Prefix: $('#customer_name').val() },
+                success: function (data) {
+                    var result = $.map(data, function (item) {
+                        return {
+                            label: item.nama_suplier,
+                            value: item.alamat,
+                            id: item.kode_suplier
+                        };
+                    });
+                    return response(result);
+                }
+            });
+        },
+        select: function (event, ui) {
+            event.preventDefault();
+            $('#Nama_Klien').val(ui.item.label);
+            $('#Kode_Klien').val(ui.item.id);
+
+        }
+    });
+</script>
