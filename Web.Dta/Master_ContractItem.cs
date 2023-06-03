@@ -23,18 +23,13 @@ namespace Web.Dta
 
         public static Master_ContractDbo Insert(Master_ContractDbo obj)
         {
-            //Random rdm = new Random();
-            //int NoRdm = rdm.Next(1, 1000);
 
-            //string Bank_id = "B" + NoRdm;
 
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_master_Contract_Insert";
             context.AddParameter("@kode_klien", obj.Kode_Klien);
             context.AddParameter("@kode_layanan", obj.Kode_layanan);
             context.AddParameter("@harga", obj.Harga);
-            context.AddParameter("@is_delete", 0);
-            context.AddParameter("@create_date", DateTime.Now);
             context.AddParameter("@create_by", obj.create_by);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

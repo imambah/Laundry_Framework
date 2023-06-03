@@ -28,19 +28,52 @@ namespace MVC.UI.Controllers
 
         // POST: Parameter/Create
         [HttpPost]
-        public ActionResult Create(Master_ContractDbo item)
+        public ActionResult Create(List<string> rows)
         {
             try
             {
+                if (rows == null)
+                {
+                    return RedirectToAction("Index", "Contract");
+                }
+                else
+                {
+                    rows.ForEach(x =>
+                    {
+                        var row = x.Split('|');
+                        var _kode_klien = row[0];
+                        var _kode_layanan = row[1];
+                        var _harga = row[2];
 
-                item.create_by = Utilities.Username;
-                Master_ContractItem.Insert(item);
-                return RedirectToAction("Index");
+                        Master_ContractDbo ObjPoDetail = new Master_ContractDbo();
+                        ObjPoDetail.Kode_Klien = _kode_klien;
+                        ObjPoDetail.Kode_layanan = _kode_layanan;
+                        ObjPoDetail.Harga = _harga;
+                        ObjPoDetail.create_by = Utilities.Username;
+                        Master_ContractItem.Insert(ObjPoDetail);
+
+                    });
+
+                    return RedirectToAction("Index", "Contract");
+                }
+                
             }
             catch
             {
                 return View();
             }
+        }
+
+        //getName
+        [HttpPost]
+        public JsonResult getName(string Prefix)
+        {
+            var strValue = Prefix.ToUpper();
+            List<Master_Klien> ObjList = Master_KlienItem.GetAll();
+            var Name = (from N in ObjList
+                        where N.nama_klien.ToUpper().Contains(strValue)
+                        select new { N.nama_klien, N.alamat, N.kode_klien });
+            return Json(Name, JsonRequestBehavior.AllowGet);
         }
     }
 
