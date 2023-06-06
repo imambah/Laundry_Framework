@@ -127,7 +127,7 @@
                                 Qty Dry Cleaning
                             </th>
                             <th class="text-center" >
-                                Qty Dry Cleaning
+                                Qty Selesai Dry Cleaning
                             </th>
                             <th class="text-center" >
                                 Subtotal Qty
@@ -149,33 +149,33 @@
                         {
                             <tr>
 
-                                <td style="text-align:center">
+                                <td style="text-align:left">
                                     @Html.DisplayFor(modelItem => item.nama_item)
                                 </td>
-                                <td style="text-align:center">
+                                <td style="text-align:right">
                                     @Html.DisplayFor(modelItem => item.service_laundry_price)
                                 </td>
-                                <td style="text-align:center">
+                                <td style="text-align:right">
                                     @Html.DisplayFor(modelItem => item.service_laundry_qty)
                                 </td>
 
-                                <td style='text-align:center'><input type='text' id='qty_laundry_selesai' name='qty_laundry_selesai' value=0 style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);' onchange='myFunction(event)'></td>
+                                <td style='text-align:center'><input type='text' id='qty_laundry_selesai' name='qty_laundry_selesai' value=@item.service_laundry_qty style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);' onchange='myFunction(this.value)'></td>
 
 
-                                <td style="text-align:center">
+                                <td style="text-align:right">
                                     @Html.DisplayFor(modelItem => item.service_drycleaning_price)
                                 </td>
-                                <td style="text-align:center">
+                                <td style="text-align:right">
                                     @Html.DisplayFor(modelItem => item.service_drycleaning_qty)
                                 </td>
 
-                                <td style='text-align:center'><input type='text' id='qty_dryclean_selesai' name='qty_dryclean_selesai' value=0 style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);'></td>
+                                <td style='text-align:center'><input type='text' id='qty_dryclean_selesai' name='qty_dryclean_selesai' value=@item.service_drycleaning_qty style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);'></td>
 
 
-                                <td style="text-align:center">
+                                <td style="text-align:right">
                                     @Html.DisplayFor(modelItem => item.subtotal_qty)
                                 </td>
-                                <td style="text-align:center">
+                                <td style="text-align:right">
                                     @Html.DisplayFor(modelItem => item.total_harga)
                                 </td>
                                 <td style="text-align:center">
@@ -267,7 +267,18 @@
 
 <script type="text/javascript">
 
-   
+    //$(document).ready(function () {
+    //    var total = 0;
+    //    ///* alert('kadir');*/
+    //    var sTableName = document.getElementById('tabelPaket');
+    //    for (var i = 2; i < sTableName.rows.length; i++) {
+    //        var harga_row = sTableName.rows[i].cells[8].innerText;
+    //        total = parseFloat(total) + parseFloat(harga_row);
+    //    }
+
+    //    $("#nilai_total").val(total);   
+    //});
+
     function ValidateNumber(e) {
         var charCode;
         if (e.keyCode > 0) {
@@ -316,8 +327,40 @@
         $("#nilai_grandtotal").val(GT);
     }
 
-    function myFunction(e) {
-        var sTableName = document.getElementById("tabelPaket");
+    function myFunction(val) {
+        //alert('kemari: ' + e.value.intppn);
+           
+        var table = document.getElementById('tabelPaket');
+        var rows = table.getElementsByTagName('tr');
+        var items = '';
+        var qty_laundry = '';
+        var qty_laundry_selesai = val.trim();
+       
+        for (var i = 1; i < rows.length; i++) {
+
+            rows[i].i = i;
+            rows[i].onchange = function () {
+
+                items = table.rows[this.i].cells[0].innerHTML.trim();
+                qty_laundry = table.rows[this.i].cells[2].innerHTML.trim();
+                if (parseInt(qty_laundry_selesai) > parseInt(qty_laundry)) {
+                    alert('qty selesai harus lebih kecil dari qty utama !');
+                    table.rows[this.i].cells[3].firstChild.value = parseInt(qty_laundry);
+                    table.rows[this.i].cells[3].firstChild.focus();
+                } else if (parseInt(qty_laundry_selesai) < parseInt(qty_laundry)) {
+
+                    var harga_laundry = parseFloat(table.rows[this.i].cells[1].innerHTML.trim());
+                    var qty_sls = parseInt(qty_laundry_selesai);
+
+                    var harga_dryclean = parseFloat(table.rows[this.i].cells[4].innerHTML.trim());
+                    var qty_sls_dry = parseInt(table.rows[this.i].cells[6].firstChild.value);
+
+                    table.rows[this.i].cells[7].innerHTML = qty_sls + qty_sls_dry;
+                    table.rows[this.i].cells[8].innerHTML = (harga_laundry * qty_sls) + (harga_dryclean*qty_sls_dry);
+                }
+
+            };
+        }
         
     }
 </script>
