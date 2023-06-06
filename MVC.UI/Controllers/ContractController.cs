@@ -75,6 +75,44 @@ namespace MVC.UI.Controllers
                         select new { N.nama_klien, N.alamat, N.kode_klien });
             return Json(Name, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Edit(string kode_klien, int kode_layanan)
+        {
+            Master_ContractDbo existing = Master_ContractItem.GetById(kode_klien, kode_layanan);
+            return View(existing);
+            //return View();
+        }
+
+        // POST: Client/Edit/5
+        [HttpPost]
+        public ActionResult Edit(Master_ContractDbo coll)
+        {
+            try
+            {
+                coll.update_by = Utilities.Username;
+                Master_ContractItem.Update(coll, "0");
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(coll);
+            }
+        }
+
+        // POST: Parameter/Delete/5
+        [HttpPost]
+        public ActionResult Delete(string kode_klien, int kode_layanan)
+        {
+            try
+            {
+                Master_ContractItem.Delete(kode_klien.Trim(),kode_layanan);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 
 }

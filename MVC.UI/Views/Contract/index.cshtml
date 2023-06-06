@@ -90,18 +90,9 @@
                                     <p style="color:red">Tidak Aktif</p>
                                 }
                             </td>
-                            <td>
-                                @if (item.is_delete == 0)
-                                {
-                                    <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
-                                    <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
-                                    <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
-                                }
-                                else
-                                {
-                                    <a class="text-primary" href="@Url.Action("Details", new { id=item.id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
-                                    <a class="text-success" href="@Url.Action("Active", new { id=item.id  })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan kembali item ini?')"><i class="fa fa-rotate-right"></i></a>
-                                }
+                            <td>                            
+                                    <a class="text-success" href="@Url.Action("Edit", new { kode_klien=item.Kode_Klien, kode_layanan = item.Kode_layanan })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>
+                                    @*<a class="text-danger" href="@Url.Action("Delete", new { kode_klien=item.Kode_Klien, kode_layanan = item.Kode_layanan  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>*@
                             </td>
                             @*<td>
                                 @Html.HiddenFor(modelItem => item.id)

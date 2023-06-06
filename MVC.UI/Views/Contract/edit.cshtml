@@ -1,0 +1,81 @@
+﻿
+@model Web.Dto.Master_ContractDbo
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Data Bank</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Detail Conctract</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ubah Data Contract Price</h3>
+        </div>
+        <div class="box-body">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.id)
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kode Klien</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Kode_Klien, new { @class = "form-control", placeholder = "ID", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Kode_Klien)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Klien ID</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Nama_Klien, new { @class = "form-control", placeholder = "ID", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Nama_Klien)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Kode Layanan</div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Kode_layanan, new { @class = "form-control", placeholder = "Kode Layanan", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.Kode_layanan)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Harga </div>
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(model => model.Harga, new { @class = "form-control", placeholder = "Nama Layanan" })
+                        @Html.ValidationMessageFor(model => model.Harga)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
+                    </div>
+                </div>
+            }
+
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
+
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

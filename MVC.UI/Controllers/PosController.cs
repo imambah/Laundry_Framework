@@ -28,9 +28,9 @@ namespace MVC.UI.Controllers
             return View();
         }
 
-        public JsonResult GetItemByType(string strType)
+        public JsonResult GetItemByType(string strType, string kode_klien)
         {
-            List<Master_PricelistDbo> listItem = Master_PricelistItem.GetItemByType(strType);
+            List<Master_PricelistDbo> listItem = Master_PricelistItem.GetItemByType(strType, kode_klien);
             return Json(listItem);
         }
 
@@ -65,9 +65,9 @@ namespace MVC.UI.Controllers
                     var _qty_laundry = qty_laundry == "" ? 0 : Convert.ToInt32(qty_laundry);
                     var _qty_drycleaning = qty_drycleaning == "" ? 0 : Convert.ToInt32(qty_drycleaning);
 
-                    Service_PriceDbo price = Master_POSItem.GetPrice(id);
-                    var _laundry_price = price.service_Laundry_price;
-                    var _drycleaning_price = price.service_DryCleaning_price;
+                    //Service_PriceDbo price = Master_POSItem.GetPrice(id);
+                    var _laundry_price = row[5] == "" ? 0 : Convert.ToDecimal(row[5]);  //price.service_Laundry_price;
+                    var _drycleaning_price = row[6] == "" ? 0 : Convert.ToDecimal(row[6]); //price.service_DryCleaning_price;
 
                     POS_DetailDbo ObjPosDetail = new POS_DetailDbo();
                     ObjPosDetail.transaction_id = transactionid;

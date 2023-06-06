@@ -63,37 +63,12 @@
         </div>
         <div class="box-body">
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform",@class = "form-horizontal", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform", @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
 
-            <div class="form-group">
-                <div class="col-sm-2 control-label">Type</div>
-                <div class="col-sm-3">
-                    @Html.DropDownListFor(model => model.transaction_type, listItems, new { @class = "form-control", placeholder = "Transaction Type" })
-                    @Html.ValidationMessageFor(model => model.transaction_type)
 
-                    @*<span>HK / FB Linen : </span> @Html.RadioButton("TeaType", "Linen", true)
-            <span> | Guest / Uniform: </span> @Html.RadioButton("TeaType", "Uniform", true)*@
-
-                </div>
-
-
-
-                <div class="col-sm-1 control-label">Room </div>
-                <div class="col-sm-2">
-                    @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                    @Html.ValidationMessageFor(model => model.room)
-                </div>
-
-                <div class="col-sm-1 control-label">Tgl Transaksi</div>
-                <div class="col-sm-3">
-                    @Html.TextBox("MockDateCreated", DateTime.Today.ToString("dd/MM/yyyy"), new { @disabled = "disabled" })
-                    <!-- This hidden value will store your proper value that cannot be changed and will submit it properly -->
-                    @Html.Hidden("DateCreated", DateTime.Today)
-                </div>
-            </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Nama Pelanggan</div>
                     <div class="col-sm-3">
@@ -106,21 +81,52 @@
                         @Html.ValidationMessageFor(model => model.customerid)
 
                     </div>
-                   
+
                     <div class="col-sm-1 control-label">Tipe </div>
                     <div class="col-sm-3">
                         @Html.TextBoxFor(model => model.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.customer_type)
                     </div>
                 </div>
+
+
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Alamat Pelanggan</div>
                     <div class="col-sm-6">
-                        @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" , required = "required" })
+                        @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled", required = "required" })
                         @Html.ValidationMessageFor(model => model.customer_address)
                     </div>
+                    
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Type</div>
+                    <div class="col-sm-2">
+                        @Html.DropDownListFor(model => model.transaction_type, listItems, new { @class = "form-control", placeholder = "Transaction Type" })
+                        @Html.ValidationMessageFor(model => model.transaction_type)
+
+                        @*<span>HK / FB Linen : </span> @Html.RadioButton("TeaType", "Linen", true)
+            <span> | Guest / Uniform: </span> @Html.RadioButton("TeaType", "Uniform", true)*@
+
+                    </div>
+
+
+
+                    <div class="col-sm-1 control-label">Room </div>
+                    <div class="col-sm-1">
+                        @Html.TextBoxFor(model => model.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.room)
+                    </div>
+
+                    <div class="col-sm-1 control-label">Tgl Transaksi</div>
+                    <div class="col-sm-1">
+                        @Html.TextBox("MockDateCreated", DateTime.Today.ToString("dd/MM/yyyy"), new { @class = "form-control", @disabled = "disabled" })
+                        <!-- This hidden value will store your proper value that cannot be changed and will submit it properly -->
+                        @Html.Hidden("DateCreated", DateTime.Today)
+                    </div>
+
                     <div class="col-sm-1 control-label">Tgl Selesai </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-1">
                         @Html.TextBoxFor(model => model.estimasi_selesai, new { @class = "form-control", placeholder = "Tgl Selesai", required = "required" })
                         @Html.ValidationMessageFor(model => model.estimasi_selesai)
 
@@ -130,21 +136,27 @@
                     <div class="col-sm-2 control-label"></div>
                     <div class="col-sm-6">
                     </div>
-                </div>     
+                </div>
                 <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
                     <thead>
                         <tr class="bg-danger">
-                            <th class="text-center" style="vertical-align: middle; padding: 0 " >
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 ID
                             </th>
-                            <th class="text-center" style="vertical-align: middle; padding: 0 " >
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 Item's
                             </th>
-                            <th class="text-center"  style="vertical-align: middle; padding: 0 ">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 Qty Laundry
                             </th>
-                            <th class="text-center"  style="vertical-align: middle; padding: 0 ">
-                                Qty Dry Cleaning 
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Harga Laundry
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Qty Dry Cleaning
+                            </th>
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ">
+                                Harga Dry Cleaning
                             </th>
                             <th class="text-center" rowspan="2" style="vertical-align: middle; padding: 0 ">
                                 Remark
@@ -152,13 +164,12 @@
 
                         </tr>
                         <tr class="bg-danger">
-
                         </tr>
                     </thead>
                     <tbody id="tableBody">
                     </tbody>
                 </table>
-                               
+
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
@@ -166,9 +177,9 @@
                     </div>
                 </div>
             }
-        <div>
-            <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
-        </div>
+            <div>
+                <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            </div>
 
         </div>
         <!-- /.box-body -->
@@ -240,6 +251,7 @@
 
     $("#transaction_type").change(function () {
         var transaction_type = $(this).val();
+        var kode_klien = $("#customerid").val();
         if (transaction_type == 'Linen') {
             $("#room").prop('disabled', true);
         } else {
@@ -247,12 +259,12 @@
         }
         $.ajax({
             type: "post",
-            url: "/POS/GetItemByType?strType=" + transaction_type,
+            url: "/POS/GetItemByType?strType=" + transaction_type + "&kode_klien=" + kode_klien,
             data: "[]",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty_laundry' name='qty_laundry' value=0 style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><input type='text' id='qty_drycleaning' name='qty_drycleaning' value=0 style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
+                var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty_laundry' name='qty_laundry' value=0 style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);'></td><td  style='text-align:right'>" + i.laundry +  "</td><td style='text-align:center'><input type='text' id='qty_drycleaning' name='qty_drycleaning' value=0 style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);'></td><td style='text-align:right'>" + i.dry_clean + "</td><td><input type='text' id='remarks' name='remarks' style='width:100%;'></td></tr>");
                 //var output = data.map(i => "<tr><td>" + i.id + "</td><td>" + i.service + "</td><td style='text-align:center'><input type='text' id='qty' name='qty' style='width:50px;text-align:right;' onkeydown = 'return ValidateNumber(event);' ></td><td style='text-align:center'><select id='service'><option value='laundry'>Laundry</option><option value='drycleaning'>Dry Cleaning</option></select></td><td style='text-align:center'></td><td><input type='text' id='remark' name='remark' style='width:100%;'></td></tr>");
             $("#tableBody").html(output);
             }
@@ -293,9 +305,13 @@
             var _id = sTableName.rows[i].cells[0].innerText;
             var _name = sTableName.rows[i].cells[1].innerText;
             var _qty_laundry = sTableName.rows[i].cells[2].firstChild.value;
-            var _qty_drycleaning = sTableName.rows[i].cells[3].firstChild.value;
+            var _harga_qty_laundry = sTableName.rows[i].cells[3].innerText;
+            //alert(_harga_qty_laundry);
+            var _qty_drycleaning = sTableName.rows[i].cells[4].firstChild.value;
+            var _harga_qty_drycleaning = sTableName.rows[i].cells[5].innerText;
+            //alert(_harga_qty_drycleaning);
             var _remark = sTableName.rows[i].cells[4].firstChild.value;
-            var row = _id + "|" + _name + "|" + _qty_laundry + "|" + _qty_drycleaning + "|" + _remark;
+            var row = _id + "|" + _name + "|" + _qty_laundry + "|" + _qty_drycleaning + "|" + _remark + "|" + _harga_qty_laundry + "|" + _harga_qty_drycleaning;
             rows.push(row);
         }
         //detail -====================================================

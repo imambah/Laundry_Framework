@@ -522,6 +522,7 @@
     <Content Include="Views\AP\index.cshtml" />
     <Content Include="Views\Contract\index.cshtml" />
     <Content Include="Views\Contract\Create.cshtml" />
+    <Content Include="Views\Contract\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
