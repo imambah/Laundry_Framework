@@ -60,6 +60,24 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POSDbo>(context, new POSDbo()).FirstOrDefault();
         }
+        
+        public static POSDbo UpdateHeader(POSDbo obj)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_POS_Update_Header_selesai]";
+            context.AddParameter("@transaction_id", obj.transaction_id);
+        
+            context.AddParameter("@jumlah_item", obj.jumlah_item);
+            context.AddParameter("@disc", obj.disc);
+            context.AddParameter("@ppn", obj.ppn);
+            context.AddParameter("@nilai", obj.nilai);
+            context.AddParameter("@grand_total", obj.sub_total);
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<POSDbo>(context, new POSDbo()).FirstOrDefault();
+        }
+
+
 
         public static POS_DetailDbo InsertDetail(POS_DetailDbo obj)
         {
@@ -81,6 +99,23 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POS_DetailDbo>(context, new POS_DetailDbo()).FirstOrDefault();
         }
+        public static POS_DetailDbo UpdateDetail(POS_DetailDbo obj)
+        {
+            IDBHelper context = new DBHelper();
+
+            string sqlQuery = "[sp_POS_Update_Detail]";
+            //context.AddParameter("@transaction_id", obj.transaction_id);
+            context.AddParameter("@id", obj.id);
+            context.AddParameter("@service_laundry_qty", obj.service_laundry_qty);
+            context.AddParameter("@service_drycleaning_qty", obj.service_drycleaning_qty);
+            context.AddParameter("@total_qty", obj.total_qty);
+            context.AddParameter("@total_harga", obj.total_harga);
+          
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<POS_DetailDbo>(context, new POS_DetailDbo()).FirstOrDefault();
+        }
+
 
         public static Service_PriceDbo GetPrice(string id)
         {

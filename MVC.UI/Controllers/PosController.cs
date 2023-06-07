@@ -230,7 +230,65 @@ namespace MVC.UI.Controllers
             POS_TransactionDbo existing = Master_POSItem.CancelByID(Int32.Parse(id));
             return RedirectToAction("Index");
         }
-       
+
+        //UpdateDetail
+        [HttpPost]
+
+        public ActionResult UpdateDetail(List<string> rows, string transactionid, string header)
+        {
+            try
+            {
+                var qty = 0;
+                rows.ForEach(x =>
+                {
+                    var row = x.Split('|');
+                    var transaction_id = transactionid;
+                    var id = row[0];
+                    var _harga_laundry = row[1] == "" ? 0 : Convert.ToDecimal(row[1]); 
+                    var _qty_selesai_laundry = row[2] == "" ? 0 : Convert.ToInt32(row[2]); 
+                    var _harga_dryclean = row[3] == "" ? 0 : Convert.ToDecimal(row[3]); 
+                    var _qty_selesai_dryclean = row[4] == "" ? 0 : Convert.ToInt32(row[4]); 
+
+
+                    POS_DetailDbo ObjPosDetail = new POS_DetailDbo();
+                    ObjPosDetail.transaction_id = transactionid;
+                    ObjPosDetail.id = Convert.ToInt32(id);
+
+                    ObjPosDetail.service_laundry_price = _harga_laundry;
+                    ObjPosDetail.service_laundry_qty = _qty_selesai_laundry;
+
+                    ObjPosDetail.service_drycleaning_price = _harga_dryclean;
+                    ObjPosDetail.service_drycleaning_qty = _qty_selesai_dryclean;
+
+                    ObjPosDetail.total_qty = _qty_selesai_laundry + _qty_selesai_dryclean;
+                    ObjPosDetail.total_harga = (_qty_selesai_laundry * _harga_laundry) + (_qty_selesai_dryclean * _harga_dryclean);
+
+                    Master_POSItem.UpdateDetail(ObjPosDetail);
+                    qty = qty + _qty_selesai_laundry + _qty_selesai_dryclean;
+
+                });
+
+                var result = header.Split('|');
+
+                //_total + '|' + _disc + '|' + _ppn + '|' + _grand_total;
+                POSDbo ObjPosHeader = new POSDbo();
+                ObjPosHeader.transaction_id = transactionid;
+                ObjPosHeader.jumlah_item = qty;
+                ObjPosHeader.nilai = Convert.ToDecimal(result[0]);//total
+                ObjPosHeader.disc = Convert.ToDecimal(result[1]);
+                ObjPosHeader.ppn = Convert.ToDecimal(result[2]);
+                ObjPosHeader.sub_total = Convert.ToDecimal(result[3]); //_grand_total
+                ObjPosHeader.create_by = Utilities.Username;
+                Master_POSItem.UpdateHeader(ObjPosHeader);
+
+
+                return RedirectToAction("index", "POS");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
     }
 }

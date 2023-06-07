@@ -111,10 +111,10 @@
                             <th class="text-center" style="vertical-align: middle; padding: 0 ">
                                 Item's
                             </th>
-                            <th class="text-center" style="vertical-align: middle; padding: 0; text-align: left">
+                            <th class="text-center" style="vertical-align: middle; padding: 0; text-align: center">
                                 Harga Laundry
                             </th>
-                            <th class="text-center" style="vertical-align: middle; padding: 0 ; text-align:left ">
+                            <th class="text-center" style="vertical-align: middle; padding: 0 ; text-align:center ">
                                 Qty Laundry
                             </th>
                             <th class="text-center" >
@@ -135,8 +135,8 @@
                             <th class="text-center">
                                 Subtotal
                             </th>
-                            <th class="text-center">
-                                Remark
+                            <th style="display:none;">
+                                id
                             </th>
 
                             
@@ -152,34 +152,38 @@
                                 <td style="text-align:left">
                                     @Html.DisplayFor(modelItem => item.nama_item)
                                 </td>
-                                <td style="text-align:right">
+                                <td style="text-align:center">
                                     @Html.DisplayFor(modelItem => item.service_laundry_price)
                                 </td>
-                                <td style="text-align:right">
+                                <td style="text-align:center">
                                     @Html.DisplayFor(modelItem => item.service_laundry_qty)
                                 </td>
 
-                                <td style='text-align:center'><input type='text' id='qty_laundry_selesai' name='qty_laundry_selesai' value=@item.service_laundry_qty style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);' onchange='myFunction(this.value)'></td>
+                                <td style='text-align:center'><input type='text' id='qty_laundry_selesai'name='qty_laundry_selesai' value=@item.service_laundry_qty style='width:50px;text-align:right;'onkeydown='return ValidateNumber(event);' onkeyup='myFunction(this.value)'></td>
 
 
-                                <td style="text-align:right">
+                                <td style="text-align:center">
                                     @Html.DisplayFor(modelItem => item.service_drycleaning_price)
                                 </td>
-                                <td style="text-align:right">
+                                <td style="text-align:center">
                                     @Html.DisplayFor(modelItem => item.service_drycleaning_qty)
                                 </td>
 
-                                <td style='text-align:center'><input type='text' id='qty_dryclean_selesai' name='qty_dryclean_selesai' value=@item.service_drycleaning_qty style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);'></td>
+                                <td style='text-align:center'><input type='text' id='qty_dryclean_selesai' 
+                                                                     name='qty_dryclean_selesai' 
+                                                                     value=@item.service_drycleaning_qty 
+                                                                     style='width:50px;text-align:right;' 
+                                                                     onkeydown='return ValidateNumber(event);'></td>
 
 
-                                <td style="text-align:right">
+                                <td style="text-align:center">
                                     @Html.DisplayFor(modelItem => item.subtotal_qty)
                                 </td>
                                 <td style="text-align:right">
                                     @Html.DisplayFor(modelItem => item.total_harga)
                                 </td>
-                                <td style="text-align:center">
-                                    @Html.DisplayFor(modelItem => item.remarks)
+                                <td style="display:none;">
+                                    @Html.DisplayFor(modelItem => item.id)
                                 </td>
 
 
@@ -191,13 +195,21 @@
                     <div class="col-sm-10 control-label"></div>
                     <div class="col-sm-2">
                         @if (Item.finish_by == null || Item.finish_by == "")
-                                            {
+                        {
 
-                                            }
-                        else { 
-                        <img src="@Url.Content("~/Images/selesai.png")" class="img-thumbnail" alt="User Image" width="300px" height="10px">
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Images/selesai.png")" class="img-thumbnail" alt="User Image" width="300px" height="10px">
                         }
                     </div>
+
+                    
+                    <div class="col-sm-10 control-label"> </div>
+                    <div class="col-sm-2" style="text-align:right">
+                        <button type="button" name="hitungTotal" class="btn btn-success" onclick="HitungUlang()"><i class="fa fa-hourglass-start"></i>&nbsp;&nbsp;Hitung Ulang</button>
+                    </div>
+
                     <div class="col-sm-10 control-label">Total </div>
                     <div class="col-sm-2">
                         @Html.TextBoxFor(model => Item.Nilai, new { id = "nilai_total", @class = "form-control", @readonly = "readonly", @style = "text-align:right" })
@@ -207,12 +219,12 @@
                     <div class="col-sm-2">
                         @if (Item.finish_by == null || Item.finish_by == "")
                         {
-                                        @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0" })
+                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0"})
                             @Html.ValidationMessageFor(model => Item.disc)
                         }
                         else
-                                    {
-                                        @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", @class = "form-control", placeholder = "Disc", @style = "text-align:right", disabled = "disabled" })
+                        {
+                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Disc", @style = "text-align:right", disabled = "disabled" })
                             @Html.ValidationMessageFor(model => Item.disc)
                         }
 
@@ -221,12 +233,12 @@
                     <div class="col-sm-2">
                         @if (Item.finish_by == null || Item.finish_by == "")
                         {
-                                        @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", @value = "0" })
+                            @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", onkeydown= "return ValidateNumber(event);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", @value = "0" })
                             @Html.ValidationMessageFor(model => Item.ppn)
                         }
                         else
-                                    {
-                                        @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", disabled = "disabled" })
+                        {
+                            @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", disabled = "disabled" })
                             @Html.ValidationMessageFor(model => Item.ppn)
                         }
 
@@ -242,13 +254,14 @@
                     <div class="col-sm-2 text-right">
                         @if (Item.finish_by == null || Item.finish_by == "")
                         {
-                            <button type="submit" name="savedata" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                           
+                            <button type="submit" name="savedata" class="btn btn-success" hidden="hidden"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
                         }
                         else
-                                    {
+                        {
                             @*<button class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Print</button>*@
                             <a class="btn btn-primary fa fa-print " href="@Url.Action("print_penyerahan", new { tr_id = Item.transaction_id })" role="button">Print</a>
-                          
+
                         }
 
                     </div>
@@ -267,17 +280,6 @@
 
 <script type="text/javascript">
 
-    //$(document).ready(function () {
-    //    var total = 0;
-    //    ///* alert('kadir');*/
-    //    var sTableName = document.getElementById('tabelPaket');
-    //    for (var i = 2; i < sTableName.rows.length; i++) {
-    //        var harga_row = sTableName.rows[i].cells[8].innerText;
-    //        total = parseFloat(total) + parseFloat(harga_row);
-    //    }
-
-    //    $("#nilai_total").val(total);   
-    //});
 
     function ValidateNumber(e) {
         var charCode;
@@ -287,6 +289,7 @@
         else if (typeof (e.charCode) != "undefined") {
             charCode = e.which || e.keyCode;
         }
+
         if (charCode == 46)
             return true;
         if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -294,14 +297,39 @@
         return true;
     };
 
-    function SaveData() {
-        var strTransID = $("#transid").val();
-        var strDisc = $("#nilai_disc").val(); 
-        var strPPn = $("#nilai_ppn").val(); 
-        var strGrandTotal = $("#nilai_grandtotal").val(); 
-        $.post('@Url.Action("ProsesTransEdit", "POS")', { transactionid: strTransID, disc: strDisc, ppn: strPPn, grandtotal: strGrandTotal }, function (data) { });
+    
+    $('#saveform').submit(function () {
+        var sTableName = document.getElementById("tabelPaket");
+        var _transid = $("#transid").val(); 
+       //update detail =============================================
+        var rows = [];
+        for (var i = 2; i < sTableName.rows.length; i++) {
+            var _id = sTableName.rows[i].cells[9].innerText.trim();
+            var _harga_laundry = sTableName.rows[i].cells[1].innerText.trim();
+            var _qty_selesai_laundry = sTableName.rows[i].cells[3].firstChild.value;
 
-    };
+            var _harga_dryclean = sTableName.rows[i].cells[4].innerText.trim();
+            var _qty_selesai_dryClean = sTableName.rows[i].cells[6].firstChild.value;
+
+            var row = _id + "|" + _harga_laundry + "|" + _qty_selesai_laundry + "|" + _harga_dryclean + "|" + _qty_selesai_dryClean;
+            rows.push(row);
+            //alert(rows);
+        }
+        //detail -====================================================
+
+        //update to header====================
+       
+        var _total = $("#nilai_total").val();
+        var _disc = $("#nilai_disc").val();
+        var _ppn = $("#nilai_ppn").val();
+        var _grand_total = $("#nilai_grandtotal").val();
+        var _header = _total + '|' + _disc + '|' + _ppn + '|' + _grand_total;
+        alert(_transid);
+        alert(_header);
+        // header ============================
+        $.post('@Url.Action("UpdateDetail", "POS")', { rows: rows, transactionid: _transid, header: _header }, function (data) { });
+
+    });
 
     function calculatedisc(ctr) {
         var intNilaiTotal = $("#nilai_total").val();
@@ -313,14 +341,14 @@
         var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total);
         var GT = nilai_grand_total - total_disc + total_ppn;
         $("#nilai_grandtotal").val(GT);
-    };  
+    };
 
     function calculateppn(obj) {
         var intNilaiTotal = $("#nilai_total").val();
         var intdisc = $("#nilai_disc").val();
         var intppn = $("#nilai_ppn").val();
 
-        var nilai_grand_total = parseInt(intNilaiTotal); 
+        var nilai_grand_total = parseInt(intNilaiTotal);
         var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total ;
         var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total );
         var GT = nilai_grand_total - total_disc + total_ppn;
@@ -328,14 +356,12 @@
     }
 
     function myFunction(val) {
-        //alert('kemari: ' + e.value.intppn);
-           
         var table = document.getElementById('tabelPaket');
         var rows = table.getElementsByTagName('tr');
         var items = '';
         var qty_laundry = '';
         var qty_laundry_selesai = val.trim();
-       
+        //alert('anda telah menginput nilai selesai ');
         for (var i = 1; i < rows.length; i++) {
 
             rows[i].i = i;
@@ -347,21 +373,42 @@
                     alert('qty selesai harus lebih kecil dari qty utama !');
                     table.rows[this.i].cells[3].firstChild.value = parseInt(qty_laundry);
                     table.rows[this.i].cells[3].firstChild.focus();
-                } else if (parseInt(qty_laundry_selesai) < parseInt(qty_laundry)) {
-
+                } else if (parseInt(qty_laundry_selesai) <= parseInt(qty_laundry)) {
                     var harga_laundry = parseFloat(table.rows[this.i].cells[1].innerHTML.trim());
                     var qty_sls = parseInt(qty_laundry_selesai);
-
                     var harga_dryclean = parseFloat(table.rows[this.i].cells[4].innerHTML.trim());
                     var qty_sls_dry = parseInt(table.rows[this.i].cells[6].firstChild.value);
-
                     table.rows[this.i].cells[7].innerHTML = qty_sls + qty_sls_dry;
-                    table.rows[this.i].cells[8].innerHTML = (harga_laundry * qty_sls) + (harga_dryclean*qty_sls_dry);
+                    table.rows[this.i].cells[8].innerHTML = (harga_laundry * qty_sls) + (harga_dryclean * qty_sls_dry);
                 }
 
             };
         }
-        
+
+        //CalcuteTotal();
+    }
+
+    function HitungUlang() {
+        //alert('kadieu');
+        var sTableName = document.getElementById("tabelPaket");
+        var total = 0;
+        var nilai_akhir = 0;
+        var rows = [];
+        for (var i = 2; i < sTableName.rows.length; i++) {
+            var _subtotal = sTableName.rows[i].cells[8].innerText;
+            total = parseFloat(total) + parseFloat(_subtotal);
+        }
+        $('#nilai_total').val(total);
+
+        var intNilaiTotal = total;
+        var intdisc = $("#nilai_disc").val();
+        var intppn = $("#nilai_ppn").val();
+
+        var nilai_grand_total = parseInt(intNilaiTotal);
+        var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total;
+        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total);
+        var GT = nilai_grand_total - total_disc + total_ppn;
+        $("#nilai_grandtotal").val(GT);
     }
 </script>
 

@@ -29,7 +29,6 @@ namespace MVC.UI.Controllers
             //ViewData["carabayarlist"] = GetList();
             return View(ListBarang);
         }
-
         [HttpPost]
         public JsonResult getName(string Prefix)
         {
@@ -51,7 +50,6 @@ namespace MVC.UI.Controllers
                         select new { N.nama_klien, N.kode_klien });
             return Json(Name, JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public ActionResult Create(List<string> rows, string header)
         {
@@ -131,7 +129,6 @@ namespace MVC.UI.Controllers
                 return View();
             }
         }
-
         public ActionResult Print(string po_no)
         {
             var paramDbo = new ReportParamDbo();
@@ -146,20 +143,17 @@ namespace MVC.UI.Controllers
             return Redirect("~/Report/ReportViewer_PO.aspx?po_no=" + str + "&logo=" + imgLogo);
             //return View();
         }
-
         //GetItemByPoNo
         public JsonResult GetItemByPoNo(string po_number)
         {
             List<GR_TransDbo> listItem = POItem.getItemBarang(po_number);
             return Json(listItem);
         }
-       
         public List<GroupDbo> TOPList()
         {
             List<GroupDbo> TOPList = Master_KlienItem.GetTOP();
             return TOPList;
         }
-
         public ActionResult Delete(string po_no) {
             PODbo existing = POItem.GetByPo(po_no);
             existing.EntryByUser = Utilities.Username;
@@ -167,7 +161,6 @@ namespace MVC.UI.Controllers
             return RedirectToAction("Index");
             //return View();
         }
-
         private List<SelectListItem> GetList()
         {
             List<GroupDbo> TOPList = Master_KlienItem.GetTOP();
