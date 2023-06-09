@@ -279,8 +279,7 @@ namespace MVC.UI.Controllers
                 ObjPosHeader.ppn = Convert.ToDecimal(result[2]);
                 ObjPosHeader.sub_total = Convert.ToDecimal(result[3]); //_grand_total
                 ObjPosHeader.create_by = Utilities.Username;
-                Master_POSItem.UpdateHeader(ObjPosHeader);
-
+                Master_POSItem.UpdateHeader(ObjPosHeader, Utilities.Username);
 
                 return RedirectToAction("index", "POS");
             }

@@ -61,10 +61,10 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<POSDbo>(context, new POSDbo()).FirstOrDefault();
         }
         
-        public static POSDbo UpdateHeader(POSDbo obj)
+        public static POSDbo UpdateHeader(POSDbo obj, string update_by)
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "[sp_POS_Update_Header_selesai]";
+            string sqlQuery = "[sp_POS_Update_Header_Selesai]";
             context.AddParameter("@transaction_id", obj.transaction_id);
         
             context.AddParameter("@jumlah_item", obj.jumlah_item);
@@ -72,6 +72,7 @@ namespace Web.Dta
             context.AddParameter("@ppn", obj.ppn);
             context.AddParameter("@nilai", obj.nilai);
             context.AddParameter("@grand_total", obj.sub_total);
+            context.AddParameter("@finishedby", update_by);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POSDbo>(context, new POSDbo()).FirstOrDefault();
@@ -179,6 +180,7 @@ namespace Web.Dta
         public static POS_DetailDbo UpdateItem(POS_DetailDbo obj)
         {
             IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_POS_Update_Item]";
             context.AddParameter("@id_Item", obj.kode_item);
             context.AddParameter("@transaction_id", obj.transaction_id);
             context.AddParameter("@service_laundry_qty", obj.service_laundry_qty);
@@ -188,7 +190,6 @@ namespace Web.Dta
             context.AddParameter("@total_qty", obj.total_qty);
             context.AddParameter("@total_harga", obj.total_harga);
             context.AddParameter("@remarks", obj.remarks);
-            string sqlQuery = "[sp_POS_Update_Item]";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POS_DetailDbo>(context, new POS_DetailDbo()).FirstOrDefault();

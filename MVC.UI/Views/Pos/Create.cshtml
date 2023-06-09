@@ -89,7 +89,12 @@
                     </div>
                 </div>
 
-
+                <div class="form-group">
+                    <div class="col-sm-2 control-label"></div>
+                    <div class="col-sm-6">
+                        <button type="button" name="search_pelanggan" class="btn btn-success" onclick="ClearGrid()"><i class="fa fa-user"></i>&nbsp;&nbsp;Pelanggan Lain</button>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Alamat Pelanggan</div>
                     <div class="col-sm-6">
@@ -235,8 +240,11 @@
             $('#customer_address').val(ui.item.value);
             $('#customerid').val(ui.item.id);
             $('#customer_type').val(ui.item.customertype);
+            //$("#customer_name").attr("disabled", "disabled");
+            $("#customer_name").prop('disabled', true);
+          
 
-        }
+        },       
     });
 
     $('#saveform').submit(function () {
@@ -351,6 +359,20 @@
         }
     }
 
+    function ClearGrid() {
+       // alert('kadieu');
+        $("#customer_name").val("");
+        $("#customerid").val("");
+        $("#customer_type").val("");
+        $("#customer_address").val("");
+        $("#customer_name").disabled = false;
+        $("#customer_name").prop('disabled', false);
+        $("#customer_name").focus();
+
+        $("#transaction_type").val("");
+        $('#tabelPaket tbody').empty();
+        //$("#tabelPaket").remove();
+    }
 </script>
 
 

@@ -66,7 +66,8 @@
                 <div class="col-sm-2 control-label">Nama Pelanggan</div>
                 <div class="col-sm-3">
                     @*<input id="auto-complete">*@
-                    @Html.EditorFor(model => Item.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled" } })
+                    @*@Html.EditorFor(model => Item.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled", onkeyup = "DeleteRowOnGrid()" } })*@
+                    @Html.TextBoxFor(model => Item.customer_name,  new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled", onkeyup = "DeleteRowOnGrid(this);"} )
                 </div>
                 <div class="col-sm-1 control-label">Room </div>
                 <div class="col-sm-2">
@@ -173,7 +174,8 @@
                                                                      name='qty_dryclean_selesai' 
                                                                      value=@item.service_drycleaning_qty 
                                                                      style='width:50px;text-align:right;' 
-                                                                     onkeydown='return ValidateNumber(event);'></td>
+                                                                     onkeydown='return ValidateNumber(event);'
+                                                                     onkeyup='HitungSelesai_Dry(this.value)'></td>
 
 
                                 <td style="text-align:center">
@@ -204,11 +206,14 @@
                         }
                     </div>
 
-                    
-                    <div class="col-sm-10 control-label"> </div>
-                    <div class="col-sm-2" style="text-align:right">
-                        <button type="button" name="hitungTotal" class="btn btn-success" onclick="HitungUlang()"><i class="fa fa-hourglass-start"></i>&nbsp;&nbsp;Hitung Ulang</button>
-                    </div>
+
+                    @if (Item.finish_by == null || Item.finish_by == "")
+                    {
+                        <div class="col-sm-10 control-label"> </div>
+                        <div class="col-sm-2" style="text-align:right">
+                            <button type="button" name="hitungTotal" class="btn btn-success" onclick="HitungUlang()"><i class="fa fa-hourglass-start"></i>&nbsp;&nbsp;Hitung Ulang</button>
+                        </div>
+                    }
 
                     <div class="col-sm-10 control-label">Total </div>
                     <div class="col-sm-2">
@@ -219,7 +224,7 @@
                     <div class="col-sm-2">
                         @if (Item.finish_by == null || Item.finish_by == "")
                         {
-                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0"})
+                            @Html.TextBoxFor(model => Item.disc, new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Disc", @style = "text-align:right", @value = "0" })
                             @Html.ValidationMessageFor(model => Item.disc)
                         }
                         else
@@ -233,7 +238,7 @@
                     <div class="col-sm-2">
                         @if (Item.finish_by == null || Item.finish_by == "")
                         {
-                            @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", onkeydown= "return ValidateNumber(event);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", @value = "0" })
+                            @Html.TextBoxFor(model => Item.ppn, new { id = "nilai_ppn", onkeyup = "calculateppn(this);", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right", @value = "0" })
                             @Html.ValidationMessageFor(model => Item.ppn)
                         }
                         else
@@ -324,8 +329,8 @@
         var _ppn = $("#nilai_ppn").val();
         var _grand_total = $("#nilai_grandtotal").val();
         var _header = _total + '|' + _disc + '|' + _ppn + '|' + _grand_total;
-        alert(_transid);
-        alert(_header);
+        //alert(_transid);
+        //alert(_header);
         // header ============================
         $.post('@Url.Action("UpdateDetail", "POS")', { rows: rows, transactionid: _transid, header: _header }, function (data) { });
 
@@ -355,38 +360,7 @@
         $("#nilai_grandtotal").val(GT);
     }
 
-    function myFunction(val) {
-        var table = document.getElementById('tabelPaket');
-        var rows = table.getElementsByTagName('tr');
-        var items = '';
-        var qty_laundry = '';
-        var qty_laundry_selesai = val.trim();
-        //alert('anda telah menginput nilai selesai ');
-        for (var i = 1; i < rows.length; i++) {
-
-            rows[i].i = i;
-            rows[i].onchange = function () {
-
-                items = table.rows[this.i].cells[0].innerHTML.trim();
-                qty_laundry = table.rows[this.i].cells[2].innerHTML.trim();
-                if (parseInt(qty_laundry_selesai) > parseInt(qty_laundry)) {
-                    alert('qty selesai harus lebih kecil dari qty utama !');
-                    table.rows[this.i].cells[3].firstChild.value = parseInt(qty_laundry);
-                    table.rows[this.i].cells[3].firstChild.focus();
-                } else if (parseInt(qty_laundry_selesai) <= parseInt(qty_laundry)) {
-                    var harga_laundry = parseFloat(table.rows[this.i].cells[1].innerHTML.trim());
-                    var qty_sls = parseInt(qty_laundry_selesai);
-                    var harga_dryclean = parseFloat(table.rows[this.i].cells[4].innerHTML.trim());
-                    var qty_sls_dry = parseInt(table.rows[this.i].cells[6].firstChild.value);
-                    table.rows[this.i].cells[7].innerHTML = qty_sls + qty_sls_dry;
-                    table.rows[this.i].cells[8].innerHTML = (harga_laundry * qty_sls) + (harga_dryclean * qty_sls_dry);
-                }
-
-            };
-        }
-
-        //CalcuteTotal();
-    }
+    
 
     function HitungUlang() {
         //alert('kadieu');
@@ -409,6 +383,91 @@
         var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total);
         var GT = nilai_grand_total - total_disc + total_ppn;
         $("#nilai_grandtotal").val(GT);
+    }
+
+    function DeleteRowOnGrid(r){
+        alert('ok');
+        var d = document.getElementById("tabelPaket");
+        r.remove().row();
+    }
+
+    function myFunction(val) {
+        var table = document.getElementById('tabelPaket');
+        var rows = table.getElementsByTagName('tr');
+        var items = '';
+        var qty_laundry = '';
+        var qty_laundry_selesai = val.trim();
+        //alert('anda telah menginput nilai selesai ');
+        for (var i = 1; i < rows.length; i++) {
+
+            rows[i].i = i;
+            rows[i].onchange = function () {
+
+                items = table.rows[this.i].cells[0].innerHTML.trim();
+                qty_laundry = table.rows[this.i].cells[2].innerHTML.trim();
+                if (parseInt(qty_laundry_selesai) > parseInt(qty_laundry)) {
+                    alert('qty selesai harus lebih kecil dari qty Laundry Awal!');
+                    table.rows[this.i].cells[3].firstChild.value = parseInt(qty_laundry);
+                    table.rows[this.i].cells[3].firstChild.focus();
+                } else if (parseInt(qty_laundry_selesai) <= parseInt(qty_laundry)) {
+                    //laundry
+                    var harga_laundry = parseFloat(table.rows[this.i].cells[1].innerHTML.trim());
+                    var qty_sls_laundry = parseInt(qty_laundry_selesai);
+                    var Nilai_laundry = harga_laundry * qty_sls_laundry;
+                    //laundry
+                    //alert('qty: ' + qty_sls_laundry);
+                    //dry_cleaning
+                    var harga_dryclean = parseFloat(table.rows[this.i].cells[4].innerHTML.trim());
+                    var qty_sls_dry = parseFloat(table.rows[this.i].cells[6].firstChild.value);
+                    var Nilai_dryclean = harga_dryclean * qty_sls_dry;
+                    //===dry_cleaning
+
+                    table.rows[this.i].cells[7].innerHTML = parseInt(qty_sls_laundry) + parseInt(qty_sls_dry);
+                    table.rows[this.i].cells[8].innerHTML = parseFloat(Nilai_laundry) + parseFloat(Nilai_dryclean);
+                }
+            };
+        }
+
+    }
+
+    //HitungSelesai_Dry
+    function HitungSelesai_Dry(val) {
+        var table = document.getElementById('tabelPaket');
+        var rows = table.getElementsByTagName('tr');
+        var items = '';
+        var qty_dryclean = '';
+        var qty_dryclean_selesai = val.trim();
+        //alert('anda telah menginput nilai selesai ');
+        for (var i = 1; i < rows.length; i++) {
+
+            rows[i].i = i;
+            rows[i].onchange = function () {
+
+                items = table.rows[this.i].cells[0].innerHTML.trim();
+                qty_dryclean = table.rows[this.i].cells[5].innerHTML.trim();
+                if (parseInt(qty_dryclean_selesai) > parseInt(qty_dryclean)) {
+                    alert('qty selesai dry clean harus lebih kecil dari qty dry clean Awal!');
+                    table.rows[this.i].cells[6].firstChild.value = parseInt(qty_dryclean);
+                    table.rows[this.i].cells[6].firstChild.focus();
+                } else if (parseInt(qty_dryclean_selesai) <= parseInt(qty_dryclean)) {
+                    ///===laundry 
+                    var harga_laundry = parseFloat(table.rows[this.i].cells[1].innerHTML.trim());
+                    var qty_sls_laundry = parseFloat(table.rows[this.i].cells[3].firstChild.value);
+                    var Nilai_laundry = harga_laundry * qty_sls_laundry;  
+                    ///===laundry
+
+                    ///===dry_cleaning 
+                    var harga_dryclean = parseFloat(table.rows[this.i].cells[4].innerHTML.trim());
+                    var qty_sls_dry = qty_dryclean_selesai;
+                    var Nilai_dryclean = harga_dryclean * qty_sls_dry;
+                    ///===dry_cleaning
+
+                    table.rows[this.i].cells[7].innerHTML = parseInt(qty_sls_laundry) + parseInt(qty_sls_dry);
+                    table.rows[this.i].cells[8].innerHTML = parseFloat(Nilai_laundry) + parseFloat(Nilai_dryclean);
+                }
+            };
+        }
+
     }
 </script>
 
