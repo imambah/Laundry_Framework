@@ -87,7 +87,10 @@ namespace MVC.UI.Controllers
                     ObjGRHeader.PO_Description = _po_desc;
                     ObjGRHeader.BranchID = "";
                     GRItem.Insert_Header(ObjGRHeader);
+
+                    //return RedirectToAction("Index", "GR");
                     return RedirectToAction("Index", "GR");
+
                 }
             }
             catch
