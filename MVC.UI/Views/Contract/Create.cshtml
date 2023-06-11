@@ -295,9 +295,9 @@
                 var total_Tabel;
                 var _id = $('#kode_layanan').val();
                 //alert(_id);
-                //var strValue = f(_id);
+                var strValue = getstatusID(_id);
                 /*alert(qty_Tabel);*/
-                //if (strValue == "") {
+                if (strValue == "") {
                     var table = document.getElementById("tabelServiceContract");
                     var row = table.insertRow(1);
                     var cell1 = row.insertCell(0);
@@ -316,11 +316,14 @@
                     button.type = 'button';
                     button.setAttribute('onclick', 'DeleteRowInGrid(this)');
                     cell5.appendChild(button);
-                //alert('kadieu');
-                $('#kode_layanan').val('');
-                $('#nama_layanan').val('');
-                $('#type').val('');
-                $('#harga').val('');
+                    //alert('kadieu');
+                    $('#kode_layanan').val('');
+                    $('#nama_layanan').val('');
+                    $('#type').val('');
+                    $('#harga').val('');
+                } else {
+                    alert('Barang Telah Tersedia');
+                }
 
              }
         }
@@ -334,5 +337,20 @@
         var i = r.parentNode.parentNode.rowIndex;
         document.getElementById('tabelServiceContract').deleteRow(1);
        // alert("Hi");
+    }
+
+    function getstatusID(_id) {
+        var strValue = "";
+        //alert('hiii');
+        var tableService = document.getElementById("tabelServiceContract");
+        var rows = [];
+        for (var i = 0; i < tableService.rows.length; i++) {
+            var idOnTable = tableService.rows[i].cells[0].innerText;
+            if (idOnTable == _id) {
+                 strValue = idOnTable;
+                 return strValue;
+            }
+        }
+        return strValue;
     }
 </script>
