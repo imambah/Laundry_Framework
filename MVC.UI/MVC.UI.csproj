@@ -278,6 +278,13 @@
     <Compile Include="Report\ReportViewer_GR.aspx.designer.cs">
       <DependentUpon>ReportViewer_GR.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\ReportViewer_Invoice_Lampiran.aspx.cs">
+      <DependentUpon>ReportViewer_Invoice_Lampiran.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer_Invoice_Lampiran.aspx.designer.cs">
+      <DependentUpon>ReportViewer_Invoice_Lampiran.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReportViewer_PO.aspx.cs">
       <DependentUpon>ReportViewer_PO.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -332,6 +339,7 @@
     <Content Include="Images\logo_laundry_abu.jpeg" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Report\ReportViewer_GR.aspx" />
+    <Content Include="Report\ReportViewer_Invoice_Lampiran.aspx" />
     <Content Include="Report\ReportViewer_PO.aspx" />
     <Content Include="Report\ReportViewer_Invoice.aspx" />
     <Content Include="Report\ReportViewer_TandaPenyerahan.aspx" />
@@ -523,6 +531,7 @@
     <Content Include="Views\Contract\index.cshtml" />
     <Content Include="Views\Contract\Create.cshtml" />
     <Content Include="Views\Contract\edit.cshtml" />
+    <Content Include="Views\Invoice\printLampiran.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -555,6 +564,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Report\Invoice.rdlc" />
+    <EmbeddedResource Include="Report\Invoice_Lampiran.rdlc" />
     <EmbeddedResource Include="Report\Report_GR.rdlc" />
     <EmbeddedResource Include="Report\Rpt_PO.rdlc" />
     <EmbeddedResource Include="Report\Rpt_Tanda_Terima.rdlc" />

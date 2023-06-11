@@ -110,6 +110,21 @@ namespace MVC.UI.Controllers
             return Redirect("~/Report/ReportViewer_Invoice.aspx?invoice_no=" + str + "&logo=" + imgLogo);
             //return View();
         }
+
+        public ActionResult PrintLampiran(string invoice_no)
+        {
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = invoice_no;
+            return View(paramDbo);
+        }
+        public ActionResult PrintOut_Lampiran(ReportParamDbo Model)
+        {
+            string str = Model.param1;
+            Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
+            string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
+            return Redirect("~/Report/ReportViewer_Invoice_Lampiran.aspx?invoice_no=" + str + "&logo=" + imgLogo);
+            //return View();
+        }
     }
 }
 
