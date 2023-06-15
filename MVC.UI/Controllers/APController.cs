@@ -58,5 +58,20 @@ namespace MVC.UI.Controllers
                 return View();
             }
         }
+
+        public ActionResult Print(string id)
+        {
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = id;
+            return View(paramDbo);
+        }
+        public ActionResult PrintOut(ReportParamDbo Model)
+        {
+            string str = Model.param1;
+            Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
+            string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
+            return Redirect("~/Report/ReportViewer_APDetail.aspx?supplier_id=" + str + "&logo=" + imgLogo);
+            //return View();
+        }
     }
 }

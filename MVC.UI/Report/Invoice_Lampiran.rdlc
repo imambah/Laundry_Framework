@@ -2711,7 +2711,6 @@
             <Source>External</Source>
             <Value>=Parameters!logo.Value</Value>
             <Sizing>FitProportional</Sizing>
-            <Left>0.01389in</Left>
             <Height>0.84029in</Height>
             <Width>2.15277in</Width>
             <ZIndex>3</ZIndex>

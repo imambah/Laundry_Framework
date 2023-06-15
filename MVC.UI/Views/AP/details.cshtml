@@ -49,7 +49,9 @@
                         <th>
                             Outstanding 
                         </th>
-
+                        <th>
+                            Record
+                        </th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -72,6 +74,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.outstanding)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.recordid)
                             </td>
                             <td>
                                 <a class="text-primary" href="@Url.Action("Bayar", new { nilaiPiutang = item.outstanding, gr_no =  item.gr_number })" data-toggle="tooltip" title="Bayar"><i class="fa fa-money"></i></a>
