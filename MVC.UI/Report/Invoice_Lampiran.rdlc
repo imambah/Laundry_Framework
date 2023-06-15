@@ -291,14 +291,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="customer_name1">
+                        <Textbox Name="customer_address">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!customer_name.Value</Value>
+                                  <Value>=Fields!customer_address.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -307,7 +307,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>customer_name1</rd:DefaultName>
+                          <rd:DefaultName>customer_address</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1042,7 +1042,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1767,7 +1766,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=(Fields!ppn.Value/100)*Fields!total_harga.Value</Value>
+                                  <Value>=(Fields!ppn.Value/100)*Sum(Fields!total_harga.Value, "DS_INVOICE_LAMPIRAN")</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>Bold</FontWeight>

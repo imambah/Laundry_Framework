@@ -18,5 +18,45 @@ namespace MVC.UI.Controllers
             List<APDbo> List = APItem.GetAll(); 
             return View(List);
         }
+
+        public ActionResult Details(string supplier_id)
+        {
+            List<AP_DetailDbo> list_det =APItem.GetDetailByID(supplier_id);
+            ViewBag.ID = supplier_id;
+            return View(list_det);
+        }
+
+
+        public ActionResult Bayar(decimal nilaiPiutang, string gr_no)
+        {
+            AP_BayarDbo APDbo = new AP_BayarDbo();
+            APDbo.GR_No = gr_no;
+            APDbo.NilaiHutang = nilaiPiutang;
+            return View(APDbo);
+        }
+
+        [HttpPost]
+        public ActionResult Bayar(AP_BayarDbo item)
+        {
+            try
+            {
+                if (item.SisaHutang < 0)
+                {
+                    ViewBag.ErrorMessage = "Nilai tidak boleh kurang dari Nol";
+                    return RedirectToAction("Bayar", new { nilaiPiutang = item.NilaiHutang, invoice_no = item.GR_No });
+                }
+                else
+                {
+                    item.Create_By = Utilities.Username;
+                    APItem.Insert(item);
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

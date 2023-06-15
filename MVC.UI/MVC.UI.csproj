@@ -532,6 +532,9 @@
     <Content Include="Views\Contract\Create.cshtml" />
     <Content Include="Views\Contract\edit.cshtml" />
     <Content Include="Views\Invoice\printLampiran.cshtml" />
+    <Content Include="Views\AP\details.cshtml" />
+    <Content Include="Views\AP\Bayar.cshtml" />
+    <Content Include="Views\AP\print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -565,6 +568,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Report\Invoice.rdlc" />
     <EmbeddedResource Include="Report\Invoice_Lampiran.rdlc" />
+    <EmbeddedResource Include="Report\Lampiran.rdlc" />
     <EmbeddedResource Include="Report\Report_GR.rdlc" />
     <EmbeddedResource Include="Report\Rpt_PO.rdlc" />
     <EmbeddedResource Include="Report\Rpt_Tanda_Terima.rdlc" />

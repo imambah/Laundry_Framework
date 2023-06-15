@@ -1,8 +1,8 @@
 ﻿
-@model IEnumerable<Web.Dto.APDbo>
+@model IEnumerable<Web.Dto.AP_DetailDbo>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -20,34 +20,34 @@
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Data HUTANG</h3>
+            <h3 class="box-title">Detail Data Hutang</h3>
         </div>
         <div class="box-body">
             <p>
-               
-                <a class="btn btn-warning " href="@Url.Action("Print")" role="button" ><i class="fa fa-print"></i> Print</a>
-               
+
+                <a class="btn btn-warning " href="@Url.Action("Print", new { id =  ViewBag.ID})" role="button"><i class="fa fa-print"></i> Print</a>
+
             </p>
+
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
 
-                        @*<th>
-                            Cabang
-                        </th>*@
-
-                        <th>
-                            Kode Supplier
-                        </th>
                         <th>
                             Nama Supplier
                         </th>
                         <th>
-                            Nilai Hutang
+                            GR NO 
                         </th>
 
                         <th>
-                            Sisa Hutang
+                            GR Date
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Outstanding 
                         </th>
 
                         <th>Aksi</th>
@@ -58,14 +58,14 @@
                     {
                         <tr>
 
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.branchid)
-                            </td>*@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.supplier_id)
-                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.supplier_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.gr_number)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.gr_date)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.total)
@@ -74,12 +74,15 @@
                                 @Html.DisplayFor(modelItem => item.outstanding)
                             </td>
                             <td>
-                                <a class="text-primary" href="@Url.Action("Details", new { supplier_id=item.supplier_id })" data-toggle="tooltip" title="Detail"><i class="fa fa-money"></i></a>
+                                <a class="text-primary" href="@Url.Action("Bayar", new { nilaiPiutang = item.outstanding, gr_no =  item.gr_number })" data-toggle="tooltip" title="Bayar"><i class="fa fa-money"></i></a>
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
+        </div>
+        <div>
+            <a href="@Url.Action("Index")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
         </div>
         <!-- /.box-body -->
     </div>
