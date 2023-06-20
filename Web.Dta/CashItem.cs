@@ -152,5 +152,20 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new GroupDbo());
         }
+        public static string ValidateTotal(string kode_voucher, string value) {
+            string strValue = "";
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_Cash_ValidateTotal]";
+            context.CommandText = sqlQuery;
+            context.AddParameter("@voucher_id", kode_voucher);
+            context.AddParameter("@value_param", value);
+            context.CommandType = CommandType.StoredProcedure;
+            object obj = DBUtil.ExecuteScalar(context);
+            if (obj != null)
+                strValue = obj.ToString();
+            return strValue;
+
+        }
+     
     }
 }

@@ -164,6 +164,16 @@ namespace MVC.UI.Controllers
             List<GroupDbo> COAList = CashItem.GetCOA();
             return COAList;
         }
+        public JsonResult ValidateTotal(string kode_voucher, string value)
+        {
+            string strValue = CashItem.ValidateTotal(kode_voucher, value);
 
+            var myData = new
+            {
+                Value = strValue
+            };
+
+            return Json(myData, JsonRequestBehavior.AllowGet);
+        }
     }
 }

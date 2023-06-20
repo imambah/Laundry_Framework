@@ -21,7 +21,7 @@
         </div>
         <div class="box-body">
 
-            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "saveform", @class = "form-horizontal", enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-10">
-                        <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                        <button type="button" class="btn btn-success" onclick="validatestatus()" ><i class="fa fa-save" ></i>&nbsp;&nbsp;Simpan</button>
                     </div>
                 </div>
             }
@@ -76,3 +76,31 @@
     <!-- /.box -->
 </section>
 <!-- /.content -->
+
+<script type="text/javascript">
+    function validatestatus() {
+       //alert("kemari");
+       
+        var voucher_kode = $("#Voucher_ID").val();
+        var value_detail = $("#value_detail").val();
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/Cash/ValidateTotal?kode_voucher=" + voucher_kode + "&value=" + value_detail,
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            success: function (data) {
+                Submit_Form(data.Value);
+                //strValue = data.Value
+            }
+        });
+    };
+
+    function Submit_Form(data) {
+        if (data == "0") 
+            alert ("Nilai yang dimasukan setelah di akumulasi melebihi jumlah total ")
+        else 
+        $("#saveform").submit();
+    }
+
+</script>

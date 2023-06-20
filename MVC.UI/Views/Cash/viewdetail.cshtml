@@ -79,10 +79,6 @@
             <table id="mydatatable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        @*<th>
-                            ID
-                        </th>*@
-
                         <th>
                             COA
                             @*@Html.DisplayNameFor(model => model.FullName)*@
@@ -91,7 +87,7 @@
                             Keterangan
                             @*@Html.DisplayNameFor(model => model.FullName)*@
                         </th>
-                        <th style="text-align:center">
+                        <th style="text-align:center" >
                             Nilai
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
@@ -103,10 +99,6 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-
-                            @*<td>
-            @Html.DisplayFor(modelItem => item.id)
-        </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.COA_Detail)
                             </td>
@@ -125,7 +117,9 @@
                    <td colspan="2" align="right" style="font-weight: bold">
                         T O T A L
                     </td>
-                    <td style="font-weight: bold"></td>
+                   <td style="font-weight: bold;text-align:right">
+                       <label id="total"></label> 
+                   </td>
                     <td></td>
                 </tr>
                 </tbody>
@@ -147,15 +141,18 @@
     });
     function tambahdetail() {
         alert("ok");
-        @*var strTransID = $("#transid").val();
-        var strDisc = $("#nilai_disc").val();
-        var strPPn = $("#nilai_ppn").val();
-        var strGrandTotal = $("#nilai_grandtotal").val();
-        $.post('@Url.Action("ProsesTransEdit", "POS")', { transactionid: strTransID, disc: strDisc, ppn: strPPn, grandtotal: strGrandTotal }, function (data) { });*@
-
     };
-
+   
     function hitungtotal() {
+        var sTableName = document.getElementById("mydatatable");
+        var nilai_baru = 0;
 
+        for (var i = 1; i < sTableName.rows.length-1; i++) {
+           var _nilai = sTableName.rows[i].cells[2].innerText;
+            nilai_baru = parseFloat(nilai_baru) + parseFloat(_nilai); 
+            //alert(nilai_baru);
+        }
+        //$('#total').val(nilai_baru);
+        document.getElementById("total").innerHTML = nilai_baru;
     };
 </script>
