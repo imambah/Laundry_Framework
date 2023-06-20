@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<Web.Dto.Report_AR_Aging_Dbo>
+@model IEnumerable<Web.Dto.AP_AgingDbo>
 
 @{
     ViewBag.Title = "Index";
@@ -73,10 +73,10 @@
                                 @Html.DisplayFor(modelItem => item.cabang)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.custid)
+                                @Html.DisplayFor(modelItem => item.supplier_id)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.custname)
+                                @Html.DisplayFor(modelItem => item.supplier_name)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.amt)
@@ -97,7 +97,7 @@
                                 @Html.DisplayFor(modelItem => item.a91)
                             </td>
                             <td>
-                                <a class="text-primary" href="@Url.Action("Details", new { id=item.custid })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
+                                <a class="text-primary" href="@Url.Action("Details", new { id=item.supplier_id })" data-toggle="tooltip" title="Detail"><i class="fa fa-search"></i></a>
                             </td>
                         </tr>
                     }

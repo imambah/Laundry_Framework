@@ -20,7 +20,7 @@ namespace MVC.UI.Controllers
         }
 
         public ActionResult Details(string supplier_id)
-        {
+        { 
             List<AP_DetailDbo> list_det =APItem.GetDetailByID(supplier_id);
             ViewBag.ID = supplier_id;
             return View(list_det);

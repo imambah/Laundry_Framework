@@ -20,6 +20,23 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new Master_Klien());
         }
+        public static List<Master_Klien> GetAll_Counter()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_master_client_Counter";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new Master_Klien());
+        }
+
+        public static List<Master_Klien> GetAll_Client()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "sp_master_client_Get";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new Master_Klien());
+        }
 
         public static Master_Klien GetByClient_Code(string client_code)
         {

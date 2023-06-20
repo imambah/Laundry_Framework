@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC.UI.Models;
+using Newtonsoft.Json;
 using Web.Dta;
 using Web.Dto;
 using Web.Logic;
+//using System.Text.Json;
+
 
 namespace MVC.UI.Controllers
 {
@@ -112,6 +115,27 @@ namespace MVC.UI.Controllers
             {
                 return View();
             }
+        }
+
+        public JsonResult ValidateItem(string kode_layanan, string kode_klien)
+        {
+            string strValue = "";
+            
+            List<Master_ContractDbo> ObjList = Master_ContractItem.GetItemByParam(kode_layanan, kode_klien);
+            
+            if (ObjList.Count > 0) {
+                strValue = "1";              
+            }
+            else {
+               strValue = "0";
+            }
+
+            var myData = new
+            {
+                Value = strValue
+            };
+         
+            return Json(myData, JsonRequestBehavior.AllowGet); 
         }
     }
 

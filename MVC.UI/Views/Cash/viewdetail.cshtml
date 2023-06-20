@@ -91,7 +91,7 @@
                             Keterangan
                             @*@Html.DisplayNameFor(model => model.FullName)*@
                         </th>
-                        <th>
+                        <th style="text-align:center">
                             Nilai
                             @*@Html.DisplayNameFor(model => model.LastLogin)*@
                         </th>
@@ -113,14 +113,21 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Description_Detail)
                             </td>
-                            <td>
+                            <td style="text-align:right">
                                 @Html.DisplayFor(modelItem => item.value_detail)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.value_detail)
+                                <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
                             </td>
                         </tr>
                     }
+                <tr>
+                   <td colspan="2" align="right" style="font-weight: bold">
+                        T O T A L
+                    </td>
+                    <td style="font-weight: bold"></td>
+                    <td></td>
+                </tr>
                 </tbody>
             </table>
             <div>
@@ -134,7 +141,10 @@
 </section>
 <!-- /.content -->
 <script type="text/javascript">
-     
+    $(document).ready(function () {
+        hitungtotal();
+
+    });
     function tambahdetail() {
         alert("ok");
         @*var strTransID = $("#transid").val();
@@ -145,4 +155,7 @@
 
     };
 
+    function hitungtotal() {
+
+    };
 </script>

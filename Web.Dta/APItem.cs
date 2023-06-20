@@ -49,19 +49,19 @@ namespace Web.Dta
         public static List<AP_AgingDbo> Get_AP_Aging()
         {
             IDBHelper context = new DBHelper();
-            string sqlQuery = "sp_report_AR_Aging";
+            string sqlQuery = "sp_report_AP_Aging";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper(context, new AP_AgingDbo());
         }
-        public static List<AP_AgingDbo> GetDetail(string custid)
-        {
-            IDBHelper context = new DBHelper();
-            string sqlQuery = "sp_report_AR_Aging_Detail";
-            context.AddParameter("param", custid); //sementara hardcode
-            context.CommandText = sqlQuery;
-            context.CommandType = CommandType.StoredProcedure;
-            return DBUtil.ExecuteMapper(context, new AP_AgingDbo());
-        }
+        //public static List<AP_AgingDbo> GetDetail(string custid)
+        //{
+        //    IDBHelper context = new DBHelper();
+        //    string sqlQuery = "sp_report_AR_Aging_Detail";
+        //    context.AddParameter("param", custid); //sementara hardcode
+        //    context.CommandText = sqlQuery;
+        //    context.CommandType = CommandType.StoredProcedure;
+        //    return DBUtil.ExecuteMapper(context, new AP_AgingDbo());
+        //}
     }
 }

@@ -533,6 +533,14 @@ namespace MVC.UI {
             
             private global::System.Data.DataColumn columnroom;
             
+            private global::System.Data.DataColumn columncustomer_type;
+            
+            private global::System.Data.DataColumn columntransaction_date1;
+            
+            private global::System.Data.DataColumn columnestimasi_selesai;
+            
+            private global::System.Data.DataColumn columnfinishdate1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_Report_GetPOSbyIDDataTable() {
@@ -744,6 +752,38 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn customer_typeColumn {
+                get {
+                    return this.columncustomer_type;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn transaction_date1Column {
+                get {
+                    return this.columntransaction_date1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn estimasi_selesaiColumn {
+                get {
+                    return this.columnestimasi_selesai;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn finishdate1Column {
+                get {
+                    return this.columnfinishdate1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -800,7 +840,11 @@ namespace MVC.UI {
                         System.DateTime finishdate, 
                         string finish_by, 
                         string remarks, 
-                        string room) {
+                        string room, 
+                        string customer_type, 
+                        string transaction_date1, 
+                        System.DateTime estimasi_selesai, 
+                        string finishdate1) {
                 sp_Report_GetPOSbyIDRow rowsp_Report_GetPOSbyIDRow = ((sp_Report_GetPOSbyIDRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         transaction_id,
@@ -824,7 +868,11 @@ namespace MVC.UI {
                         finishdate,
                         finish_by,
                         remarks,
-                        room};
+                        room,
+                        customer_type,
+                        transaction_date1,
+                        estimasi_selesai,
+                        finishdate1};
                 rowsp_Report_GetPOSbyIDRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_Report_GetPOSbyIDRow);
                 return rowsp_Report_GetPOSbyIDRow;
@@ -876,6 +924,10 @@ namespace MVC.UI {
                 this.columnfinish_by = base.Columns["finish_by"];
                 this.columnremarks = base.Columns["remarks"];
                 this.columnroom = base.Columns["room"];
+                this.columncustomer_type = base.Columns["customer_type"];
+                this.columntransaction_date1 = base.Columns["transaction_date1"];
+                this.columnestimasi_selesai = base.Columns["estimasi_selesai"];
+                this.columnfinishdate1 = base.Columns["finishdate1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -925,6 +977,14 @@ namespace MVC.UI {
                 base.Columns.Add(this.columnremarks);
                 this.columnroom = new global::System.Data.DataColumn("room", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnroom);
+                this.columncustomer_type = new global::System.Data.DataColumn("customer_type", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncustomer_type);
+                this.columntransaction_date1 = new global::System.Data.DataColumn("transaction_date1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntransaction_date1);
+                this.columnestimasi_selesai = new global::System.Data.DataColumn("estimasi_selesai", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnestimasi_selesai);
+                this.columnfinishdate1 = new global::System.Data.DataColumn("finishdate1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfinishdate1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columntransaction_id.MaxLength = 20;
@@ -946,6 +1006,13 @@ namespace MVC.UI {
                 this.columnfinish_by.MaxLength = 30;
                 this.columnremarks.MaxLength = 150;
                 this.columnroom.MaxLength = 10;
+                this.columncustomer_type.MaxLength = 20;
+                this.columntransaction_date1.ReadOnly = true;
+                this.columntransaction_date1.Caption = "transaction_date";
+                this.columntransaction_date1.MaxLength = 10;
+                this.columnfinishdate1.ReadOnly = true;
+                this.columnfinishdate1.Caption = "finishdate";
+                this.columnfinishdate1.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3071,6 +3138,10 @@ namespace MVC.UI {
             
             private global::System.Data.DataColumn columngrand_total;
             
+            private global::System.Data.DataColumn columntransaction_id;
+            
+            private global::System.Data.DataColumn columntransaction_date;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public sp_Report_Invoice_LampiranDataTable() {
@@ -3242,6 +3313,22 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn transaction_idColumn {
+                get {
+                    return this.columntransaction_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn transaction_dateColumn {
+                get {
+                    return this.columntransaction_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3293,7 +3380,9 @@ namespace MVC.UI {
                         string terbilang, 
                         decimal disc, 
                         decimal ppn, 
-                        decimal grand_total) {
+                        decimal grand_total, 
+                        string transaction_id, 
+                        System.DateTime transaction_date) {
                 sp_Report_Invoice_LampiranRow rowsp_Report_Invoice_LampiranRow = ((sp_Report_Invoice_LampiranRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         row_no,
@@ -3312,7 +3401,9 @@ namespace MVC.UI {
                         terbilang,
                         disc,
                         ppn,
-                        grand_total};
+                        grand_total,
+                        transaction_id,
+                        transaction_date};
                 rowsp_Report_Invoice_LampiranRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsp_Report_Invoice_LampiranRow);
                 return rowsp_Report_Invoice_LampiranRow;
@@ -3359,6 +3450,8 @@ namespace MVC.UI {
                 this.columndisc = base.Columns["disc"];
                 this.columnppn = base.Columns["ppn"];
                 this.columngrand_total = base.Columns["grand_total"];
+                this.columntransaction_id = base.Columns["transaction_id"];
+                this.columntransaction_date = base.Columns["transaction_date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3398,6 +3491,10 @@ namespace MVC.UI {
                 base.Columns.Add(this.columnppn);
                 this.columngrand_total = new global::System.Data.DataColumn("grand_total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columngrand_total);
+                this.columntransaction_id = new global::System.Data.DataColumn("transaction_id", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntransaction_id);
+                this.columntransaction_date = new global::System.Data.DataColumn("transaction_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntransaction_date);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
                 this.columnrow_no.ReadOnly = true;
@@ -3414,6 +3511,7 @@ namespace MVC.UI {
                 this.columnnama_item.MaxLength = 100;
                 this.columnterbilang.ReadOnly = true;
                 this.columnterbilang.MaxLength = 250;
+                this.columntransaction_id.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4259,6 +4357,72 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string customer_type {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.customer_typeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'customer_type\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.customer_typeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string transaction_date1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.transaction_date1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'transaction_date1\' in table \'sp_Report_GetPOSbyID\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.transaction_date1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime estimasi_selesai {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_Report_GetPOSbyID.estimasi_selesaiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'estimasi_selesai\' in table \'sp_Report_GetPOSbyID\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.estimasi_selesaiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string finishdate1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_GetPOSbyID.finishdate1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'finishdate1\' in table \'sp_Report_GetPOSbyID\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_GetPOSbyID.finishdate1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Istransaction_idNull() {
                 return this.IsNull(this.tablesp_Report_GetPOSbyID.transaction_idColumn);
             }
@@ -4507,6 +4671,54 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetroomNull() {
                 this[this.tablesp_Report_GetPOSbyID.roomColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Iscustomer_typeNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.customer_typeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setcustomer_typeNull() {
+                this[this.tablesp_Report_GetPOSbyID.customer_typeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Istransaction_date1Null() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.transaction_date1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Settransaction_date1Null() {
+                this[this.tablesp_Report_GetPOSbyID.transaction_date1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isestimasi_selesaiNull() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.estimasi_selesaiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setestimasi_selesaiNull() {
+                this[this.tablesp_Report_GetPOSbyID.estimasi_selesaiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isfinishdate1Null() {
+                return this.IsNull(this.tablesp_Report_GetPOSbyID.finishdate1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setfinishdate1Null() {
+                this[this.tablesp_Report_GetPOSbyID.finishdate1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -6722,6 +6934,40 @@ namespace MVC.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string transaction_id {
+                get {
+                    try {
+                        return ((string)(this[this.tablesp_Report_Invoice_Lampiran.transaction_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'transaction_id\' in table \'sp_Report_Invoice_Lampiran\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_Invoice_Lampiran.transaction_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime transaction_date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablesp_Report_Invoice_Lampiran.transaction_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'transaction_date\' in table \'sp_Report_Invoice_Lampiran\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesp_Report_Invoice_Lampiran.transaction_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool Isrow_noNull() {
                 return this.IsNull(this.tablesp_Report_Invoice_Lampiran.row_noColumn);
             }
@@ -6910,6 +7156,30 @@ namespace MVC.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setgrand_totalNull() {
                 this[this.tablesp_Report_Invoice_Lampiran.grand_totalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Istransaction_idNull() {
+                return this.IsNull(this.tablesp_Report_Invoice_Lampiran.transaction_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Settransaction_idNull() {
+                this[this.tablesp_Report_Invoice_Lampiran.transaction_idColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Istransaction_dateNull() {
+                return this.IsNull(this.tablesp_Report_Invoice_Lampiran.transaction_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Settransaction_dateNull() {
+                this[this.tablesp_Report_Invoice_Lampiran.transaction_dateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -7516,7 +7786,6 @@ namespace MVC.UI.DataSet_POSTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "sp_Report_GetPOSbyID";
             tableMapping.ColumnMappings.Add("transaction_id", "transaction_id");
-            tableMapping.ColumnMappings.Add("transaction_date", "transaction_date");
             tableMapping.ColumnMappings.Add("transaction_type", "transaction_type");
             tableMapping.ColumnMappings.Add("customerid", "customerid");
             tableMapping.ColumnMappings.Add("customer_name", "customer_name");
@@ -7533,10 +7802,13 @@ namespace MVC.UI.DataSet_POSTableAdapters {
             tableMapping.ColumnMappings.Add("disc", "disc");
             tableMapping.ColumnMappings.Add("ppn", "ppn");
             tableMapping.ColumnMappings.Add("grand_total", "grand_total");
-            tableMapping.ColumnMappings.Add("finishdate", "finishdate");
             tableMapping.ColumnMappings.Add("finish_by", "finish_by");
             tableMapping.ColumnMappings.Add("remarks", "remarks");
             tableMapping.ColumnMappings.Add("room", "room");
+            tableMapping.ColumnMappings.Add("customer_type", "customer_type");
+            tableMapping.ColumnMappings.Add("transaction_date", "transaction_date1");
+            tableMapping.ColumnMappings.Add("estimasi_selesai", "estimasi_selesai");
+            tableMapping.ColumnMappings.Add("finishdate", "finishdate1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8520,6 +8792,8 @@ namespace MVC.UI.DataSet_POSTableAdapters {
             tableMapping.ColumnMappings.Add("disc", "disc");
             tableMapping.ColumnMappings.Add("ppn", "ppn");
             tableMapping.ColumnMappings.Add("grand_total", "grand_total");
+            tableMapping.ColumnMappings.Add("transaction_id", "transaction_id");
+            tableMapping.ColumnMappings.Add("transaction_date", "transaction_date");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

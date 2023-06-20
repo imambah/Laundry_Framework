@@ -253,6 +253,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VoucherController.cs" />
     <Compile Include="DataSet_ARDetail1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -546,6 +547,9 @@
     <Content Include="Views\AP\print.cshtml" />
     <Content Include="Views\APAging\index.cshtml" />
     <Content Include="Views\APAging\details.cshtml" />
+    <Content Include="Views\Voucher\index.cshtml" />
+    <Content Include="Views\Voucher\Create.cshtml" />
+    <Content Include="Views\Voucher\CreateDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

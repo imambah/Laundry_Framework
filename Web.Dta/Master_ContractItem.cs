@@ -76,6 +76,17 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper<Master_ContractDbo>(context, new Master_ContractDbo()).FirstOrDefault();
         }
 
+        public static List<Master_ContractDbo> GetItemByParam(string kode_layanan, string kode_klien)
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_master_Contract_GetByID]";
+            context.AddParameter("@kode_layanan", kode_layanan);
+            context.AddParameter("@kode_klien", kode_klien);
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper(context, new Master_ContractDbo());
+        }
+
         #region Data Access
 
 
