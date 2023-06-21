@@ -85,7 +85,7 @@ namespace MVC.UI.Report
             SqlDataAdapter da = new SqlDataAdapter();
             DataTable dt = new DataTable();
             cmd.Connection = con;
-            cmd = new SqlCommand("[sp_Report_Cash_In]", cmd.Connection);
+            cmd = new SqlCommand("[sp_Report_Cash_In_Out]", cmd.Connection);
             cmd.Parameters.Add(new SqlParameter("@Voucher_ID", voucher_id));
             cmd.CommandType = CommandType.StoredProcedure;
             da.SelectCommand = cmd;

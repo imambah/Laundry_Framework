@@ -56,6 +56,7 @@
     <Compile Include="GRDbo.cs" />
     <Compile Include="InvoiceSummaryDbo.cs" />
     <Compile Include="AR_BayarDbo.cs" />
+    <Compile Include="Report_AP_Aging_Dbo.cs" />
     <Compile Include="VoucherDbo.cs" />
     <Compile Include="Master_ContractDbo.cs" />
     <Compile Include="NomorDbo.cs" />

@@ -18,10 +18,11 @@ namespace MVC.UI.Controllers
             List<AP_AgingDbo> list = APItem.Get_AP_Aging();
             return View(list);
         }
-        //public ActionResult Details(string id)
-        //{
-        //    List<AP_Aging_Dbo> list_det = Report_AP_Aging_Item.GetDetail(id);
-        //    return View(list_det);
-        //}
+
+        public ActionResult Details(string id)
+        {
+            List<Report_AP_Aging_Dbo> list_det = APItem.GetDetail(id);
+            return View(list_det);
+        }
     }
 }

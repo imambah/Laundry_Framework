@@ -3,7 +3,7 @@ using DataAccessLayer;
 using System;
 namespace Web.Dto
 {
-	public class AP_AgingDbo : IDataMapper<AP_AgingDbo>
+	public class Report_AP_Aging_Dbo : IDataMapper<Report_AP_Aging_Dbo>
 	{
         public string cabang { get; set; }
         public string supplier_id { get; set; }
@@ -18,19 +18,19 @@ namespace Web.Dto
         public DateTime? gr_date { get; set; }
         public DateTime? due_date { get; set; }
 
-        public AP_AgingDbo Map(System.Data.IDataReader reader)
+        public Report_AP_Aging_Dbo Map(System.Data.IDataReader reader)
         {
-            AP_AgingDbo obj = new AP_AgingDbo();
-            obj.cabang = reader["cabang"] == DBNull.Value? "": reader["cabang"].ToString();
-            obj.supplier_id = reader["supplierid"] == DBNull.Value ? "" : reader["supplierid"].ToString();
-            obj.supplier_name = reader["supplier_name"] == DBNull.Value ? "" : reader["supplier_name"].ToString(); 
+            Report_AP_Aging_Dbo obj = new Report_AP_Aging_Dbo();
+            obj.cabang = reader["cabang"].ToString();
+            obj.supplier_id = reader["supplier_id"].ToString();
+            obj.supplier_name= reader["supplier_name"].ToString();
             obj.amt = reader["amt"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["amt"]);
             obj.curr = reader["curr"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["curr"]);
-            obj.a0130 = reader["a0130"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["a0130"]);
-            obj.a3160 = reader["a3160"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["a3160"]);
-            obj.a6190 = reader["a6190"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["a6190"]);
+            obj.a0130 = reader["a30"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["a30"]);
+            obj.a3160 = reader["a60"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["a60"]);
+            obj.a6190 = reader["a90"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["a90"]);
             obj.a91 = reader["a91"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["a91"]);
-            obj.gr_no = reader["gr_no"] == DBNull.Value ? "" : reader["gr_no"].ToString(); 
+            obj.gr_no = reader["gr_no"].ToString();
             obj.gr_date = reader["gr_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["gr_date"]);
             obj.due_date = reader["due_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["due_date"]);
             return obj;
