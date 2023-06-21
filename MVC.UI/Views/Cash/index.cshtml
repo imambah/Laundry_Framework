@@ -92,6 +92,7 @@
                                 <a class="text-success" href="@Url.Action("Edit", new { id=item.id })" data-toggle="tooltip" title="Ubah"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
                                 <a class="text-success" href="@Url.Action("ViewDetail", new { Voucher_ID=item.Voucher_ID })" data-toggle="tooltip" title="View Detail"><i class="fa fa-navicon"></i></a>&nbsp;&nbsp;
                                 <a class="text-danger" href="@Url.Action("Delete", new { id=item.id  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                <a class="text-primary" href="@Url.Action("Print", new { Voucher_ID=item.Voucher_ID })" data-toggle="tooltip" title="Print Voucher"><i class="fa fa-print"></i></a>&nbsp;&nbsp;
                             </td>
                         </tr>
                     }

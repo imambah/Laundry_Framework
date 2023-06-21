@@ -175,5 +175,20 @@ namespace MVC.UI.Controllers
 
             return Json(myData, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Print(string Voucher_ID)
+        {
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = Voucher_ID;
+            return View(paramDbo);
+        }
+        public ActionResult PrintOut(ReportParamDbo Model)
+        {
+            string str = Model.param1;
+            Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
+            string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
+            return Redirect("~/Report/ReportViewer_CashIn.aspx?voucher_id=" + str + "&logo=" + imgLogo);
+            //return View();
+        }
     }
 }

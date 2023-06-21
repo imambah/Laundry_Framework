@@ -280,6 +280,13 @@
     <Compile Include="Report\ReportViewer_APDetail.aspx.designer.cs">
       <DependentUpon>ReportViewer_APDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\ReportViewer_CashIn.aspx.cs">
+      <DependentUpon>ReportViewer_CashIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer_CashIn.aspx.designer.cs">
+      <DependentUpon>ReportViewer_CashIn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReportViewer_GR.aspx.cs">
       <DependentUpon>ReportViewer_GR.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -348,6 +355,7 @@
     <Content Include="Images\logo_laundry_abu.jpeg" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Report\ReportViewer_APDetail.aspx" />
+    <Content Include="Report\ReportViewer_CashIn.aspx" />
     <Content Include="Report\ReportViewer_GR.aspx" />
     <Content Include="Report\ReportViewer_Invoice_Lampiran.aspx" />
     <Content Include="Report\ReportViewer_PO.aspx" />
@@ -550,6 +558,7 @@
     <Content Include="Views\Voucher\index.cshtml" />
     <Content Include="Views\Voucher\Create.cshtml" />
     <Content Include="Views\Voucher\CreateDetail.cshtml" />
+    <Content Include="Views\Cash\print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -592,6 +601,8 @@
     <EmbeddedResource Include="Report\Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Rpt_ARDetail1.rdlc" />
     <EmbeddedResource Include="Report\TandaTerimaHotel.rdlc" />
+    <EmbeddedResource Include="Report\V_Cash_In.rdlc" />
+    <EmbeddedResource Include="Report\V_Cash_Out.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
