@@ -10,9 +10,7 @@ namespace Web.Dto
         public decimal SisaPiutang { get; set; }
         public decimal BayarPiutang { get; set; }
         public string Create_By { get; set; }
-
-        //public decimal Create_Date { get; set; }
-
+        public string bank_id { get; set; }
 
 
         public AR_BayarDbo Map(System.Data.IDataReader reader)
@@ -23,6 +21,7 @@ namespace Web.Dto
             obj.SisaPiutang = reader["sisapiutang"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["sisapiutang"]);
             obj.BayarPiutang = reader["bayarpiutang"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["bayarpiutang"]);
             obj.Create_By = reader["create_by"].ToString();
+            obj.bank_id = reader["bank_id"].ToString();
 
             return obj;
         }

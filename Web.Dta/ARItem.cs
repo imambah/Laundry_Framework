@@ -27,6 +27,7 @@ namespace Web.Dta
             context.AddParameter("@invoice_no", obj.Invoice_No);
             context.AddParameter("@nilai_bayar", obj.BayarPiutang);
             context.AddParameter("@create_by", obj.Create_By);
+            context.AddParameter("@bank_id", obj.bank_id);
 
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

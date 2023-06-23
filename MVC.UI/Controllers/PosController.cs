@@ -38,7 +38,7 @@ namespace MVC.UI.Controllers
         public JsonResult getName(string Prefix)
         {
             var strValue = Prefix.ToUpper();
-            List<Master_Klien> ObjList = Master_KlienItem.GetAll();
+            List<Master_Klien> ObjList = Master_KlienItem.GetAll_Client();
             var Name = (from N in ObjList
                         where N.nama_klien.ToUpper().Contains(strValue)
                         select new { N.nama_klien, N.alamat, N.kode_klien, N.tipe_konsumen });
@@ -51,10 +51,12 @@ namespace MVC.UI.Controllers
         {
             try
             {
+
+                var POSNUMBER = tbl_parameterItem.getPOS_Nomer("pos");
                 rows.ForEach(x =>
                 {
                     var row = x.Split('|');
-                    var transaction_id = transactionid;
+                    var transaction_id = POSNUMBER;
                     var id = row[0];
                     var name = row[1];
                     var qty_laundry = row[2];
@@ -70,7 +72,7 @@ namespace MVC.UI.Controllers
                     var _drycleaning_price = row[6] == "" ? 0 : Convert.ToDecimal(row[6]); //price.service_DryCleaning_price;
 
                     POS_DetailDbo ObjPosDetail = new POS_DetailDbo();
-                    ObjPosDetail.transaction_id = transactionid;
+                    ObjPosDetail.transaction_id = transaction_id;
                     ObjPosDetail.kode_item = id;
                     ObjPosDetail.nama_item = name;
                     ObjPosDetail.service_laundry_qty = _qty_laundry;
@@ -85,7 +87,7 @@ namespace MVC.UI.Controllers
                     
                 });
 
-                PosDetailPriceDbo detail_price = Master_POSItem.GetPriceDetail(transactionid);
+                PosDetailPriceDbo detail_price = Master_POSItem.GetPriceDetail(POSNUMBER);
 
                 string[] result = header.Split('|');
 
@@ -101,7 +103,7 @@ namespace MVC.UI.Controllers
 
                 POSDbo ObjPosHeader = new POSDbo();
                 ObjPosHeader.transaction_type = result[0].Trim();
-                ObjPosHeader.transaction_id = result[1].Trim();
+                ObjPosHeader.transaction_id = POSNUMBER;
                 ObjPosHeader.customer_name = result[2].Trim();
                 ObjPosHeader.room = result[3].Trim();
                 ObjPosHeader.customer_address = result[4].Trim();

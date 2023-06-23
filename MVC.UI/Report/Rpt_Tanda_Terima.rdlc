@@ -121,6 +121,14 @@
           <DataField>finishdate</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="create_by">
+          <DataField>create_by</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UserGroup">
+          <DataField>UserGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet_POS</rd:DataSetName>
@@ -2350,7 +2358,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=iif(Fields!customer_type.Value= "Counter",Replace(Parameters!ketentuan.Value, "-", System.Environment.NewLine &amp; "-"), "")</Value>
+                                  <Value>=iif(Fields!UserGroup.Value= "Agent",Replace(Parameters!ketentuan.Value, "-", System.Environment.NewLine &amp; "-"), "")</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

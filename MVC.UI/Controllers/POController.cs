@@ -44,7 +44,7 @@ namespace MVC.UI.Controllers
         public JsonResult getNameBillTo(string Prefix)
         {
             var strValue = Prefix.ToUpper();
-            List<Master_Klien> ObjList = Master_KlienItem.GetAll();
+            List<Master_Klien> ObjList = Master_KlienItem.GetAll_Counter();
             var Name = (from N in ObjList
                         where N.nama_klien.ToUpper().Contains(strValue)
                         select new { N.nama_klien, N.kode_klien });
@@ -113,7 +113,7 @@ namespace MVC.UI.Controllers
                 ObjPoHeader.DeliveryDatePlan = Convert.ToDateTime(DeliveryDatePlan);
                 ObjPoHeader.Term_Of_Payment = result[5].Trim();
                 ObjPoHeader.PO_Description = result[6].Trim();
-                    ObjPoHeader.BranchID = "";// Utilities.BranchID;
+                 ObjPoHeader.BranchID = "";// Utilities.BranchID;
                 ObjPoHeader.Billto_Id = result[7].Trim();
                 ObjPoHeader.Billto_Name = result[8].Trim();
                     //ObjPosHeader.create_by = Utilities.Username;

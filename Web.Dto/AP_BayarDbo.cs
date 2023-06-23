@@ -9,9 +9,8 @@ namespace Web.Dto
         public decimal NilaiHutang { get; set; }
         public decimal SisaHutang{ get; set; }
         public decimal BayarHutang { get; set; }
-        public string Create_By { get; set; }
-
-        //public decimal Create_Date { get; set; }
+        public string Create_By { get; set; }   
+        public string bankid { get; set; }
 
 
 
@@ -23,6 +22,7 @@ namespace Web.Dto
             obj.SisaHutang = reader["sisahutang"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["sisahutang"]);
             obj.BayarHutang = reader["bayarhutang"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["bayarhutang"]);
             obj.Create_By = reader["create_by"].ToString();
+            obj.bankid = reader["bank_id"].ToString();
 
             return obj;
         }

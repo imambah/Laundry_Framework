@@ -28,6 +28,8 @@ namespace Web.Dto
         public DateTime? last_update { get; set; }
         public DateTime? expire_date { get; set; }
 
+        public int is_delete { get; set; }
+
         public PODbo Map(System.Data.IDataReader reader)
         {
             PODbo obj = new PODbo();
@@ -57,6 +59,7 @@ namespace Web.Dto
             obj.create_date = reader["create_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["create_date"]);
             obj.last_update = reader["last_update"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["last_update"]);
             obj.expire_date = reader["expired_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["expired_date"]);
+            obj.is_delete = reader["is_delete"] == DBNull.Value ? 0 : Convert.ToInt32(reader["is_delete"]);
             return obj;
         }
     }

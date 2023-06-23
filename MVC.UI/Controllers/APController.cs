@@ -32,6 +32,7 @@ namespace MVC.UI.Controllers
             AP_BayarDbo APDbo = new AP_BayarDbo();
             APDbo.GR_No = gr_no;
             APDbo.NilaiHutang = nilaiPiutang;
+            ViewBag.BANKList = new SelectList(BANKList(), "id", "nama");
             return View(APDbo);
         }
 
@@ -72,6 +73,12 @@ namespace MVC.UI.Controllers
             string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
             return Redirect("~/Report/ReportViewer_APDetail.aspx?supplier_id=" + str + "&logo=" + imgLogo);
             //return View();
+        }
+
+        public List<GroupDbo> BANKList()
+        {
+            List<GroupDbo> BANKList = Master_BankItem.GetBank();
+            return BANKList;
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Web.Dta
             context.AddParameter("@gr_no", obj.GR_No);
             context.AddParameter("@nilai_bayar", obj.BayarHutang);
             context.AddParameter("@create_by", obj.Create_By);
+            context.AddParameter("@bank_id", obj.bankid);
 
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

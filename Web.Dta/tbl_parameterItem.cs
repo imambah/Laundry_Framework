@@ -292,5 +292,67 @@ namespace Web.Dta
             GenNo = strJenis +"-"+ strNo+ "/" + "BiW" + strBulan + "/" + strTahun;
             return GenNo;
         }
+
+        public static string getPOS_Nomer(string strJenis) {
+            string POSNo = "";
+            int no_seri = 0;
+            NomorDbo nomer = tbl_parameterItem.getNomer(strJenis);
+            int intID = nomer.id;
+            string strTahun = nomer.tahun.ToString();
+            string strBulan = nomer.bulan.ToString();
+            string strNo = nomer.nomer.ToString();
+
+            DateTime now = DateTime.Now;
+            string strYearNow = now.Year.ToString();
+            string strMonthNow = now.Month.ToString();
+
+            NomorDbo penomoran = new NomorDbo();
+            if (strTahun == strYearNow && strBulan == strMonthNow)
+            {
+                no_seri = Convert.ToInt32(strNo) + 1;
+                penomoran.id = intID;
+                penomoran.tahun = Convert.ToInt32(strTahun);
+                penomoran.bulan = Convert.ToInt32(strBulan);
+                penomoran.nomer = Convert.ToInt32(no_seri);
+                strNo = no_seri.ToString();
+            }
+            else
+            {
+                no_seri = Convert.ToInt32(1);
+                penomoran.id = intID;
+                penomoran.tahun = Convert.ToInt32(strYearNow);
+                penomoran.bulan = Convert.ToInt32(strMonthNow);
+                penomoran.nomer = Convert.ToInt32(no_seri);
+                strNo = no_seri.ToString();
+            }
+
+            UpdateNomer(penomoran);
+
+            if (strNo.Length == 1)
+            {
+                strNo = "00000" + strNo;
+            }
+            else if (strNo.Length == 2)
+            {
+                strNo = "0000" + strNo;
+            }
+            else if (strNo.Length == 3)
+            {
+                strNo = "000" + strNo;
+            }
+            else if (strNo.Length == 4)
+            {
+                strNo = "00" + strNo;
+            }
+            else if (strNo.Length == 5)
+            {
+                strNo = "0" + strNo;
+            }
+
+            POSNo = "TR-" + now.Date.ToString("yyyy") + "." + now.Date.ToString("MM") + "." + now.Date.ToString("dd") + "." + strNo;
+           
+
+            return POSNo;
+        }
     }
 }

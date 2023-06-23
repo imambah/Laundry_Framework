@@ -595,6 +595,8 @@
     <EmbeddedResource Include="Report\Lampiran.rdlc" />
     <EmbeddedResource Include="Report\Report_APDetail.rdlc" />
     <EmbeddedResource Include="Report\Report_GR.rdlc" />
+    <EmbeddedResource Include="Report\Rpt_AP_Aging.rdlc" />
+    <EmbeddedResource Include="Report\Rpt_AR_Aging.rdlc" />
     <EmbeddedResource Include="Report\Rpt_PO.rdlc" />
     <EmbeddedResource Include="Report\Rpt_Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />

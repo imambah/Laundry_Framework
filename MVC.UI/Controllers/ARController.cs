@@ -43,6 +43,7 @@ namespace MVC.UI.Controllers
             AR_BayarDbo ARDbo = new AR_BayarDbo();
             ARDbo.Invoice_No = invoice_no;
             ARDbo.NilaiPiutang = nilaiPiutang;
+            ViewBag.BANKList = new SelectList(BANKList(), "id", "nama");
             return View(ARDbo);
         }
 
@@ -67,6 +68,11 @@ namespace MVC.UI.Controllers
             {
                 return View();
             }
+        }
+        public List<GroupDbo> BANKList()
+        {
+            List<GroupDbo> BANKList = Master_BankItem.GetBank();
+            return BANKList;
         }
 
     }
