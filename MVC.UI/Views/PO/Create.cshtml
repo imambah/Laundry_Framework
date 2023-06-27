@@ -87,7 +87,7 @@
                     <div class="col-sm-2">
 
                         @*@Html.DropDownList("Term_Of_Payment", new SelectList(ViewBag.TOPList, "Id", "nama"), new { @class = "form-control" })
-        @Html.Hidden("Term_Of_Payment", new SelectList(ViewBag.TOPList, "Id", "nama"))*@
+                    @Html.Hidden("Term_Of_Payment", new SelectList(ViewBag.TOPList, "Id", "nama"))*@
 
                         @Html.DropDownList("Term_Of_Payment", ViewBag.TOPList as SelectList, new { @class = "form-control" })
                         @*@Html.ValidationMessageFor("Term_Of_Payment")*@
@@ -203,6 +203,31 @@
                     <tbody>
                     </tbody>
                 </table>
+                <div class="form-group">
+                    
+                    <div class="col-sm-10 control-label">Total </div>
+                    <div class="col-sm-2">
+                            @Html.TextBox("nilai_total","",  new { id = "nilai_total", @class = "form-control", @readonly = "readonly", @style = "text-align:right" })
+                       
+                    </div>
+                    <div class="col-sm-10 control-label">Disc </div>
+                    <div class="col-sm-2">
+                  
+                            @Html.TextBox("nilai_disc", "", new { id = "nilai_disc", onkeyup = "return calculatedisc(this)", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Disc", @style = "text-align:right" })
+    
+                    </div>
+                    <div class="col-sm-10 control-label">Ppn</div>
+                    <div class="col-sm-2">
+                  
+                            @Html.TextBox("nilai_ppn","", new { id = "nilai_ppn", onkeyup = "calculateppn(this);", onkeydown = "return ValidateNumber(event);", @class = "form-control", placeholder = "Ppn", @style = "text-align:right" })
+                           
+                    </div>
+                    <div class="col-sm-10 control-label">Grand Total</div>
+                    <div class="col-sm-2">
+                            @Html.TextBox("nilai_grandtotal","", new { id = "nilai_grandtotal", @class = "form-control", placeholder = "Grand Total", disabled = "disabled", @style = "text-align:right"})
+                            
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
@@ -341,6 +366,7 @@
                     button.type = 'button';
                     button.setAttribute('onclick', 'DeleteRowInGrid(this)');
                     cell6.appendChild(button);
+                    countTotal();
                 }
                 else {//update di data gridnya
                     var new_itemcode = $('#item_code').val();
@@ -387,6 +413,7 @@
         }
         return strValue;
     }
+
     $("#mydatatablePopup").on('click', '.btnSelect', function () {
         // get the current row
         var currentRow = $(this).closest("tr");
@@ -412,15 +439,18 @@
         document.getElementById('tabelBarang').deleteRow(1);
         //alert("Hi");
     }
+
     function deleteRow(btn) {
         var row = btn.parentNode.parentNode;
         row.parentNode.removeChild(row);
     }
+
     $("#DeliveryDatePlan").datepicker({
         changeMonth: true,
         changeYear: true,
         dateFormat: 'dd/mm/yy'
     })
+
     $("#customername").autocomplete({
         source: function (request, response) {
             //var csname = 'Counter';
@@ -511,7 +541,13 @@
             var _billto_name = $("#billto").val();
             var _billto_id = $("#billto_id").val(); 
 
-            var _header = _ponumber + '|' + _podate + '|' + _customer_id + '|' + _customer_name + '|' + _delivery_date_plane + '|' + _tof + '|' + _po_desc + '|' + _billto_id + '|' + _billto_name
+            var _total = $("#nilai_total").val(); 
+            var _ppn = $("#nilai_ppn").val(); 
+            var _disc = $("#nilai_disc").val();
+            var _grandTotal = $("#nilai_grandtotal").val(); 
+
+            var _header = _ponumber + '|' + _podate + '|' + _customer_id + '|' + _customer_name + '|' + _delivery_date_plane + '|' + _tof + '|' + _po_desc +
+                '|' + _billto_id + '|' + _billto_name + '|' + _total + '|' + _ppn + '|' + _disc + '|' + _grandTotal
             // header ============================
             $.post('@Url.Action("Create", "PO")', { rows: rows, header: _header }, function (data) { });
         }
@@ -523,6 +559,60 @@
         changeYear: true,
         dateFormat: 'dd/mm/yy'
     })
+
+    function countTotal() {
+        var sTableName = document.getElementById("tabelBarang");
+        //update detail =============================================
+        var rows = [];
+        var _subtotal = 0;
+        for (var i = 1; i < sTableName.rows.length; i++) {
+            var _price = sTableName.rows[i].cells[4].innerText.trim();
+            _subtotal = parseFloat(_subtotal) + parseFloat(_price);
+        }
+        $("#nilai_total").val(_subtotal);
+        $("#nilai_ppn").val(0);
+        $("#nilai_disc").val(0);
+        $("#nilai_grandtotal").val(_subtotal);
+    }
+
+    function calculatedisc(ctr) {
+        var intNilaiTotal = $("#nilai_total").val();
+        var intdisc = $("#nilai_disc").val();
+        var intppn = $("#nilai_ppn").val();
+
+        var nilai_grand_total = parseInt(intNilaiTotal);
+        var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total;
+        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total);
+        var GT = nilai_grand_total - total_disc + total_ppn;
+        $("#nilai_grandtotal").val(GT);
+    };
+
+    function calculateppn(obj) {
+        var intNilaiTotal = $("#nilai_total").val();
+        var intdisc = $("#nilai_disc").val();
+        var intppn = $("#nilai_ppn").val();
+
+        var nilai_grand_total = parseInt(intNilaiTotal);
+        var total_disc = (parseInt(intdisc) / 100) * nilai_grand_total;
+        var total_ppn = (parseInt(intppn) / 100) * (nilai_grand_total);
+        var GT = nilai_grand_total - total_disc + total_ppn;
+        $("#nilai_grandtotal").val(GT);
+    }
+
+    function ValidateNumber(e) {
+        var charCode;
+        if (e.keyCode > 0) {
+            charCode = e.which || e.keyCode;
+        }
+        else if (typeof (e.charCode) != "undefined") {
+            charCode = e.which || e.keyCode;
+        }
+        if (charCode == 46)
+            return true;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    };
 
 </script>
 

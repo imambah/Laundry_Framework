@@ -10,21 +10,9 @@ using Web.Logic;
 
 namespace MVC.UI.Controllers
 {
-    public class APAgingController : Controller
+    public class Kartu_PiutangController : Controller
     {
-        // GET: APAging
-        public ActionResult Index()
-        {
-            List<AP_AgingDbo> list = APItem.Get_AP_Aging();
-            return View(list);
-        }
-
-        public ActionResult Details(string id)
-        {
-            List<Report_AP_Aging_Dbo> list_det = APItem.GetDetail(id);
-            return View(list_det);
-        }
-
+        // GET: Kartu_Piutang
         public ActionResult Print()
         {
             var paramDbo = new ReportParamDbo();
@@ -36,7 +24,7 @@ namespace MVC.UI.Controllers
             string str = Model.param1;
             Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
             string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
-            return Redirect("~/Report/ReportViewer_AP_Aging.aspx?logo=" + imgLogo );
+            return Redirect("~/Report/ReportViewer_Kartu_Piutang.aspx?logo=" + imgLogo);
             //return View();
         }
     }

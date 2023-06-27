@@ -233,6 +233,7 @@
     <Compile Include="Controllers\ARController.cs" />
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\GRController.cs" />
+    <Compile Include="Controllers\Kartu_PiutangController.cs" />
     <Compile Include="Controllers\POController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\BarangController.cs" />
@@ -280,6 +281,13 @@
     <Compile Include="Report\ReportViewer_APDetail.aspx.designer.cs">
       <DependentUpon>ReportViewer_APDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\ReportViewer_AR_Aging.aspx.cs">
+      <DependentUpon>ReportViewer_AR_Aging.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer_AR_Aging.aspx.designer.cs">
+      <DependentUpon>ReportViewer_AR_Aging.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReportViewer_CashIn.aspx.cs">
       <DependentUpon>ReportViewer_CashIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,12 +295,26 @@
     <Compile Include="Report\ReportViewer_CashIn.aspx.designer.cs">
       <DependentUpon>ReportViewer_CashIn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Report\ReportViewer_AP_Aging.aspx.cs">
+      <DependentUpon>ReportViewer_AP_Aging.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer_AP_Aging.aspx.designer.cs">
+      <DependentUpon>ReportViewer_AP_Aging.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\ReportViewer_GR.aspx.cs">
       <DependentUpon>ReportViewer_GR.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Report\ReportViewer_GR.aspx.designer.cs">
       <DependentUpon>ReportViewer_GR.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportViewer_Kartu_Piutang.aspx.cs">
+      <DependentUpon>ReportViewer_Kartu_Piutang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\ReportViewer_Kartu_Piutang.aspx.designer.cs">
+      <DependentUpon>ReportViewer_Kartu_Piutang.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\ReportViewer_Invoice_Lampiran.aspx.cs">
       <DependentUpon>ReportViewer_Invoice_Lampiran.aspx</DependentUpon>
@@ -355,8 +377,11 @@
     <Content Include="Images\logo_laundry_abu.jpeg" />
     <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Report\ReportViewer_APDetail.aspx" />
+    <Content Include="Report\ReportViewer_AR_Aging.aspx" />
     <Content Include="Report\ReportViewer_CashIn.aspx" />
+    <Content Include="Report\ReportViewer_AP_Aging.aspx" />
     <Content Include="Report\ReportViewer_GR.aspx" />
+    <Content Include="Report\ReportViewer_Kartu_Piutang.aspx" />
     <Content Include="Report\ReportViewer_Invoice_Lampiran.aspx" />
     <Content Include="Report\ReportViewer_PO.aspx" />
     <Content Include="Report\ReportViewer_Invoice.aspx" />
@@ -559,6 +584,9 @@
     <Content Include="Views\Voucher\Create.cshtml" />
     <Content Include="Views\Voucher\CreateDetail.cshtml" />
     <Content Include="Views\Cash\print.cshtml" />
+    <Content Include="Views\APAging\print.cshtml" />
+    <Content Include="Views\ARAging\print.cshtml" />
+    <Content Include="Views\Kartu_Piutang\print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -597,6 +625,7 @@
     <EmbeddedResource Include="Report\Report_GR.rdlc" />
     <EmbeddedResource Include="Report\Rpt_AP_Aging.rdlc" />
     <EmbeddedResource Include="Report\Rpt_AR_Aging.rdlc" />
+    <EmbeddedResource Include="Report\Rpt_Kartu_Piutang.rdlc" />
     <EmbeddedResource Include="Report\Rpt_PO.rdlc" />
     <EmbeddedResource Include="Report\Rpt_Tanda_Terima.rdlc" />
     <EmbeddedResource Include="Report\Tanda_Penyerahan.rdlc" />

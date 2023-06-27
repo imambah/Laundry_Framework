@@ -96,7 +96,6 @@ namespace MVC.UI.Controllers
                 });
 
                 string[] date_now = result[4].Trim().Split('/');
-
                 string date = date_now[0].Trim();
                 string month = date_now[1].Trim();
                 string year = date_now[2].Trim();
@@ -116,8 +115,12 @@ namespace MVC.UI.Controllers
                  ObjPoHeader.BranchID = "";// Utilities.BranchID;
                 ObjPoHeader.Billto_Id = result[7].Trim();
                 ObjPoHeader.Billto_Name = result[8].Trim();
+                ObjPoHeader.amount = Convert.ToDecimal(result[9].Trim());
+                ObjPoHeader.ppn_percent = Convert.ToInt32(result[10].Trim());
+                ObjPoHeader.disc_percent = Convert.ToInt32(result[11].Trim());
+                ObjPoHeader.totalAmount = Convert.ToDecimal(result[12].Trim());
                     //ObjPosHeader.create_by = Utilities.Username;
-                POItem.Insert_Header(ObjPoHeader);
+                    POItem.Insert_Header(ObjPoHeader);
                 return RedirectToAction("Index", "PO");
                 //return RedirectToRoute("PO");
                 //return Redirect("PO/Index");

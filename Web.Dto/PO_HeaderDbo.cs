@@ -17,6 +17,12 @@ namespace Web.Dto
         public string BranchID { get; set; }
         public string Billto_Id { get; set; }
         public string Billto_Name { get; set; }
+        public decimal amount { get; set; }
+        public int ppn_percent { get; set; }
+        public int disc_percent { get; set; }
+        public decimal totalAmount { get; set; }
+
+
 
 
         public PO_HeaderDbo Map(System.Data.IDataReader reader)
@@ -33,6 +39,10 @@ namespace Web.Dto
             obj.BranchID = reader["BranchID"] == DBNull.Value ? "" : reader["BranchID"].ToString();
             obj.Billto_Id = reader["Billto_Id"] == DBNull.Value ? "" : reader["Billto_Id"].ToString();
             obj.Billto_Name = reader["Billto_Name"] == DBNull.Value ? "" : reader["Billto_Name"].ToString();
+            obj.amount = reader["amount"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["amount"]);
+            obj.ppn_percent = reader["ppn_percent"] == DBNull.Value ? 0 : Convert.ToInt32(reader["ppn_percent"]);
+            obj.disc_percent = reader["disc_percent"] == DBNull.Value ? 0 : Convert.ToInt32(reader["disc_percent"]);
+            obj.totalAmount = reader["total_amount"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["total_amount"]);
             return obj;
         }
     }

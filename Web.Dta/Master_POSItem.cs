@@ -21,18 +21,34 @@ namespace Web.Dta
             return DBUtil.ExecuteMapper(context, new POSDbo());
         }
 
-        public static List<POSDbo> GetAll_ByBranchID()
+        public static List<POSDbo> GetAll_ByBranchID(string strBranchID, string strUsername)
         {
             IDBHelper context = new DBHelper();
             string sqlQuery = "[sp_pos_GetByBranch]";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
-            //context.AddParameter("@branchid", strBranch_ID);
+            context.AddParameter("@branchid", strBranchID.ToString().Trim());
+            context.AddParameter("@username", strUsername.ToString().Trim());
             return DBUtil.ExecuteMapper(context, new POSDbo());
         }
+        //GetBranch_ByUsername
+        public static string GetBranch_ByUsername(string username)
+        {
+            string strValue = "";
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_pos_GetBranch_ByUsername]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@username", username);
+            object obj = DBUtil.ExecuteScalar(context);
+            if (obj != null)
+                strValue = obj.ToString();
+            return strValue;
+        }
+
 
         #region Data Access
-       
+
         public static POSDbo Insert(POSDbo obj)
         {
             //Random rdm = new Random();

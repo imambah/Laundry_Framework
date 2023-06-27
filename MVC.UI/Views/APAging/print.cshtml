@@ -8,10 +8,10 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>Data Transaksi</h1>
+    <h1>Data Umur Hutang</h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Invoice</li>
+        <li class="active">Umur Hutang</li>
     </ol>
 </section>
 
@@ -24,12 +24,12 @@
         </div>
         <div class="box-body">
 
-            <iframe src='@Url.Action("PrintOut", "Kartu_Piutang",Model )' width="100%"
+            <iframe src='@Url.Action("PrintOut", "APAging",Model )' width="100%"
                     height="1000" frameBorder="0"></iframe>
 
         </div>
         <div>
-            <a href="@Url.Action("list_invoice")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+            <a href="@Url.Action("APAging")"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
         </div>
         <!-- /.box-body -->
     </div>

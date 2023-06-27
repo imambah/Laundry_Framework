@@ -16,9 +16,9 @@ namespace MVC.UI.Controllers
         // GET: Pos
         public ActionResult Index()
         {
-            //string strBranch_id = Session["Branch_ID"].ToString();
-            //List<POSDbo> list = Master_POSItem.GetAll_ByBranchID(strBranch_id);
-            List<POSDbo> list = Master_POSItem.GetAll_ByBranchID();
+            string strUsername = Utilities.Username;
+            string strBranch_id = Master_POSItem.GetBranch_ByUsername(strUsername);
+            List<POSDbo> list = Master_POSItem.GetAll_ByBranchID(strBranch_id, strUsername);
             return View(list);
         }
 

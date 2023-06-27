@@ -23,7 +23,20 @@ namespace MVC.UI.Controllers
             List<Report_AR_Aging_Dbo> list_det = Report_AR_Aging_Item.GetDetail(id);
             return View(list_det);
         }
-
+        public ActionResult Print()
+        {
+            var paramDbo = new ReportParamDbo();
+            paramDbo.param1 = "";
+            return View(paramDbo);
+        }
+        public ActionResult PrintOut(ReportParamDbo Model)
+        {
+            string str = Model.param1;
+            Company_ProfileDbo objCompanyProfile = Master_CompanyItem.GetAll();
+            string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
+            return Redirect("~/Report/ReportViewer_AR_Aging.aspx?logo=" + imgLogo);
+            //return View();
+        }
     }
 }
 
