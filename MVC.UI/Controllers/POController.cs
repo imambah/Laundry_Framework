@@ -164,6 +164,15 @@ namespace MVC.UI.Controllers
             return RedirectToAction("Index");
             //return View();
         }
+
+        public ActionResult Aktif(string po_no)
+        {
+            PODbo existing = POItem.GetByPo(po_no);
+            existing.EntryByUser = Utilities.Username;
+            POItem.Update(existing, "T");
+            return RedirectToAction("Index");
+            //return View();
+        }
         private List<SelectListItem> GetList()
         {
             List<GroupDbo> TOPList = Master_KlienItem.GetTOP();

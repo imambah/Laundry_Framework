@@ -25,33 +25,10 @@
     });
     listItems.Add(new SelectListItem
     {
-        Text = "Counter",
-        Value = "Counter",
-    });
-    listItems.Add(new SelectListItem
-    {
         Text = "Hotel",
         Value = "Hotel",
     });
 }
-@{
-    List<SelectListItem> listItems_periode = new List<SelectListItem>();
-    listItems_periode.Add(new SelectListItem
-    {
-        Text = "I (1-15)",
-        Value = "I (1-15)",
-
-    });
-    listItems_periode.Add(new SelectListItem
-    {
-        Text = "II (>15)",
-        Value = "II (>15)",
-    });
-
-}
-
-
-
 
 
 
@@ -116,7 +93,7 @@
 
                     <div class="col-sm-1 control-label">Tipe </div>
                     <div class="col-sm-3">
-                        @Html.TextBoxFor(model => model.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                        @Html.TextBoxFor(model => model.customer_type, new { id= "tipe_konsumen", @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => model.customer_type)
                     </div>
                 </div>
@@ -288,6 +265,15 @@
         }
  
         $.post('@Url.Action("create_invoice", "Invoice")', { rows: rows }, function (data) { });
+    });
+
+    $("#customer_type").change(function () {
+       $("#customer_name").val('');
+       $("#customerid").val('');
+       $("#tipe_konsumen").val('');
+       $("#customer_address").val('');
+       $('#mydatatable tbody').empty();
+       
     });
 
 

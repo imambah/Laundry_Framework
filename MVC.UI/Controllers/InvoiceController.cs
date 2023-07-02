@@ -16,9 +16,7 @@ namespace MVC.UI.Controllers
         // GET: Parameter
         public ActionResult Index()
         {
-            string strBranch_id = Session["Branch_ID"].ToString();
-            
-            //List<POSDbo> list = Master_POSItem.GetAll_ByBranchID(strBranch_id);
+            string strBranch_id = Session["Branch_ID"].ToString();           
             ViewBag.UserGroupList = new SelectList(UserGroupList(), "nama_pendek", "nama_pendek");
 
             return View();
@@ -42,16 +40,16 @@ namespace MVC.UI.Controllers
             string month = date_start[1].Trim();
             string year = date_start[2].Trim();
             
-            string start_dt = year + '/' + month + '/' + date;
+            string start_dt = month + '/' + date + '/' + year;
 
             string[] date_end = End_Date.Trim().Split('/');
             string dt_end = date_end[0].Trim();
             string mt_end = date_end[1].Trim();
             string yr_end = date_end[2].Trim();
            
-            string end_dt = yr_end + '/' + mt_end + '/' + dt_end;
+            string end_dt = mt_end + '/' + dt_end+ '/' + yr_end;
 
-            List<InvoiceDbo> listInvoice = InvoiceItem.GetItemByParam(CustomerType, CustomerID, Convert.ToDateTime(start_dt), Convert.ToDateTime(end_dt));
+            List<InvoiceDbo> listInvoice = InvoiceItem.GetItemByParam(CustomerType, CustomerID, start_dt,end_dt);
             return Json(listInvoice);
         }
 

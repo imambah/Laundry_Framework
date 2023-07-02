@@ -21,6 +21,10 @@ namespace Web.Dto
         public string nilai { get; set; }
         public string BranchID { get; set; }
         public string BranchName { get; set; }
+        public int ppn { get; set; }
+        public int disc { get; set; }
+        public Decimal total { get; set; }
+
 
         public InvoiceDbo Map(System.Data.IDataReader reader)
         {
@@ -39,6 +43,9 @@ namespace Web.Dto
             obj.BranchName = reader["BranchName"].ToString();
             obj.invoice_no = reader["invoice_no"].ToString();
             obj.invoice_date = reader["invoice_date"].ToString();
+            obj.ppn = reader["ppn"] == DBNull.Value ? 0 : Convert.ToInt32(reader["ppn"]);
+            obj.disc = reader["disc"] == DBNull.Value ? 0 : Convert.ToInt32(reader["disc"]);
+            obj.total = reader["grand_total"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["grand_total"]); 
             return obj;
         }
     }

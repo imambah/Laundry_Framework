@@ -63,12 +63,17 @@
                             <td>
                                 @if (item.is_delete == 2)
                                 {
-                                    <a class="text-success" href="@Url.Action("Print", new { po_no=item.PO_number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
+                                    <a class="text-success" href="@Url.Action("Print", new { po_no = item.PO_number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
+                                }
+                                else if (item.is_delete == 1)
+                                {
+                                    @*<a class="text-success" href="@Url.Action("Print", new { po_no = item.PO_number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>*@
+                                    <a class="text-danger" href="@Url.Action("Aktif", new { po_no = item.PO_number })" data-toggle="tooltip" title="Aktif" onclick="return confirm('Anda yakin akan mengaktifkan item ini?')"><i class="fa fa-refresh"></i></a>
                                 }
                                 else
                                 {
-                                    <a class="text-success" href="@Url.Action("Print", new { po_no=item.PO_number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
-                                    <a class="text-danger" href="@Url.Action("Delete", new { po_no=item.PO_number  })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
+                                    <a class="text-success" href="@Url.Action("Print", new { po_no = item.PO_number })" data-toggle="tooltip" title="Print"><i class="fa fa-print"></i></a>
+                                    <a class="text-danger" href="@Url.Action("Delete", new { po_no = item.PO_number })" data-toggle="tooltip" title="Hapus" onclick="return confirm('Anda yakin akan menghapus item ini?')"><i class="fa fa-remove"></i></a>
                                 }
 
 

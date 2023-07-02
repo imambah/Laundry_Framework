@@ -12,10 +12,10 @@ namespace Web.Dta
     /// </summary>    
     public partial class InvoiceItem
     {
-        public static List<InvoiceDbo> GetItemByParam(string strType, string CustomerID, DateTime Start_Date, DateTime End_Date)
+        public static List<InvoiceDbo> GetItemByParam(string strType, string CustomerID, string Start_Date, string End_Date)
         {
-            
 
+          
             IDBHelper context = new DBHelper();
             string sqlQuery = "sp_Invoice_Get";
             context.CommandText = sqlQuery;
@@ -66,8 +66,8 @@ namespace Web.Dta
         public static InvoiceDbo createAR(string strInvoice_no, string strUsername) {
             IDBHelper context = new DBHelper();
             string sqlQuery = "[sp_Invoice_CreateAR]";
-            context.AddParameter("@invoice_no", strInvoice_no);
-            context.AddParameter("@create_by", strUsername);
+            context.AddParameter("@invoice_no", strInvoice_no.Trim());
+            context.AddParameter("@create_by", strUsername.Trim());
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<InvoiceDbo>(context, new InvoiceDbo()).FirstOrDefault();

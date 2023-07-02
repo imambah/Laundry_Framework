@@ -2135,14 +2135,14 @@
                     <TablixCell />
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="amount">
+                        <Textbox Name="Total_Amount">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!amount.Value</Value>
+                                  <Value>=Fields!Total_Amount.Value</Value>
                                   <Style>
                                     <Format>#,0.00;(#,0.00)</Format>
                                   </Style>
@@ -2153,7 +2153,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>amount</rd:DefaultName>
+                          <rd:DefaultName>Total_Amount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>Solid</Style>
