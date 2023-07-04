@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DashboardDbo.cs" />
     <Compile Include="AP_DetailDbo.cs" />
     <Compile Include="APDbo.cs" />
     <Compile Include="AP_BayarDbo.cs" />

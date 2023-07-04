@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APItem.cs" />
+    <Compile Include="Dashboard_Item.cs" />
     <Compile Include="GRItem.cs" />
     <Compile Include="VoucherItem.cs" />
     <Compile Include="Master_ContractItem.cs" />
