@@ -32,5 +32,11 @@ namespace MVC.UI.Controllers
             List<DashboardDbo> ObjList = Dashboard_Item.GetAPByBranch(bulan,tahun);
                   return Json(ObjList, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetSALESByBranch(string bulan , string tahun)
+        {
+            
+            List<DashboardDbo> ObjList = Dashboard_Item.GetSALESByBranch(bulan,tahun);
+                  return Json(ObjList, JsonRequestBehavior.AllowGet);
+        }
     }
 }

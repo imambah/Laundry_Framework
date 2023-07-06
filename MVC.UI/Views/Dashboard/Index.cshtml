@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-sm-1 control-label">Tahun</div>
                             <div class="col-sm-1">
-                                @Html.TextBox("tahun", null, new { id = "tahun", @class = "form-control", placeholder = "Tahun", @value=0,@type = "number", required = "required" })
+                                @Html.TextBox("tahun", null, new { id = "tahun", @class = "form-control", placeholder = "Tahun", @value = 0, @type = "number", required = "required" })
                             </div>
                             <button type="button" onclick="ViewData()" class="btn btn-success" data-toggle="modal" data-target="">
                                 &nbsp;<i class="fa fa-search-plus"></i>
@@ -169,6 +169,161 @@
         </div>
         <!-- /.row -->
 
+        <div class="row">
+            <div class="col-md-4">
+                <!-- /.col (LEFT) -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Account Receivable</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body chart-responsive">
+
+
+                        <div class="clearfix">
+                            <span class="pull-left">Sales</span>
+                            <small class="pull-right">75%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 75%">75%</div>
+                        </div>
+
+                        <div class="clearfix">
+                            <span class="pull-left">Delivery</span>
+                            <small class="pull-right">15%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 15%">15%</div>
+                        </div>
+
+                        <div class="clearfix">
+                            <span class="pull-left">Delivery</span>
+                            <small class="pull-right">95%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 95%">95%</div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- /.col (LEFT) -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Sales By Service</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+
+                    </div>
+
+                    <div class="box-body chart-responsive">
+
+
+                        <div class="clearfix">
+                            <span class="pull-left">Sales</span>
+                            <small class="pull-right">75%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 75%">75%</div>
+                        </div>
+
+                        <div class="clearfix">
+                            <span class="pull-left">Delivery</span>
+                            <small class="pull-right">15%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 15%">15%</div>
+                        </div>
+
+                        <div class="clearfix">
+                            <span class="pull-left">Delivery</span>
+                            <small class="pull-right">95%</small>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 95%">95%</div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- /.col (LEFT) -->
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Account Receivable</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    @*<div class="box-body chart-responsive">
+                    <div class="chart" id="AR" style="height: 300px; position: relative;"></div>
+                </div>*@
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+            @*<div class="col-md-4">
+                <p class="text-center">
+                    <strong>Goal Completion</strong>
+                </p>
+                <div class="progress-group">
+                    Add Products to Cart
+                    <span class="float-right"><b>160</b>/200</span>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-primary" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="progress-group">
+                    Complete Purchase
+                    <span class="float-right"><b>310</b>/400</span>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-danger" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="progress-group">
+                    <span class="progress-text">Visit Premium Page</span>
+                    <span class="float-right"><b>480</b>/800</span>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-success" style="width: 60%"></div>
+                    </div>
+                </div>
+
+                <div class="progress-group">
+                    Send Inquiries
+                    <span class="float-right"><b>250</b>/500</span>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar bg-warning" style="width: 50%"></div>
+                    </div>
+                </div>
+
+            </div>*@
+
     </section>
 </section>
 
@@ -202,8 +357,7 @@
                 var AR = new Morris.Donut({
                     element: 'AR',
                     resize: true,
-                    /*colors: ["#3c8dbc", "#f56954", "#00a65a"],*/
-                    colors: ["#f56954", "#00a65a", '"#3c8dbc"'],
+                    colors: ["#f56954", "#00a65a", "#3c8dbc"],
                     data: data,
                     hideHover: 'auto'
                 });
@@ -213,8 +367,7 @@
                 var AR = new Morris.Donut({
                     element: 'AP',
                     resize: true,
-                    /*colors: ["#3c8dbc", "#f56954", "#00a65a"],*/
-                    colors: ["#00a65a", "#3c8dbc"],
+                    colors: ["#00a65a", "#3c8dbc", "#f56954" ],
                     data: data,
                     hideHover: 'auto'
                 });
@@ -224,19 +377,31 @@
                 var bar = new Morris.Bar({
                     element: 'bar-chart',
                     resize: true,
-                    data: [
-                        { y: '2006', a: 100 },
-                        { y: '2007', a: 75 },
-                        { y: '2008', a: 20 },
-                        { y: '2009', a: 30 },
-                        { y: '2010', a: 80 },
-                    ],
+                    data: data,
                     barColors: ['#00a65a'],
-                    xkey: 'y',
-                    ykeys: ['a'],
+                    xkey: ['label'],
+                    ykeys: ['value'],
                     labels: ['Branch'],
                     hideHover: 'auto'
                 });
+                //var bar = new Morris.Bar({
+                //    element: 'bar-chart',
+                //    resize: true,
+                //    data: [
+                //        { y: '2006', a: 100},
+                //        { y: '2007', a: 75},
+                //        { y: '2008', a: 50},
+                //        { y: '2009', a: 75},
+                //        { y: '2010', a: 50},
+                //        { y: '2011', a: 75},
+                //        { y: '2012', a: 100}
+                //    ],
+                //    barColors: ['#00a65a'],
+                //    xkey: 'y',
+                //    ykeys: ['a'],
+                //    labels: ['CPU'],
+                //    hideHover: 'auto'
+                //});
             });
 
         }
@@ -246,8 +411,6 @@
     function Get_AR_ByBranch(callback) {
         var _bulan = $('#bulan').val();
         var _tahun = $('#tahun').val();
-        //alert(_bulan + "/" + _tahun);
-        var dt;
         return $.ajax({
             type: "post",
             url: "/Dashboard/GetARByBranch?bulan=" + _bulan + "&tahun=" + _tahun,
@@ -262,7 +425,6 @@
     }
 
     function Get_AP_ByBranch(callback) {
-        var dt;
         var _bulan = $('#bulan').val();
         var _tahun = $('#tahun').val();
         return $.ajax({
@@ -279,10 +441,11 @@
     }
 
     function Get_Sales_ByBranch(callback) {
-        var dt;
+        var _bulan = $('#bulan').val();
+        var _tahun = $('#tahun').val();
         return $.ajax({
             type: "post",
-            url: "/Dashboard/GetAPByBranch",
+            url: "/Dashboard/GetSALESByBranch?bulan=" + _bulan + "&tahun=" + _tahun,
             data: "[]",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
