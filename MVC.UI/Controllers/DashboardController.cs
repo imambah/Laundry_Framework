@@ -37,6 +37,25 @@ namespace MVC.UI.Controllers
             
             List<DashboardDbo> ObjList = Dashboard_Item.GetSALESByBranch(bulan,tahun);
                   return Json(ObjList, JsonRequestBehavior.AllowGet);
+        } 
+        public JsonResult GetSALESByService(string bulan , string tahun)
+        {
+            
+            List<DashboardDbo> ObjList = Dashboard_Item.GetSALESByService(bulan,tahun);
+                  return Json(ObjList, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetStock(string bulan, string tahun)
+        {
+
+            List<DashboardDbo> ObjList = Dashboard_Item.GetStock(bulan, tahun);
+            return Json(ObjList, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetStockByGroup(string bulan, string tahun)
+        {
+
+            List<DashboardDbo> ObjList = Dashboard_Item.GetStockByGroup(bulan, tahun);
+            return Json(ObjList, JsonRequestBehavior.AllowGet);
         }
     }
 }

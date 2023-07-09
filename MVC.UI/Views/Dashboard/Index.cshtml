@@ -73,9 +73,11 @@
 
 
     <section class="content">
-        <div class="callout callout-warning">
+        @*<div class="callout callout-warning">
             <h4>DASHBOARD LAUNDRY MONITORING  </h4>
-        </div>
+        </div>*@
+
+
 
         <div class="row">
             <div class="col-md-12">
@@ -103,8 +105,71 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h4>
+                            <label id="item_stock"/>
+                        </h4>
+                        <p>Item's Available on Stock</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h4><label id="total_stock" /></h4>
+
+                        <p>Total Stock Value</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-waterdrop"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>00</h3>
+
+                        <p>---</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>00</h3>
+
+                        <p>---</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer"></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
                 <!-- /.col (LEFT) -->
                 <div class="box box-danger">
                     <div class="box-header with-border">
@@ -126,7 +191,7 @@
 
             </div>
             <!-- /.col (RIGHT) -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="box box-warning">
                     <div class="box-header with-border">
                         <h3 class="box-title">Account Payable</h3>
@@ -145,8 +210,7 @@
 
             </div>
 
-            <div class="col-md-4">
-                <!-- BAR CHART -->
+            <div class="col-md-3">
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h3 class="box-title">Sales By Branch</h3>
@@ -159,7 +223,29 @@
                         </div>
                     </div>
                     <div class="box-body chart-responsive">
-                        <div class="chart" id="bar-chart" style="height: 300px;"></div>
+                        <div class="chart" id="sales_by_branch" style="height: 300px;"></div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <!-- /.col (LEFT) -->
+                <!-- BAR CHART -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Sales By Service</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body chart-responsive">
+                        <div class="chart" id="sales_by_service" style="height: 300px;"></div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -170,11 +256,11 @@
         <!-- /.row -->
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <!-- /.col (LEFT) -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Account Receivable</h3>
+                        <h3 class="box-title">Stock Value By Group</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -185,144 +271,45 @@
                     </div>
                     <div class="box-body chart-responsive">
 
-
-                        <div class="clearfix">
-                            <span class="pull-left">Sales</span>
-                            <small class="pull-right">75%</small>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 75%">75%</div>
+                        <div class="box-body chart-responsive">
+                            <div class="chart" id="stock_by_group" style="height: 300px;"></div>
                         </div>
 
-                        <div class="clearfix">
-                            <span class="pull-left">Delivery</span>
-                            <small class="pull-right">15%</small>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 15%">15%</div>
-                        </div>
-
-                        <div class="clearfix">
-                            <span class="pull-left">Delivery</span>
-                            <small class="pull-right">95%</small>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 95%">95%</div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <!-- /.col (LEFT) -->
-                <div class="box box-danger">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Sales By Service</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-
-                    </div>
-
-                    <div class="box-body chart-responsive">
-
-
-                        <div class="clearfix">
-                            <span class="pull-left">Sales</span>
-                            <small class="pull-right">75%</small>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 75%">75%</div>
-                        </div>
-
-                        <div class="clearfix">
-                            <span class="pull-left">Delivery</span>
-                            <small class="pull-right">15%</small>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 15%">15%</div>
-                        </div>
-
-                        <div class="clearfix">
-                            <span class="pull-left">Delivery</span>
-                            <small class="pull-right">95%</small>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 95%">95%</div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <!-- /.col (LEFT) -->
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Account Receivable</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    @*<div class="box-body chart-responsive">
-                    <div class="chart" id="AR" style="height: 300px; position: relative;"></div>
-                </div>*@
-                </div>
-            </div>
-
+                        @*<div class="clearfix">
+            <span class="pull-left" id="lblSales"></span>
+            <small class="pull-right">75%</small>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 75%">75%</div>
         </div>
 
+        <div class="clearfix">
+            <span class="pull-left">Delivery</span>
+            <small class="pull-right">15%</small>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped" style="width: 15%">15%</div>
+        </div>
+
+        <div class="clearfix">
+            <span class="pull-left">Outstanding</span>
+            <small class="pull-right">95%</small>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped" style="width: 95%">95%</div>
+        </div>*@
 
 
-
-            @*<div class="col-md-4">
-                <p class="text-center">
-                    <strong>Goal Completion</strong>
-                </p>
-                <div class="progress-group">
-                    Add Products to Cart
-                    <span class="float-right"><b>160</b>/200</span>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-primary" style="width: 80%"></div>
                     </div>
                 </div>
 
-                <div class="progress-group">
-                    Complete Purchase
-                    <span class="float-right"><b>310</b>/400</span>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-danger" style="width: 75%"></div>
-                    </div>
-                </div>
+            </div>
 
-                <div class="progress-group">
-                    <span class="progress-text">Visit Premium Page</span>
-                    <span class="float-right"><b>480</b>/800</span>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-success" style="width: 60%"></div>
-                    </div>
-                </div>
 
-                <div class="progress-group">
-                    Send Inquiries
-                    <span class="float-right"><b>250</b>/500</span>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar bg-warning" style="width: 50%"></div>
-                    </div>
-                </div>
 
-            </div>*@
+
+
+        </div>
 
     </section>
 </section>
@@ -347,12 +334,18 @@
     function ViewData() {
         "use strict";
         var _tahun = $('#tahun').val();
+        
 
         if (_tahun == '') {
             alert('Tahun Harus diisi!');
         }
         else {
-        
+
+            Get_Stock(function (data) {
+                document.getElementById("item_stock").innerHTML = data[0].label;
+                document.getElementById("total_stock").innerHTML = data[0].value;
+            });
+
             Get_AR_ByBranch(function (data) {
                 var AR = new Morris.Donut({
                     element: 'AR',
@@ -367,7 +360,7 @@
                 var AR = new Morris.Donut({
                     element: 'AP',
                     resize: true,
-                    colors: ["#00a65a", "#3c8dbc", "#f56954" ],
+                    colors: ["#00a65a", "#3c8dbc", "#DFE23A" ],
                     data: data,
                     hideHover: 'auto'
                 });
@@ -375,7 +368,7 @@
 
             Get_Sales_ByBranch(function (data) {
                 var bar = new Morris.Bar({
-                    element: 'bar-chart',
+                    element: 'sales_by_branch',
                     resize: true,
                     data: data,
                     barColors: ['#00a65a'],
@@ -384,24 +377,32 @@
                     labels: ['Branch'],
                     hideHover: 'auto'
                 });
-                //var bar = new Morris.Bar({
-                //    element: 'bar-chart',
-                //    resize: true,
-                //    data: [
-                //        { y: '2006', a: 100},
-                //        { y: '2007', a: 75},
-                //        { y: '2008', a: 50},
-                //        { y: '2009', a: 75},
-                //        { y: '2010', a: 50},
-                //        { y: '2011', a: 75},
-                //        { y: '2012', a: 100}
-                //    ],
-                //    barColors: ['#00a65a'],
-                //    xkey: 'y',
-                //    ykeys: ['a'],
-                //    labels: ['CPU'],
-                //    hideHover: 'auto'
-                //});
+            });
+
+            Get_Sales_ByService(function (data) {
+                var bar = new Morris.Bar({
+                    element: 'sales_by_service',
+                    resize: true,
+                    data: data,
+                    barColors: ['#DFE23A'],
+                    xkey: ['label'],
+                    ykeys: ['value'],
+                    labels: ['Service '],
+                    hideHover: 'auto'
+                });
+            });
+
+            Get_Stock_ByGroup(function (data) {
+                var bar = new Morris.Bar({
+                    element: 'stock_by_group',
+                    resize: true,
+                    data: data,
+                    barColors: ['#f56954'],
+                    xkey: ['label'],
+                    ykeys: ['value'],
+                    labels: ['Branch'],
+                    hideHover: 'auto'
+                });
             });
 
         }
@@ -455,6 +456,55 @@
             error: function () { }
         });
     }
+
+    function Get_Sales_ByService(callback) {
+        var _bulan = $('#bulan').val();
+        var _tahun = $('#tahun').val();
+        return $.ajax({
+            type: "post",
+            url: "/Dashboard/GetSALESByService?bulan=" + _bulan + "&tahun=" + _tahun,
+            data: "[]",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                callback(data);
+            },
+            error: function () { }
+        });
+    }
+
+    function Get_Stock(callback) {
+        var _bulan = $('#bulan').val();
+        var _tahun = $('#tahun').val();
+        return $.ajax({
+            type: "post",
+            url: "/Dashboard/GetStock?bulan=" + _bulan + "&tahun=" + _tahun,
+            data: "[]",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                callback(data);
+            },
+            error: function () { }
+        });
+    }
+
+    function Get_Stock_ByGroup(callback) {
+        var _bulan = $('#bulan').val();
+        var _tahun = $('#tahun').val();
+        return $.ajax({
+            type: "post",
+            url: "/Dashboard/GetStockByGroup?bulan=" + _bulan + "&tahun=" + _tahun,
+            data: "[]",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                callback(data);
+            },
+            error: function () { }
+        });
+    }
+
 </script>
 
 
