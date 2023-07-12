@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Kode Voucher</div>
                     <div class="col-sm-4">
-                        @Html.TextBoxFor(model => Item.Voucher_ID, new { @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
+                        @Html.TextBoxFor(model => Item.Voucher_ID, new { id = "Voucher_ID", @class = "form-control", placeholder = "Kode BOM", disabled = "disabled" })
                         @Html.ValidationMessageFor(model => Item.Voucher_ID)
                     </div>
                     <div class="col-sm-1 control-label">Tanggal</div>
@@ -72,8 +72,10 @@
         <p>
 
             <a class="btn btn-success " href="@Url.Action("CreateDetail", new { id=Item.Voucher_ID.Replace('.','|') })" role="button"><i class="fa fa-plus"></i> Tambah Data</a>
-            <a class="btn btn-success " href="@Url.Action("CreateDetail", new { id=Item.Voucher_ID.Replace('.','|') })" role="button"><i class="fa fa-plus"></i> Proses Voucher</a>
+       
+            <button type="button"  onclick="ValidateBalance()" class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;Proses Voucher</button>
           
+
         </p>
             }
 
@@ -138,22 +140,34 @@
 <script type="text/javascript">
     $(document).ready(function () {
         hitungtotal();
-
     });
-    function tambahdetail() {
-        alert("ok");
+    function ValidateBalance() {
+        var VID = $('#Voucher_ID').val();
+        var _nilai_table = hitungtotal();
+        var _nilai_total = $('#Item_Amount').val();
+
+        alert(VID);
+
+        if (parseInt(_nilai_table) != parseInt(_nilai_total)) {
+            alert('Tidak dapat memproses voucher karena Jumlah Detil tidak sama dengan Jumlah Total Header !!!');
+        }
+        else {
+            $.post('@Url.Action("ProsesVoucher", "Cash")', { voucherid: VID}, function (data) { });
+        }
+
     };
-   
+
     function hitungtotal() {
         var sTableName = document.getElementById("mydatatable");
         var nilai_baru = 0;
 
         for (var i = 1; i < sTableName.rows.length-1; i++) {
            var _nilai = sTableName.rows[i].cells[2].innerText;
-            nilai_baru = parseFloat(nilai_baru) + parseFloat(_nilai); 
+            nilai_baru = parseFloat(nilai_baru) + parseFloat(_nilai);
             //alert(nilai_baru);
         }
         //$('#total').val(nilai_baru);
         document.getElementById("total").innerHTML = nilai_baru;
+        return nilai_baru;
     };
 </script>

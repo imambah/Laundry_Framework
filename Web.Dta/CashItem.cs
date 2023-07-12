@@ -166,6 +166,16 @@ namespace Web.Dta
             return strValue;
 
         }
-     
+
+        public static CashDbo UpdateVoucher(string VoucherId)
+        {
+
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_Cash_UpdateVoucher]";
+            context.AddParameter("@Voucher_ID", VoucherId);
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            return DBUtil.ExecuteMapper<CashDbo>(context, new CashDbo()).FirstOrDefault();
+        }
     }
 }

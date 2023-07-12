@@ -175,7 +175,6 @@ namespace MVC.UI.Controllers
 
             return Json(myData, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult Print(string Voucher_ID)
         {
             var paramDbo = new ReportParamDbo();
@@ -189,6 +188,22 @@ namespace MVC.UI.Controllers
             string imgLogo = AppDomain.CurrentDomain.BaseDirectory + @"UploadFiles\" + objCompanyProfile.logo;
             return Redirect("~/Report/ReportViewer_CashIn.aspx?voucher_id=" + str + "&logo=" + imgLogo);
             //return View();
+        }
+
+        [HttpPost]
+        public ActionResult ProsesVoucher(string voucherid )
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                CashItem.UpdateVoucher(voucherid);
+                //return RedirectToAction("Viewdetail", new { Voucher_ID = collection.Voucher_ID });
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

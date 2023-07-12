@@ -67,9 +67,9 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nominal</div>
+                    <div class="col-sm-2 control-label">Nominal</div>   
                     <div class="col-sm-2">
-                        @Html.TextBoxFor(model => model.nominal, new { @class = "form-control", placeholder = "Nominal", @type = "number" })
+                        @Html.TextBoxFor(model => model.nominal, new { @class = "form-control", placeholder = "Nominal", @type = "number" , required = "required" })
                         @Html.ValidationMessageFor(model => model.nominal)
                     </div>
                 </div>
@@ -129,5 +129,12 @@
             dateFormat: 'dd/mm/yy'
         })
     });
-    
+
+    function insertIntoTable() {
+        var _jenis_voucher = $('#status').val();
+        var _nilai = $('#nominal').val();
+        var _keterangan = $('#description').val();
+
+        //alert(_jenis_voucher + '-' + _nilai + '-' + _keterangan);
+    }
 </script>
