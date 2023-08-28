@@ -16,6 +16,7 @@ namespace MVC.UI.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
+            //ViewBag.tahun_skr = "2024";
             return View();
         }
 
