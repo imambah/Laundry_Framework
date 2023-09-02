@@ -89,6 +89,7 @@ namespace Web.Dta
             context.AddParameter("@nilai", obj.nilai);
             context.AddParameter("@grand_total", obj.sub_total);
             context.AddParameter("@finishedby", update_by);
+            context.AddParameter("@cara_bayar", obj.cara_bayar);
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POSDbo>(context, new POSDbo()).FirstOrDefault();
@@ -220,5 +221,16 @@ namespace Web.Dta
             context.CommandType = CommandType.StoredProcedure;
             return DBUtil.ExecuteMapper<POS_TransactionDbo>(context, new POS_TransactionDbo()).FirstOrDefault();
         }
+
+        public static List<GroupDbo> GetCaraBayar()
+        {
+            IDBHelper context = new DBHelper();
+            string sqlQuery = "[sp_parameter_GetByType]";
+            context.CommandText = sqlQuery;
+            context.CommandType = CommandType.StoredProcedure;
+            context.AddParameter("@type", "CARA BAYAR");
+            return DBUtil.ExecuteMapper(context, new GroupDbo());
+        }
+
     }
 }

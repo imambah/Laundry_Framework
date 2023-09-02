@@ -6,7 +6,22 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 }
+@*@{
+    List<SelectListItem> ListCaraBayar = new List<SelectListItem>();
+   
+    ListCaraBayar.Add(new SelectListItem
+    {
+        Text = "TUNAI",
+        Value = "TUNAI",
 
+    });
+    ListCaraBayar.Add(new SelectListItem
+    {
+        Text = "NON TUNAI",
+        Value = "NON TUNAI",
+
+    });
+}*@
 
 <style>
     .ui-autocomplete {
@@ -43,68 +58,69 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => Item.transaction_id)
+                @Html.HiddenFor(model => Item.id, new { id = "id" })
 
-            <div class="form-group">
-                <div class="col-sm-2 control-label">Type</div>
-                <div class="col-sm-3">
-                    @Html.TextBoxFor(model => Item.transaction_type, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                    @Html.ValidationMessageFor(model => Item.transaction_type)
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Type</div>
+                    <div class="col-sm-3">
+                        @Html.TextBoxFor(model => Item.transaction_type, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.transaction_type)
+
+                    </div>
+                    <div class="col-sm-1 control-label"> </div>
+                    <div class="col-sm-2">
+
+                    </div>
+                    <div class="col-sm-2 control-label">Transaction ID </div>
+                    <div class="col-sm-2">
+                        <td>@Html.TextBoxFor(model => Item.transaction_id, new { id = "transid", @readonly = "readonly" })</td>
+                        @Html.ValidationMessageFor(model => Item.transaction_id)
+                    </div>
 
                 </div>
-                <div class="col-sm-1 control-label"> </div>
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Nama Pelanggan</div>
+                    <div class="col-sm-3">
+                        @*<input id="auto-complete">*@
+                        @*@Html.EditorFor(model => Item.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled", onkeyup = "DeleteRowOnGrid()" } })*@
+                        @Html.TextBoxFor(model => Item.customer_name, new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled", onkeyup = "DeleteRowOnGrid(this);" })
+                    </div>
+                    <div class="col-sm-1 control-label">Room </div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => Item.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.room)
+                    </div>
+                    <div class="col-sm-2 control-label">Tanggal Terima </div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => Item.transaction_date, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.customer_type)
+                    </div>
+                    @*<div class="col-sm-1 control-label">CustID</div>
                 <div class="col-sm-2">
-                    
+                    @Html.TextBoxFor(model => Item.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => Item.customerid)
+
                 </div>
-                <div class="col-sm-2 control-label">Transaction ID </div>
-                <div class="col-sm-2">
-                    <td>@Html.TextBoxFor(model => Item.transaction_id, new { id = "transid", @readonly = "readonly" })</td>
-                    @Html.ValidationMessageFor(model => Item.transaction_id)
-                </div>
-                
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">Nama Pelanggan</div>
+
+                <div class="col-sm-1 control-label">Tipe </div>
                 <div class="col-sm-3">
-                    @*<input id="auto-complete">*@
-                    @*@Html.EditorFor(model => Item.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled", onkeyup = "DeleteRowOnGrid()" } })*@
-                    @Html.TextBoxFor(model => Item.customer_name,  new { @class = "form-control", placeholder = "Nama Pelanggan", disabled = "disabled", onkeyup = "DeleteRowOnGrid(this);"} )
-                </div>
-                <div class="col-sm-1 control-label">Room </div>
-                <div class="col-sm-2">
-                    @Html.TextBoxFor(model => Item.room, new { @class = "form-control", placeholder = "Room", required = "required", disabled = "disabled" })
-                    @Html.ValidationMessageFor(model => Item.room)
-                </div>
-                <div class="col-sm-2 control-label">Tanggal Terima </div>
-                <div class="col-sm-2">
-                    @Html.TextBoxFor(model => Item.transaction_date, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
+                    @Html.TextBoxFor(model => Item.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
                     @Html.ValidationMessageFor(model => Item.customer_type)
+                </div>*@
                 </div>
-                @*<div class="col-sm-1 control-label">CustID</div>
-        <div class="col-sm-2">
-            @Html.TextBoxFor(model => Item.customerid, new { @class = "form-control", placeholder = "Customer ID", disabled = "disabled" })
-            @Html.ValidationMessageFor(model => Item.customerid)
+                <div class="form-group">
+                    <div class="col-sm-2 control-label">Alamat Pelanggan</div>
+                    <div class="col-sm-6">
+                        @Html.TextAreaFor(model => Item.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.customer_address)
+                    </div>
+                    <div class="col-sm-2 control-label">Tanggal Selesai </div>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(model => Item.finishdate, new { @class = "form-control", placeholder = "Tanggal Selesai", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => Item.finishdate)
+                    </div>
 
-        </div>
-
-        <div class="col-sm-1 control-label">Tipe </div>
-        <div class="col-sm-3">
-            @Html.TextBoxFor(model => Item.customer_type, new { @class = "form-control", placeholder = "Tipe Konsumen", disabled = "disabled" })
-            @Html.ValidationMessageFor(model => Item.customer_type)
-        </div>*@
-            </div>
-            <div class="form-group">
-                <div class="col-sm-2 control-label">Alamat Pelanggan</div>
-                <div class="col-sm-6">
-                    @Html.TextAreaFor(model => Item.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled" })
-                    @Html.ValidationMessageFor(model => Item.customer_address)
                 </div>
-                <div class="col-sm-2 control-label">Tanggal Selesai </div>
-                <div class="col-sm-2">
-                    @Html.TextBoxFor(model => Item.finishdate, new { @class = "form-control", placeholder = "Tanggal Selesai", disabled = "disabled" })
-                    @Html.ValidationMessageFor(model => Item.finishdate)
-                </div>
-
-            </div>
                 <table id="tabelPaket" class="table table-bordered table-striped  table-sm table-warning table-hover" border="1">
                     <thead>
                         <tr class="bg-danger">
@@ -118,19 +134,19 @@
                             <th class="text-center" style="vertical-align: middle; padding: 0 ; text-align:center ">
                                 Qty Laundry
                             </th>
-                            <th class="text-center" >
+                            <th class="text-center">
                                 Qty Selesai
                             </th>
                             <th class="text-center">
                                 Harga Dry Cleaning
                             </th>
-                            <th class="text-center" >
+                            <th class="text-center">
                                 Qty Dry Cleaning
                             </th>
-                            <th class="text-center" >
+                            <th class="text-center">
                                 Qty Selesai Dry Cleaning
                             </th>
-                            <th class="text-center" >
+                            <th class="text-center">
                                 Subtotal Qty
                             </th>
                             <th class="text-center">
@@ -140,7 +156,7 @@
                                 id
                             </th>
 
-                            
+
                         </tr>
                         <tr class="bg-danger">
                         </tr>
@@ -160,7 +176,7 @@
                                     @Html.DisplayFor(modelItem => item.service_laundry_qty)
                                 </td>
 
-                                <td style='text-align:center'><input type='text' id='qty_laundry_selesai'name='qty_laundry_selesai' value=@item.service_laundry_qty style='width:50px;text-align:right;'onkeydown='return ValidateNumber(event);' onkeyup='myFunction(this.value)'></td>
+                                <td style='text-align:center'><input type='text' id='qty_laundry_selesai' name='qty_laundry_selesai' value=@item.service_laundry_qty style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);' onkeyup='myFunction(this.value)'></td>
 
 
                                 <td style="text-align:center">
@@ -170,12 +186,7 @@
                                     @Html.DisplayFor(modelItem => item.service_drycleaning_qty)
                                 </td>
 
-                                <td style='text-align:center'><input type='text' id='qty_dryclean_selesai' 
-                                                                     name='qty_dryclean_selesai' 
-                                                                     value=@item.service_drycleaning_qty 
-                                                                     style='width:50px;text-align:right;' 
-                                                                     onkeydown='return ValidateNumber(event);'
-                                                                     onkeyup='HitungSelesai_Dry(this.value)'></td>
+                                <td style='text-align:center'><input type='text' id='qty_dryclean_selesai' name='qty_dryclean_selesai' value=@item.service_drycleaning_qty style='width:50px;text-align:right;' onkeydown='return ValidateNumber(event);' onkeyup='HitungSelesai_Dry(this.value)'></td>
 
 
                                 <td style="text-align:center">
@@ -253,13 +264,34 @@
                         @Html.TextBoxFor(model => Item.grand_total, new { id = "nilai_grandtotal", @class = "form-control", placeholder = "Grand Total", disabled = "disabled", @style = "text-align:right" })
                         @Html.ValidationMessageFor(model => Item.grand_total)
                     </div>
+
+                    <div class="col-sm-10 control-label">Cara Bayar</div>
+                    <div class="col-sm-2">
+                        @if (Item.finish_by == null || Item.finish_by == "")
+                        {
+                            @*@Html.DropDownListFor(model => Item.cara_bayar, ListCaraBayar, new { @id = "cara_bayar", @class = "form-control", placeholder = "Cara Bayar" })*@
+                            @Html.DropDownListFor(model => Item.cara_bayar, ViewBag.CaraBayar as SelectList, new { @id = "cara_bayar", @class = "form-control" })
+                        }
+                        else
+                        {
+                            @*@Html.DropDownListFor(model => Item.cara_bayar, ListCaraBayar, new { @id = "cara_bayar", @class = "form-control", placeholder = "Cara Bayar", disabled = "disabled" })
+            @Html.ValidationMessageFor(model => Item.cara_bayar)*@
+
+                            @*@Html.DropDownListFor(model => Item.cara_bayar, ListCaraBayar, "-- Select Cara Bayar --", new { @class = "form-control", placeholder = "Cara Bayar", disabled = "disabled" })
+            @Html.ValidationMessageFor(model => Item.cara_bayar)*@
+                            @Html.DropDownListFor(model => Item.cara_bayar, ViewBag.CaraBayar as SelectList, new { @id = "cara_bayar", @class = "form-control", disabled = "disabled" })
+                        }
+
+
+                    </div>
+
                 </div>
                 <div class="form-group">
                     <div class="col-sm-10"></div>
                     <div class="col-sm-2 text-right">
                         @if (Item.finish_by == null || Item.finish_by == "")
                         {
-                           
+
                             <button type="submit" name="savedata" class="btn btn-success" hidden="hidden"><i class="fa fa-save"></i>&nbsp;&nbsp;Simpan</button>
                         }
                         else
@@ -302,17 +334,21 @@
         return true;
     };
 
-    
+
     $('#saveform').submit(function () {
+       //alert('hi');
         var sTableName = document.getElementById("tabelPaket");
-        var _transid = $("#transid").val(); 
+        var _transid = $("#transid").val();
+        var _idHeader = $("#id").val();
+        alert(_idHeader);
+        var _qty_selesai_dryClean = sTableName.rows[2].cells[6].firstChild.value;
+        //alert('hi:' + _qty_selesai_dryClean);
        //update detail =============================================
         var rows = [];
         for (var i = 2; i < sTableName.rows.length; i++) {
             var _id = sTableName.rows[i].cells[9].innerText.trim();
             var _harga_laundry = sTableName.rows[i].cells[1].innerText.trim();
             var _qty_selesai_laundry = sTableName.rows[i].cells[3].firstChild.value;
-
             var _harga_dryclean = sTableName.rows[i].cells[4].innerText.trim();
             var _qty_selesai_dryClean = sTableName.rows[i].cells[6].firstChild.value;
 
@@ -323,12 +359,14 @@
         //detail -====================================================
 
         //update to header====================
-       
+
         var _total = $("#nilai_total").val();
         var _disc = $("#nilai_disc").val();
         var _ppn = $("#nilai_ppn").val();
         var _grand_total = $("#nilai_grandtotal").val();
-        var _header = _total + '|' + _disc + '|' + _ppn + '|' + _grand_total;
+        var _cara_bayar = $("#cara_bayar").val();
+        //alert(_cara_bayar);
+        var _header = _total + '|' + _disc + '|' + _ppn + '|' + _grand_total + '|' + _cara_bayar;
         //alert(_transid);
         //alert(_header);
         // header ============================
@@ -360,7 +398,7 @@
         $("#nilai_grandtotal").val(GT);
     }
 
-    
+
 
     function HitungUlang() {
         //alert('kadieu');
@@ -450,13 +488,13 @@
                     table.rows[this.i].cells[6].firstChild.value = parseInt(qty_dryclean);
                     table.rows[this.i].cells[6].firstChild.focus();
                 } else if (parseInt(qty_dryclean_selesai) <= parseInt(qty_dryclean)) {
-                    ///===laundry 
+                    ///===laundry
                     var harga_laundry = parseFloat(table.rows[this.i].cells[1].innerHTML.trim());
                     var qty_sls_laundry = parseFloat(table.rows[this.i].cells[3].firstChild.value);
-                    var Nilai_laundry = harga_laundry * qty_sls_laundry;  
+                    var Nilai_laundry = harga_laundry * qty_sls_laundry;
                     ///===laundry
 
-                    ///===dry_cleaning 
+                    ///===dry_cleaning
                     var harga_dryclean = parseFloat(table.rows[this.i].cells[4].innerHTML.trim());
                     var qty_sls_dry = qty_dryclean_selesai;
                     var Nilai_dryclean = harga_dryclean * qty_sls_dry;

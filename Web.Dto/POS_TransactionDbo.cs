@@ -35,6 +35,7 @@ namespace Web.Dto
         public string receiveddate { get; set; }
         public string finishdate { get; set; }
         public string finish_by { get; set; }
+        public string cara_bayar { get; set; }
 
 
         public POS_TransactionDbo Map(System.Data.IDataReader reader)
@@ -68,6 +69,7 @@ namespace Web.Dto
             obj.receiveddate = reader["receiveddate"].ToString();
             obj.finishdate = reader["finishdate"].ToString();
             obj.finish_by = reader["finish_by"].ToString();
+            obj.cara_bayar = reader["cara_bayar"].ToString().Trim();
             return obj;
         }
     }

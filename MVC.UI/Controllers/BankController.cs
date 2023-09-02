@@ -81,7 +81,6 @@ namespace MVC.UI.Controllers
             existing.update_by = Utilities.Username;
             Master_BankItem.Update(existing, "Y");
             return RedirectToAction("Index");
-            //return RedirectToAction("Index");
 
         }
 

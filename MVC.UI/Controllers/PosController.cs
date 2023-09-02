@@ -158,9 +158,20 @@ namespace MVC.UI.Controllers
         }
         public ActionResult Selesai(string id)
         {
+            List<ItemGroupDbo> MasterGroup = Master_ItemGroupItem.GetItemParameterByTable("CARA BAYAR");
+            List<SelectListItem> ListCaraBayarGroup = new List<SelectListItem>();
+            MasterGroup.ForEach(t =>
+            {
+                ListCaraBayarGroup.Add(new SelectListItem() { Value = t.kode_tabel, Text = t.nama_panjang });
+            });
+            ViewBag.CaraBayar = new SelectList(ListCaraBayarGroup, "Value", "Text");
             List<POS_TransactionDbo> listPOS = Master_POSItem.Get_POSTransaction_Selesai(id);
+            ViewBag.idHeader = id;
+
+           
             return View(listPOS);
         }
+       
         [HttpPost]
         public ActionResult ProsesTransEdit(string transactionid, string disc, string ppn, string grandtotal)
         {
@@ -272,7 +283,7 @@ namespace MVC.UI.Controllers
 
                 var result = header.Split('|');
 
-                //_total + '|' + _disc + '|' + _ppn + '|' + _grand_total;
+                //_total + '|' + _disc + '|' + _ppn + '|' + _grand_total + '|; 
                 POSDbo ObjPosHeader = new POSDbo();
                 ObjPosHeader.transaction_id = transactionid;
                 ObjPosHeader.jumlah_item = qty;
@@ -280,10 +291,11 @@ namespace MVC.UI.Controllers
                 ObjPosHeader.disc = Convert.ToDecimal(result[1]);
                 ObjPosHeader.ppn = Convert.ToDecimal(result[2]);
                 ObjPosHeader.sub_total = Convert.ToDecimal(result[3]); //_grand_total
+                ObjPosHeader.cara_bayar = result[4].ToString();
                 ObjPosHeader.create_by = Utilities.Username;
                 Master_POSItem.UpdateHeader(ObjPosHeader, Utilities.Username);
 
-                return RedirectToAction("index", "POS");
+                return RedirectToAction("Selesai", new { id= 7165 });
             }
             catch
             {

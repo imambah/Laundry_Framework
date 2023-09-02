@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-sm-1 control-label">Tahun</div>
                             <div class="col-sm-1">
-                                @Html.TextBox("tahun", null, new { id = "tahun", @class = "form-control", placeholder = "Tahun", @value = ViewBag.tahun_skr, @type = "number", required = "required" })
+                                @Html.TextBox("tahun", null, new { id = "tahun", @class = "form-control", placeholder = "Tahun", @type = "number", required = "required" })
                             </div>
                             <button type="button" onclick="ViewData()" class="btn btn-success" data-toggle="modal" data-target="">
                                 &nbsp;<i class="fa fa-search-plus"></i>
@@ -329,7 +329,11 @@
 @*page script*@
 
 <script>
-   
+    $(document).ready(function () {
+        const d = new Date();
+        let year = d.getFullYear();
+        $("#tahun").val(year);
+    });
 
     function ViewData() {
         "use strict";

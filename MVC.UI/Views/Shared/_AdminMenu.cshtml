@@ -1,6 +1,19 @@
 ﻿
 
-<li class="treeview"><a href="@Url.Action("Index", "Dashboard")"><i class="fa fa-book"></i><span>DASHBOARD</span></a></li>
+@*<li class="treeview"><a href="@Url.Action("Index", "Dashboard")"><i class="fa fa-book"></i><span>DASHBOARD</span></a></li>*@
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-bar-chart"></i><span>View</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+
+    <ul class="treeview-menu">
+        <li><a href="@Url.Action("Index", "Dashboard")"><i class="fa fa-tachometer"></i><span>DASHBOARD</span></a></li>
+
+    </ul>
+</li>
 <li class="treeview">
     <a href="#">
         <i class="fa fa-cog"></i><span>SETTING</span>
@@ -10,9 +23,8 @@
     </a>
 
     <ul class="treeview-menu">
+        @*<li><a href="@Url.Action("Index", "Dashboard")"><i class="fa fa-tachometer"></i>Dashboard</a></li>*@
         <li><a href="@Url.Action("Index", "User")"><i class="fa fa-caret-right"></i>Pengguna </a></li>
-        @*<li><a href="@Url.Action("Index", "Test2")"><i class="fa fa-caret-right"></i>Menu</a></li>
-            <li><a href="@Url.Action("Index", "Test3")"><i class="fa fa-caret-right"></i>Group</a></li>*@
         <li><a href="@Url.Action("Index", "CompanyProfile")"><i class="fa fa-caret-right"></i>Perusahaan</a></li>
         <li><a href="@Url.Action("Index", "Parameter")"><i class="fa fa-caret-right"></i>Parameter </a></li>
 

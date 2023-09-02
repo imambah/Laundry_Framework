@@ -44,7 +44,7 @@ namespace Web.Dta
             context.AddParameter("@kode_layanan", obj.Kode_layanan);
             context.AddParameter("@harga", obj.Harga);
             context.AddParameter("@update_by", obj.update_by);
-            context.AddParameter("@is_delete", obj.is_delete);
+            context.AddParameter("@is_delete", isdelete);
             string sqlQuery = "[sp_master_Contract_Update]";
             context.CommandText = sqlQuery;
             context.CommandType = CommandType.StoredProcedure;

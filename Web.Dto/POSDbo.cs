@@ -32,7 +32,8 @@ namespace Web.Dto
         public DateTime? update_date { get; set; }
         public string update_by { get; set; }
         public DateTime? estimasi_selesai { get; set; }
-        public POSDbo Map(System.Data.IDataReader reader)
+        public string cara_bayar { get; set; }
+    public POSDbo Map(System.Data.IDataReader reader)
         {
             POSDbo obj = new POSDbo();
             obj.id = Convert.ToInt32(reader["id"]);
@@ -67,6 +68,7 @@ namespace Web.Dto
             obj.update_date = reader["update_date"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["update_date"]);
             obj.update_by = reader["update_by"].ToString();
             obj.estimasi_selesai = reader["estimasi_selesai"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["estimasi_selesai"]);
+            obj.cara_bayar = reader["cara_bayar"].ToString().Trim();
             return obj;
         }
     }

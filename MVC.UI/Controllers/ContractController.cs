@@ -102,21 +102,7 @@ namespace MVC.UI.Controllers
             }
         }
 
-        // POST: Parameter/Delete/5
-        [HttpPost]
-        public ActionResult Delete(string kode_klien, int kode_layanan)
-        {
-            try
-            {
-                Master_ContractItem.Delete(kode_klien.Trim(),kode_layanan);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
+    
         public JsonResult ValidateItem(string kode_layanan, string kode_klien)
         {
             string strValue = "";
@@ -137,6 +123,27 @@ namespace MVC.UI.Controllers
          
             return Json(myData, JsonRequestBehavior.AllowGet); 
         }
+
+
+        // GET: Client/Delete
+        public ActionResult Delete(string kode_klien, int kode_layanan)
+        {
+            Master_ContractDbo existing = Master_ContractItem.GetById(kode_klien,kode_layanan);
+            existing.update_by = Utilities.Username;
+            Master_ContractItem.Update(existing, "1");
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Active(string kode_klien, int kode_layanan)
+        {
+            Master_ContractDbo existing = Master_ContractItem.GetById(kode_klien, kode_layanan);
+            existing.update_by = Utilities.Username;
+            Master_ContractItem.Update(existing, "0");
+            return RedirectToAction("Index");
+
+        }
+
     }
 
 }
