@@ -4,33 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@{
-    List<SelectListItem> listItems = new List<SelectListItem>();
-    listItems.Add(new SelectListItem
-    {
-        Text = "-- Pilih Tipe Konsumen --",
-        Value = "",
-        Selected = true
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Agent",
-        Value = "Agent",
-
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Corporate",
-        Value = "Corporate",
-    });
-    listItems.Add(new SelectListItem
-    {
-        Text = "Hotel",
-        Value = "Hotel",
-    });
-}
-
-
 
 <style>
     .ui-autocomplete {
@@ -73,13 +46,14 @@
                 <div class="form-group">
                     <div class="col-sm-2 control-label">Customer Type </div>
                     <div class="col-sm-3">
-                        @Html.DropDownListFor(model => model.customer_type, listItems, new { @class = "form-control", placeholder = "Customer Type" })
-                        @Html.ValidationMessageFor(model => model.customer_type)
+                        @Html.DropDownListFor(model => model.customer_type, ViewBag.UserGroupList as SelectList, new { @class = "form-control" })
+                        @*@Html.DropDownListFor(model => model.customer_type, listItems, new { @class = "form-control", placeholder = "Customer Type" })
+                        @Html.ValidationMessageFor(model => model.customer_type)*@
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Nama Pelanggan</div>
+                    <div class="col-sm-2 control-label">Nama Agen / Counter</div>
                     <div class="col-sm-3">
                         @*<input id="auto-complete">*@
                         @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Pelanggan", required = "required" } })
@@ -98,7 +72,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-2 control-label">Alamat Pelanggan</div>
+                    <div class="col-sm-2 control-label">Alamat</div>
                     <div class="col-sm-6">
                         @Html.TextAreaFor(model => model.customer_address, new { @class = "form-control", placeholder = "Alamat Pelanggan", disabled = "disabled", required = "required" })
                         @Html.ValidationMessageFor(model => model.customer_address)
@@ -211,7 +185,7 @@
             $('#customer_name').val(ui.item.label);
             $('#customer_address').val(ui.item.value);
             $('#customerid').val(ui.item.id);
-            $('#customer_type').val(ui.item.customertype);
+            $('#tipe_konsumen').val(ui.item.customertype);
 
         }
     });

@@ -18,7 +18,6 @@ namespace MVC.UI.Controllers
         {
             string strBranch_id = Session["Branch_ID"].ToString();           
             ViewBag.UserGroupList = new SelectList(UserGroupList(), "nama_pendek", "nama_pendek");
-
             return View();
         }
 
