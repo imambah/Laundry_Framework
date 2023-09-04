@@ -138,19 +138,28 @@
                         {
                             if (string.Format("{0}", Web.Logic.Utilities.User_Group).ToUpper() == "COUNTER")
                             {
-                                @Html.Partial("_CounterMenu");
+
+                                if (string.Format("{0}", Web.Logic.Utilities.User_Level).ToUpper() == "ADMIN")
+                                {
+                                    @Html.Partial("_CounterMenu");
+                                }
+                                else
+                                {
+                                    @Html.Partial("_CounterMenu_User");
+                                }
                             }
                             else
-                            {
-                                @Html.Partial("_OperatorMenu");
+                                {
+                                    @Html.Partial("_OperatorMenu");
                             }
                         }
-
+                        else
+                            @Html.Partial("_OperatorMenu");
                     }
-                    else
+                    @*else
                     {
                         @Html.Partial("_OperatorMenu");
-                    }
+                    }*@
                 </ul>
             </section>
             <!-- /.sidebar -->

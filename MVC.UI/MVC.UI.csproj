@@ -2150,6 +2150,7 @@
     <Content Include="Views\ARAging\print.cshtml" />
     <Content Include="Views\Kartu_Piutang\print.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shared\_CounterMenu_User.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
